@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Learning &amp; Sharing">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Learning &amp; Sharing">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Earneet">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Learning & Sharing</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Learning & Sharing</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/01/3dtransform/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/01/3dtransform/" class="post-title-link" itemprop="url">3d坐标中的变换概念</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-01 11:48:16" itemprop="dateCreated datePublished" datetime="2020-05-01T11:48:16+08:00">2020-05-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-06 12:53:00" itemprop="dateModified" datetime="2020-05-06T12:53:00+08:00">2020-05-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" itemprop="url" rel="index"><span itemprop="name">线性代数</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="常见变换">常见变换</h2>
+<blockquote>
+<p>先约定一下，本文中使用的向量都是列向量，相应的公式也都是基于此前提。</p>
+</blockquote>
+<h3 id="线性变换">线性变换</h3>
+<p>如果变换F保持了基本运算，加法和数乘，那么就可以称该变换是线性的。</p>
+<p>数学上，要求线性变换满足这样的性质：</p>
+<p><span class="math display">\[
+\begin{eqnarray}
+F(\boldsymbol{a}+\boldsymbol{b}) &amp;=&amp; F(\boldsymbol{a}) + F(\boldsymbol{b}) \tag{1} \\
+F(k\boldsymbol{a}) &amp;=&amp; kF(\boldsymbol{a}) \tag{2}
+\end{eqnarray}
+\]</span></p>
+<p>需要注意的是，这里的函数自变量 <span class="math inline">\(\boldsymbol{a} \boldsymbol{b}\)</span> 都是<font color="red"><strong>向量</strong></font>，公式中已经使用粗体表达， 再次强调一下。在自变量为标量时，公式2 可以由公式1推导得出，但是对于向量， 我们只能单独列出公式2，使变换满足。</p>
+<h3 id="仿射变换">仿射变换</h3>
+<p>仿射变换是线性变换后接着平移。所以，线性变换是一类特殊的仿射变换，它的平移量为 <span class="math inline">\(\boldsymbol{0}\)</span> 。 换一句更加专业一点的表达方式。<strong>仿射变换是线性变换的超集，任何线性变换都是仿射变换</strong>。</p>
+<p><span class="math display">\[
+\boldsymbol{v}&#39; = \boldsymbol{Mv} + \boldsymbol{b} 
+\]</span></p>
+<p>其更正式一点的表达, 所有满足公式3的变换都是仿射变换，其中 <span class="math inline">\(\boldsymbol{b}\)</span> 可以为0向量。</p>
+<h3 id="可逆变换">可逆变换</h3>
+<p>如果一个变换 <span class="math inline">\(F\)</span> 可以被另一个变换 <span class="math inline">\(F^{-1}\)</span> 所"撤销"，那么，这个变换叫做<strong>可逆变换</strong>。一个重要的事实是，所有的仿射变换，除了“<strong>投影</strong>”，其他所有形式的仿射变换都是可逆的。当然，也存在一些可逆的非仿射变换，这里先不做讨论。</p>
+<h3 id="等角变换">等角变换</h3>
+<p>如果变换前后各向量之间的夹角不发生变化（包括大小和方向）那么，该变换即成为等角变换。 仅有<strong>平移</strong>，<strong>旋转</strong>，<strong>均匀缩放</strong>是等角变换，而<strong>镜像</strong>非等角变换，因为镜像变换会更改角方向。</p>
+<p>按照这里的说法，其实“方向”一词的出现是不严谨的，因为我们往往在空间中定义角度时会预先约定角方向，其方向信息可以使用角打小的符号来表示。</p>
+<h3 id="正交变换">正交变换</h3>
+<p>正交变换是坐标轴保持垂直，且不进行缩放的变换。</p>
+<p><strong>平移</strong>，<strong>旋转</strong>，<strong>镜像</strong>变换是仅有的正交变换。</p>
+<h3 id="刚体变换">刚体变换</h3>
+<p>只改变物体位置和方向的变换是刚体变换。它不改变物体任何的自由属性（面积，体积，形状 等）。 刚体变换是<strong>正交变换</strong>和<strong>等角变换</strong>的交集。 同时，刚体变换本身具有可逆的性质（非<strong>投影</strong>均可逆）， 所以它也是可逆的变换。实际上，刚体变换是本文以上所有变换的“交集”。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/18/java%E4%B8%AD%E4%B8%80%E8%88%AC%E4%B8%8D%E6%98%93%E7%9F%A5%E7%9A%84%E7%82%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/18/java%E4%B8%AD%E4%B8%80%E8%88%AC%E4%B8%8D%E6%98%93%E7%9F%A5%E7%9A%84%E7%82%B9/" class="post-title-link" itemprop="url">java中一般不易知的点</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-18 20:05:22" itemprop="dateCreated datePublished" datetime="2020-04-18T20:05:22+08:00">2020-04-18</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="java中一般不太为新人所知的一些技术点">Java中一般不太为新人所知的一些技术点</h1>
+<h2 id="一般比较容易接触的点">一般比较容易接触的点</h2>
+<h3 id="java对象结构">Java对象结构</h3>
+<h4 id="jvm中的java数据类型">JVM中的Java数据类型</h4>
+<p>JVM的<strong>java方法栈</strong>中的数据结构大致的分为两类:</p>
+<ul>
+<li>内置类型 (一说也叫原子类型)
+<ul>
+<li>内置类型指的是java语言规范规定的8个类型,即 boolean, byte, char, short, int, long, float, double</li>
+<li>内置类型依据不同的类型在栈帧中占用不同的空间, 他们在堆中存储时按照缩进规则进行padding, 在本地变量表中时, 32位及以下的类型占用一个槽(Variable Slot), double 和 long 占用两个。</li>
+</ul></li>
+<li>对象类型 (一说也叫做引用类型, 这里不计较返回地址类型)</li>
+</ul>
+<h4 id="指针压缩">指针压缩</h4>
+<h3 id="java代码是如何运行的">Java代码是如何运行的</h3>
+<p>java代码的执行大概分为两大类三种类型。</p>
+<ul>
+<li><p>对于本地代码</p>
+<p>这里说的本地代码指的是JVM通过JNI机制调用的本地代码。</p></li>
+<li><p>对于Java字节码</p>
+<p>对于java字节码需要分两个情形来讨论。</p>
+<ul>
+<li>解释执行java字节码</li>
+<li>运行JIT代码</li>
+</ul></li>
+</ul>
+<h3 id="类加载和执行过程">类加载和执行过程</h3>
+<p><strong>装载</strong> -&gt; <strong>链接</strong> -&gt; <strong>初始化</strong></p>
+<p>如上过程就是一个类被虚拟机发现并到可用的全部过程, 其中每个步骤执行不同的操作。</p>
+<p><a href="http://note.youdao.com/noteshare?id=6e9fb6aa0d4b85c07c6cf49befb0d52b&amp;sub=A6313E2BC9D0429080142B0848316EB4" target="_blank" rel="noopener">类装载过程</a></p>
+<h4 id="类加载器">类加载器</h4>
+<p>类加载器是负责加载class到JVM中的组件</p>
+<p>在java9之前, 类加载器基本可以分为以下几类:</p>
+<ul>
+<li><p><strong>启动类加载器 (bootstrap class loader)</strong></p>
+<p>使用与JVM相同的实现语言编写(Hotspot的话是c++), 它是唯一一个java对象的类加载器, 同时它也是唯一一个不需要其他类加载器加载自身的加载器, 由虚拟机负责加载它。 j9以前负责加载最基础的类库 e.g. JRE的lib目录下的类, 通过虚拟机参数 -Xbootclasspath 指定的类。</p></li>
+<li><p><strong>扩展类加载器(extension class loader)</strong></p>
+<p>它的父加载器是bootstrap加载器, 同时它负责加载那些次一级的重要的类, e.g. JRE的 lib/ext目录下的jar包中的类, java.ext.dirs系统变量指定的类</p></li>
+<li><p><strong>应用类加载器(application class loader)</strong></p>
+<p>它的父加载器是extension加载器, 同时它负责加载应用程序目录下的类和由虚拟机参数 -cp/-classpath 和系统变量 java.class.path指定目录的类的加载。</p></li>
+<li><p><strong>自定义类加载器</strong></p>
+<p>自定义类加载器必须继承java.lang.ClassLoader。由于<em>双亲委派模型</em>,它只能负责加载它的祖先类加载器不能加载的类。</p></li>
+</ul>
+<p>Java 9 引入了模块系统，并且略微更改了上述的类加载器。扩展类加载器被改名为平台类加载器(platform class loader), Java SE 中除了少数几个关键模块(如java.base)是由启动类加载器加载外, 其他模块都是由平台类加载器加载。</p>
+<h4 id="双亲委派模型">双亲委派模型</h4>
+<p>由于包含但不限于安全角度的考量,java的类加载器不可以随意决定加载类,java的各类加载器职能明确, 他们基本都有自己固定的职责, 例如启动类加载器只负责加载基础的重要的类(不然随意一个类加载器加载一个来源不明的Object类或者String类之类的重要类可就玩完了)。</p>
+<p>类加载器基本遵循一个原则, <em>当收到加载一个类的委托时(这个委托可能是虚拟机发起, 也可能是其他类加载器发起), 需要先去委托自己的父类加载器尝试加载, 如果自己的父类加载器不能加载, 那么则由自己加载, 否则是用父类加载器加载。</em> 这个原则, 就是<strong>双亲委派</strong>。</p>
+<h4 id="定义加载器和初始加载器-这是俩名词-不是动词">定义加载器和初始加载器 (这是俩名词, 不是动词)</h4>
+<h4 id="类加载的时机">类加载的时机</h4>
+<ol type="1">
+<li><p>JVM采用按需加载类的模式, 类似于脚本语言中的缺页加载, 当JVM需要一个类的结构信息时, 发现它缺少, 才会去尝试加载它。</p></li>
+<li><p>方法字节码加载, 一些类库的功能可以提供类加载的操作, 例如反射机制, 例如 ClassLoader.load()等。</p></li>
+</ol>
+<h4 id="最初的过程">最初的过程</h4>
+<p>JVM是按需加载的类, 那么最初的一个类是谁, 如果我们不把引导类加载器(bootstrap class loader)的初始化考虑在内, 那么第一个被加载的类由外部参数指定(就是那个包含 static void main(String[])方法的类, 暂且我们叫他Main类。在Main类的链接和初始化过程中, 可能级联的需要装载更多的类。在Main类初始化完成后, JVM从它的main方法开始执行字节码, 在执行过程中可能再次触发类加载。</p>
+<h3 id="数组">数组</h3>
+<p>数组是一类特殊的类, 它不由类加载器创建(当然, 也就不用编译器生成), 而是有JVM来创建。</p>
+<p>数组类的二进制名规则为对于N维数组, 则以N个<code>[</code>作为前缀, 后接元素类型的名称构成名字。</p>
+<h3 id="运行时常量池">运行时常量池</h3>
+<p><strong>运行时常量池</strong>区别与<strong>常量池</strong>和<strong>字符串常量池</strong> 概念</p>
+<p>其中, <strong>常量池</strong>表是Java类文件结构中的一个区块, <strong>运行时常量池</strong>是该结构在类加载后在JVM中维护的一个关联数据结构。每一个类实例在链接后都会有一个自己的运行时常量池。</p>
+<p>最容易搞混的是 <strong>字符串常量池</strong>, 包括很多教材都弄错了, 它是java.lang.String类维护的一个私有的类似于KV结构的常量池, String.intern方法就使用了该结构的数据, 它是使用本地代码来维护的,</p>
+<p>它用于在大量重复字符串时优化内存用量(例如某业务中大量使用全国地名, 性别字符串等... 使用intern能节省真的不少内存)。但是intern方法是线程安全的,所以, 在高频代码中我们应该把它的竞争特性考虑在编码中。 <font color="red"><strong><em>(未验证)</em></strong></font></p>
+<pre><code>这个内容在JVM规范5.1节中介绍</code></pre>
+<h3 id="更高级一些的加载约束">更高级一些的加载约束</h3>
+<pre><code>JVM规范5.3.4小节</code></pre>
+<h3 id="jvm如何调用java函数">JVM如何调用Java函数</h3>
+<p>JVM执行java字节码产生函数调用。调用的指令有:</p>
+<table>
+<thead>
+<tr class="header">
+<th>指令</th>
+<th>用途</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>invokespecial</td>
+<td>用以调用私有方法和final方法 (大意)</td>
+<td>---------</td>
+</tr>
+<tr class="even">
+<td>invokestatic</td>
+<td>用以调用类的静态方法</td>
+<td>---------</td>
+</tr>
+<tr class="odd">
+<td>invokevirtual</td>
+<td>用以调用一般的类成员方法</td>
+<td>---------</td>
+</tr>
+<tr class="even">
+<td>invokeinterface</td>
+<td>用以调用接口方法</td>
+<td>---------</td>
+</tr>
+<tr class="odd">
+<td>invokedynamic</td>
+<td>用以调用动态调用点</td>
+<td>---------</td>
+</tr>
+</tbody>
+</table>
+<p>其中, 就调用效率而言</p>
+<p>invokestatic &gt; invokespecial &gt; invokevirtual &gt; invokeinterface &gt; invokedynamic</p>
+<ul>
+<li><p><strong>invokestatic</strong> 采用静态绑定, 在方法进行调用点解析一次之后无需再次解析, 每次调用都直接跳转到调用点, 相比于invokespecial因为静态方法无需this指针, 所以并不会将调用者对象压栈。</p></li>
+<li><p><strong>invokespecial</strong> 采用静态绑定, 类似于invokestatic, 相比后者, 它需要一个this指针, 所以需要对调用的主题进行压栈。 <font color="orange"><em>(我本来以为它只能用于对私有或者final方法的调用的, 但是看了虚拟机标准之后发现它可以用于调用protected的方法, 还有一系列的查找规则, 但是我没能实现出这些场景, 还是简单以我以上的认为吧, 八成应该都是正确的。)</em></font></p></li>
+<li><p><strong>invokevirtual</strong> 采用类似于虚表的方式将方法列出, 然后再在调用时根据第一个操作数去查找虚表,在虚表中匹配合适的方法产生调用。这其中比之invokespecial至少多出一个查表的查询操作。 <font color="gray"><em>(未经验证的资料指出, jvm会通过记录虚表索引的方式来进行查找优化,使每次调用不必进行搜索,这个有待考证,我想因为泛华的类型去查找最具体的方法,使用最直接的方法应该是不行的,实际测试效率也是这样, 所以对这个说法存疑)</em></font></p></li>
+<li><p><strong>invokeinterface</strong> 采用动态绑定, 类似于invokevitual, <font color="gray">(它不需要检查方法的访问权限, 但是可能一个类同时实现多个接口的原因, 它至少每次调用都去查表, 所以我认为它比invokevirtual更慢)。</font></p></li>
+<li><p><strong>invokedynamic</strong> 采用程序自定义绑定, 每次这个指令出现的位置都成为一个动态调用点(dynamic call site), 它执行引导代码等一系列过程完成绑定, 然后执行该调用点。对于极少数的情况虚拟机会进行优化, 使之不需要每次执行这个指令都进行绑定, 但是在大多数情况下, 每次调用都需进行引导绑定。它复杂的一笔, 所以效率最低。</p>
+<p>invokedynamic在jvm7首次加入(但是jdk7版本的javac编译器并不能生成含有该指令的字节码)供运行在jvm上的其他基于字节码的动态语言使用, java8中javac首次能生成包含该指令的字节码, 用以实现lanmbda表达式。</p></li>
+</ul>
+<p><strong>就实际工程上来说, 这些调用方式的额外开销几乎可以忽略, 但是应该知道。</strong></p>
+<h3 id="jvm是怎么实现invokedynamic的">JVM是怎么实现invokedynamic的</h3>
+<p>这个问题单独写了一篇, 这里 <font color="red"><strong>指向引用</strong></font></p>
+<h3 id="java内存模型">Java内存模型</h3>
+<p>java内存模型大概有7条happens-before规则, 不必一一记住,因为都挺简单直观。</p>
+<p>这里需要知道的是, 这里的happens-before规则所确定的不是<strong>代码执行顺序</strong>而是<strong>可见性</strong>保证。</p>
+<p>举个栗子: <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">int</span> a = <span class="hljs-number">10</span>;<br><span class="hljs-keyword">int</span> b = a;<br></code></pre></td></tr></table></figure> java 内存模型规则不保证 <code>a=10</code> 代码一定在 <code>b=a</code>之前执行, 而是保证, 在执行<code>b=a</code>代码的时候, a=10 这个值已经可见。例子有点极端, 但是没有错误。在更复杂一点的场景下可以阐述这个事实。</p>
+<h2 id="更深一层的点">更深一层的点</h2>
+<h3 id="即时编译-jit">即时编译 JIT</h3>
+<h4 id="编译器类型">编译器类型</h4>
+<ul>
+<li>C1编译器
+<ul>
+<li>j7之前hotspot在-client模式默认使用的编译器, 编译效率快, 但是目标代码执行效率较低。</li>
+</ul></li>
+<li>C2编译器
+<ul>
+<li>j7之前hotspot在-server模式默认使用的编译器, 编译效率低, 但是生成的目标代码执行效率高。</li>
+</ul></li>
+<li>Graal编译器
+<ul>
+<li>j10采用的实验性质的编译器, 它本身使用java编写, 运行于jvm环境, 自身也可受到jit的优化。相较于C2, 它采用更加激进的优化策略。编译效率未测试,但是编译的目标代码不比C2的编译成果效率低。</li>
+</ul></li>
+</ul>
+<h4 id="分层编译">分层编译</h4>
+<h3 id="方法内联">方法内联</h3>
+<h3 id="hotspot虚拟机的intrinsic">HotSpot虚拟机的intrinsic</h3>
+<h3 id="逃逸分析">逃逸分析</h3>
+<h4 id="基于逃逸分析做的优化">基于逃逸分析做的优化</h4>
+<ol type="1">
+<li>锁消除</li>
+</ol>
+<ul>
+<li><p>如果即时编译器能够证明锁对象不逃逸，那么对该锁对象的加锁、解锁操作没有意义。这是因为其他线程并不能获得该锁对象，因此也不可能对其进行加锁。在这种情况下，即时编译器可以消除对该不逃逸锁对象的加锁、解锁操作。</p></li>
+<li><p>实际上，传统编译器仅需证明锁对象不逃逸出线程，便可以进行锁消除。由于 Java 虚拟机即时编译的限制，上述条件被强化为证明锁对象不逃逸出当前编译的方法。</p></li>
+</ul>
+<ol start="2" type="1">
+<li>栈上分配(OSR)</li>
+</ol>
+<ul>
+<li>由于实现起来需要更改大量假设了“对象只能堆分配”的代码，因此 HotSpot 虚拟机并没有采用栈上分配，而是使用了标量替换这么一项技术。</li>
+</ul>
+<ol start="3" type="1">
+<li>标量替换</li>
+</ol>
+<ul>
+<li>所谓的标量，就是仅能存储一个值的变量，比如 Java 代码中的局部变量。与之相反，聚合量则可能同时存储多个值，其中一个典型的例子便是 Java 对象。 标量替换这项优化技术，可以看成将原本对对象的字段的访问，替换为一个个局部变量的访问。这些变量不再要求按照堆对象那样连续分配，甚至可以直接存储在寄存器中不占用内存，对象头则直接消失。</li>
+</ul>
+<h3 id="java-agent与字节码注入">Java Agent与字节码注入</h3>
+<h2 id="可以不知道的点">可以不知道的点</h2>
+<h3 id="即时编译器的中间表达形式">即时编译器的中间表达形式</h3>
+<h3 id="volatile-字段的虚共享">volatile 字段的虚共享</h3>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/20/random_number_property/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/20/random_number_property/" class="post-title-link" itemprop="url">随机数的性质</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-20 21:26:45" itemprop="dateCreated datePublished" datetime="2019-09-20T21:26:45+08:00">2019-09-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-06 12:51:33" itemprop="dateModified" datetime="2020-05-06T12:51:33+08:00">2020-05-06</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="随机数的性质">随机数的性质</h1>
+<h2 id="随机性">随机性</h2>
+<p>顾名思义, 就是生成的随机数数列具有杂乱无章的性质的性质, 即, 无规律性, 生成的序列应该无统计数偏差。</p>
+<p>例如:</p>
+<p>若生成的序列为 <code>1, 2, 3, 4, 5, 6 ....</code> 这样的与序列相关的, 异或是 <code>1, 2, 3, 1, 2, 3, 1, 2, 3</code> 这样的周期性的, 异或是 <code>6, 1, 6, 2, 6, 6 , 1, 6</code> 这样某一个或者几个特殊元素优于其他元素大概率出现的, 则是不具有随机性的表现。</p>
+<h2 id="不可预测性">不可预测性</h2>
+<p>不可以预测性指的是, 在得知已经生成了的随机序列和随机算法的情况下, 也无法预测接下来随机的结果会是什么的性质。</p>
+<p>要满足该性质,那么必然要满足, 从后一个或者多个随机数中, 无法反推出随机数生成器的内部状态的性质。</p>
+<p>如果一个随机数生成器能满足不可预测性, 那么它一定是满足随机性的。</p>
+<h2 id="不可重现性">不可重现性</h2>
+<p>不可重现性指的是, 在至少具备了所有相同的初始条件下, 通过生成器两次或者多次生成的随机数数列不相同, 即, 没有办法重现某次输出的随机数列。</p>
+<p>仅使用软件无法实现具有不可重现性的随机数生成器。</p>
+<p>如果一个随机数生成器能满足不可重现性, 那么它一定是满足不可预测性的。</p>
+<h2 id="真随机">真随机?</h2>
+<p>只具备随机性和不可预测性的随机数叫做<strong>伪随机数</strong>, 具备不可重现性的随机数叫做<strong>真随机数</strong>。</p>
+<h2 id="计算机科学中使用的随机算法">计算机科学中使用的随机算法</h2>
+<p>在一般编程语言中, 都会提供两类随机, 例如Java提供了<code>java.util.Random</code>, 但是它并不能用于密码和安全相关的用途, Java另外提供了 <code>java.security.SecureRandom</code> 类用于实现这个用途。</p>
+<p><strong>安全相关的用途应该使用安全的随机算法, 不可以直接使用普通的随机</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/%E9%87%8D%E8%A6%81%E7%9A%84%E8%BF%9E%E7%BB%AD%E5%88%86%E5%B8%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/31/%E9%87%8D%E8%A6%81%E7%9A%84%E8%BF%9E%E7%BB%AD%E5%88%86%E5%B8%83/" class="post-title-link" itemprop="url">重要的连续分布</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-31 14:01:00" itemprop="dateCreated datePublished" datetime="2019-07-31T14:01:00+08:00">2019-07-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-06 12:52:12" itemprop="dateModified" datetime="2020-05-06T12:52:12+08:00">2020-05-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A6%82%E7%8E%87%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">概率论</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="重要的连续分布">重要的连续分布</h1>
+<h2 id="各分布简介">各分布简介</h2>
+<table>
+<thead>
+<tr class="header">
+<th>分布类型</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>均匀分布</td>
+<td>古典派中的几何概型</td>
+</tr>
+<tr class="even">
+<td>正态分布</td>
+<td>二项分布的另一种极限</td>
+</tr>
+<tr class="odd">
+<td>指数分布</td>
+<td>泊松分布的间隔, 连续的几何分布</td>
+</tr>
+</tbody>
+</table>
+<h2 id="均匀分布">均匀分布</h2>
+<h3 id="均匀分布的定义">均匀分布的定义</h3>
+<p>如果连续随机变量X的概率密度函数为：</p>
+<p><span class="math display">\[
+p(x)=
+\begin{cases}
+    \frac{1}{b-a}, &amp;a &lt; x &lt; b\\
+    0, &amp; 其它
+\end{cases}
+\]</span></p>
+<p>则称X服从区间(a,b)上的均匀分布，记作 <span class="math inline">\(X\sim U(a,b)\)</span> ，其累积分布函数为：</p>
+<p><span class="math display">\[
+F(x)=\begin{cases}
+    0,&amp;x &lt; a\\
+    \frac{x-a}{b-a},&amp;a\le x \le b\\
+    1,&amp;x &gt; b
+\end{cases}
+\]</span></p>
+<p>期望和方差分别为：</p>
+<p><span class="math display">\[
+E(X)=\frac{a+b}{2},\quad Var(X)=\frac{(b-a)^2}{12}
+\]</span></p>
+<h2 id="正态分布">正态分布</h2>
+<p>二项分布原是一个离散分布模型。 但是, 当伯努利实验次数较多的时候, 二项分布的计算较为困难(没有计算机的时候), 所以, 就有了逼近二项分布, 在当n比较大的时候用于逼近二项分布。</p>
+<h3 id="逼近二项分布的定义">逼近二项分布的定义</h3>
+<p>X服从于二项分布</p>
+<p><span class="math display">\[
+X \sim b(n, p)
+\]</span></p>
+<p>那么它的期望和方差为</p>
+<p><span class="math display">\[
+\begin{split}
+\mu &amp; = np  \\
+\sigma^2 &amp; = np(1-p)
+\end{split}
+\]</span></p>
+<p>则可以使用以下公式逼近二项分布</p>
+<p><span class="math display">\[
+p(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}},\quad -\infty &lt; x &lt; +\infty
+\]</span></p>
+<p>这个逼近的分布方式, 就是 <font color="red"><strong>正态分布</strong></font> (normal distribution), 也叫做 <font color="red"><strong>高斯分布</strong></font> (Gaussian distribution)</p>
+<p>其<strong>累积分布函数</strong>为:</p>
+<p><span class="math display">\[
+F(x)=\frac{1}{\sigma\sqrt{2\pi}}\int_{-\infty}^{x}e^{-\frac{(t-\mu)^2}{2\sigma^2}}\mathrm{d}t
+\]</span></p>
+<h3 id="正态分布的重要性质">正态分布的重要性质</h3>
+<h4 id="线性">线性</h4>
+<p>若有随机变量X符合正态分布</p>
+<p><span class="math display">\[
+X\sim N(\mu, \sigma^2)
+\]</span></p>
+<p>那么则有</p>
+<p><span class="math display">\[
+aX+b \sim N(a\mu + b, a^2\sigma^2)
+\]</span></p>
+<p><strong>这条重要的性质可以使得任意的正态分布转换为标准正态分布</strong>。</p>
+<p>即:</p>
+<p>若有</p>
+<p><span class="math display">\[
+\text{若有} X \sim N(\mu, \sigma^2) 
+\]</span></p>
+<p>则有</p>
+<p><span class="math display">\[
+\ Z = \frac{X-\mu}{\sigma} \sim N(0, 1)
+\]</span></p>
+<h4 id="上α分位点">上α分位点</h4>
+<p>如果有 <span class="math inline">\(Z\sim N(0,1)\)</span> ，如果 <span class="math inline">\(z_\alpha\)</span> 满足：</p>
+<p><span class="math display">\[
+P(Z &gt; z_\alpha) = \alpha,\quad 0 &lt; \alpha &lt; 1
+\]</span></p>
+<p>那么称点 <span class="math inline">\(z_\alpha\)</span> 为标准正态分布的 <font color="red"><strong>上α分位点</strong></font>。</p>
+<h4 id="六西格玛">六西格玛</h4>
+<p>对于随机变量 <span class="math inline">\(X\sim N(\mu, \sigma^2)\)</span></p>
+<p>不论 <span class="math inline">\(\mu , \sigma\)</span> 的取值是什么, 其中, 关于 <span class="math inline">\(\mu\)</span> 对称的面积都是确定的</p>
+<p><span class="math display">\[
+\begin{split}
+P(\mu-\sigma\le X\le \mu+\sigma)\approx 68.26\% \\
+P(\mu-3\sigma\le X\le \mu+3\sigma)\approx 99.72\%
+\end{split}
+\]</span></p>
+<h3 id="指数分布">指数分布</h3>
+<h4 id="指数分布的定义">指数分布的定义</h4>
+<p>若随机变量X的概率密度函数为：</p>
+<p><span class="math display">\[
+p(x)=\begin{cases}
+\lambda e^{-\lambda x}, &amp; x \ge 0\\
+0,&amp; x &lt; 0
+\end{cases}
+\]</span></p>
+<p>其中 <span class="math inline">\(\lambda &gt; 0\)</span> ，称X服从<font color="red"><strong>指数分布</strong></font>，也可以记为：</p>
+<p><span class="math display">\[
+X \sim Exp(\lambda)
+\]</span></p>
+<p>累积分布函数为：</p>
+<p><span class="math display">\[
+F(x)=\begin{cases}
+1-e^{-\lambda x}, &amp; x \ge 0\\
+0,&amp; x &lt; 0
+\end{cases}
+\]</span></p>
+<p>指数分布 <span class="math inline">\(X\sim Exp(\lambda)\)</span> 的期望和方差为：</p>
+<p><span class="math display">\[
+E(X)=\frac{1}{\lambda},\quad Var(X)=\frac{1}{\lambda^2}
+\]</span></p>
+<h4 id="指数分布的性质">指数分布的性质</h4>
+<h5 id="无记忆性">无记忆性</h5>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/02/ARTS-10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/06/02/ARTS-10/" class="post-title-link" itemprop="url">ARTS-10</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-06-02 16:07:02" itemprop="dateCreated datePublished" datetime="2019-06-02T16:07:02+08:00">2019-06-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-06 12:19:24" itemprop="dateModified" datetime="2020-05-06T12:19:24+08:00">2020-05-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index"><span itemprop="name">ARTS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="arts-10">ARTS-10</h1>
+<h2 id="algorithm">Algorithm</h2>
+<h3 id="引言">引言</h3>
+<p>做了太多的二叉, 本来想着尽量做一些从数学上的高效求解的题目, 但是我的博客数学公式渲染有问题,我还没能搞定, 所以这次来个DP问题。</p>
+<h3 id="description">Description</h3>
+<p><a href="https://leetcode.com/problems/climbing-stairs/" target="_blank" rel="noopener"><strong>70. Climbing Stairs</strong></a></p>
+<p>You are climbing a stair case. It takes n steps to reach to the top.</p>
+<p>Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?</p>
+<p>Note: Given n will be a positive integer.</p>
+<p><strong>Example 1:</strong></p>
+<pre><code>Input: 2
+Output: 2</code></pre>
+<p>Explanation: There are two ways to climb to the top. 1. 1 step + 1 step 2. 2 steps</p>
+<p><strong>Example 2:</strong></p>
+<pre><code>Input: 3
+Output: 3</code></pre>
+<p>Explanation: There are three ways to climb to the top. 1. 1 step + 1 step + 1 step 2. 1 step + 2 steps 3. 2 steps + 1 step</p>
+<h3 id="大意">大意</h3>
+<p>有一个n层的楼梯, 每次你可以迈一层或者两层, 问, 爬到楼梯顶部一共有多少种走法。</p>
+<h3 id="思路">思路</h3>
+<p>典型的动规问题。虽然也有其他一些不同的解法, 例如穷举, 但是效率太低,并不合适。</p>
+<p>这里具体不再展开, 本篇解法会在Share当中分享。</p>
+<h3 id="code">Code</h3>
+<p>代码可以更加精简, 基本4~5行就能够完成, 但是我为了尽量通过代码能体现思路, 按照思路的进行续来编码。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">climbStairs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n==<span class="hljs-number">1</span>)<br>          <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (n==<span class="hljs-number">2</span>)<br>          <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;<br>      <br>        <span class="hljs-keyword">int</span> stair_1 = <span class="hljs-number">2</span>;    <span class="hljs-comment">// pre stair ways</span><br>        <span class="hljs-keyword">int</span> stair_2 = <span class="hljs-number">1</span>;    <span class="hljs-comment">// the second pre stair ways</span><br>        <span class="hljs-keyword">int</span> stair = <span class="hljs-number">3</span>;<br>        <span class="hljs-keyword">while</span> (stair++ &lt;= n) &#123;<br>          <span class="hljs-keyword">int</span> old = stair_2;<br>          stair_2 = stair_1;<br>          stair_1 = stair_2 + old;<br>        &#125;<br>        <span class="hljs-keyword">return</span> stair_1;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h3 id="result">Result</h3>
+<p>Success Details</p>
+<p><strong>Runtime</strong>: <strong>4 ms</strong>, faster than <strong>87.64%</strong> of C++ online submissions for Climbing Stairs.</p>
+<p><strong>Memory Usage</strong>: <strong>8.2 MB</strong>, less than <strong>78.25%</strong> of C++ online submissions for Climbing Stairs.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Time Submitted</th>
+<th>Status</th>
+<th>Runtime</th>
+<th>Memory</th>
+<th>Language</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>a few seconds ago</td>
+<td>Accepted</td>
+<td>4 ms</td>
+<td>8.2 MB</td>
+<td>cpp</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="review">Review</h2>
+<hr />
+<h2 id="tips">Tips</h2>
+<h3 id="rsa-非对称加密算法原理">RSA 非对称加密算法原理</h3>
+<h4 id="欧拉函数">欧拉函数</h4>
+<blockquote>
+<p>在数论中，对正整数n，欧拉函数 <span class="math inline">\(\varphi(n)\)</span> 是小于或等于n的正整数中与n互质的数的数目。此函数以其首名研究者欧拉命名，它又称为φ函数（由高斯所命名）或是欧拉总计函数（totient function，由西尔维斯特所命名）。 <a href="https://zh.wikipedia.org/wiki/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">欧拉函数</a></p>
+</blockquote>
+<h4 id="rsa-算法的核心-欧拉定理">RSA 算法的核心: 欧拉定理</h4>
+<p>. &gt; 在数论中，欧拉定理（也称费马-欧拉定理或欧拉 <span class="math inline">\(\varphi\)</span> 函数定理）是一个关于同余的性质。欧拉定理表明，若 <strong>n,a</strong>为正整数，且 <strong>n,a</strong> 互素（即 <span class="math inline">\(\gcd(a,n)=1\)</span> ），则</p>
+<p><span class="math display">\[\begin{equation}a^{\phi{\left(n\right)}} \equiv 1 \pmod n \end{equation}\]</span></p>
+<blockquote>
+<p><a href="https://zh.wikipedia.org/wiki/%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86_(%E6%95%B0%E8%AE%BA)" target="_blank" rel="noopener">欧拉定理</a></p>
+</blockquote>
+<h4 id="费马小定理-欧拉定理的特例">费马小定理: 欧拉定理的特例</h4>
+<p>费马定理的表达式 :</p>
+<p><span class="math display">\[
+a^{\phi{\left(n\right)}} \equiv 1 \pmod n
+\]</span></p>
+<p>在特殊情况下, 当n为质数时, <span class="math inline">\(\varphi(n)=n-1\)</span>, 此时, 欧拉定理的表述即为:</p>
+<p><span class="math display">\[
+a^{n-1} \equiv 1\pmod n
+\]</span></p>
+<p>这个公式就是费马小定理。</p>
+<h4 id="模反元素">模反元素</h4>
+<p>如果两个正整数 a 和 n 互质, 那么一定存在一个整数 b 满足:</p>
+<p><span class="math display">\[
+ab \equiv 1\pmod n
+\]</span></p>
+<p>即, (ab - 1)能被n整除。 b就叫做a的<strong>模反元素</strong>。 显然的, 模反元素并不唯一, 对于模反元素b, 对于所有的正整数 <code>$m=b+kn$</code>也为a的模反元素。</p>
+<p><strong>模反元素必然存在</strong></p>
+<p>对费马定理进行变形:</p>
+<p><span class="math display">\[
+a^{\phi\left({n}\right)}\equiv a\times a^{\phi\left(n\right)-1}\equiv 1 \pmod n
+\]</span></p>
+<p>在此变形中, <span class="math inline">\(a^{\phi\left(n\right)-1}\)</span> 即为a的模反元素。</p>
+<h4 id="rsa-基本概念">RSA 基本概念</h4>
+<p>我们约定:</p>
+<ul>
+<li>RSA加密秘钥为<strong>E</strong>, 它是一个大整数。</li>
+<li>RSA解密秘钥为<strong>D</strong>, 它是一个大整数。</li>
+<li>RSA加密和解密需要用的模数<strong>N</strong>, 它是一个大整数。</li>
+</ul>
+<h5 id="rsa-加密过程">RSA 加密过程</h5>
+<p><span class="math display">\[
+密文 = 明文^E mod N
+\]</span></p>
+<p>RSA 加密过程就是这么简单, 它对明文做一个E次幂运算, 然后对N取模。 在这个过程中, E和N的组合就是<strong>公钥</strong>。</p>
+<h5 id="rsa-解密过程">RSA 解密过程</h5>
+<p>对应的, RSA的解密过程也非常简单:</p>
+<p><span class="math display">\[
+明文 = 密文^D mod N
+\]</span></p>
+<p>RSA 的加密和解密过程完全一致, 只是它们换了一个秘钥, 进行了完全一样的运算。 在这个过程中, D和N的组合就是<strong>私钥</strong>。</p>
+<h4 id="非对称秘钥对的生成">非对称秘钥对的生成</h4>
+<p>在基本概念中, 约定了几个量, E, D, N 在这里,我么继续沿用, 额外的,在生成密钥对的过程中, 引入一个新的量L, 它只用于生成密钥对, 但是最终结果中我们并不体现它。</p>
+<h5 id="求n">1. 求N</h5>
+<p>准备两个大质数p, q。(p和q要最够大)</p>
+<p><span class="math inline">\(N=p \times q\)</span></p>
+<h5 id="求l">2. 求L</h5>
+<p>L是 p-1 和 q-1 的最小公倍数。</p>
+<p><span class="math inline">\(L=lcm(p-1. q-1)\)</span></p>
+<p><em>实际上, 理论公式上, L应为ϕ(n), 这样后面的一系列推倒便是欧拉定理的应用了, 但是在实际中,它可以化简为更小的最小公倍数L, 这里,我们使用了实际中的化简方案</em></p>
+<h5 id="求e">3. 求E</h5>
+<p>E是一个比1大, 比L小的数字,且E和L要互质, 即 E和L的最大公约数为1, 表达为数学语言为。</p>
+<p><span class="math display">\[1 &lt; E &lt; L\\
+\gcd(E, L) = 1\]</span></p>
+<p>计算E的过程我们采用随机穷举的模式, 使用伪随机数生成器, 随机生成一个1和L之间的数字, 判断是否满足它与L互质, 如果不满足, 则重复生成并判断下一个随机数。</p>
+<p>至此, RSA的公钥部分E,N我们已经得到了, 公钥: (E, N)。</p>
+<p><em>我们加入E和L互质的这个条件,是为了满足我们需要的解密参数D一定存在</em></p>
+<h5 id="求d">4. 求D</h5>
+<p><span class="math inline">\(1 &lt; D &lt; L\)</span></p>
+<p><span class="math inline">\(E \times D\ mod\ L = 1\)</span></p>
+<p>按照上述的限制条件, 计算出D, 至此, 私钥部分也计算完成, 私钥为(D, N)。</p>
+<hr />
+<h2 id="share">Share</h2>
+<p><a href="https://blog.csdn.net/u013309870/article/details/75193592" target="_blank" rel="noopener">算法-动态规划 Dynamic Programming--从菜鸟到老鸟</a></p>
+<hr />
+<h2 id="end">End</h2>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Earneet"
+      src="/images/avatar_head_icon.png">
+  <p class="site-author-name" itemprop="name">Earneet</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:earneet@gmail.com" title="E-Mail → mailto:earneet@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">鲁ICP备17028859号 </a>
+      <img src="/images/beian.png" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502037496" rel="noopener" target="_blank">京公网安备 11010502037496号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Earneet</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+    </div>
+</body>
+</html>

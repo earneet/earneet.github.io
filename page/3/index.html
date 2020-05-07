@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Learning &amp; Sharing">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta property="og:site_name" content="Learning &amp; Sharing">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Earneet">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/page/3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Learning & Sharing</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Learning & Sharing</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/31/ARTS-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/31/ARTS-2/" class="post-title-link" itemprop="url">ARTS-2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-31 11:01:57" itemprop="dateCreated datePublished" datetime="2019-03-31T11:01:57+08:00">2019-03-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-06 12:17:34" itemprop="dateModified" datetime="2020-05-06T12:17:34+08:00">2020-05-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index"><span itemprop="name">ARTS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="这是第三周的arts篇">这是第三周的ARTS篇</h1>
+<h2 id="algorithm">Algorithm</h2>
+<h3 id="引子">引子</h3>
+<p>本周这篇算法是一个Medium难度的Leetcode题目, 我从之前没有做的题目中随机选了一道题目。无特别原因, 其中的规律考虑了半个小时之后才发现, 中间有事情耽搁,大概从看题目到AC经过了两天。 题目 <a href="https://leetcode.com/problems/next-permutation/" target="_blank" rel="noopener">Next Permutation</a>。</p>
+<p>先展示下成果</p>
+<pre><code>Success
+Details 
+Runtime: 8 ms, faster than 100.00% of C++ online submissions for Next Permutation.
+Memory Usage: 8.6 MB, less than 100.00% of C++ online submissions for Next Permutation.</code></pre>
+<h3 id="description">Description</h3>
+<pre><code>Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
+
+If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order).
+
+The replacement must be in-place and use only constant extra memory.
+
+Here are some examples. Inputs are in the left-hand column and its corresponding outputs are in the right-hand column.
+
+1,2,3 → 1,3,2
+3,2,1 → 1,2,3
+1,1,5 → 1,5,1</code></pre>
+<p>即为, 给定一个整数数列, 看做一个排列, 求出比它大的下一个字典序的排列。如果它已经是最大的了, 那么就给出最小的字典序序列。 题目里给出了几个例子, 比较通俗好懂。</p>
+<h3 id="思路">思路</h3>
+<p>这个题目的点应该是找规律, 如何排列才是下一个大的字典序列。</p>
+<p>这里, 分两种情况讨论:</p>
+<ul>
+<li>给出的序列已经是最大字典序列了:<br>这种情况很好理解, 要满足这个条件,那么给出的序列中的单值最大的数字一定占最高位(就是最前面), 次大的数字占据次高位 ... 依次递推, 很容易判断是否是最大的序列, 而这个特点也使的处理这种情况简单高效, <strong>只需要翻转序列即可</strong>。所以,这种情况不再讨论。</li>
+<li>给出的序列不是最大的字典序列。依照上一点, 如果一个序列不是最大序列,那么从高位开始遍历它时, 则必然会出现后值大于前值的情况, 即 <code>a[i] &lt; a[i+1]</code>, 若<strong>交换这两个值,那么字典序必然变大</strong>。</li>
+</ul>
+<p>那么, 思路转换为<strong>将后面更大的值前移</strong>, 这样只是保证了字典序变大, 而如何使之为 <strong>变大的幅度最小</strong> 这个目标实现, 需要再分析。</p>
+<p>我考虑一下权重影响, 高位自然权重更大, 不管低位怎么变化, 只要高位变动, 低位的变动就不影响结果了, 所以, 这个调节, 应该从低位开始。就如 我有序列 <code>12345</code>, 如果我调节高位,编程 <code>21345</code> 肯定比调节低位 <code>12354</code> 变化更大, 所以, 从低位开始着手准没错。</p>
+<p>正常是顺序序列应该是从最低位往最高位依次单值递减的, 那么如果出现有低位比高位单值低的情况, 这个位置就应该是突破点, <strong>在这个位置上换上一个比这个值稍微大一点的值, 序列的字典序就变大了!!!</strong> 问题依旧在,这个操作之后, 不能保证恰好就能是比前一个字典序刚好大一点的值, 这个时候, 得对这个位之后的序列进行重排, 使它是升序的,这样就是满足条件最小的了。总结一下: 从后往前看, 在出现后值小于前值的点, 交换一个这个点后面的比当前值大的最小值, 然后重排这个位置之后的序列。 依照这个规则,写一个代码实现:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">nextPermutation</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (nums.size()==<span class="hljs-number">1</span>)<br>          <span class="hljs-keyword">return</span> ;<br>        <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> size = nums.size();<br>        <span class="hljs-keyword">int</span> i=size<span class="hljs-number">-2</span>;<br>        <span class="hljs-keyword">for</span> (; i&gt;=<span class="hljs-number">0</span>; i--) &#123;<br>          <span class="hljs-keyword">if</span> (nums[i] &lt; nums[i+<span class="hljs-number">1</span>]) &#123;<br>            <span class="hljs-keyword">break</span>;<br>          &#125;<br>        &#125;<br>        <span class="hljs-keyword">int</span> chIndex = i;<br>        <span class="hljs-keyword">int</span> chValue = nums[i];<br>        <span class="hljs-keyword">if</span> (i&lt;<span class="hljs-number">0</span>) &#123;<br>          <span class="hljs-built_in">std</span>::reverse(nums.begin(), nums.end());<br>          <span class="hljs-keyword">return</span> ;<br>        &#125;<br>        <span class="hljs-keyword">int</span> minCanChange = nums[chIndex + <span class="hljs-number">1</span>];<br>        <span class="hljs-keyword">int</span> minCanIndex = chIndex;<br>        <span class="hljs-keyword">for</span> (i = chIndex + <span class="hljs-number">1</span>; i &lt; size; ++i) &#123;<br>          <span class="hljs-keyword">if</span> (nums[i] &gt; chValue &amp;&amp; nums[i] &lt;= minCanChange) &#123;<br>            minCanChange = nums[i];<br>            minCanIndex = i;<br>          &#125;<br>        &#125;<br>      <br>        <span class="hljs-keyword">int</span> t = nums[chIndex];<br>        nums[chIndex] = nums[minCanIndex];<br>        nums[minCanIndex] = t;<br>        <span class="hljs-built_in">std</span>:sort(nums.begin()+chIndex+<span class="hljs-number">1</span>, nums.end());<br>        <span class="hljs-keyword">return</span> ;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>这个代码是初版, 看起来还有很多的优化的空间, 后面我会再优化一版。</p>
+<h2 id="review">Review</h2>
+<p>本次Review的内容是一篇叫做 <a href="https://edgecoders.com/the-mistakes-i-made-as-a-beginner-programmer-ac8b3e54c312" target="_blank" rel="noopener"><code>The Mistakes I Made As a Beginner Programmer - Learn to identify them, make habits to avoid them</code> <code>(作为新手程序员我所犯的错)</code></a></p>
+<h3 id="引言">引言</h3>
+<p>我是一个有着七年工作经验的"老"程序员了, 至少, 不能算是一个新人, 但是,有一些错误在工作和学习中还是"不可避免"的发生了,甚至,有一些错误是新人的常见错误, 所以,在Medium推送给我这么一篇文章的时候, 我觉得我被深深的吸引了,忍不住要把它发出来大家共勉。 也许这不是一篇规范review, 我打算把它的主旨简略翻出来, 以供警醒。</p>
+<h3 id="文章主旨">文章主旨</h3>
+<pre><code>Let me make one thing clear first. If you are a beginner programmer, this article is not meant to make you feel bad about the mistakes that you might be making but rather to make you aware of them, teach you to spot signs of them, and remind you to avoid them.
+
+I have made these mistakes in the past and learned from each and every one of them. I am happy to have formed coding habits to help me avoid them. You should do too.</code></pre>
+<p>译: 首先让我们搞清楚一件事情, 如果你是个新手程序员,本文并不是让你来觉得因犯这些错误而有不好的感觉,而是教你了解它们, 发现它们的迹象, 从而避免它们。</p>
+<p>我过去曾犯过这些错误,并且从它们每一个当中学到东西。我很高兴能形成编码习惯让我避免犯这些错, 希望你也能。</p>
+<p>作者以上这个观点,同样是本文的观点。</p>
+<pre><code>These mistakes are not presented here in any particular order</code></pre>
+<p>以下错误并不以特定顺序呈现</p>
+<h4 id="没有计划的写代码">没有计划的写代码</h4>
+<pre><code>High-quality written content, in general, cannot be created easily. It requires careful thinking and research. High-quality programs are no exception.</code></pre>
+<p>高质量的写错内容通常不易创造, 它要求深思熟虑和仔细的验证, 高质量的程序亦然如此。</p>
+<pre><code>Writing quality programs is a process with a flow: 
+** Think. Research. Plan. Write. Validate. Modify. **</code></pre>
+<p>编写高质量的程序是一个这样的流式的过程: 思考, 研究, 计划, 写, 验证, 修改。 但是并没有这样一个首字母的缩略词汇, 你需要自己去创建始终遵循这个活动的习惯。</p>
+<pre><code>作为新人我犯过的重要错误之一, 就是没有经过思考和调查就开始码代码, 这对于小程序还好, 但是对于大型的程序, 它有严重的负面影响。</code></pre>
+<h4 id="写代码前计划太多">写代码前计划太多</h4>
+<pre><code>Yes. Planning before jumping into writing code is a good thing, but even good things can hurt you when you do too much of them. Too much water might poison you.</code></pre>
+<p>在开始码代码之前做计划是一件好事儿, 但是, 好事过量也可能伤害你, 就像喝水太多会中毒。</p>
+<p>看起来这条跟第一条自相矛盾, 不过, 总结来说就是太多不好,太少也不好, 在每个功能点上进行计划, 不要对整体完整进行规划即可。 所谓的瀑布模型即如此。</p>
+<h4 id="低估了代码质量的重要性">低估了代码质量的重要性</h4>
+<pre><code>If you can only focus on one aspect of the code that you write, it should be its readability. Unclear code is trash. It is not even recyclable.</code></pre>
+<p>如果你仅能关注你写的代码的其中一项, 那么它一定是代码可读性, 不清楚的代码就是垃圾, 它甚至不可回收。</p>
+<p>不得不说, 作为一只工作多年的老鸟,这个错误我还是经常犯, 有自己的原因,但是更多是因为项目进度逼迫。国内环境常常是项目管理者将程序员的加班时长也计划在正常工作时间内来计划项目进度,而且并不能将出现问题而攻关的时间计算在内, 所以, 在一切管理者没有意料到的意外而产生的额外时间消费都只能由程序员买单, 这样导致了程序员在写完自己的功能时, 只要通过了测试就不再理会,更别说<code>modify</code>这个过程, 而通常, 业务变动, 程序员限于时间,都只能采用打补丁的方式解决, 导致了代码进一步不可读。 当然, 由于程序员个人的原因也是有的, 对代码质量的过分不重视, 导致程序员在完成测试后就认为工作已经结束,留下了质量低下的代码。</p>
+<p>作者给出了自己的格言:</p>
+<pre><code>Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live.</code></pre>
+<p>总是要认为最终维护你代码的人是一个知道你住在哪里的精神病患者。</p>
+<p>另一个简单的条目是<code>过长行</code>任何的超过80个字符的行将导致代码更难以阅读。许多类似的问题都可以通过工具来解决。</p>
+<h4 id="选取最初的方案">选取最初的方案</h4>
+<p>新手程序员急于求成, 当遇到问题, 想到一个可能的解决方案时,立即投入编码, 一旦验证通过, 那么这几乎就是最终的方案了, 不会考虑到其中的风险利弊。</p>
+<p>所以, 程序员当想出一个解决方案后,应该多想想其他的解决方案,从其中对比利弊, 选出"最简单"的方案来实现。这里最简单指的是, 在能够满足正确性和性能要求的前提下,尽可能的实现简单,可读性强,可维护性高。</p>
+<h4 id="不放弃">不放弃</h4>
+<p>原文为"Not Quitting", 直译为"不戒烟", 对于这个错误上这是个非常形象贴切的词汇, 但是为了更加直接明了,我还是使用不放弃作为本错误的标题。</p>
+<p>有时候, 在一个方案开始做了之后马上意识到它并不是"最简单"的防范, 也能相处一个更优秀的方案, 但是就是不愿意放弃它,还以老方案把它做完。 不放弃可能放到大多数地方都是一个好习惯,但是不适合在编程领域。编程领域的优秀习惯是尽快失败和经常失败。</p>
+<h4 id="不搜索">不搜索</h4>
+<p>原文为"Not Googling", 鉴于国内的环境, 这个词在这里明显是不合适的, 改换为不搜索。 在寻找解决方案的时候,一味的蛮干, 浪费了太多的时间在这上面, 枉顾网上已经有很多成熟并且优秀的方案。 除非你做的是边缘技术, 否则都应该先搜索一下看看, 至少, 能从中受到启发和避免踩一些他人已经趟过的坑。</p>
+<h4 id="不封装">不封装</h4>
+<p>这个错误不仅仅限于和针对面向对象编程, 在其他的范式下, 封装这个概念依然很有帮助, 不封装通常会导致系统难以维护。</p>
+<h4 id="为未知做计划">为未知做计划</h4>
+<pre><code>It is often tempting to think beyond the solution that you are writing. All sort of what-ifs will pop into your head with every line of code that you write. This is a good thing for testing edge cases, but it is just wrong to use as a driver for potential needs.</code></pre>
+<p>在你写作的时候，人们往往倾向于超越解决方案去思考。在你写的每一行代码中，所有的“如果”都会突然出现在你的脑海中。这对于测试边缘用例来说是一件好事，但是将它用作潜在需求的驱动程序是错误的。</p>
+<p>这确实是一个我也犯过的严重的错误, 很多时候自己意识不到,或者并不承认是一个错误, 因为在写一个方案的时候,总认为考虑方方面面时候一件好事,然而恰恰是这个"好习惯"使我做了大量的无用功, 写了很多根本用不到的代码, 当时还安慰自己"如果需求变成这样", 而事实证明了, 百分之九十九的这些准备都用不上, 而他可能使我比预期多花了一倍的时间来完成。</p>
+<h4 id="使用不正确的数据结构">使用不正确的数据结构</h4>
+<p>作者在这章的观点我无法全部赞同, 作者强调程序开发人员对于数据结构优缺点的掌握要生于对算法的掌握。我还未能达到作者的高度, 但我认为,这二者应该同等重要, 数据结构还是要配合算法来使用才是正道。</p>
+<h4 id="后面几节略过">后面几节略过</h4>
+<p>因为作者针对这篇文章写了大量的内容, 一时吸收不了, 后面几节我将来补充。</p>
+<h3 id="后言">后言</h3>
+<p>当我完成这篇读后感的时候, 本文内容已经被更新, 并已经收入作者新书中, 最新的内容我没有查阅, 还是仅以作者文章初版作为依据。最新内容在本文开始已经给出了链接, 诸位读着可自行查阅。</p>
+<h2 id="tip">Tip</h2>
+<p>原打算写一个自己的心得技巧, 看本周的工作安排我知道我没有时间了, 所以, 再次分享一个之前学习并收录在笔记中的技巧吧。</p>
+<h3 id="sudo拾取上一条命令">sudo拾取上一条命令</h3>
+<p><strong>sudo !!</strong></p>
+<p>很多时候, 命令行输入一条命令后, 提示权限不足无法执行, 这个时候需要用 <code>sudo ${command}</code> 来执行, 然而需要重新sudo 然后敲一遍上次的命令, 很繁琐。稍微改进一些, 按一下向上导航键显示上一条命令,然后光标移动到行首, 插入一个sudo 命令来执行, 还是稍显繁琐。</p>
+<p>sudo 的一个小技巧可以解决这个问题, 使用 <code>sudo !!</code> , <code>sudo !!</code> 可以自动拾取上一条命令,并在前面补充sudo 重新执行。</p>
+<h2 id="share">Share</h2>
+<p>本周分享无助于学习, 纯属私人趣味, 也许大家都很熟悉了</p>
+<p><a href="https://github.com/996icu/996.ICU" target="_blank" rel="noopener">996.ICU</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/21/ARTS-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/21/ARTS-1/" class="post-title-link" itemprop="url">ARTS-1</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-21 07:37:38" itemprop="dateCreated datePublished" datetime="2019-03-21T07:37:38+08:00">2019-03-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-06 12:17:08" itemprop="dateModified" datetime="2020-05-06T12:17:08+08:00">2020-05-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index"><span itemprop="name">ARTS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="arts-第一周">ARTS 第一周</h1>
+<h2 id="algorithm">Algorithm</h2>
+<h3 id="引子">引子</h3>
+<p>本周题目起源于一次QQ交流群的讨论, 一位群友参加面试,被问到如何在一个数组原地对元素进行重排列, 要求所有奇数元素在数组头部,所有偶数元素在数组尾部。不知道群友是如何作答的, 只是说方案为On复杂度的时候被面试官否了, 群主发出一道leetcode类似题目, 于是做了一下, 给出两种解答。</p>
+<h3 id="题目描述">题目描述</h3>
+<p>这是一道easy难度的题目, 对算法实力可能并没有什么要求,确实到ac也就只花了五六分钟, 但是本周由于无休止工作上的事情耽搁, 就它了。</p>
+<pre><code>Given an array A of non-negative integers, return an array consisting of all the even elements of A, followed by all the odd elements of A.
+
+You may return any answer array that satisfies this condition.
+
+
+
+Example 1:
+
+Input: [3,1,2,4]
+Output: [2,4,3,1]
+The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.
+
+
+Note:
+
+1 &lt;= A.length &lt;= 5000
+0 &lt;= A[i] &lt;= 5000</code></pre>
+<h3 id="分析">分析</h3>
+<ol type="1">
+<li>首先采取的想法是首尾指针, 向中间靠拢,当遇到不符合自己迭代条件的元素时交换他们, 这个做法,时间复杂度为On, 无需额外空间, 首先使用C++写了个实现测试了一下, 32ms, 11.2M空间使用, 差不多每个分量都在前5%了。</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">sortArrayByParity</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; A)</span> </span>&#123;<br>        <span class="hljs-keyword">register</span> <span class="hljs-keyword">int</span> begin = <span class="hljs-number">0</span>, end = A.size() <span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">while</span> (begin &lt; end) &#123;<br>          <span class="hljs-keyword">while</span> ((A[begin] &amp; <span class="hljs-number">0x01</span>) == <span class="hljs-number">0</span> &amp;&amp; begin &lt; end) begin++;<br>          <span class="hljs-keyword">while</span> ((A[end] &amp; <span class="hljs-number">0x01</span>) == <span class="hljs-number">1</span> &amp;&amp; begin &lt; end) end--;<br>          <span class="hljs-keyword">if</span> (begin &gt;= end) <span class="hljs-keyword">break</span>;<br>          <span class="hljs-keyword">register</span> <span class="hljs-keyword">int</span> t = A[begin];<br>          A[begin++] = A[end];<br>          A[end--] = t;<br>        &#125;<br>        <span class="hljs-keyword">return</span> A;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>其中, 在不声明关键字 register 时, 空间消耗要多0.1M, 将 <code>begin</code>,<code>end</code> 声明为寄存器变量后, 可以节约一点点内存使用,同时应该能加快一点点访存速度。实际上在声明它之前,我并不确定它有效, 测试了一下,果然是可以的。</p>
+<ol start="2" type="1">
+<li>这一个方案源于一次信口开河, 讨论时凭直觉我感觉可以只用一次循环完成任务, 而并不像第一个方案中需要大循环里面嵌两个平级的循环。当时没有想到方案, 当天睡前忽然灵光一闪, 第二天写出来试了一下, 果然可行。 这个思路是使用跟随指针<code>(follow)</code>, 当步进指针<code>(step)</code>遇到不满足的元素后, 使用跟随指针标记位置, 步进指针去寻找合适的替换元素, 交换后跟随指针直接跟随步进指针。</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">sortArrayByParity</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; A)</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> follow=<span class="hljs-number">0</span>, step=<span class="hljs-number">0</span>, end = A.size();<br>    <span class="hljs-keyword">bool</span> finding = <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">while</span>(step &lt; end) &#123;<br>        <span class="hljs-keyword">if</span> (!finding &amp;&amp; (A[step] &amp; <span class="hljs-number">0x1</span>) == <span class="hljs-number">0</span>) &#123;<br>            step++;<br>            <span class="hljs-keyword">continue</span>;<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (finding &amp;&amp; (A[step] &amp; <span class="hljs-number">0x1</span>) == <span class="hljs-number">1</span>) &#123;<br>            step++;<br>            <span class="hljs-keyword">continue</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (finding) &#123;<br>            A[step] ^= A[follow];<br>            A[follow] ^= A[step];<br>            A[step] ^= A[follow];<br>            step = follow;<br>        &#125;     <br>        follow = step;<br>        finding = !finding;<br>    &#125;<br>    <span class="hljs-keyword">return</span> A;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>实际上, 上面代码并没有体现完整思路, 它是个阉割版, 而运行时间也证明了这一点60ms, 它在发生交换后, step指针回溯到了folow位置, 那么从follow位置,到当前的step位置的所有元素,都要重新进行比较计算,它时间复杂度可不是On, 这里应该再引入一个记录指针 <code>rec</code>, 用来在发生交换时, 记录<code>step</code>当前的位置, 这样, 我们就知道 <code>follow ~ rec</code> 之间的所有元素也是需要进行交换的, step可以不回溯而直接向前寻找,而又能使用单层的简单循环实现AC, <strong>这个方案我没有贴出来</strong> 因为我还没有写一个AC版本, 本周实在太忙了。</p>
+<h2 id="review">Review</h2>
+<p>本周, 其实是上周日开始看一篇medium上的文, 作者是从业几十年的技术前辈,从经历看来开发过各种面向对象语言的程序, 他以诙谐幽默风趣又不是严谨的批判风格揭露了面向对象编程范式的缺陷。</p>
+<pre><code>[ 再见!面向对象编程 (GoodBye, Object Oriented Programming) ](https://medium.com/@cscalfani/goodbye-object-oriented-programming-a59cda4c0e53)</code></pre>
+<h3 id="读后反思">读后反思</h3>
+<p>本人从一入行开始就接触的是面向对象编程, 并以之为圭臬, 从未敢质疑这个最主流的编程范式, 虽然有时对于继承感到不方便, 也总是找各种偏门左道的小技巧来完成, 看过这篇文章竟然有种恍然大悟的感觉, 没有什么范式是十全十美的, <strong>应是各有优劣, 总有它最适合的舞台</strong>。</p>
+<p>文章反复读之,我认为作者并不是在纯粹反对面向对象编程范式, 而是针对它的缺点漏洞进行针砭, 尤其对于它重要的承诺"重用", 文中举的例子有力的证明了这一点。</p>
+<h4 id="第一点-继承是最大的错误">第一点 继承是最大的错误</h4>
+<p>表面看, 继承似乎是面向对象的范式的最大好处, 层次结构明确,似乎逻辑意义明确, 也贴近现实世界的表达。但是重用这个年度词也就停留在了那一刻。 ### 第二点 香蕉猴丛林问题 这个问题就是由于继承引发的典型问题, 本来仅需要一个工具类A, 若它有父类, 那么则还需要引用PA, 如果PA中依赖了其他类,那么不得不映入PA', 以及PA'的父类, 这就导致了本来只想要一个香蕉, 但是却要拿来正片森林, 森林里有个猴子, 它手里拿着个香蕉, 特别形象, 忍不住拍案叫绝。是的, 这就是为了代码重用而引来的包袱负担。</p>
+<p>原文机译</p>
+<pre><code>面向对象语言的问题在于它们具有所有这些隐含的环境，它们随身携带。你想要一个香蕉，但你得到的是一只拿着香蕉和整个丛林的大猩猩。</code></pre>
+<p>同时, 作者提出针对这个问题的方案, 尽量限制继承的层级, 因为继承而引入了对重用性的限制, 那么宁愿不要继承。</p>
+<h3 id="第三点-菱形引用问题">第三点 菱形引用问题</h3>
+<p>我个人认为应该是不单单针对C++编程语言中的多继承, 对于我熟悉的java来讲,它虽然不支持多继承, 但是也通过另一个形式"接口"的实现, 引入了这个问题。 作者在这里引入了大量的例子来阐述这个问题, 我并不打算一一列举, 大致就是, 如果继承自的多个类拥有同样签名的两个方法,那么在调用时会出现迷惑, 到底是哪个, 如果接口有同样的声明, 那么复写时又该是哪个, 更遑论c++中, 还存在父类对象的内存空间分配问题,造成污染和浪费。</p>
+<h3 id="第四点-脆弱的基类问题">第四点 脆弱的基类问题</h3>
+<p>在进行继承时, 父类可以隐藏其实现,那么当父类的实现发生了变化的时候, 子类的行为将会不可控, 例如, 父类的一个被子类复写的方法实现了一个统计值, 那么, 由于子类的复写, 这个值可能并不能被正确计数, 从而导致后面一系列的行为不可控。 想想确实可怕。</p>
+<h3 id="第五点-封装引入的问题暂时缺席">第五点 封装引入的问题暂时缺席</h3>
+<p>作者对于封装引入的一些问题, 我还有些内容需要再想想, 这里先不描述封装的一些问题。</p>
+<h3 id="第六点-多态">第六点 多态</h3>
+<p>作者貌似也没整明白这里应该怎么说, 这里多态应该通过Interfaces提供, 而不是面向对象, 这样就可以弃其糟粕了, 貌似的推崇了下函数式编程, 我认为, golang所实现的面向对象方式也很好。</p>
+<h2 id="tip-小技巧">Tip 小技巧</h2>
+<p>在文件系统中按照内容搜索文件。 ### 引子</p>
+<p>今天我遇到一个错误, 大概是这样的, 浏览器报出有个js文件找不到, 但是这个文件在浏览器端根本看不出它到底是在哪个位置(服务器做了路径重新映射), 只知道是个fancybox.js, 应该是某个配置或者是什么指定需要加载的文件, 然后我在服务器上搜索了一番, 果然应该不存在这样一个文件, 那我得找找看是哪里写了引用它了, 问题来了, 工程下包含资源文件在内几万个文件, 几百个目录, 找到这个文件将是个问题。</p>
+<h3 id="过程">过程</h3>
+<p>为了这个几乎还是一次性的需求写一个脚本无疑是不合成本的。</p>
+<p>隐约还记得在文件系统中查找文件有几个命令, 分别是whereis, search, find , 其中,前两个应该是必须要知道文件名的情况下,从文件系统索引数据库中找到该文件的完整路径, 而find是按照或者名称,或者类型或者修改时间列出所有符合条件的文件, 看起来,这几个命令并不适合直接用来寻找。</p>
+<p>通常, 我过滤或者统计信息的时候,都是用grep和awk命令, awk命令主要用来做一些统计性工作多一些, 那么 grep 就跳出了视野。</p>
+<p>所以, 我想, 利用 find命令列出所有文件路径, 通过grep 命令读取他们的内容并过滤我想要的结果</p>
+<h3 id="按照文件内容查找文件">按照文件内容查找文件</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">find . | xargs grep "i wanted content"<br></code></pre></td></tr></table></figure>
+<p>首先我写出尝试 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">find . -name * | xargs grep "xxxx"<br></code></pre></td></tr></table></figure> 却发现会有报错</p>
+<pre><code>find: paths must precede expression: db.json
+Usage: find [-H] [-L] [-P] [-Olevel] [-D help|tree|search|stat|rates|opt|exec|time] [path...] [expression]</code></pre>
+<p>表面意思大概是路径必须跟在表达式之前??? 虽然不明白什么意思,大概是通配符的问题, 把通配符加上<code>''</code>之后果然没问题了, 后来试了下, 如果 <code>-name *</code> 那么可以直接省略。 于是最后得到上面一个式子。</p>
+<h2 id="share">Share</h2>
+<p><a href="http://www.hawstein.com/posts/dp-novice-to-advanced.html" target="_blank" rel="noopener">动规问题, 从新手到专家</a> 这篇并不是本周才看到的, 这是之前我还不懂什么是动规的时候(现在也称不上懂)反复阅读的一篇文, 发在这里, 贡献大家。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/13/ARTS-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/07/13/ARTS-5/" class="post-title-link" itemprop="url">ARTS-5</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-07-13 20:46:25" itemprop="dateCreated datePublished" datetime="2017-07-13T20:46:25+08:00">2017-07-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-06 13:06:08" itemprop="dateModified" datetime="2020-05-06T13:06:08+08:00">2020-05-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index"><span itemprop="name">ARTS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="arts-5">ARTS-5</h1>
+<h2 id="algorithm">Algorithm</h2>
+<h3 id="引言">引言</h3>
+<p>本周的题目为从之前没做的题目中顺序拿的, 没有特别选取。 感觉下一周可以做这个Hard的sudoku resolver题目了。</p>
+<h3 id="description">Description</h3>
+<pre><code>Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
+
+Each row must contain the digits 1-9 without repetition.
+Each column must contain the digits 1-9 without repetition.
+Each of the 9 3x3 sub-boxes of the grid must contain the digits 1-9 without repetition.</code></pre>
+<figure>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Sudoku-by-L2G-20050714.svg/250px-Sudoku-by-L2G-20050714.svg.png" alt="" /><figcaption>sudoku</figcaption>
+</figure>
+<pre><code>A partially filled sudoku which is valid.
+
+The Sudoku board could be partially filled, where empty cells are filled with the character &#39;.&#39;.
+
+Example 1:
+
+Input:
+[
+  [&quot;5&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;],
+  [&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;,&quot;9&quot;,&quot;5&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;],
+  [&quot;.&quot;,&quot;9&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;],
+  [&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;3&quot;],
+  [&quot;4&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;],
+  [&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;],
+  [&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;8&quot;,&quot;.&quot;],
+  [&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;4&quot;,&quot;1&quot;,&quot;9&quot;,&quot;.&quot;,&quot;.&quot;,&quot;5&quot;],
+  [&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;9&quot;]
+]
+Output: true
+
+Example 2:
+
+Input:
+[
+  [&quot;8&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;],
+  [&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;,&quot;9&quot;,&quot;5&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;],
+  [&quot;.&quot;,&quot;9&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;],
+  [&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;3&quot;],
+  [&quot;4&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;],
+  [&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;],
+  [&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;8&quot;,&quot;.&quot;],
+  [&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;4&quot;,&quot;1&quot;,&quot;9&quot;,&quot;.&quot;,&quot;.&quot;,&quot;5&quot;],
+  [&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;9&quot;]
+]
+Output: false
+Explanation: Same as Example 1, except with the 5 in the top left corner being 
+    modified to 8. Since there are two 8&#39;s in the top left 3x3 sub-box, it is invalid.
+Note:
+
+A Sudoku board (partially filled) could be valid but is not necessarily solvable.
+Only the filled cells need to be validated according to the mentioned rules.
+The given board contain only digits 1-9 and the character &#39;.&#39;.
+The given board size is always 9x9.
+    
+    
+    Success
+    Details 
+    Runtime: 32 ms, faster than 12.85% of C++ online submissions for Valid Sudoku.
+    Memory Usage: 13.9 MB, less than 25.89% of C++ online submissions for Valid Sudoku.
+    </code></pre>
+<p>Soduku 国内叫数独, 是一个填字游戏, 相信大多数人都玩过。 规则为在一个 9*9的矩阵的空白处填入取值为1-9的数字, 使的每一行, 每一列, 每个九宫格分块都是由 1-9 这九个数字组成, 都有且不重复。</p>
+<h3 id="思路">思路</h3>
+<p>首先是最直观的思路, 因为表中有未填写的格子, 使用了 <code>.</code> 来填充, 所以这是个未完成的数独图, 那么验证是否能够完成这个数独, 仅需验证每一行/列/块中是否出现了重复的数字即可, 这依据的是完成的数独图的性质, 1-9数字出现且仅出现一次。</p>
+<h3 id="result1">Result1</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Runtime</th>
+<th>Memory</th>
+<th>Language</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Accepted</td>
+<td>32 ms</td>
+<td>13.9 MB</td>
+<td>cpp</td>
+</tr>
+</tbody>
+</table>
+<h3 id="code1">Code1</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isValidSudoku</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">char</span>&gt;&gt;&amp; board)</span> </span>&#123;<br>        <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">char</span>&gt;&gt; columns = <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">char</span>&gt;&gt;();<br>        <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">char</span>&gt;&gt; rows = <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">char</span>&gt;&gt;();<br>        <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">char</span>&gt;&gt; blocks = <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">char</span>&gt;&gt;();<br>        <br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">9</span>; ++i) &#123;<br>          columns.push_back(<span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">char</span>&gt;());<br>          rows.push_back(<span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">char</span>&gt;());<br>          blocks.push_back(<span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">char</span>&gt;());<br>        &#125;<br>      <br>        <span class="hljs-keyword">int</span> ln = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> line : board) &#123;<br>          <span class="hljs-keyword">int</span> col = <span class="hljs-number">0</span>;<br>          <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> c : line) &#123;<br>            <span class="hljs-keyword">if</span> (c==<span class="hljs-string">'.'</span>) &#123; ++col; <span class="hljs-keyword">continue</span>;&#125;<br>            <span class="hljs-keyword">if</span> (rows[ln].find(c) != rows[ln].end())<br>              <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            <span class="hljs-keyword">if</span> (columns[col].find(c) != columns[col].end())<br>              <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            <span class="hljs-keyword">int</span> blk = ln/<span class="hljs-number">3</span>*<span class="hljs-number">3</span> + col/<span class="hljs-number">3</span>;<br>            <span class="hljs-keyword">if</span> (blocks[blk].find(c) != blocks[blk].end())<br>              <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            rows[ln].insert(c);<br>            columns[col].insert(c);<br>            blocks[blk].insert(c);<br>            ++col;<br>          &#125;<br>          ++ln;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h3 id="结果分析1">结果分析1</h3>
+<p>原以为这个方案效率可以接受, 但是从结果上来看, 位于c++方案的后半截, 现在看来有明显浪费的地方就是行、列、块这27个set了, 感觉它们不需要每个都存在,仅当需要进行判断是存在即可, 但是感觉这样会导致对输入数据多次遍历, 权当测试了, 所以, 后面优化了一版。</p>
+<h3 id="方案2">方案2</h3>
+<p>方案二待改</p>
+<hr />
+<h2 id="review">Review</h2>
+<p><a href="https://medium.freecodecamp.org/what-is-a-pure-function-in-javascript-acb887375dfe" target="_blank" rel="noopener"><strong>What Is a Pure Function in JavaScript?</strong></a></p>
+<p><strong>JavaScript中纯函数是什么</strong>。</p>
+<h3 id="引言-1">引言</h3>
+<p>本篇是ARTS-3中的Review部分 <em>an introduction of to principles of Functional Programming</em> 文内的引用的使用javascript做介绍的部分。 由于我之前阅读了函数式编程简介, 本周给我的周推送, 感觉推送还挺精准的。</p>
+<h3 id="纯函数的特征">纯函数的特征</h3>
+<p>在阅读本文之前,我觉得有必要先回顾一下纯函数的概念(或者说我自己的总结)</p>
+<p>一个函数,具备以下两个特征, 那它是纯函数 * 多次执行，给定相同的参数必然得到相同的结果。 * 执行中，不会带来可以观察到的副作用状态改变。</p>
+<h3 id="关于内容">关于内容</h3>
+<h4 id="same-input-same-output">Same Input =&gt; Same Output</h4>
+<p>文章开始简介了纯函数的特征, 作者并给出了一个配图, 图片如下 <img src="https://img.earneet.xyz/arts5/purefunction_2feature_javascript.png" alt="pure function" /></p>
+<pre><code>原图出自 https://cdn-images-1.medium.com/max/1600/0*a_yub2gTwY-1eK8j.png</code></pre>
+<p>特征与我之前总结的一般无二, 作者在这里根据JavaScript语言的应用场景将之更加细化了, 直接指出了 记日志、http请求、写磁盘 等行为 是会造成可观测到的影响的。 文章原文中使用了 <code>side-effects</code> 来描述这一现象。</p>
+<pre><code>The Checklist
+A function must pass two tests to be considered “pure”:
+
+* Same inputs always return same outputs
+* No side-effects</code></pre>
+<p>作者使用了几个简单的代码例子来举例说明了 <code>Same Input =&gt; Same Output</code> 感觉这几个例子有点刻意, 可以丑化了非纯函数的实现, 用来说明纯函数的优点的话感觉这里并不贴切, 毕竟,正常人也不能写出demo中的代码。</p>
+<h4 id="no-side-effects">No Side-Effects</h4>
+<figure>
+<img src="https://img.earneet.xyz/arts5/3way_avoid_sideeffects_javascript.png" alt="" /><figcaption>avoid side-effects</figcaption>
+</figure>
+<pre><code>This test itself is a checklist. A few examples of side-effects are
+
+Mutating your input
+console.log
+HTTP calls (AJAX/fetch)
+Changing the filesystem (fs)
+Querying the DOM</code></pre>
+<p>简译为: 1. 改变输入(这里应当为参数) 2. 打印日志 console.log 3. 发起HTTP请求(ajax/fetch) 4. 文件系统的改变 5. 查询DOM</p>
+<p>最明显, 我感觉 console.log 是不必要的, 在平时很多场景下, 我都会在函数里打log, 它只用于输出必要信息, 如果日志系统影响到了正常的业务逻辑, 那只能是说明代码结构有问题了, 日志系统应完全独立于业务系统, 所以,这个点上我是不赞同的。即使, 后文中作者说了console.log可能不会造成恶劣的影响。</p>
+<p>其他几点上, http请求可能也不那么赞同, 发起请求并不会对系统内产生可观测的影响吧, 感觉这里是, 在函数里使用http请求的结果更合适一些。(后来想想, 我是错了, 发起请求后可能会收到响应, 这个会改变系统的整体状态, 按照严格意义上来说的话,是产生了影响)</p>
+<p>其余几点没什么好说的。</p>
+<h4 id="采用返回新对象的形式避免更改输入参数">采用返回新对象的形式避免更改输入参数</h4>
+<p>针对避免影响外部的第一点, 避免修改输入参数, 先贴一段作者的demo代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> pureAssoc = <span class="hljs-function">(<span class="hljs-params">key, value, object</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> newObject = &#123; ...object &#125;;<br>    newObject[key] = value;<br>    <span class="hljs-keyword">return</span> newObject;<br>&#125;;<br><span class="hljs-keyword">const</span> person = &#123;<br>    name: <span class="hljs-string">'Bobo'</span><br>&#125;;<br><span class="hljs-keyword">const</span> result = pureAssoc(<span class="hljs-string">'shoeSize'</span>, <span class="hljs-number">400</span>, person);<br><span class="hljs-built_in">console</span>.log(&#123;<br>    person,<br>    result<br>&#125;);<br></code></pre></td></tr></table></figure>
+<p>按照一般的OOP风格, 这段代码的关键函数 <code>pureAsoc</code> 很可能绝大多数人,当然也包括在下, 实现成如下的形式:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> pureAssoc = <span class="hljs-function">(<span class="hljs-params">key, value, object</span>) =&gt;</span> &#123;<br>    object[key] = value<br>    <span class="hljs-keyword">return</span> object;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>这个实现方式就是典型的违背了避免修改入参这一点。</p>
+<p>看起来这个代码是完美了, 但是, <code>{...object}</code> 语法实现的是浅拷贝(shallow copy), 一旦有嵌层的对象,还是没办法从根本上解决问题。于是, 作者又贴了一段代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">const</span> person = &#123;<br>  name: <span class="hljs-string">'Bobo'</span>,<br>  address: &#123; <span class="hljs-attr">street</span>: <span class="hljs-string">'Main Street'</span>, <span class="hljs-attr">number</span>: <span class="hljs-number">123</span> &#125;<br>&#125;<br><span class="hljs-keyword">const</span> deepPersonClone = <span class="hljs-built_in">JSON</span>.parse(<span class="hljs-built_in">JSON</span>.stringify(person));<br>deepPersonClone.address.number = <span class="hljs-number">456</span>;<br><span class="hljs-built_in">console</span>.log(&#123; person, deepPersonClone &#125;);<br></code></pre></td></tr></table></figure>
+<p>这段代码确实实现了深拷贝, 但是作为一个不太写JavaScript的强迫症患者, 感觉先将对象 stringify 成一个字符串,再重新解析一遍成js对象的做法深感受不了。</p>
+<h3 id="总结">总结</h3>
+<pre><code>A Function’s pure if it’s free from side-effects and returns the same output, given the same input.
+
+Side-effects include: mutating input, HTTP calls, writing to disk, printing to the screen.
+
+You can safely clone, then mutate, your input. Just leave the original one untouched.
+
+Spread syntax (… syntax) is the easiest way to shallowly clone objects.
+
+JSON.parse(JSON.stringify(object)) is the easiest way to deeply clone objects. Thanks again Rodrigo Fernández Díaz!</code></pre>
+<hr />
+<h2 id="tips">Tips</h2>
+<p><strong>打破直观的编程方式实现对数据配置代码的压缩</strong></p>
+<h3 id="引言-2">引言</h3>
+<p>上周连续的加班,周日的时候老大过去视察, 我跟他说了我在上一篇ARTS中分享的Tips点, 使用代理的模式来避免代码修改。老大很惊奇的跟我说, 我们的配置数据一直是这么做的啊, 你没有看过么。</p>
+<p>好吧,我确实看过, 但是, 动态语言有一些写法我真的没看懂, 技术领导力极强的老大不辞劳苦给我讲了一遍, 于是, 就有了这周的Tips。</p>
+<h3 id="背景">背景</h3>
+<p>我现在做的项目是一个手游MMORPG游戏, 其中客户端使用lua实现逻辑, 我们需要将策划同学配表(csv表格)转换成lua代码, 以便我们在实现业务代码的时候直接调用。</p>
+<p>一般的配置文件就是一个二维表格, 有时候这个表格会非常大举个例子</p>
+<table>
+<thead>
+<tr class="header">
+<th>场景Id</th>
+<th>地图Id</th>
+<th>场景名</th>
+<th>容纳上限</th>
+<th>进入等级Min</th>
+<th>进入等级Max</th>
+<th>是否允许Pk</th>
+<th>param1</th>
+<th>param2</th>
+<th>param3</th>
+<th>param4</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>主城</td>
+<td>200</td>
+<td>1</td>
+<td>999</td>
+<td>TRUE</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>..</td>
+<td>..</td>
+<td>..</td>
+<td>..</td>
+<td>..</td>
+<td>..</td>
+<td>..</td>
+<td>..</td>
+<td>..</td>
+<td>..</td>
+<td>..</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="简单直观做法">简单直观做法</h3>
+<p>按照最简单直观的做法生成的配置, 大概是这样的</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-built_in">config</span> = &#123;&#125;<br><span class="hljs-built_in">config</span>[<span class="hljs-number">1</span>] = &#123; 场景Id = <span class="hljs-number">1</span>, 地图Id = <span class="hljs-number">1</span>, 场景名 = <span class="hljs-string">'主城'</span>, 容纳上限 = <span class="hljs-number">200</span>, 进入等级Min = <span class="hljs-number">1</span>, 进入等级Max = <span class="hljs-number">999</span>, 是否允许Pk = TRUE, param1 = <span class="hljs-number">0</span> , param2 = <span class="hljs-number">0</span> , param3 = <span class="hljs-number">0</span> , param4 = <span class="hljs-number">0</span>&#125;<br><span class="hljs-keyword">return</span> <span class="hljs-built_in">config</span><br></code></pre></td></tr></table></figure>
+<p>使用时代码</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">local</span> cfg = <span class="hljs-built_in">config</span>[<span class="hljs-number">1</span>]<br><span class="hljs-keyword">if</span> cfg.param1 &gt; <span class="hljs-number">122</span> <span class="hljs-keyword">then</span><br>    <span class="hljs-comment">-- do game logic</span><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<p>该做法有个一眼能看出来的严重的弊端, config是一个数组, 它里面的每个元素都是一个table,而且是map形式的table, 此时, 每行数据都多余的存了一个key的信息, 实际上, 我们严谨的二维表格是不需要这个信息的。于是, 就给了我们一个优化空间。</p>
+<h3 id="简单优化做法">简单优化做法</h3>
+<h4 id="方法">方法</h4>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-built_in">config</span> = &#123;&#125;<br>data = &#123;&#125;<br>index = &#123; 场景Id = <span class="hljs-number">1</span>, 地图Id = <span class="hljs-number">2</span>, 场景名 = <span class="hljs-number">3</span>, 容纳上限 = <span class="hljs-number">4</span>, 进入等级Min = <span class="hljs-number">5</span>, 进入等级Max = <span class="hljs-number">6</span>, 是否允许Pk = <span class="hljs-number">7</span>, param1 = <span class="hljs-number">8</span> , param2 = <span class="hljs-number">9</span> , param3 = <span class="hljs-number">10</span> , param4 = <span class="hljs-number">11</span>&#125;<br>data[<span class="hljs-number">1</span>] = &#123; <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-string">'主城'</span>, <span class="hljs-number">200</span>, <span class="hljs-number">1</span>, <span class="hljs-number">999</span>, TRUE, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>&#125;<br>data[<span class="hljs-number">2</span>] = &#123; <span class="hljs-comment">--[[ ... ]]</span>&#125;<br><br><span class="hljs-keyword">local</span> newget = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(i)</span></span><br>    <span class="hljs-keyword">local</span> instance = &#123;_i = i&#125;<br>    <span class="hljs-built_in">setmetatable</span> (&#123;&#125;, <br>    &#123;<br>        <span class="hljs-built_in">__index</span> = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(table, key)</span></span><br>            <span class="hljs-keyword">local</span> idx = index[key]<br>            <span class="hljs-keyword">return</span> data[<span class="hljs-built_in">table</span>._i][idx]<br>        <span class="hljs-keyword">end</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> instance<br>)<br><span class="hljs-keyword">end</span><br><br><span class="hljs-built_in">table</span>.<span class="hljs-built_in">insert</span>(<span class="hljs-built_in">config</span>, newget(<span class="hljs-number">1</span>)) <br><span class="hljs-built_in">table</span>.<span class="hljs-built_in">insert</span>(<span class="hljs-built_in">config</span>, newget(<span class="hljs-number">2</span>))<br><br><span class="hljs-built_in">config</span>.get = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(idx)</span></span> <span class="hljs-keyword">return</span> <span class="hljs-built_in">config</span>[idx] <span class="hljs-keyword">end</span><br><span class="hljs-built_in">config</span>.all = <span class="hljs-built_in">config</span><br><span class="hljs-keyword">return</span> <span class="hljs-built_in">config</span><br></code></pre></td></tr></table></figure>
+<p>使用方法 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">local</span> cfg = <span class="hljs-built_in">config</span>.get(<span class="hljs-number">1</span>)<br><span class="hljs-keyword">if</span> cfg.param1 &gt; <span class="hljs-number">122</span> <span class="hljs-keyword">then</span><br>    <span class="hljs-comment">-- do game logic</span><br><span class="hljs-keyword">end</span><br><br><span class="hljs-comment">-- 遍历方案</span><br><span class="hljs-keyword">for</span> _, cfg <span class="hljs-keyword">in</span> <span class="hljs-built_in">pairs</span>(<span class="hljs-built_in">config</span>.all) <span class="hljs-keyword">do</span> <br>    <span class="hljs-keyword">if</span> cfg.param1 &gt; <span class="hljs-number">122</span> <span class="hljs-keyword">then</span><br>        <span class="hljs-comment">-- do something</span><br>    <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure> 经过上述优化, 使用方式基本不变, 其内存占用量可以节省百分之五十以上。</p>
+<h4 id="优化原理">优化原理</h4>
+<p>直观方案的浪费源头主要在对于每一行数据, 都需存它的key, 那么有N行的话, 就有(N-1)份的key是浪费的, 明显的, 一个配置列数据基本是一个简单类型, 那么, 直观方案我们冗余的key的存储空间比实际上数据占用的空间更多!!!</p>
+<p>优化时, 我们只保存一份key, 然后建立一个索引表存储对应关系, 这样, 我们在使用key访存时, 可以做一个映射, 然后去数组结构中获取相应的数据, 但是, 我们需要多开辟一份空间来存这个索引表。 一个表的行数越多, 节省就越明显。</p>
+<h3 id="更激进的优化">更激进的优化</h3>
+<p>这个方案这里我不贴代码了, 因为实在太复杂, 老大只是口头传授了我, 也没有给我一个代码demo看一下。</p>
+<p>其原理类似于稀疏矩阵的存储, 对于绝大多数的表, 尤其是大表来说, 其中很多列的内容都是相同的, 或者为空, 或者是同一个值, 或者是 0-5之间取值, 甚至列类型是布尔值。 对于这种列, 我们就不再存储到 data 行中, 而是在行中插入一个函数, 它实际上可以被大多数列共享, 用于返回公共数据。</p>
+<p>请参考: <a href="https://www.cnblogs.com/xbinworld/p/4273506.html" target="_blank" rel="noopener">稀疏矩阵存储</a></p>
+<hr />
+<h2 id="share">Share</h2>
+<p>这是一篇翻译国外大神前辈关于插值实践的文章, 读完收获很大, 本周又多看了一遍。</p>
+<p><a href="http://www.zhust.com/index.php/2014/01/%E6%8F%92%E5%80%BC%E9%82%A3%E4%BA%9B%E4%BA%8B-%E8%AF%91interpolation-tricks/" target="_blank" rel="noopener">插值那些事儿</a></p>
+<hr />
+<h2 id="end">End</h2>
+<hr />
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/ARTS-6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/06/25/ARTS-6/" class="post-title-link" itemprop="url">ARTS-6</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-06-25 13:23:09" itemprop="dateCreated datePublished" datetime="2017-06-25T13:23:09+08:00">2017-06-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-06 12:18:25" itemprop="dateModified" datetime="2020-05-06T12:18:25+08:00">2020-05-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index"><span itemprop="name">ARTS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="arts-6">ARTS-6</h1>
+<h2 id="algorithm">Algorithm</h2>
+<h3 id="引言">引言</h3>
+<p>放了个劳动节假, 玩的有点疯了, 所以这个题目就来个简单点吧</p>
+<h3 id="description">Description</h3>
+<h4 id="题目">题目</h4>
+<p><strong>3Sum</strong></p>
+<pre><code>Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
+
+Note:
+
+The solution set must not contain duplicate triplets.
+
+Example:
+
+Given array nums = [-1, 0, 1, 2, -1, -4],
+
+A solution set is:
+
+    [
+      [-1, 0, 1],
+      [-1, -1, 2]
+    ]</code></pre>
+<h4 id="大意">大意</h4>
+<p>给出一个整数数组nums, 找出数组中所有的不同组合 a, b, c , 使之满足 a + b + c 之和等于0, 输出他们。</p>
+<h3 id="思路">思路</h3>
+<p>题目提供的数组是不保证顺序的,在这种情况下, 如果直接处理,那么我们不可避免的就要进行全遍历了, 显然这不可能是最优解, 所以, 最初的思路就是使源数组有序, 首先, 对它进行排序,使之升序排列。</p>
+<p>对于有序数组, 我们只需要控制游标移动就可以逐步进行和的数值调整, 所以, 每一次, 选取一个基准元素作为最左侧元素, 然后, 设置两个游标在它右侧, 逐步调整这两个游标使和为0即可。</p>
+<h3 id="resolution">Resolution</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; <span class="hljs-title">threeSum</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums)</span> </span>&#123;<br>      <span class="hljs-keyword">int</span> dimension = nums.<span class="hljs-built_in">size</span>();<br>      sort(nums.<span class="hljs-built_in">begin</span>(), nums.<span class="hljs-built_in">end</span>());<br>      <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; result;<br>      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;dimension<span class="hljs-number">-2</span>; ++i) &#123;<br>        <span class="hljs-keyword">if</span> (nums[i] &gt; <span class="hljs-number">0</span>) <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">int</span> f=i+<span class="hljs-number">1</span>, t=dimension<span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">while</span> (f &lt; t) &#123;<br>          <span class="hljs-keyword">int</span> sum = nums[i] + nums[f] + nums[t];<br>          <span class="hljs-keyword">if</span> (sum == <span class="hljs-number">0</span>) &#123;<br>            result.push_back(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;(&#123;nums[i], nums[f], nums[t]&#125;));<br>            <span class="hljs-keyword">while</span> (i &lt; dimension<span class="hljs-number">-2</span> &amp;&amp; nums[i]==nums[i+<span class="hljs-number">1</span>]) &#123;i++;&#125;<br>            <span class="hljs-keyword">do</span> &#123;t--;&#125; <span class="hljs-keyword">while</span>(f &lt; t &amp;&amp; nums[t]==nums[t+<span class="hljs-number">1</span>]);<br>            <span class="hljs-keyword">do</span> &#123;f++;&#125; <span class="hljs-keyword">while</span> (f &lt; t &amp;&amp; nums[f]==nums[f<span class="hljs-number">-1</span>]);<br>          &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (sum &gt; <span class="hljs-number">0</span>) &#123;<br>           t--;<br>          &#125; <span class="hljs-keyword">else</span> &#123;<br>           f++;<br>          &#125;<br>        &#125;<br>      &#125;<br>      <span class="hljs-keyword">return</span> result;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h3 id="result">Result</h3>
+<pre><code>Success
+Details 
+Runtime: 100 ms, faster than 91.61% of C++ online submissions for 3Sum.
+Memory Usage: 14.9 MB, less than 97.80% of C++ online submissions for 3Sum.</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>Time Submitted</th>
+<th>Status</th>
+<th>Runtime</th>
+<th>Memory</th>
+<th>Language</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>a few seconds ago</td>
+<td>Accepted</td>
+<td>100 ms</td>
+<td>14.9 MB</td>
+<td>cpp</td>
+</tr>
+</tbody>
+</table>
+<h3 id="还可能的优化">还可能的优化</h3>
+<p>在游标调整过程中, 感觉至少一个游标的调整可以使用二分调整, 不至于每次只调整一点, 这样感觉可以进一步优化执行效率。</p>
+<hr />
+<h2 id="review">Review</h2>
+<p>本次Review的文在这里: <a href="https://wiki.openjdk.java.net/display/HotSpot/Synchronization" target="_blank" rel="noopener">Synchronization and Object Locking</a></p>
+<h3 id="引言-1">引言</h3>
+<p>之前就立了Flag, 要写一篇java虚拟机关于锁实现的分享, 在参考了郑雨迪老师关于HotSpot关于实现synchronized的文章后, 整理了我对hotspot做法的理解, 这篇文章是其中一篇参考文, 在阅读之余, 进行分享。</p>
+<h3 id="内容">内容</h3>
+<p>作为java语言的主要优势之一, java语言提供了语言层面的内建多线程机制的支持。任意一个对象在不同线程间共享访问可以被加锁, 以同步不同线程的访问。java提供了原生的临界区代码设计, 它通过一个共享的锁对象, 一次仅允许一个进程进入临界区执行, 第一个进入临界区的线程会将对象加锁, 当下一个线程要进入同一个临界区之前就必须等待前一个对所对象加锁的线程释放锁。</p>
+<p>对于 Java HotSpot™ VM 一个对象由指向类的指针和一个字的头作为先导, 本文中,把它称呼为对象头。对象头存储对象特征哈希码和在垃圾回收标记代数的bit位, 也用于实现<font color="red"><em>瘦锁</em></font>方案。</p>
+<p>下图展示了对象头的布局结构和它在不同状态下所代表的含义。</p>
+<p>其中, 对象头的最后两个位标记其用途,这里需要<font color="red"><strong>特别特别特别</strong></font>注意, 因为其取值特别容易被记混, 而且, 我记错了好多次。</p>
+<h4 id="对象头的标记位的取值和含义">对象头的标记位的取值和含义</h4>
+<ul>
+<li>01 无锁或者偏向锁</li>
+<li>00 轻量锁</li>
+<li>10 重量锁</li>
+<li>11 垃圾回收相关</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>00</th>
+<th>01</th>
+<th>10</th>
+<th>11</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>轻量级锁</td>
+<td>无锁或者偏向锁</td>
+<td>重量级锁</td>
+<td>gc相关</td>
+</tr>
+</tbody>
+</table>
+<h4 id="为什么这么取值">为什么这么取值</h4>
+<p>如果不弄懂这个加锁的过程, 那么对于为何这么取值会感到很困惑, 为什么状态不是按照直观顺序的呢, 这里关键应该是轻量级锁的加锁过程。</p>
+<ol type="1">
+<li>判断如果标记位不为01(无锁), 那么按照加锁过程去处理,否则, 进行下一步</li>
+<li>将对象头和对象地址构造一个锁记录, 存入当前栈帧。</li>
+<li>将锁记录的地址cas存入对象头。 因为栈帧是按照字(word)对齐的, 其地址肯定是00结尾, 所以, cas成功后, 对象头的标记位肯定为00, 此状态为轻量级锁加锁成功。</li>
+</ol>
+<p>所以,以上轻量级加锁过程说明了为什么轻量级锁时对象头的标记位为00。 记住了这个过程, 就不太容易记混了00的含义了。</p>
+<figure>
+<img src="https://wiki.openjdk.java.net/download/attachments/11829266/Synchronization.gif?version=4&amp;modificationDate=1208918680000&amp;api=v2" alt="" /><figcaption>HotSpot™ 对象头结构</figcaption>
+</figure>
+<p>图片内容引自OpenJDK的Wiki https://wiki.openjdk.java.net/download/attachments/11829266/Synchronization.gif?version=4&amp;modificationDate=1208918680000&amp;api=v2</p>
+<p>图右侧部分展示的是正常(标准)的锁的状态转换过程。</p>
+<p>下面是我按照文档自己总结的一个轻量锁的加锁过程。</p>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs xl">graph TB<br>    <br>    SUCC[拿到锁,进入临界区]<br>    END(结束)<br>    S<span class="hljs-function"><span class="hljs-title">tart</span>(monitorenter)--&gt;</span>CheckBit&#123;末位是否为 <span class="hljs-number">01</span>&#125;<br>    C<span class="hljs-function"><span class="hljs-title">heckBit</span>--&gt;</span>|是|LightLocking[复制对象头到当前栈帧]<br>    L<span class="hljs-function"><span class="hljs-title">ightLocking</span>--&gt;</span>SwapHeader[构造锁记录到栈帧并将地址cas对象头]<br>    S<span class="hljs-function"><span class="hljs-title">wapHeader</span>--&gt;</span>CheckSwapSucc&#123;CAS操作成功&#125;<br>    C<span class="hljs-function"><span class="hljs-title">heckSwapSucc</span>--&gt;</span>|CAS成功|LightLocked[轻量级锁成功]<br>    L<span class="hljs-function"><span class="hljs-title">ightLocked</span>--&gt;</span>SUCC<br>    C<span class="hljs-function"><span class="hljs-title">heckSwapSucc</span>--&gt;</span>|CAS失败|SwapFailed&#123;对象头指针指向当前栈帧&#125;<br>    <br>    C<span class="hljs-function"><span class="hljs-title">heckBit</span>--&gt;</span>|否|HaveLocked[此时已有线程进入了临界区]<br>    H<span class="hljs-function"><span class="hljs-title">aveLocked</span>--&gt;</span>CheckLockType&#123;此时锁类型&#125;<br>    C<span class="hljs-function"><span class="hljs-title">heckLockType</span>--&gt;</span>|标记位<span class="hljs-number">00</span>|ThinLocked[此时该对象为轻量锁]<br>    T<span class="hljs-function"><span class="hljs-title">hinLocked</span>--&gt;</span>SwapFailed&#123;对象头指针指向当前栈帧&#125;<br>    <br>    S<span class="hljs-function"><span class="hljs-title">wapFailed</span>--&gt;</span>|是|HoldBySelf[栈帧内的锁记录置<span class="hljs-number">0</span>]<br>    H<span class="hljs-function"><span class="hljs-title">oldBySelf</span>--&gt;</span>LightLocked<br>        <br>    S<span class="hljs-function"><span class="hljs-title">wapFailed</span>--&gt;</span>|否|Inflate[膨胀为重锁]<br>    I<span class="hljs-function"><span class="hljs-title">nflate</span>--&gt;</span>END<br>    <br>    C<span class="hljs-function"><span class="hljs-title">heckLockType</span>--&gt;</span>|标记位<span class="hljs-number">10</span>|HeavyWeightLocked[此时该对象为重锁]<br>    H<span class="hljs-function"><span class="hljs-title">eavyWeightLocked</span>--&gt;</span>Suspend[线程挂起等待唤醒]<br>    S<span class="hljs-function"><span class="hljs-title">uspend</span>--&gt;</span>END<br>    SUCC--&gt;END<br></code></pre></td></tr></table></figure>
+<p>锁状态示意图, 图中忽略了偏向锁和自旋过程。</p>
+<hr />
+<h2 id="tips">Tips</h2>
+<p>Vim 中, 往命令中粘贴内容。</p>
+<h3 id="引言-2">引言</h3>
+<p>我是一个资深vimer, 我承认我现在分享这个内容真实丢vimer的脸。但是作为一个手动挡, 我一直都是这么做的。 每当要在文档中搜索或者替换一个内容的时候, 我都会不厌其烦的一个个字符敲入, <code>:% s/search_my_content_balabalabala/i am the new balabalabala/g</code> 然后认真反复检查3遍, 按下<code>enter</code>键, 一次替换完成, 我在过去的七八年里都是这样做的。</p>
+<p>我见要分享的这个小技巧, 就是为了简化这个过程的, 虽然我自己并不常用它。 如何在命令行里粘贴剪切板的内容。</p>
+<h3 id="做法">做法</h3>
+<p>&lt;C-r&gt; 在命令输入模式下, 按快捷键 Ctrl + R 开启粘贴模式, 再键入一个寄存器名, 就会将该寄存器内的内容粘贴在命令上。</p>
+<p>于是, 搜索做法就变成了 1. 切换成visual模式 (v) 2. 复制想要搜索的内容 (y) 3. 进入命令模式, 敲入搜索/ 4. Ctrl + R 5. 按", 将刚复制的内容贴入命令, 然后<code>Enter</code>搜索</p>
+<p><strong>给出一个demo</strong></p>
+<p>预备一个文件:</p>
+<p><img src="https://img.earneet.xyz/arts6/original.png" alt="原文件" /> 1. 切换成visual模式, 复制搜索内容Text (normal下移动光标到Text按v,然后e到单词末尾, 按y)</p>
+<figure>
+<img src="https://img.earneet.xyz/arts6/vimdemo_step1_2.png" alt="" /><figcaption>复制待选内容</figcaption>
+</figure>
+<ol start="2" type="1">
+<li>进入命令模式, 搜索/</li>
+</ol>
+<figure>
+<img src="https://img.earneet.xyz/arts6/vimdemo_step3.png" alt="" /><figcaption>搜索</figcaption>
+</figure>
+<ol start="3" type="1">
+<li>键入<code>Ctrl + r</code> 进入选取寄存器步骤</li>
+</ol>
+<figure>
+<img src="https://img.earneet.xyz/arts6/vimdemo_step4.png" alt="" /><figcaption>选取寄存器</figcaption>
+</figure>
+<ol start="4" type="1">
+<li>键入<code>"</code>, 匿名寄存器刚复制的内容上屏, 回车搜索</li>
+</ol>
+<figure>
+<img src="https://img.earneet.xyz/arts6/vimdemo_step5.png" alt="" /><figcaption>搜索内容</figcaption>
+</figure>
+<p><em><font color="red">这里有一点, 如果要粘贴系统剪切板的内容, 那么寄存器名字应输入0,而不是+</font></em></p>
+<hr />
+<h2 id="share">Share</h2>
+<h3 id="引言-3">引言</h3>
+<p>这是一篇版权文章, 非订阅用户阅读可能会受到限制。这是一篇讲解hotspot关于如何实现synchronized关键字的简单教学文, 后面我会分享我参考这篇文章写得自己关于jvm的synchronized的见解。</p>
+<h3 id="内容-1">内容</h3>
+<p><a href="https://time.geekbang.org/column/article/13530" target="_blank" rel="noopener"><strong>Java虚拟机是怎么实现synchronized的？</strong></a></p>
+<hr />
+<h2 id="end">End</h2>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/04/01/pip%E5%B7%A5%E5%85%B7%E5%88%87%E6%8D%A2%E5%9B%BD%E5%86%85%E6%BA%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2015/04/01/pip%E5%B7%A5%E5%85%B7%E5%88%87%E6%8D%A2%E5%9B%BD%E5%86%85%E6%BA%90/" class="post-title-link" itemprop="url">pip 切换国内源</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-04-01 21:08:04" itemprop="dateCreated datePublished" datetime="2015-04-01T21:08:04+08:00">2015-04-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-28 18:56:45" itemprop="dateModified" datetime="2020-04-28T18:56:45+08:00">2020-04-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="pip-切换源">Pip 切换源</h1>
+<h2 id="背景">背景</h2>
+<p>一些必备库往往位于海外, 由于伟大防火墙存在, 加之海外线路带宽有限, 往往使用pip的官方源的时候安装一些库的时候速度感人。所以, 有必要使用国内的源来加速库的安装。</p>
+<h2 id="方法">方法</h2>
+<h3 id="源地址">源地址</h3>
+<p><strong>test</strong></p>
+<p>国内源： 新版ubuntu要求使用https源，要注意。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs groovy">清华：<span class="hljs-string">https:</span><span class="hljs-comment">//pypi.tuna.tsinghua.edu.cn/simple</span><br><br>阿里云：<span class="hljs-string">http:</span><span class="hljs-comment">//mirrors.aliyun.com/pypi/simple/</span><br><br>中国科技大学 <span class="hljs-string">https:</span><span class="hljs-comment">//pypi.mirrors.ustc.edu.cn/simple/</span><br><br>华中理工大学：<span class="hljs-string">http:</span><span class="hljs-comment">//pypi.hustunique.com/</span><br><br>山东理工大学：<span class="hljs-string">http:</span><span class="hljs-comment">//pypi.sdutlinux.org/ </span><br><br>豆瓣：<span class="hljs-string">http:</span><span class="hljs-comment">//pypi.douban.com/simple/</span><br></code></pre></td></tr></table></figure>
+<h3 id="临时">临时</h3>
+<p>pip 有一个参数<code>-i</code>可以用于指定仓库的url, 但是很遗憾这个参数我通过 <code>pip --help</code>无法查到, 大概是个黑科技。</p>
+<p>仅临时修改使用的源, 可以使用 pip <command> -i <理想源地址> 来指定使用的源</p>
+<h3 id="永久">永久</h3>
+<h4 id="like-unix">Like unix</h4>
+<p>如果用户目录下不存在.pip目录, 则创建一个</p>
+<p>/home/user/.pip 目录下创建一个<font color="red"><strong>pip.conf</strong></font> 文件, 并编辑其内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">[global]<br>index-url &#x3D; https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple<br></code></pre></td></tr></table></figure>
+<h4 id="windows">Windows</h4>
+<p>用户目录下如果不存在pip目录, 则创建一个</p>
+<p>在pip目录中创建<font color="red"><strong>pip.ini</strong></font>文件, 编辑其内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">[global]<br>index-url &#x3D; https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple<br></code></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Earneet"
+      src="/images/avatar_head_icon.png">
+  <p class="site-author-name" itemprop="name">Earneet</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:earneet@gmail.com" title="E-Mail → mailto:earneet@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">鲁ICP备17028859号 </a>
+      <img src="/images/beian.png" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502037496" rel="noopener" target="_blank">京公网安备 11010502037496号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Earneet</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+    </div>
+</body>
+</html>

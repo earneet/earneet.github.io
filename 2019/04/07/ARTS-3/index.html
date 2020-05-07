@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="RTS-3 第三周 Review an introduction of to principles of Functional Programming 函数式编程规约简介 标题如是，这是一篇关于函数式编程的入门级别的简介文章。作者同样提供了一篇基于JavaScript的解说。 回顾 长时间使用面向对象的编程语言工作和学习后，是时候用几个步骤来回顾一下系统复杂度了。  复杂性是软件难遇理解和维护的全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ARTS-3">
+<meta property="og:url" content="http://yoursite.com/2019/04/07/ARTS-3/index.html">
+<meta property="og:site_name" content="Learning &amp; Sharing">
+<meta property="og:description" content="RTS-3 第三周 Review an introduction of to principles of Functional Programming 函数式编程规约简介 标题如是，这是一篇关于函数式编程的入门级别的简介文章。作者同样提供了一篇基于JavaScript的解说。 回顾 长时间使用面向对象的编程语言工作和学习后，是时候用几个步骤来回顾一下系统复杂度了。  复杂性是软件难遇理解和维护的全">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-04-07T12:12:04.000Z">
+<meta property="article:modified_time" content="2020-05-06T04:17:47.367Z">
+<meta property="article:author" content="Earneet">
+<meta property="article:tag" content="ARTS">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2019/04/07/ARTS-3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>ARTS-3 | Learning & Sharing</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Learning & Sharing</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/07/ARTS-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ARTS-3
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-07 20:12:04" itemprop="dateCreated datePublished" datetime="2019-04-07T20:12:04+08:00">2019-04-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-06 12:17:47" itemprop="dateModified" datetime="2020-05-06T12:17:47+08:00">2020-05-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index"><span itemprop="name">ARTS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="rts-3-第三周">RTS-3 第三周</h1>
+<h2 id="review-an-introduction-of-to-principles-of-functional-programming">Review an introduction of to principles of Functional Programming</h2>
+<p><a href="https://medium.freecodecamp.org/an-introduction-to-the-basic-principles-of-functional-programming-a2c2a15c84" target="_blank" rel="noopener"><strong>函数式编程规约简介</strong></a></p>
+<p>标题如是，这是一篇关于函数式编程的入门级别的简介文章。作者同样提供了一篇基于JavaScript的解说。</p>
+<h3 id="回顾">回顾</h3>
+<pre><code>长时间使用面向对象的编程语言工作和学习后，是时候用几个步骤来回顾一下系统复杂度了。
+
+复杂性是软件难遇理解和维护的全部原因。</code></pre>
+<h3 id="函数式编程是什么">函数式编程是什么</h3>
+<pre><code>函数式编程是一种编程范式，一种构建计算机程序和元素的风格，它将计算视为数学上函数，并避免了状态变化和可变数据。-- wiki </code></pre>
+<h3 id="纯函数">纯函数</h3>
+<p>纯函数是函数式编程中第一个重要概念，那么。 #### 纯函数是什么</p>
+<p>纯函数首先是一个函数，它具有两个基本特征： 1. 多次执行，给定相同的参数必然得到相同的结果。 2. 执行中，不会带来可以观察到的副作用状态改变。</p>
+<h4 id="纯函数的优势">纯函数的优势</h4>
+<p>纯函数易于测试，它的特征决定了对于这类程序的测试简单有效。</p>
+<h3 id="不变性">不变性</h3>
+<p>不变性是函数式编程的又一重要特性，很直观。数据一旦创建就永不可更改。 对于多年沉浸面向对象变成的程序员易于理解，就是所有的数据都是const数据，同时感到不可思议。</p>
+<p>如文中提到的，一旦数据创建后不可变，那么，像非函数式语言中的for each 循环该如何实现呢？ 在函数式编程范式中，循环使用递归来实现。这里不展开讲述。</p>
+<h3 id="引用透明性">引用透明性</h3>
+<p>基本上，如果一个函数对相同的输入始终产生相同的结果，那么它就是引用透明的。</p>
+<pre><code>pure functions + immutable data = referential transparency</code></pre>
+<p>在这个前提下, 许多类似 (+3(+ 5 8)) 一类的表达式, 就会直接优化为它的常量结果, 因为他们总是不变的。</p>
+<h3 id="函数式一等公民">函数式一等公民</h3>
+<p>函数式编程范式中, 函数不止作为函数, 它也被视为一个值, 当做一个数据来用。(个人认为类似于C语言中的函数, 实际上函数指针也可以这么用, 只是在语言和语法层面是体现的不明显)</p>
+<h3 id="高阶函数">高阶函数</h3>
+<h4 id="什么是高阶函数">什么是高阶函数</h4>
+<p>高阶函数首先要是一个函数, 其次, 得满足两个特点至少其中之一: 1. 参数列表中至少含有一个函数类型的形参。 2. 它的返回值是一个函数。</p>
+<blockquote>
+<p>When we talk about higher-order functions, we mean a function that either: 1.takes one or more functions as arguments, or<br> 2.returns a function as its result</p>
+</blockquote>
+<h2 id="未尽之言">未尽之言</h2>
+<p>以上可能我自己也摸不着头脑,但是我已经把大意总结了一下, 剩下的未尽之言都是作者写了一些琐碎处的细节, 举例子贴代码来阐明的自己的观点, 这个我不好总结, 总之, 大意如此, 这是一篇函数式编程的入门文章, 浅显易懂, 深入浅出, 从未接触过函数式编程语言的我读后收益匪浅, 确实的开阔了眼界和思维。</p>
+<h2 id="algorithm-first-bad-version">Algorithm: <em>First Bad Version</em></h2>
+<h3 id="引言">引言</h3>
+<p>本周就做了两道leetcode题目, 要分享的这个题目来源于Leetcode的Weekly Digest, 它试一次邮件推送。 easy难度, 给我个easy的题目,大概是leetcode都认为我比较水。</p>
+<p>原始邮件:</p>
+<pre><code>Hi earneet,
+
+We have an easy question that we thought you might be interested in solving:
+
+First Bad Version
+Solved 211443 times
+You are a product manager and currently leading a team to develop a new product. Unfortunately, the latest version of...</code></pre>
+<p><a href="https://leetcode.com/problems/first-bad-version/" target="_blank" rel="noopener">First Bad Version</a></p>
+<h3 id="description">Description</h3>
+<pre><code>278. First Bad Version
+Easy
+
+You are a product manager and currently leading a team to develop a new product. Unfortunately, the latest version of your product fails the quality check. Since each version is developed based on the previous version, all the versions after a bad version are also bad.
+
+Suppose you have n versions [1, 2, ..., n] and you want to find out the first bad one, which causes all the following ones to be bad.
+
+You are given an API bool isBadVersion(version) which will return whether version is bad. Implement a function to find the first bad version. You should minimize the number of calls to the API.
+
+Example:
+
+Given n = 5, and version = 4 is the first bad version.
+
+call isBadVersion(3) -&gt; false
+call isBadVersion(5) -&gt; true
+call isBadVersion(4) -&gt; true
+
+Then 4 is the first bad version. </code></pre>
+<p>假设我是一个项目管理, 正在领导一个开发团队做一个新产品, 不幸的是我的项目出了问题, 但不知道是哪个版本, 我的版本号管理是从1开始的自增升序, 我有个验证api <code>isBadVersion(version)</code>来验证当前版本是好的还是坏的, 问: 通过最少次的验证来找到第一个坏掉的版本, 应该怎么做。</p>
+<h3 id="思路">思路</h3>
+<p>这是一个数组的查找问题, 从一堆版本号构成的数组<code>[1,2,3,4 ... n]</code>中,找到第一个符合要求的索引。 这个情况非常熟悉了, 如果这个数组是关于索引有规律的, 那么我们可以通过哈希计算获得位置, 如果是有顺序的,也可以通过二分查找来加快搜索。 乍一看, 这个数组符合第二个情况, 但是, 版本号并不是我们直接要找的目标值,它需要经过一次api调用的转换来达到目标数组。</p>
+<p>好在, 这个题目还有个隐含的条件, 在某一个出错版本, 也就是我们的目标之前的所有版本, 都是正确的, 在这个版本之后, 都是错误的, 我可以映射好版本结果为0,而坏版本结果为1,那么原数组就被转换为了 <code>[0, ... m, 1 ... n]</code> 其中 m &gt;= 0 且 m &lt;= n。 至此已经完成了升序数组的转换。</p>
+<p>这个题目与一般查找稍有差异, 它当中存在了大量的重复元素(它本来就只有两种元素), 我需要找到目标元素的第一次出现的位置。这里,基本可以确定是二分法查找没错了, 继续分析如何进行二分。</p>
+<ol type="1">
+<li><strong>middle位置的结果为0</strong>。 此种情况下, 数组部分应为如 [...,<span style="color:red"><em>0</em></span>, 0, <strong>0</strong>, 1, <span style="color:red"><em>1</em></span> ...], 粗体位置为middle,红色元素分别为left和right, 这种情况下, 应把left指针右移。使 left从当前middle的下一个元素迭代。</li>
+<li><strong>middle位置的结果为1</strong>。 此种情况下, 数组部分应为[...,<span style="color:red"><em>0</em></span>, 0,1, <strong>1</strong>, 1, <span style="color:red"><em>1</em></span> ...], 粗体位置为middle,红色元素分别为left和right, 这种情况下, 应当将right指针左移,从当前middle元素位置开始迭代。</li>
+</ol>
+<p>如此, 二分的迭代规则已经明确了, 剩下的问题就是代码实现了。</p>
+<h3 id="answer">Answer</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// Forward declaration of isBadVersion API.</span><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isBadVersion</span><span class="hljs-params">(<span class="hljs-keyword">int</span> version)</span></span>;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">firstBadVersion</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">register</span> <span class="hljs-keyword">int</span> <span class="hljs-built_in">min</span> = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-built_in">min</span> &lt;= n) &#123;<br>          <span class="hljs-keyword">register</span> <span class="hljs-keyword">int</span> middle = <span class="hljs-built_in">min</span> + (n-<span class="hljs-built_in">min</span>)/<span class="hljs-number">2</span>;<br>          <span class="hljs-keyword">if</span> (isBadVersion(middle))&#123;<br>            n = middle - <span class="hljs-number">1</span>;<br>          &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-built_in">min</span> = middle + <span class="hljs-number">1</span>;<br>          &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">min</span> &gt; n ? <span class="hljs-built_in">min</span> : n;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>当我写这个篇文的时候才发现, 可能以上代码虽然被AC了, 但是可能是错误的, 简略先记一下我发现的问题, 后面会更正本文。</p>
+<p><span style="border-bottom:2px dashed red;">为了更快速地迭代,我在指针移动时, 指针略过已经试过的当前middle元素, 如果是左移,则使 right = middle - 1, 若为右移, 则使 left = middle + 1, 若如此做, 一个尴尬的问题就来了, 这样可能恰好错过了目标解, 就如 [...,<span style="color:red"><em>0</em></span>, 0, 0, <strong>1</strong>, 1, 1, <span style="color:red"><em>1</em></span> ...] 这种情况, right指针左移时, 下次的位置应为左侧第二个0, 现在, 目标解已经脱出了我们的 left和right指针范围!!</span></p>
+<p>以上这段, 使我写本文时才发现, 夜深了, 先记在这里, 明后天想明白了之后再更正。</p>
+<h2 id="tip-尽早失败短流程优先">Tip 尽早失败,短流程优先</h2>
+<h3 id="引言-1">引言</h3>
+<p>本次分享的尽早失败是我在乐天派工作的时候, 项目组杨老师传授给我的经验,在后面的工作中屡试不爽, 特作一个分享, 完整的技巧不止于此, 在本篇中, 只分享其中的一个小点, 在条件语句中优先失败。这个技巧在很多的IDE中应该都会有提示, 但是项目代码里还是常见不遵循这个的代码, 我并不是说不这么写一定不好, 但是个人还是倾向于尽早失败, 让代码结构更加清晰。</p>
+<h3 id="尽早失败">尽早失败</h3>
+<p>不管新手还是老鸟, 在项目中总会看到如下面这样的代码 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-keyword">function</span> () &#123;<br>    <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> something pre<br>    <span class="hljs-keyword">if</span> (checkcondition1) &#123;<br>        <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> something <span class="hljs-number">1</span><br>        <span class="hljs-keyword">if</span> (checkcondition2) &#123;<br>            <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> something <span class="hljs-number">2</span><br>            <span class="hljs-keyword">if</span> (checkcondition3) &#123;<br>                <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> something3<br>            &#125;<br>        &#125;<br>    &#125;<br>    return result;<br>&#125;<br></code></pre></td></tr></table></figure> 甚至是在循环结构里出现如上代码 <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">function</span> () &#123;<br>    <span class="hljs-comment">// do something pre</span><br>    <span class="hljs-selector-tag">if</span> (checkcondition0)&#123;<br>        <span class="hljs-selector-tag">for</span> () &#123;<br>            <span class="hljs-selector-tag">if</span> (checkcondition1) &#123;<br>                <span class="hljs-comment">// do something 1</span><br>                <span class="hljs-selector-tag">if</span> (checkcondition2) &#123;<br>                    <span class="hljs-comment">// do something 2</span><br>                    <span class="hljs-selector-tag">if</span> (checkcondition3) &#123;<br>                        <span class="hljs-comment">// do something3</span><br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-selector-tag">return</span> <span class="hljs-selector-tag">result</span>;<br>&#125;<br></code></pre></td></tr></table></figure> 如果感觉第一个代码还可以接受, 那么, 第二个代码的缩进层级就让人感到可怕, 但是这样的代码确确实实的在项目里出现了。</p>
+<p>这里我针对第二个代码, 做一个"尽早失败"的风格修改。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">function () &#123;<br>    <span class="hljs-comment">// do something pre</span><br>    <span class="hljs-keyword">if</span> (not checkcondition0)<br>        <span class="hljs-keyword">return</span>;<br>    <span class="hljs-keyword">for</span> () &#123;<br>        <span class="hljs-keyword">if</span> (not checkcondition1) <br>            <span class="hljs-keyword">continue</span>;<br>        <span class="hljs-comment">// do something 1</span><br>        <span class="hljs-keyword">if</span> (not checkcondition2) <br>            <span class="hljs-keyword">continue</span>;<br>        <span class="hljs-comment">// do something 2</span><br>        <span class="hljs-keyword">if</span> (not checkcondition3)<br>            <span class="hljs-keyword">continue</span>;<br>        <span class="hljs-comment">// do something3</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这个写法, 使的原先代码尾部一连串难以搞懂层级的<code>}</code>不见了, 缩进层级由6层, 缩减到了3层, 整个代码都条理了。</p>
+<p>这就是杨老师传授的所谓的"尽早失败"技巧的其中一个应用, 在编写条件分支时,尽量不使用但条件的 <code>if (true) dosomething</code> 这样的分支, 而是使用 <code>if (not true) return; dosometing</code> 这样的分支, 这样会大大的减少代码的缩进层级。</p>
+<h3 id="短流程优先">短流程优先</h3>
+<p>还是不管新手还是老鸟, 在项目中总会看到如下面这样的代码 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-keyword">if</span> (condition) &#123;<br>    <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> operation <span class="hljs-number">1</span><br>    <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> operation <span class="hljs-number">2</span><br>    <span class="hljs-keyword">if</span> (condition2) &#123;<br>        <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> operation <span class="hljs-number">3</span><br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> operation <span class="hljs-number">4</span><br>    &#125;<br>    <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> operation <span class="hljs-number">5</span><br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-regexp">//</span> log a message <br>    return;<br>&#125;<br></code></pre></td></tr></table></figure> 更夸张一点的真实代码我就不贴出来了, 我自己亲身经历过的是, 一个 if 分支内写了整整两屏的代码, 然后else 分支内就打了一句错误日志, 向另一个系统发送了一条协议。</p>
+<p>这种情况下, 单单使用上面说的尽早失败进行修改虽然也可以, 但是牵扯到了其他分支内也有有用操作, 貌似还是差点意思。所以, 这里倾向于"短流程优先", 即写为: <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-keyword">if</span> (not condition) &#123;<br>    <span class="hljs-regexp">//</span> log a message <br>    return;<br>&#125; <br><span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> operation <span class="hljs-number">1</span><br><span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> operation <span class="hljs-number">2</span><br><span class="hljs-keyword">if</span> (condition2) &#123;<br>    <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> operation <span class="hljs-number">3</span><br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> operation <span class="hljs-number">4</span><br>&#125;<br><span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> operation <span class="hljs-number">5</span><br></code></pre></td></tr></table></figure> 将流程最短, 最简洁的代码写在最前面, 这样条件分支会更清晰, 剩下最后的就只有一个复杂的情况, 代码阅读者会一下子厘清前面的分支情况, 然后慢慢分析最后的"一坨屎", 否则, 可能一开始就被这一坨搞乱了, 导致即使后面分支简洁, 也因为需要记忆前面一坨, 导致思维变累。</p>
+<p>杨老师传授加上我自己琢磨的针对这个的技巧不止如上, 本篇先分享这一些, 后面再分享时将剩下一些总结一下补充来。</p>
+<h2 id="share">Share</h2>
+<h3 id="引言-2">引言</h3>
+<p>本来预计的分享又又又又又未能完成。</p>
+<p>本次的分享源于我打算做的一个东西, 我之前有一块某米品牌的安卓平板, 由于我已经更新换代了设备,这个旧设备已经很久不用, 所以我打算把它改为一个便携显示器用来接ps4玩游戏, 所以ps4主机是比较封闭的, 输出我能够接入的只有hdmi接口, 要么我选择采购昂贵的视频采集卡来做,要么我只好研究下hdmi传输标准, 看看能不能做个硬件来做一下信号转换, 把hdmi信号编解码, 通过usb或者wifi传输给平板, 再在平板上解码输出, 于是,我翻阅了不少hdmi资料, 特分享一则讲的比较浅显的前辈的文。 ### 内容 <a href="https://blog.csdn.net/anpingbo/article/details/72717580" target="_blank" rel="noopener">HDMI协议</a></p>
+<h3 id="flag">Flag</h3>
+<p>我个人做java开发比较多, 之前就想写一篇文来讲明白jvm中synchonize和volatile的实现,但是各种原因一直未能成行, 再次立一个Flag, 在劳动节前ARTS中, share分享部分我要分享我的这篇文, 我一定要在期限内完成。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ARTS/" rel="tag"># ARTS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/03/31/ARTS-2/" rel="prev" title="ARTS-2">
+      <i class="fa fa-chevron-left"></i> ARTS-2
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/04/21/ARTS-4/" rel="next" title="ARTS-4">
+      ARTS-4 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#rts-3-第三周"><span class="nav-number">1.</span> <span class="nav-text">RTS-3 第三周</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#review-an-introduction-of-to-principles-of-functional-programming"><span class="nav-number">1.1.</span> <span class="nav-text">Review an introduction of to principles of Functional Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#回顾"><span class="nav-number">1.1.1.</span> <span class="nav-text">回顾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数式编程是什么"><span class="nav-number">1.1.2.</span> <span class="nav-text">函数式编程是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#纯函数"><span class="nav-number">1.1.3.</span> <span class="nav-text">纯函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#纯函数的优势"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">纯函数的优势</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不变性"><span class="nav-number">1.1.4.</span> <span class="nav-text">不变性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用透明性"><span class="nav-number">1.1.5.</span> <span class="nav-text">引用透明性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数式一等公民"><span class="nav-number">1.1.6.</span> <span class="nav-text">函数式一等公民</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高阶函数"><span class="nav-number">1.1.7.</span> <span class="nav-text">高阶函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是高阶函数"><span class="nav-number">1.1.7.1.</span> <span class="nav-text">什么是高阶函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未尽之言"><span class="nav-number">1.2.</span> <span class="nav-text">未尽之言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#algorithm-first-bad-version"><span class="nav-number">1.3.</span> <span class="nav-text">Algorithm: First Bad Version</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引言"><span class="nav-number">1.3.1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#description"><span class="nav-number">1.3.2.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">1.3.3.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#answer"><span class="nav-number">1.3.4.</span> <span class="nav-text">Answer</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tip-尽早失败短流程优先"><span class="nav-number">1.4.</span> <span class="nav-text">Tip 尽早失败,短流程优先</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引言-1"><span class="nav-number">1.4.1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#尽早失败"><span class="nav-number">1.4.2.</span> <span class="nav-text">尽早失败</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#短流程优先"><span class="nav-number">1.4.3.</span> <span class="nav-text">短流程优先</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#share"><span class="nav-number">1.5.</span> <span class="nav-text">Share</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引言-2"><span class="nav-number">1.5.1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flag"><span class="nav-number">1.5.2.</span> <span class="nav-text">Flag</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Earneet"
+      src="/images/avatar_head_icon.png">
+  <p class="site-author-name" itemprop="name">Earneet</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:earneet@gmail.com" title="E-Mail → mailto:earneet@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">鲁ICP备17028859号 </a>
+      <img src="/images/beian.png" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502037496" rel="noopener" target="_blank">京公网安备 11010502037496号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Earneet</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'f683935999f7972c4028',
+      clientSecret: '2759f62055ea0ca2f418d98c64fcb333551797c8',
+      repo        : 'GitResponse',
+      owner       : 'earneet',
+      admin       : ['earneet'],
+      id          : '0a2807a742d39016b331e538e2cfe44a',
+        language: 'zh-CN',
+      distractionFreeMode: false
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
+</body>
+</html>

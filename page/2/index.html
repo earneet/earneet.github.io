@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Learning &amp; Sharing">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="Learning &amp; Sharing">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Earneet">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/page/2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Learning & Sharing</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Learning & Sharing</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/26/ARTS-9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/26/ARTS-9/" class="post-title-link" itemprop="url">ARTS-9</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-26 09:05:31" itemprop="dateCreated datePublished" datetime="2019-05-26T09:05:31+08:00">2019-05-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-06 12:19:06" itemprop="dateModified" datetime="2020-05-06T12:19:06+08:00">2020-05-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index"><span itemprop="name">ARTS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="arts-9">ARTS-9</h1>
+<h2 id="algorithm">Algorithm</h2>
+<h3 id="description">Description</h3>
+<p><a href="https://leetcode.com/problems/sqrtx/" target="_blank" rel="noopener"><strong>69. Sqrt(x)</strong></a></p>
+<p>Implement int sqrt(int x).</p>
+<p>Compute and return the square root of x, where x is guaranteed to be a non-negative integer.</p>
+<p>Since the return type is an integer, the decimal digits are truncated and only the integer part of the result is returned.</p>
+<p><strong>Example 1:</strong></p>
+<pre><code>Input: 4
+Output: 2</code></pre>
+<p><strong>Example 2:</strong></p>
+<pre><code>Input: 8
+Output: 2</code></pre>
+<p>Explanation: The square root of 8 is 2.82842..., and since the decimal part is truncated, 2 is returned.</p>
+<h3 id="大意">大意</h3>
+<p>实现一个开平方的函数, 它输入一个整数x, 输出一个整数y 满足 <span class="math inline">\(y^2&lt;=x\)</span> 且 <span class="math inline">\((y+1)^2&gt;x\)</span></p>
+<h3 id="思路">思路</h3>
+<p>开平方的普遍简单做法一般有两种, 一个是二分法逼近, 一个是牛顿迭代开平方法。因为之前已经做过了太多的二分法了, 所以决定这次使用牛顿开平方法。</p>
+<h3 id="code">Code</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span><span class="hljs-params">(object)</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">mySqrt</span><span class="hljs-params">(self, x)</span>:</span><br>        <span class="hljs-string">"""</span><br><span class="hljs-string">        :type x: int</span><br><span class="hljs-string">        :rtype: int</span><br><span class="hljs-string">        """</span><br>        <span class="hljs-keyword">if</span> x==<span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br>        <span class="hljs-keyword">if</span> x==<span class="hljs-number">1</span>:<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br><br>        y = x/<span class="hljs-number">2.0</span><br>        <span class="hljs-keyword">while</span> abs(x-y**<span class="hljs-number">2</span>) &gt; <span class="hljs-number">0.5</span>:<br>            y=((y*<span class="hljs-number">1.0</span>)+(<span class="hljs-number">1.0</span>*x)/y)/<span class="hljs-number">2.0000</span><br>        <span class="hljs-keyword">return</span> int(y)<br></code></pre></td></tr></table></figure>
+<h3 id="result">Result</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Time Submitted</th>
+<th>Status</th>
+<th>Runtime</th>
+<th>Memory</th>
+<th>Language</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2 hours ago</td>
+<td>Accepted</td>
+<td>20 ms</td>
+<td>11.8 MB</td>
+<td>python</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="review">Review</h2>
+<p><a href="https://medium.freecodecamp.org/learning-python-from-zero-to-hero-120ea540b567" target="_blank" rel="noopener"><strong>Learning Python: From Zero to Hero</strong></a></p>
+<h3 id="引言">引言</h3>
+<p>之前medium老是给我推送javascript的文, 我越是看, 它越是推, 然而,我几乎从不写js, 这次我自己主动去看python文, 让它学习下, 以后换个口味给我推。</p>
+<h3 id="内容">内容</h3>
+<p><a href="https://medium.freecodecamp.org/learning-python-from-zero-to-hero-120ea540b567" target="_blank" rel="noopener"><strong>Learning Python: From Zero to Hero</strong></a></p>
+<pre><code>“high-level programming language, and its core design philosophy is all
+about code readability and a syntax which allows programmers to express
+concepts in a few lines of code.”</code></pre>
+<p>“高级编程语言，其核心设计理念是代码可读性和一个允许程序员用稍几行代码表达概念的语法。”</p>
+<h4 id="变量">变量</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">one = <span class="hljs-number">1</span><br><br>print(one)<br></code></pre></td></tr></table></figure>
+<h4 id="数组">数组</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">array = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br><br>array[<span class="hljs-number">1</span>] = <span class="hljs-number">5</span><br><br><span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> array:<br>    print(v)<br></code></pre></td></tr></table></figure>
+<h4 id="字典">字典</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">dictionary = &#123; <span class="hljs-string">"one"</span> : <span class="hljs-number">1</span>, <span class="hljs-string">"two"</span> : <span class="hljs-number">2</span>, <span class="hljs-string">"three"</span> : <span class="hljs-number">3</span>&#125;<br>dictionary[<span class="hljs-string">"four"</span>] = <span class="hljs-number">4</span><br><br><span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">in</span> dictionary.items():<br>    print(k)<br>    pirnt(v)<br></code></pre></td></tr></table></figure>
+<h4 id="循环">循环</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">while</span> Condition:<br>    doSomething()<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> dictionary:<br>    doSomething(dictionary[key])<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">in</span> dictionary.items():<br>    doSomething(k, v)<br></code></pre></td></tr></table></figure>
+<h4 id="类和对象">类和对象</h4>
+<p>类是对象的模板, 对象是程序使用类复刻的产物。</p>
+<p>类中定义构造方法为 <strong>init</strong>, 它第一个参数为代表当前对象的self 类可以有对公属性和非对公属性, 对公属性普通命名, 以下划线开头的名字为非对公属性, 除了本类定义的方法外不可以访问。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Model</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, attr1, attr2)</span>:</span><br>        self.attr1 = attr1<br>        self._attr2 = attr2<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getAttr1</span><span class="hljs-params">()</span>:</span><br>        <span class="hljs-keyword">return</span> self.attr1<br>        <br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getAttr2</span><span class="hljs-params">()</span>:</span><br>        <span class="hljs-keyword">return</span> self._attr2<br><br>object = Model(<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>)<br>print(object.getAttr1())<br>print(object.getAttr2())<br></code></pre></td></tr></table></figure>
+<h4 id="本篇出错">本篇出错</h4>
+<p>有趣的是, 在本篇评论上有个网友指出了作者在文中的一处错误</p>
+<p>作者原文:</p>
+<pre><code>For a Python class, we can initialize a public instance variable within our constructor method or just inside the class.</code></pre>
+<p>网友评论:</p>
+<pre><code>That is not true!
+
+Variables declared at class level are not instance variables, they are class attributes. Class attributes are defined outside of all the methods, usually they are placed at the top, right below the class header.</code></pre>
+<p>意思大意为, 作者说对于python类, 我们可以在构造函数或者类内部直接初始化一个对公变量。 网友说作者错了, 应该为, 在构造函数中初始化的是对象变量, 而类中进行声明的则为类变量。</p>
+<hr />
+<h2 id="tips">Tips</h2>
+<h4 id="牛顿迭代">牛顿迭代</h4>
+<p>牛顿法使用迭代来求解一个方程, 其原理大致如下:</p>
+<p>对于一个函数 <span class="math inline">\(f(x)\)</span> ,它的<a href="Taylor_series_wiki"><strong>泰勒级数</strong></a>展开式是这样的,</p>
+<p><span class="math display">\[
+f(x)=f(x_0)+f&#39;(x_0)(x-x_0)+\frac{1}{2}f&#39;&#39;(x_0)(x-x_0)^2+...+\frac{1}{n!}f^n(x0)(x-x_0)^n
+\]</span></p>
+<p>牛顿法使用泰勒级数前两项来代替这个函数，即用ϕ(x)代替f(x):</p>
+<p><span class="math display">\[
+\phi(x)=f(x_0)+f&#39;(x_0)(x-x_0)
+\]</span></p>
+<p>令 <span class="math inline">\(\phi\left(x\right)=0\)</span> , 则 <span class="math inline">\(x = x_0 - \frac{f(x_0)}{f&#39;(x_0)}\)</span></p>
+<p>所以,牛顿迭代式为 <span class="math inline">\(f(x_{n+1})=x_n - \frac{f(x_n)}{f&#39;(x_n)}\)</span></p>
+<h4 id="牛顿迭代法开平方">牛顿迭代法开平方</h4>
+<p>开平方即为求解 <span class="math inline">\(f(x)=x^2-n\)</span> 在 <span class="math inline">\(f(x)=0\)</span> 时的解。</p>
+<p>代入牛顿迭代式</p>
+<p><span class="math display">\[
+x_{n+1}  = \frac{x_n^2-n} {2x_n} \\
+     = \frac{x_n}{2} - \frac{n}{2x_n} \\
+     = \frac{1}{2}\left(x_n-\frac{n}{x_n} \right)
+\]</span></p>
+<h4 id="牛顿迭代开平方在代码中的写法">牛顿迭代开平方在代码中的写法</h4>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">const</span> EPS = <span class="hljs-number">0.0001</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">sqrt</span><span class="hljs-params">(x double)</span></span> &#123;<br>    reuslt := x<br>iteration:<br>    last := x<br>    result = (result - (x-result))/<span class="hljs-number">2.0</span><br>    <span class="hljs-keyword">if</span> abs(last-result)&gt;EPS &#123;<br>        <span class="hljs-keyword">goto</span> iteration<br>    &#125;<br>    <span class="hljs-keyword">return</span> result<br>&#125;<br></code></pre></td></tr></table></figure>
+<hr />
+<h2 id="share">Share</h2>
+<p><a href="https://charlesliuyx.github.io/2018/02/16/%E3%80%90%E7%9B%B4%E8%A7%82%E8%AF%A6%E8%A7%A3%E3%80%91%E6%B3%B0%E5%8B%92%E7%BA%A7%E6%95%B0/" target="_blank" rel="noopener">[直观详解]泰勒级数</a></p>
+<hr />
+<h2 id="end">End</h2>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/20/ARTS-8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/20/ARTS-8/" class="post-title-link" itemprop="url">ARTS-8</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-20 18:53:29" itemprop="dateCreated datePublished" datetime="2019-05-20T18:53:29+08:00">2019-05-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-06 12:18:50" itemprop="dateModified" datetime="2020-05-06T12:18:50+08:00">2020-05-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index"><span itemprop="name">ARTS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="arts-8">ARTS-8</h1>
+<h2 id="algorithm">Algorithm</h2>
+<h3 id="引言">引言</h3>
+<p>按照之前没有完成的题目顺序往下找的。</p>
+<h3 id="description">Description</h3>
+<h4 id="题目">题目</h4>
+<p><a href="https://leetcode.com/problems/count-and-say/" target="_blank" rel="noopener"><strong>38. Count and Say</strong></a></p>
+<p>The count-and-say sequence is the sequence of integers with the first five terms as following:</p>
+<pre><code>1.     1
+2.     11
+3.     21
+4.     1211
+5.     111221</code></pre>
+<p>1 is read off as "one 1" or 11. 11 is read off as "two 1s" or 21. 21 is read off as "one 2, then one 1" or 1211.</p>
+<p>Given an integer n where 1 ≤ n ≤ 30, generate the nth term of the count-and-say sequence.</p>
+<p>Note: Each term of the sequence of integers will be represented as a string.</p>
+<p>Example 1:</p>
+<pre><code>Input: 1
+Output: &quot;1&quot;</code></pre>
+<p>Example 2:</p>
+<pre><code>Input: 4
+Output: &quot;1211&quot;</code></pre>
+<h4 id="大意">大意</h4>
+<p>count-and-say (数-说)序列大意是这样的, 给出一个数字, 数数连续数字有几个, 然后写出 count-num , 例如 1 就是 1个1, 那么, 写作 11, 它是2个1, 那么下一项为21, 再下一项为1个2和1一个1, 即为1211 .... 如此这般。</p>
+<h4 id="思路">思路</h4>
+<p>这种问题思路就很清晰了, 有一个起始条件, 每一个后续项都依赖于前一项, 典型的递归解决思路, 稍复杂就用DP, (最高效的方式应该是按照索引找规律, 到那时这个题目我没找到什么明显规律) 那么, 这个题目甚简单, 就直接简单递归即可。</p>
+<h3 id="code">Code</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">countAndSay</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n==<span class="hljs-number">1</span>) <br>            <span class="hljs-keyword">return</span> <span class="hljs-string">"1"</span>;<br>        <br>        <span class="hljs-built_in">string</span> res = <span class="hljs-string">""</span>;<br>        <span class="hljs-built_in">string</span> r = countAndSay(n<span class="hljs-number">-1</span>);<br>        <span class="hljs-keyword">char</span> lastC = r[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">int</span> remainSize = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> c : r) &#123;<br>            <span class="hljs-keyword">if</span> (lastC==c) &#123;<br>                remainSize += <span class="hljs-number">1</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                res.append(<span class="hljs-number">1</span>, (<span class="hljs-keyword">char</span>)(remainSize+<span class="hljs-string">'0'</span>));<br>                res.append(<span class="hljs-number">1</span>, lastC);<br>                lastC = c;<br>                remainSize = <span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;<br>        res.append(<span class="hljs-number">1</span>, (<span class="hljs-keyword">char</span>)(remainSize+<span class="hljs-string">'0'</span>));<br>        res.append(<span class="hljs-number">1</span>, lastC);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h3 id="result">Result</h3>
+<pre><code>Success Details 
+
+Runtime: 0 ms, faster than 100.00% of C++ online submissions for Count and Say.
+
+Memory Usage: 9.1 MB, less than 38.74% of C++ online submissions for Count and Say.</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>Time Submitted</th>
+<th>Status</th>
+<th>Runtime</th>
+<th>Memory</th>
+<th>Language</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>a few seconds ago</td>
+<td>Accepted</td>
+<td>0 ms</td>
+<td>9.1 MB</td>
+<td>cpp</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="review">Review</h2>
+<p>暂缺</p>
+<hr />
+<h2 id="tips">Tips</h2>
+<p>暂缺</p>
+<hr />
+<h2 id="share">Share</h2>
+<h3 id="引言-1">引言</h3>
+<p>本次内容是我自己写的, 因为前几天生病,这次准备仓促,还只是写了一半, 后面一半还没写出来, 先发一半吧, 下次把后面一半补上</p>
+<p><a href="https://www.earneet.xyz/jvm-synchronized-implement" target="_blank" rel="noopener">Synchronized</a></p>
+<hr />
+<h2 id="end">End</h2>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/09/ARTS-7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/09/ARTS-7/" class="post-title-link" itemprop="url">ARTS-7</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-09 12:30:00" itemprop="dateCreated datePublished" datetime="2019-05-09T12:30:00+08:00">2019-05-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-06 12:18:39" itemprop="dateModified" datetime="2020-05-06T12:18:39+08:00">2020-05-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index"><span itemprop="name">ARTS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="arts-7">ARTS-7</h1>
+<h2 id="algorithm">Algorithm</h2>
+<p><a href="https://leetcode.com/problems/sudoku-solver/" target="_blank" rel="noopener"><strong>Sudoku Solver</strong></a></p>
+<h3 id="引言">引言</h3>
+<p>上回, ARTS-5 做了一个验证sudoku是否有效的题目, 本题是它的后续。</p>
+<h3 id="description">Description</h3>
+<ol start="37" type="1">
+<li><a href="https://leetcode.com/problems/sudoku-solver/" target="_blank" rel="noopener">Sudoku Solver</a></li>
+</ol>
+<p>Write a program to solve a Sudoku puzzle by filling the empty cells.</p>
+<p>A sudoku solution must satisfy all of the following rules:</p>
+<p>Each of the digits 1-9 must occur exactly once in each row. Each of the digits 1-9 must occur exactly once in each column. Each of the the digits 1-9 must occur exactly once in each of the 9 3x3 sub-boxes of the grid. Empty cells are indicated by the character '.'.</p>
+<p>A sudoku puzzle...</p>
+<figure>
+<img src="https://img.earneet.xyz/arts7/250px-Sudoku-by-L2G-20050714.svg.png" alt="" /><figcaption>数独谜题</figcaption>
+</figure>
+<p>...and its solution numbers marked in red.</p>
+<figure>
+<img src="https://img.earneet.xyz/arts7/250px-Sudoku-by-L2G-20050714_solution.svg.png" alt="" /><figcaption>数独完成</figcaption>
+</figure>
+<p>Note:</p>
+<p>The given board contain only digits 1-9 and the character '.'. You may assume that the given Sudoku puzzle will have a single unique solution. The given board size is always 9x9</p>
+<h4 id="大意">大意</h4>
+<p>前面的分享已经介绍过数独游戏, 本次题目提供一个未完成的数组, 其中未填充的数字使用字符<code>.</code>来填充。</p>
+<p>我们的解决方案需要替换原数组中的<code>.</code>, 使数独结构成立, 假设题目给出的数组都只有唯一解。</p>
+<h3 id="思路">思路</h3>
+<p>首先最容易想到的就是最简单直接的解法, 本科阶段学习数据接口课程, 对于<code>栈</code>和<code>递归</code>这两个章节都拿数独举过例子。数独的解法和迷宫一样, 都是一个简单直接的栈结构, 一个个放入尝试, 如果成立则递归解下一个单元格, 否则则退回上一步重新放置一个上一步的数字再试。</p>
+<h3 id="解法-1">解法 1</h3>
+<p>这里先使用了最直接的解法, 我实现了cpp和java两个版本的方案, 这里贴出一个java版本的方案, 因为后面还继续讨论一下jvm对于这个情况的优化。</p>
+<p>第一段代码 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">solveSudoku</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] board)</span> </span>&#123;<br>        solveNext(board);<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">solveNext</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] board)</span></span>&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> row = <span class="hljs-number">0</span>; row &lt; <span class="hljs-number">9</span>; row++)&#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> col = <span class="hljs-number">0</span>; col &lt; <span class="hljs-number">9</span>; col++)&#123;<br>                <span class="hljs-keyword">if</span>(board[row][col] == <span class="hljs-string">'.'</span>)&#123;<br>                    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">char</span> c = <span class="hljs-string">'1'</span>; c &lt;= <span class="hljs-string">'9'</span>; c++)&#123;<br>                        <span class="hljs-keyword">if</span>(!canSet(board, row, col, c)) <span class="hljs-keyword">continue</span>;   <span class="hljs-comment">//check if can set c</span><br>                        board[row][col] = c; <br>                        <span class="hljs-keyword">if</span>(!solveNext(board))<br>                            board[row][col] = <span class="hljs-string">'.'</span>;  <span class="hljs-comment">//rollback if failed</span><br>                        <span class="hljs-keyword">else</span><br>                            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>; <br>                    &#125;<br>                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">canSet</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] board, <span class="hljs-keyword">int</span> row, <span class="hljs-keyword">int</span> col, <span class="hljs-keyword">char</span> c)</span></span>&#123;<br>        <span class="hljs-keyword">int</span> brow = row /<span class="hljs-number">3</span> * <span class="hljs-number">3</span>;<br>        <span class="hljs-keyword">int</span> bcol = col /<span class="hljs-number">3</span> * <span class="hljs-number">3</span>;  <span class="hljs-comment">// recaculate the block's begin position</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">9</span>; i++) &#123;<br>            <span class="hljs-keyword">if</span>(board[i][col] != <span class="hljs-string">'.'</span> &amp;&amp; board[i][col] == c) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>; <br>            <span class="hljs-keyword">if</span>(board[row][i] != <span class="hljs-string">'.'</span> &amp;&amp; board[row][i] == c) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>; <br>            <span class="hljs-keyword">if</span>(board[brow + i / <span class="hljs-number">3</span>][ bcol + i % <span class="hljs-number">3</span>] != <span class="hljs-string">'.'</span> &amp;&amp; <br>                board[brow + i / <span class="hljs-number">3</span>][bcol + i % <span class="hljs-number">3</span>] == c) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>; <br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<hr />
+<p>第二段代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">solveSudoku</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] board)</span> </span>&#123;<br>        solveNext(board, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">solveNext</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] board, <span class="hljs-keyword">int</span> row, <span class="hljs-keyword">int</span> col)</span></span>&#123;<br>        <span class="hljs-keyword">for</span>(; row &lt; <span class="hljs-number">9</span>; row++)&#123;<br>            <span class="hljs-keyword">for</span>(; col &lt; <span class="hljs-number">9</span>; col++)&#123;<br>                <span class="hljs-keyword">if</span>(board[row][col] == <span class="hljs-string">'.'</span>)&#123;<br>                    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">char</span> c = <span class="hljs-string">'1'</span>; c &lt;= <span class="hljs-string">'9'</span>; c++)&#123;<br>                        <span class="hljs-keyword">if</span>(!canSet(board, row, col, c)) <span class="hljs-keyword">continue</span>;<br>                        board[row][col] = c; <br>                        <span class="hljs-keyword">if</span>(!solveNext(board, row, col))<br>                            board[row][col] = <span class="hljs-string">'.'</span>; <br>                        <span class="hljs-keyword">else</span><br>                            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>; <br>                    &#125;<br>                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>                &#125;<br>            &#125;<br>            col = <span class="hljs-number">0</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">canSet</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] board, <span class="hljs-keyword">int</span> row, <span class="hljs-keyword">int</span> col, <span class="hljs-keyword">char</span> c)</span></span>&#123;<br>        <span class="hljs-keyword">int</span> brow = row /<span class="hljs-number">3</span> * <span class="hljs-number">3</span>;<br>        <span class="hljs-keyword">int</span> bcol = col /<span class="hljs-number">3</span> * <span class="hljs-number">3</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">9</span>; i++) &#123;<br>            <span class="hljs-keyword">if</span>(board[i][col] != <span class="hljs-string">'.'</span> &amp;&amp; board[i][col] == c) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>; <br>            <span class="hljs-keyword">if</span>(board[row][i] != <span class="hljs-string">'.'</span> &amp;&amp; board[row][i] == c) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>; <br>            <span class="hljs-keyword">if</span>(board[brow + i / <span class="hljs-number">3</span>][ bcol + i % <span class="hljs-number">3</span>] != <span class="hljs-string">'.'</span> &amp;&amp; <br>                board[brow + i / <span class="hljs-number">3</span>][bcol + i % <span class="hljs-number">3</span>] == c) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>; <br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>贴出一个c++的代码对比</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">solveSudoku</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">char</span>&gt;&gt;&amp; board)</span> </span>&#123;<br>        solveNextStep(board);<br>    &#125;<br>    <br><span class="hljs-keyword">private</span>:  <br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">solveNextStep</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">char</span>&gt;&gt;&amp; board)</span> </span>&#123;<br>      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> row = <span class="hljs-number">0</span>; row &lt; <span class="hljs-number">9</span>; ++row) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> column = <span class="hljs-number">0</span>; column &lt; <span class="hljs-number">9</span>; ++column) &#123;<br>          <span class="hljs-keyword">if</span> (board[row][column] != <span class="hljs-string">'.'</span>) <span class="hljs-keyword">continue</span>;<br>          <span class="hljs-keyword">for</span> (<span class="hljs-keyword">char</span> iv = <span class="hljs-string">'1'</span>; iv &lt;= <span class="hljs-string">'9'</span>; ++iv) &#123;<br>            <span class="hljs-keyword">if</span> (isValid(board, row, column, iv)) &#123;<br>              board[row][column] = iv;<br>              <span class="hljs-keyword">if</span> (solveNextStep(board))<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>              <span class="hljs-keyword">else</span><br>                board[row][column] = <span class="hljs-string">'.'</span>;<br>            &#125;<br>          &#125;<br>          <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>      &#125;<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>  <br>    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">isValid</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">char</span>&gt;&gt;&amp; board, <span class="hljs-keyword">int</span> row, <span class="hljs-keyword">int</span> col, <span class="hljs-keyword">char</span> c)</span> </span>&#123;<br>      <span class="hljs-keyword">int</span> brow = row/<span class="hljs-number">3</span>*<span class="hljs-number">3</span>;<br>      <span class="hljs-keyword">int</span> bcol = col/<span class="hljs-number">3</span>*<span class="hljs-number">3</span>;<br>      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">9</span>; ++i) &#123;<br>        <span class="hljs-keyword">if</span> (board[row][i]!=<span class="hljs-string">'.'</span> &amp;&amp; board[row][i]==c) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">if</span> (board[i][col]!=<span class="hljs-string">'.'</span> &amp;&amp; board[i][col]==c) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">if</span> (board[brow + i/<span class="hljs-number">3</span>][bcol + i%<span class="hljs-number">3</span>] !=<span class="hljs-string">'.'</span> &amp;&amp; board[brow + i/<span class="hljs-number">3</span>][bcol + i%<span class="hljs-number">3</span>]==c) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>      &#125;<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h3 id="result-1">Result 1</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Time Submitted</th>
+<th>Status</th>
+<th>Runtime</th>
+<th>Memory</th>
+<th>Language</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>3 minutes ago</td>
+<td>Accepted</td>
+<td>7 ms</td>
+<td>36.6 MB</td>
+<td>java</td>
+</tr>
+<tr class="even">
+<td>12 minutes ago</td>
+<td>Accepted</td>
+<td>6 ms</td>
+<td>36.3 MB</td>
+<td>java</td>
+</tr>
+<tr class="odd">
+<td>a few seconds ago</td>
+<td>Accepted</td>
+<td>20 ms</td>
+<td>8.7 MB</td>
+<td>cpp</td>
+</tr>
+</tbody>
+</table>
+<p>其中, 第一行结果对应上面代码的第二段。 第二行结果对应上面结果的第一段。我本来是想稍微进行一点优化(虽然我知道这个"优化"聊胜于无), 反而结果更糟糕了, 下面我会分享一下我的猜想。</p>
+<p>C++ 代码上在内存用量上完胜(这个应该是由于java基于jvm, 额外消耗了更多内存吧), 但是在执行时间上cpp代码完败, 猜想应该是由于cpp的标准vector类的实现问题, 和无法基于profiling 做编译时优化而造成的劣势。 针对cpp代码, 我也做了同样的传递行列参数的优化, 但是执行时间上和未优化的版本完全一致。</p>
+<h3 id="分析总结">分析总结</h3>
+<p>我虽然提供了可以AC的答案, 但是这个答案应该是最基础的, 跟"好答案"相去甚远, 这个解法真的是对不起"Hard"这个难度。至于更优秀的解决方案, 后面我去看看讨论区大佬有什么精彩解法。</p>
+<p>这里, 我只讨论我这两段代码, 为什么"优化"后的代码反而表现更差。 看上面的贴图相差无几, 也许可能纯粹认为是偶发的误差导致的, 但是, 我在本地机器上使用JMH反复做了测试, 结果依然如此。</p>
+<h4 id="猜想">猜想</h4>
+<p>这里可能涉及到一个jvm层面的优化, 可能jvm针对固定的计数循环使用了"循环展开"和"向量化"的优化技术。(这里我参考了<a href="https://time.geekbang.org/column/article/39814" target="_blank" rel="noopener">循环优化</a>和<a href="https://time.geekbang.org/column/article/39838" target="_blank" rel="noopener">向量化</a>), 由于第二种方法,我通过参数设置了循环开始条件,破坏了固定的循环计数, 导致即时编译器无法采用优化, 反而导致了运行效率更低。</p>
+<p>对比cpp代码的两个方案, 两个代码执行时间基本一致, 所以我觉得这个java代码的差异应该就是由于编译时的优化失败导致的。</p>
+<hr />
+<h2 id="review">Review</h2>
+<p><a href="https://medium.com/javascript-in-plain-english/javascript-fundamental-prototypal-inheritance-9153ab434aae" target="_blank" rel="noopener"><strong>JavaScript Fundamental: Prototypal Inheritance</strong></a></p>
+<p>JavaScript 基本规则 : 原型式继承</p>
+<h3 id="引言-1">引言</h3>
+<p>本周的review内容依然来自于Medium Daily Digest, 就随缘吧, 哪天我开始写review了, 就直接使用哪天的digest了, 当然, 我绝对不是每周只读这一篇。 然后, 本篇较短。</p>
+<h3 id="内容">内容</h3>
+<p>JavaScript的原型式继承</p>
+<p>首先, 我写JavaScript并不多, 偶尔写两句。</p>
+<pre><code>作为JavaScript开发者, 理解JavaScript的继承的工作原理是必备知识, 面试尤其得心应手, 今天, 我来说道说道JavaScript实现的继承的优缺点。</code></pre>
+<p><font color="red"><strong>下面的内容为原文翻译</strong></font> <a href="https://medium.com/javascript-in-plain-english/javascript-fundamental-prototypal-inheritance-9153ab434aae" target="_blank" rel="noopener">原文链接</a></p>
+<h4 id="what-is-an-inheritance">What is an inheritance?</h4>
+<p>什么是继承?</p>
+<p>继承是面向对象编程的四个基本概念之一, (四个概念是: 抽象, 封装, 继承, 多态), 继承可以使一个对象获取另一个已存在的对象的属性。</p>
+<h4 id="does-javascript-have-inheritance">Does JavaScript have inheritance?</h4>
+<p>JavaScript支持继承吗?</p>
+<p>当然, JavaScript使用一个叫做原型式继承的类型, 它与类似Java语言的经典继承模型有很大差别。</p>
+<h4 id="what-is-prototypal-inheritance">What is prototypal inheritance?</h4>
+<p>什么是原型继承?</p>
+<p>要搞明白原型继承, 我们先要搞明白原型链, 原型链是每个对象与其原型之间的一系列联系，它以某种方式充当“父对象”(通过原型)，直到链到达null的引用。 此外，可以使用__proto__手动设置对象的原型。举个栗子:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> vehicle = &#123;<br>    numWheels: <span class="hljs-number">4</span><br>&#125;<br><span class="hljs-keyword">const</span> car = &#123;<br>    numDoors: <span class="hljs-number">4</span><br>&#125;<br><span class="hljs-comment">// Setting vehicle as car object's prototype</span><br>car.__proto__ = vehicle<br><span class="hljs-built_in">console</span>.log(car.numWheels)<br>=&gt; <span class="hljs-number">4</span><br></code></pre></td></tr></table></figure>
+<p>card对象本身不包含<code>numWheels</code>属性, 但是, 当我们设置<code>vehicle</code>对象作为它的<code>prototype</code>属性, <code>car.numWheels</code> 取值为4, 在原型式继承中, 如果一个属性在原对象中不存在, JavaScript(执行引擎)将会通过原对象的<code>prototype</code>属性开始递归的搜索目标属性,直到找到目标属性,或者对象的<code>prototype</code>属性为<code>null</code>为止。</p>
+<h4 id="good-or-bad">Good or bad?</h4>
+<p>优缺点</p>
+<ul>
+<li>Good 优点
+<ol type="1">
+<li>简单直接</li>
+<li>更适合JavaScript的动态特性本质</li>
+<li>代码冗余度低 (ps. 我表示并没有低的明显)</li>
+</ol></li>
+<li>Bad 缺点
+<ol type="1">
+<li>习惯于经典继承模型的人难以掌握(例如Java)</li>
+<li>JavaScript的原型继承使用构造函数模式，对象继承自另一个对象的构造函数，而不是整个对象类型，我(作者)认为它更符合原型继承试图实现的目标。</li>
+</ol>
+“I was under marketing orders to make it look like Java but not make it too big for its britches. It’s just this sort of silly little brother language, right? The sidekick to Java.” -- Brandan Eich (Creator of JavaScript)</li>
+</ul>
+<hr />
+<h2 id="tips">Tips</h2>
+<p><strong>在生产环境的机器上,尤其是低配置机器,不要尝试去打开查看或者处理大文件</strong></p>
+<h3 id="引言-2">引言</h3>
+<p>本次Tips特别简单,真的, 它是一个警告, 只有一句话。如上</p>
+<h3 id="讲个故事">讲个故事</h3>
+<p>基于我国国情, 每一个通过域名可以访问的国内服务器(80和8080端口)都必须经过备案, 否则不可能访问通, 所以, 我购买了一个处于国外机房的vps(对, 我从不通过它访问谷歌, 那是违法的)。</p>
+<p>本着钻研和学习的精神, 我在上面运行了一个 ss 进程, 用它来搭建代理, 提供我公司研发网络的穿透, 以便我可以在下班忘记打卡的时候可以在家里打卡下班(对, 不用来翻墙, 那样做违法)。</p>
+<p>某天, 我又回到了家, 熟练的打开了teamviewer, 连上工位的机器, 签退页面打开, 看看还差五分钟就又满一小时了(多工作没有加班费, 我就是贱), 想着再等我分钟退吧。</p>
+<p>正好某视频网站源码被我clone了一份在这个vps上, 而且压了一个压缩包准备下到本地, 然后手贱了一个view命令给到了压缩包上。</p>
+<p>然后teamviewer熟练的断开了, 一查, 果然ss进程被oom关闭了, 工位上的机器teamviewer只会重试一次, 果然我没能在这个时间内重启, 于是, 考勤异常了。</p>
+<h3 id="相关知识">相关知识</h3>
+<p>Linux的内存管理机制, 当linux内核发现可用内存不足时, 会通过3种途径来回收内存</p>
+<ul>
+<li>基于 LRU（Least Recently Used）算法, 回收缓存</li>
+<li>基于 Swap 机制，回收不常访问的匿名页</li>
+<li>基于 OOM（Out of Memory）机制，杀掉占用大量内存的进程。</li>
+</ul>
+<p>我的故事里, ss 进程被杀死就是第三种途径在产生效果。</p>
+<pre><code>第三种方式，OOM 机制按照 oom_score 给进程排序。oom_score 越大，进程就越容易被系统杀死。
+
+当然了，如果你不希望应用程序被 OOM 杀死，可以调整进程的 oom_score_adj，减小 OOM分值，进而降低被杀死的概率。
+
+或者，你还可以开启内存的 overcommit，允许进程申请超过物理内存的虚拟内存（这儿实际上假设的是，进程不会用光申请到的虚拟内存）。</code></pre>
+<p>上面机制的内容引自<a href="https://time.geekbang.org/column/article/76675" target="_blank" rel="noopener">倪朋飞发表在极客时间的课程</a>, 版权文章, 阅读完成版可能需要付费。</p>
+<hr />
+<h2 id="share">Share</h2>
+<p><a href="https://zhuanlan.zhihu.com/p/64916177?utm_source=wechat_session&amp;utm_medium=social&amp;utm_oi=540994080696434688&amp;from=timeline&amp;isappinstalled=0&amp;wechatShare=1&amp;s_s_i=hw36OvKwGR7iQ1T74AlKZRRC1J1XliA8AEly3EqM9Vk%3D&amp;s_r=0" target="_blank" rel="noopener">微软最爽命令行工具发布！引诱开发者叛逃Mac，开源六小时冲上GitHub第二</a></p>
+<p>我竟然分享的是一篇软文, 没错, 它击中了部分我对ide和开发环境的幻想, 即使它是一篇软文, 我仍旧期待。在此分享, 给所有ide洁癖者。</p>
+<hr />
+<h2 id="end">End</h2>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/21/ARTS-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/21/ARTS-4/" class="post-title-link" itemprop="url">ARTS-4</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-21 18:34:20" itemprop="dateCreated datePublished" datetime="2019-04-21T18:34:20+08:00">2019-04-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-06 12:18:00" itemprop="dateModified" datetime="2020-05-06T12:18:00+08:00">2020-05-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index"><span itemprop="name">ARTS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="rts第四周">RTS第四周</h1>
+<h2 id="algorithm">Algorithm</h2>
+<p><strong>Search in Rotated Sorted Array</strong> ### 引言 本周leetcode的推送又是一道easy难度的题目, 还是一个使用二分查找来解决的简单猜数问题, 本着要进步的想法, 做完了那道题, 但是感觉没什么可分享的点, 于是顺延之前解决的问题的顺序做了本题。</p>
+<h3 id="description">Description</h3>
+<blockquote>
+<p>Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.</p>
+<p>(i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).</p>
+<p>You are given a target value to search. If found in the array return its index, otherwise return -1.</p>
+<p>You may assume no duplicate exists in the array.</p>
+<p>Your algorithm's runtime complexity must be in the order of O(log n).</p>
+<p>Example 1:</p>
+<p>Input: nums = [4,5,6,7,0,1,2], target = 0 Output: 4 Example 2:</p>
+<p>Input: nums = [4,5,6,7,0,1,2], target = 3 Output: -1</p>
+</blockquote>
+<p>有一个已经升序排列的数组, 从其中一个元素的位置给他截断, 然后移动拼接, 成为新的数组, 就是按照元素为单位对数组进行循环移位。</p>
+<h3 id="思路">思路</h3>
+<p>一看到这个题目, 二分搜索马上出现在脑海里, 后来一分析, 貌似行不通, 因为一般的二分搜索只能处理单调的数组(这个位置我被自己蠢哭了)。</p>
+<p>这个问题的关键是, 第一次进行取mid操作时, mid落在哪个区间, 如图 (sorry, oos 到期了, 待更换):</p>
+<ul>
+<li>当 mid 落于左半边时, 记它为midl,否则,记为midr。若v[mid]恰等于target, 则查找结束。</li>
+<li>当 mid = midl , 此时mid落于左半边, 典型特征为 v[mid] &gt; v[left] 此时, 再以一般的二分法判断该如何移动left和right指针即可, 此时, 若目标小于v[mid] 且大于v[left] 则 right指针左移, 否则left指针右移。</li>
+<li>当 mid = midr, 此时mid落于右半边, 典型特征为 v[mid] &lt; v[left] 此时, 以一般二分判断移动指针, 若target &lt; v[mid]且target &lt; v[right] 则左移right 否则, 右移left。</li>
+</ul>
+<h3 id="代码">代码</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">search</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-keyword">int</span> target)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> left=<span class="hljs-number">0</span>, right=nums.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">while</span>(left&lt;=right)&#123;<br>            <span class="hljs-keyword">int</span> mid=(left+right)/<span class="hljs-number">2</span>;<br>            <span class="hljs-keyword">if</span> (nums[mid]==target) <span class="hljs-keyword">return</span> mid;<br>            <span class="hljs-keyword">if</span> (nums[mid]&gt;=nums[left]) &#123;    <span class="hljs-comment">// mid is midl</span><br>                <span class="hljs-keyword">if</span> (target&gt;=nums[left]&amp;&amp;target&lt;=nums[mid]) &#123;<br>                    right=mid<span class="hljs-number">-1</span>;<br>                &#125;<span class="hljs-keyword">else</span>&#123;<br>                    left=mid+<span class="hljs-number">1</span>;<br>                &#125;<br>            &#125;<span class="hljs-keyword">else</span>&#123;                          <span class="hljs-comment">// mid is midr</span><br>                <span class="hljs-keyword">if</span> (target&gt;=nums[mid]&amp;&amp;target&lt;=nums[right])&#123;<br>                    left=mid+<span class="hljs-number">1</span>;<br>                &#125;<span class="hljs-keyword">else</span>&#123;<br>                    right=mid<span class="hljs-number">-1</span>;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h3 id="result">Result</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Runtime</th>
+<th>Memory</th>
+<th>Language</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Accepted</td>
+<td>4 ms</td>
+<td>8.6 MB</td>
+<td>cpp</td>
+</tr>
+</tbody>
+</table>
+<h2 id="review">Review</h2>
+<h3 id="引言">引言</h3>
+<p>本周review文章来自medium的一次每日推送, 高亮文章为 "被你所不知道的追踪器填满的手机App", 我平时使用手机也比较洁癖, 一个app如果要求我授权一个我认为它不需要的权限我是坚决不给的, 我宁可不用这个app, 这里就不得不说各政府部门外包给三流公司做的官方app了, 各种权限要求一大堆, 包括位置、电话短信、通讯录 什么的, 我就纳闷了,你一个公积金管理的app要这些权限干啥!!!</p>
+<p>所以, 当我第一眼看见这个题目的时候, 确认过眼神, 就是它了。 <a href="https://onezero.medium.com/the-app-privacy-crisis-apple-and-google-need-to-fix-now-4e3590f2fc52" target="_blank" rel="noopener">Your Smartphone Apps Are Filled With Trackers You Know Nothing About</a></p>
+<h3 id="文章主旨">文章主旨</h3>
+<ul>
+<li>我们使用手机App大多收集了各种各样的传感器数据和用户行为数据。</li>
+<li>手机app的崩溃日志可能带有大量其他的信息。</li>
+<li>即使开发者无意使用和收集这些数据,但是他们继承的各种SDK无时无刻不在做这些工作。</li>
+</ul>
+<h3 id="section"></h3>
+<h2 id="tips">Tips</h2>
+<p><strong>Lua的代理模型</strong></p>
+<h3 id="引言-1">引言</h3>
+<p>最新一个资料片要上一个跨服的好友功能, 之前我们已经有一个本服务器的好友功能了, 其实现是在玩家进行登录的时候将所有好友信息推送给客户端, 每当添加一个好友时,也将好友信息推送给客户端保存, 这样, 客户端可以即时的展示好友的界面和功能。 新的功能要求玩家可以跨服务器添加好友, 这样一来, 如果要做到在玩家登陆时推送好友信息, 那么玩家所属服务器或者中心服务器必须去各个服务器拉取好友信息,然后统一推送给玩家, 但是这个方案很复杂, 涉及到很多的拉取同步问题。</p>
+<p>所以, 我设计新的方案, 在玩家登陆时, 只发送玩家的好友id和服务器id给客户端, 当客户端需要展示ui的时候再去目标服务器拉取, 然后展示。</p>
+<p>之前思虑不周, 等新的好友模块都做完了, 才发现, 一些其他的模块对好友模块的数据有依赖, 它们没有去拉取再显示, 而是直接从好友模块中去取数据, 所以, 报空异常了。 稍微统计了一下, 这样的ui有很多很多, 单靠我挨个去改动是忙不完的。</p>
+<p>此时, 一个牛逼的同事提出了他的解决方案(实际上之前他就说过, 但是我没在意), 使用一个代理的模式, 其他模块拿去数据的时候返回给他一个代理的包装对象, 此时好友模块再去动态的拉取信息, 响应回来后, 再去使用事件机制更新ui。</p>
+<p>本技巧, 就是这个方案的实现。</p>
+<h3 id="原方案伪代码">原方案伪代码</h3>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">--[[</span><br><span class="hljs-comment">    这是最早的代码, 本地缓存了好友数据, 所以, 可以直接拉取到好友数据, 用以UI显示</span><br><span class="hljs-comment">]]</span><br>    <span class="hljs-keyword">local</span> friendinfo = friendmodule.getFriendInfo(friendid)<br>    ui.panelXXX:Show(friendinfo)<br></code></pre></td></tr></table></figure>
+<p>基于之前的功能需求,这样做无可厚非, 也是最简易的做法, 但是这个方案给后面功能的拓展埋下了坑,再增加跨服支持的时候需要修改大量的内容。</p>
+<h3 id="我改过后好友模块相关ui的实现伪代码">我改过后好友模块相关ui的实现伪代码</h3>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">--[[</span><br><span class="hljs-comment">    修改后的代码, 尝试去从好友模块获取数据, 若存在,则跟之前一样用, 若不存在, 那么去请求数据, 然后在回调中重新渲染ui</span><br><span class="hljs-comment">]]</span><br><br>    <span class="hljs-keyword">local</span> friendinfo = friendmodule.getFriendInfo(friendid)<br>    <span class="hljs-keyword">if</span> friendinfo <span class="hljs-keyword">then</span><br>        ui.panelXXX:Show(friendinfo)<br>    <span class="hljs-keyword">else</span> <br>        friendmodule.queryFriendFromServer(friendid, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span> <span class="hljs-comment">-- callback function</span><br>            friendinfo = friendmodule.getFriendInfo(friendid)<br>            ui.panelXXX:Show(friendinfo)<br>        <span class="hljs-keyword">end</span>)<br>    <span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<p>这个做法基本实现了新的功能要求, 而且基于懒加载节省了大多数时候不必要的内存消耗(实际游戏中, 玩家大多数的时候整个游戏过程都不会开好友ui), 但是, 这个修改需要改动的位置非常多, 几乎所有涉及到好友数据的ui都需这么改, 几乎无可避免会出现遗漏。</p>
+<h3 id="代理方案">代理方案</h3>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">--[[</span><br><span class="hljs-comment">    这是最早的代码, 本地缓存了好友数据, 所以, 可以直接拉取到好友数据, 用以UI显示</span><br><span class="hljs-comment">]]</span><br>    <span class="hljs-keyword">local</span> friendinfo = friendmodule.getFriendInfo(friendid)<br>    ui.panelXXX:Show(friendinfo)<br></code></pre></td></tr></table></figure>
+<p>简单从上面伪代码看来,我们并没有做任何的更改。 确实, 因为这个方案就是为了减少我第二个方案的复杂度来做的。 实际上<code>friendmodule.getFriendInfo</code>这个函数的实现做了修改, 它所返回的不再是一个 "<code>rawdata</code>"了, 而是一个代理对象<code>wrapper</code>。</p>
+<p>原先的实现: <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs lua">friendmodule.getFreindInfo = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(friend)</span></span><br>    <span class="hljs-keyword">return</span> data[friend]<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure></p>
+<p>修改后的实现</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs lua">wrapper = &#123; data = &#123;&#125;&#125;<br>wrapper.new = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(id)</span></span> <br>    <span class="hljs-keyword">local</span> instance = &#123; __data=&#123;&#125;&#125;<br>    <span class="hljs-built_in">setmetatable</span>(instance, &#123;<span class="hljs-built_in">__index</span> = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(table, key)</span></span><br>        <span class="hljs-keyword">local</span> res = instance.__data[key]<br>        <span class="hljs-keyword">if</span> res <span class="hljs-keyword">then</span><br>            <span class="hljs-keyword">return</span> res;<br>        <span class="hljs-keyword">end</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">rawget</span>(<span class="hljs-built_in">table</span>, key)<br>    <span class="hljs-keyword">end</span>&#125;)<br>    friendmodule.queryFriendFromServer(id, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(callbackdata)</span></span> <span class="hljs-comment">-- callback </span><br>            instance.__data = callbackdata<br>            eventsystem.redraw()<br>        <span class="hljs-keyword">end</span>)<br>    <span class="hljs-keyword">return</span> instance<br><span class="hljs-keyword">end</span><br><br>friendmodule.getFreindInfo = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(friend)</span></span><br>    <span class="hljs-keyword">local</span> friendinfo = data[friend]<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> friendinfo <span class="hljs-keyword">then</span><br>        <span class="hljs-keyword">local</span> res = warpper.new(friend)<br>        data[friend] = res<br>        <span class="hljs-keyword">return</span> res<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">return</span> friendinfo<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<h2 id="share">Share</h2>
+<h3 id="引言-2">引言</h3>
+<p>本次本来想分享我自己写的关于java语言的锁同步的一些总结, 但是在写另一篇博文的时候, 我尝试向博文里添加几个流程图, 我使用draw.io画好了图, 但是同事告诉我markdown本身可以画流程图, 没想到它这么强大, 临时改成本次分享一篇半官方的帮助指南, 介绍markdown的各种特性和功能。</p>
+<h3 id="正文">正文</h3>
+<p><a href="https://coding.net/help/doc/project/markdown.html" target="_blank" rel="noopener">MarkDown语法介绍</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/07/ARTS-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/07/ARTS-3/" class="post-title-link" itemprop="url">ARTS-3</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-07 20:12:04" itemprop="dateCreated datePublished" datetime="2019-04-07T20:12:04+08:00">2019-04-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-06 12:17:47" itemprop="dateModified" datetime="2020-05-06T12:17:47+08:00">2020-05-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index"><span itemprop="name">ARTS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="rts-3-第三周">RTS-3 第三周</h1>
+<h2 id="review-an-introduction-of-to-principles-of-functional-programming">Review an introduction of to principles of Functional Programming</h2>
+<p><a href="https://medium.freecodecamp.org/an-introduction-to-the-basic-principles-of-functional-programming-a2c2a15c84" target="_blank" rel="noopener"><strong>函数式编程规约简介</strong></a></p>
+<p>标题如是，这是一篇关于函数式编程的入门级别的简介文章。作者同样提供了一篇基于JavaScript的解说。</p>
+<h3 id="回顾">回顾</h3>
+<pre><code>长时间使用面向对象的编程语言工作和学习后，是时候用几个步骤来回顾一下系统复杂度了。
+
+复杂性是软件难遇理解和维护的全部原因。</code></pre>
+<h3 id="函数式编程是什么">函数式编程是什么</h3>
+<pre><code>函数式编程是一种编程范式，一种构建计算机程序和元素的风格，它将计算视为数学上函数，并避免了状态变化和可变数据。-- wiki </code></pre>
+<h3 id="纯函数">纯函数</h3>
+<p>纯函数是函数式编程中第一个重要概念，那么。 #### 纯函数是什么</p>
+<p>纯函数首先是一个函数，它具有两个基本特征： 1. 多次执行，给定相同的参数必然得到相同的结果。 2. 执行中，不会带来可以观察到的副作用状态改变。</p>
+<h4 id="纯函数的优势">纯函数的优势</h4>
+<p>纯函数易于测试，它的特征决定了对于这类程序的测试简单有效。</p>
+<h3 id="不变性">不变性</h3>
+<p>不变性是函数式编程的又一重要特性，很直观。数据一旦创建就永不可更改。 对于多年沉浸面向对象变成的程序员易于理解，就是所有的数据都是const数据，同时感到不可思议。</p>
+<p>如文中提到的，一旦数据创建后不可变，那么，像非函数式语言中的for each 循环该如何实现呢？ 在函数式编程范式中，循环使用递归来实现。这里不展开讲述。</p>
+<h3 id="引用透明性">引用透明性</h3>
+<p>基本上，如果一个函数对相同的输入始终产生相同的结果，那么它就是引用透明的。</p>
+<pre><code>pure functions + immutable data = referential transparency</code></pre>
+<p>在这个前提下, 许多类似 (+3(+ 5 8)) 一类的表达式, 就会直接优化为它的常量结果, 因为他们总是不变的。</p>
+<h3 id="函数式一等公民">函数式一等公民</h3>
+<p>函数式编程范式中, 函数不止作为函数, 它也被视为一个值, 当做一个数据来用。(个人认为类似于C语言中的函数, 实际上函数指针也可以这么用, 只是在语言和语法层面是体现的不明显)</p>
+<h3 id="高阶函数">高阶函数</h3>
+<h4 id="什么是高阶函数">什么是高阶函数</h4>
+<p>高阶函数首先要是一个函数, 其次, 得满足两个特点至少其中之一: 1. 参数列表中至少含有一个函数类型的形参。 2. 它的返回值是一个函数。</p>
+<blockquote>
+<p>When we talk about higher-order functions, we mean a function that either: 1.takes one or more functions as arguments, or<br> 2.returns a function as its result</p>
+</blockquote>
+<h2 id="未尽之言">未尽之言</h2>
+<p>以上可能我自己也摸不着头脑,但是我已经把大意总结了一下, 剩下的未尽之言都是作者写了一些琐碎处的细节, 举例子贴代码来阐明的自己的观点, 这个我不好总结, 总之, 大意如此, 这是一篇函数式编程的入门文章, 浅显易懂, 深入浅出, 从未接触过函数式编程语言的我读后收益匪浅, 确实的开阔了眼界和思维。</p>
+<h2 id="algorithm-first-bad-version">Algorithm: <em>First Bad Version</em></h2>
+<h3 id="引言">引言</h3>
+<p>本周就做了两道leetcode题目, 要分享的这个题目来源于Leetcode的Weekly Digest, 它试一次邮件推送。 easy难度, 给我个easy的题目,大概是leetcode都认为我比较水。</p>
+<p>原始邮件:</p>
+<pre><code>Hi earneet,
+
+We have an easy question that we thought you might be interested in solving:
+
+First Bad Version
+Solved 211443 times
+You are a product manager and currently leading a team to develop a new product. Unfortunately, the latest version of...</code></pre>
+<p><a href="https://leetcode.com/problems/first-bad-version/" target="_blank" rel="noopener">First Bad Version</a></p>
+<h3 id="description">Description</h3>
+<pre><code>278. First Bad Version
+Easy
+
+You are a product manager and currently leading a team to develop a new product. Unfortunately, the latest version of your product fails the quality check. Since each version is developed based on the previous version, all the versions after a bad version are also bad.
+
+Suppose you have n versions [1, 2, ..., n] and you want to find out the first bad one, which causes all the following ones to be bad.
+
+You are given an API bool isBadVersion(version) which will return whether version is bad. Implement a function to find the first bad version. You should minimize the number of calls to the API.
+
+Example:
+
+Given n = 5, and version = 4 is the first bad version.
+
+call isBadVersion(3) -&gt; false
+call isBadVersion(5) -&gt; true
+call isBadVersion(4) -&gt; true
+
+Then 4 is the first bad version. </code></pre>
+<p>假设我是一个项目管理, 正在领导一个开发团队做一个新产品, 不幸的是我的项目出了问题, 但不知道是哪个版本, 我的版本号管理是从1开始的自增升序, 我有个验证api <code>isBadVersion(version)</code>来验证当前版本是好的还是坏的, 问: 通过最少次的验证来找到第一个坏掉的版本, 应该怎么做。</p>
+<h3 id="思路">思路</h3>
+<p>这是一个数组的查找问题, 从一堆版本号构成的数组<code>[1,2,3,4 ... n]</code>中,找到第一个符合要求的索引。 这个情况非常熟悉了, 如果这个数组是关于索引有规律的, 那么我们可以通过哈希计算获得位置, 如果是有顺序的,也可以通过二分查找来加快搜索。 乍一看, 这个数组符合第二个情况, 但是, 版本号并不是我们直接要找的目标值,它需要经过一次api调用的转换来达到目标数组。</p>
+<p>好在, 这个题目还有个隐含的条件, 在某一个出错版本, 也就是我们的目标之前的所有版本, 都是正确的, 在这个版本之后, 都是错误的, 我可以映射好版本结果为0,而坏版本结果为1,那么原数组就被转换为了 <code>[0, ... m, 1 ... n]</code> 其中 m &gt;= 0 且 m &lt;= n。 至此已经完成了升序数组的转换。</p>
+<p>这个题目与一般查找稍有差异, 它当中存在了大量的重复元素(它本来就只有两种元素), 我需要找到目标元素的第一次出现的位置。这里,基本可以确定是二分法查找没错了, 继续分析如何进行二分。</p>
+<ol type="1">
+<li><strong>middle位置的结果为0</strong>。 此种情况下, 数组部分应为如 [...,<span style="color:red"><em>0</em></span>, 0, <strong>0</strong>, 1, <span style="color:red"><em>1</em></span> ...], 粗体位置为middle,红色元素分别为left和right, 这种情况下, 应把left指针右移。使 left从当前middle的下一个元素迭代。</li>
+<li><strong>middle位置的结果为1</strong>。 此种情况下, 数组部分应为[...,<span style="color:red"><em>0</em></span>, 0,1, <strong>1</strong>, 1, <span style="color:red"><em>1</em></span> ...], 粗体位置为middle,红色元素分别为left和right, 这种情况下, 应当将right指针左移,从当前middle元素位置开始迭代。</li>
+</ol>
+<p>如此, 二分的迭代规则已经明确了, 剩下的问题就是代码实现了。</p>
+<h3 id="answer">Answer</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// Forward declaration of isBadVersion API.</span><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isBadVersion</span><span class="hljs-params">(<span class="hljs-keyword">int</span> version)</span></span>;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">firstBadVersion</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">register</span> <span class="hljs-keyword">int</span> <span class="hljs-built_in">min</span> = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-built_in">min</span> &lt;= n) &#123;<br>          <span class="hljs-keyword">register</span> <span class="hljs-keyword">int</span> middle = <span class="hljs-built_in">min</span> + (n-<span class="hljs-built_in">min</span>)/<span class="hljs-number">2</span>;<br>          <span class="hljs-keyword">if</span> (isBadVersion(middle))&#123;<br>            n = middle - <span class="hljs-number">1</span>;<br>          &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-built_in">min</span> = middle + <span class="hljs-number">1</span>;<br>          &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">min</span> &gt; n ? <span class="hljs-built_in">min</span> : n;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>当我写这个篇文的时候才发现, 可能以上代码虽然被AC了, 但是可能是错误的, 简略先记一下我发现的问题, 后面会更正本文。</p>
+<p><span style="border-bottom:2px dashed red;">为了更快速地迭代,我在指针移动时, 指针略过已经试过的当前middle元素, 如果是左移,则使 right = middle - 1, 若为右移, 则使 left = middle + 1, 若如此做, 一个尴尬的问题就来了, 这样可能恰好错过了目标解, 就如 [...,<span style="color:red"><em>0</em></span>, 0, 0, <strong>1</strong>, 1, 1, <span style="color:red"><em>1</em></span> ...] 这种情况, right指针左移时, 下次的位置应为左侧第二个0, 现在, 目标解已经脱出了我们的 left和right指针范围!!</span></p>
+<p>以上这段, 使我写本文时才发现, 夜深了, 先记在这里, 明后天想明白了之后再更正。</p>
+<h2 id="tip-尽早失败短流程优先">Tip 尽早失败,短流程优先</h2>
+<h3 id="引言-1">引言</h3>
+<p>本次分享的尽早失败是我在乐天派工作的时候, 项目组杨老师传授给我的经验,在后面的工作中屡试不爽, 特作一个分享, 完整的技巧不止于此, 在本篇中, 只分享其中的一个小点, 在条件语句中优先失败。这个技巧在很多的IDE中应该都会有提示, 但是项目代码里还是常见不遵循这个的代码, 我并不是说不这么写一定不好, 但是个人还是倾向于尽早失败, 让代码结构更加清晰。</p>
+<h3 id="尽早失败">尽早失败</h3>
+<p>不管新手还是老鸟, 在项目中总会看到如下面这样的代码 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-keyword">function</span> () &#123;<br>    <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> something pre<br>    <span class="hljs-keyword">if</span> (checkcondition1) &#123;<br>        <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> something <span class="hljs-number">1</span><br>        <span class="hljs-keyword">if</span> (checkcondition2) &#123;<br>            <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> something <span class="hljs-number">2</span><br>            <span class="hljs-keyword">if</span> (checkcondition3) &#123;<br>                <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> something3<br>            &#125;<br>        &#125;<br>    &#125;<br>    return result;<br>&#125;<br></code></pre></td></tr></table></figure> 甚至是在循环结构里出现如上代码 <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">function</span> () &#123;<br>    <span class="hljs-comment">// do something pre</span><br>    <span class="hljs-selector-tag">if</span> (checkcondition0)&#123;<br>        <span class="hljs-selector-tag">for</span> () &#123;<br>            <span class="hljs-selector-tag">if</span> (checkcondition1) &#123;<br>                <span class="hljs-comment">// do something 1</span><br>                <span class="hljs-selector-tag">if</span> (checkcondition2) &#123;<br>                    <span class="hljs-comment">// do something 2</span><br>                    <span class="hljs-selector-tag">if</span> (checkcondition3) &#123;<br>                        <span class="hljs-comment">// do something3</span><br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-selector-tag">return</span> <span class="hljs-selector-tag">result</span>;<br>&#125;<br></code></pre></td></tr></table></figure> 如果感觉第一个代码还可以接受, 那么, 第二个代码的缩进层级就让人感到可怕, 但是这样的代码确确实实的在项目里出现了。</p>
+<p>这里我针对第二个代码, 做一个"尽早失败"的风格修改。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">function () &#123;<br>    <span class="hljs-comment">// do something pre</span><br>    <span class="hljs-keyword">if</span> (not checkcondition0)<br>        <span class="hljs-keyword">return</span>;<br>    <span class="hljs-keyword">for</span> () &#123;<br>        <span class="hljs-keyword">if</span> (not checkcondition1) <br>            <span class="hljs-keyword">continue</span>;<br>        <span class="hljs-comment">// do something 1</span><br>        <span class="hljs-keyword">if</span> (not checkcondition2) <br>            <span class="hljs-keyword">continue</span>;<br>        <span class="hljs-comment">// do something 2</span><br>        <span class="hljs-keyword">if</span> (not checkcondition3)<br>            <span class="hljs-keyword">continue</span>;<br>        <span class="hljs-comment">// do something3</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这个写法, 使的原先代码尾部一连串难以搞懂层级的<code>}</code>不见了, 缩进层级由6层, 缩减到了3层, 整个代码都条理了。</p>
+<p>这就是杨老师传授的所谓的"尽早失败"技巧的其中一个应用, 在编写条件分支时,尽量不使用但条件的 <code>if (true) dosomething</code> 这样的分支, 而是使用 <code>if (not true) return; dosometing</code> 这样的分支, 这样会大大的减少代码的缩进层级。</p>
+<h3 id="短流程优先">短流程优先</h3>
+<p>还是不管新手还是老鸟, 在项目中总会看到如下面这样的代码 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-keyword">if</span> (condition) &#123;<br>    <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> operation <span class="hljs-number">1</span><br>    <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> operation <span class="hljs-number">2</span><br>    <span class="hljs-keyword">if</span> (condition2) &#123;<br>        <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> operation <span class="hljs-number">3</span><br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> operation <span class="hljs-number">4</span><br>    &#125;<br>    <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> operation <span class="hljs-number">5</span><br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-regexp">//</span> log a message <br>    return;<br>&#125;<br></code></pre></td></tr></table></figure> 更夸张一点的真实代码我就不贴出来了, 我自己亲身经历过的是, 一个 if 分支内写了整整两屏的代码, 然后else 分支内就打了一句错误日志, 向另一个系统发送了一条协议。</p>
+<p>这种情况下, 单单使用上面说的尽早失败进行修改虽然也可以, 但是牵扯到了其他分支内也有有用操作, 貌似还是差点意思。所以, 这里倾向于"短流程优先", 即写为: <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-keyword">if</span> (not condition) &#123;<br>    <span class="hljs-regexp">//</span> log a message <br>    return;<br>&#125; <br><span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> operation <span class="hljs-number">1</span><br><span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> operation <span class="hljs-number">2</span><br><span class="hljs-keyword">if</span> (condition2) &#123;<br>    <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> operation <span class="hljs-number">3</span><br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> operation <span class="hljs-number">4</span><br>&#125;<br><span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> operation <span class="hljs-number">5</span><br></code></pre></td></tr></table></figure> 将流程最短, 最简洁的代码写在最前面, 这样条件分支会更清晰, 剩下最后的就只有一个复杂的情况, 代码阅读者会一下子厘清前面的分支情况, 然后慢慢分析最后的"一坨屎", 否则, 可能一开始就被这一坨搞乱了, 导致即使后面分支简洁, 也因为需要记忆前面一坨, 导致思维变累。</p>
+<p>杨老师传授加上我自己琢磨的针对这个的技巧不止如上, 本篇先分享这一些, 后面再分享时将剩下一些总结一下补充来。</p>
+<h2 id="share">Share</h2>
+<h3 id="引言-2">引言</h3>
+<p>本来预计的分享又又又又又未能完成。</p>
+<p>本次的分享源于我打算做的一个东西, 我之前有一块某米品牌的安卓平板, 由于我已经更新换代了设备,这个旧设备已经很久不用, 所以我打算把它改为一个便携显示器用来接ps4玩游戏, 所以ps4主机是比较封闭的, 输出我能够接入的只有hdmi接口, 要么我选择采购昂贵的视频采集卡来做,要么我只好研究下hdmi传输标准, 看看能不能做个硬件来做一下信号转换, 把hdmi信号编解码, 通过usb或者wifi传输给平板, 再在平板上解码输出, 于是,我翻阅了不少hdmi资料, 特分享一则讲的比较浅显的前辈的文。 ### 内容 <a href="https://blog.csdn.net/anpingbo/article/details/72717580" target="_blank" rel="noopener">HDMI协议</a></p>
+<h3 id="flag">Flag</h3>
+<p>我个人做java开发比较多, 之前就想写一篇文来讲明白jvm中synchonize和volatile的实现,但是各种原因一直未能成行, 再次立一个Flag, 在劳动节前ARTS中, share分享部分我要分享我的这篇文, 我一定要在期限内完成。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Earneet"
+      src="/images/avatar_head_icon.png">
+  <p class="site-author-name" itemprop="name">Earneet</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:earneet@gmail.com" title="E-Mail → mailto:earneet@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">鲁ICP备17028859号 </a>
+      <img src="/images/beian.png" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502037496" rel="noopener" target="_blank">京公网安备 11010502037496号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Earneet</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+    </div>
+</body>
+</html>
