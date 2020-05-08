@@ -1874,11 +1874,11 @@ c&#39;_{rc} = c_{cr}
 <p>对于转置矩阵的运算性质</p>
 <p><span class="math display">\[
 \begin{eqnarray}
-(\boldsymbol{M}^T)^T &amp;= \boldsymbol{M}  \tag{1} \\
-(k\boldsymbol{M})^T &amp;= k\boldsymbol{M}^T \tag{2} \\
-(\boldsymbol{A}\boldsymbol{B})^T &amp;= \boldsymbol{B}^T\boldsymbol{A}^T \tag{3} \\
-(\boldsymbol{A} + \boldsymbol{B})^T &amp;= \boldsymbol{A}^T + \boldsymbol{B}^T \tag{4} \\
-\det{\boldsymbol{M}} &amp;= \det{\boldsymbol{M}^T} \tag{5}
+(\boldsymbol{M}^T)^T &amp;=&amp; \boldsymbol{M}  \tag{1} \\
+(k\boldsymbol{M})^T &amp;=&amp; k\boldsymbol{M}^T \tag{2} \\
+(\boldsymbol{A}\boldsymbol{B})^T &amp;=&amp; \boldsymbol{B}^T\boldsymbol{A}^T \tag{3} \\
+(\boldsymbol{A} + \boldsymbol{B})^T &amp;=&amp; \boldsymbol{A}^T + \boldsymbol{B}^T \tag{4} \\
+\det{\boldsymbol{M}} &amp;=&amp; \det{\boldsymbol{M}^T} \tag{5}
 \end{eqnarray}
 \]</span></p>
 <p>即:</p>
@@ -1958,11 +1958,11 @@ c&#39;_{rc} = c_{cr}
 <h4 id="行列式的性质">行列式的性质</h4>
 <p><span class="math display">\[
 \begin{aligned}
-|\boldsymbol{A}| &amp; = |\boldsymbol{A}^T| \\
-|\boldsymbol{A}\boldsymbol{B}| &amp; = |\boldsymbol{B}\boldsymbol{A}| \\
-|k\boldsymbol{A}| &amp; = k^n|\boldsymbol{A}| \\
-|\boldsymbol{A}\boldsymbol{B}| &amp; = |\boldsymbol{A}||\boldsymbol{B}| \\
-|\boldsymbol{A}^n| &amp; = |\boldsymbol{A}|^n \\
+|\boldsymbol{A}| &amp;= |\boldsymbol{A}^T| \\
+|\boldsymbol{A}\boldsymbol{B}| &amp;= |\boldsymbol{B}\boldsymbol{A}| \\
+|k\boldsymbol{A}| &amp;= k^n|\boldsymbol{A}| \\
+|\boldsymbol{A}\boldsymbol{B}| &amp;= |\boldsymbol{A}||\boldsymbol{B}| \\
+|\boldsymbol{A}^n| &amp;= |\boldsymbol{A}|^n \\
 \end{aligned}
 \]</span></p>
 <p>n 为矩阵的维数</p>
@@ -2034,6 +2034,126 @@ c_{13}  &amp;   c_{23}  &amp;   c_{33}
         <tag>代数余子式</tag>
         <tag>伴随</tag>
         <tag>高斯消元</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>贝叶斯定理</title>
+    <url>/2018/05/08/bayes-theorem/</url>
+    <content><![CDATA[<h1 id="贝叶斯定理">贝叶斯定理</h1>
+<h3 id="贝叶斯定理定义">贝叶斯定理定义</h3>
+<p>贝叶斯定理的定义:</p>
+<p>对于随机事件 <span class="math inline">\(A、B\)</span> 若有 <span class="math inline">\(P(B) \neq 0\)</span> 则存在: <span class="math display">\[
+\begin{aligned}
+    P(A|B)*\frac{P(B)}{P(A)} &amp;= \frac{P(AB)}{P(B)} * \frac{P(B)}{P(A)}  \\
+    &amp;= \frac{P(AB)}{P(A)} \\
+    &amp;= P(B|A)
+\end{aligned}
+\]</span></p>
+<p>稍微变一下, 可以写一个更好记的形式</p>
+<p><span class="math display">\[
+    P(B|A) = P(A|B)*\frac{P(B)}{P(A)}
+\]</span></p>
+<h3 id="贝叶斯定理的推导">贝叶斯定理的推导</h3>
+<p>由条件概率公式:</p>
+<p><span class="math display">\[
+    P(A|B) = \frac{P(A\bigcap B)}{P(B)} \tag{1}
+\]</span> <span class="math display">\[
+    P(B|A) = \frac{P(A\bigcap B)}{P(A)} \tag{2}
+\]</span></p>
+<p>我们将(1)式做如下变换:</p>
+<p>将公式1乘以 <span class="math display">\[
+    \frac{P(B)}{P(A)} \\
+\]</span> 得到 <span class="math display">\[
+    P(A|B) * \frac{P(B)}{P(A)} = \frac{P(A\bigcap B)}{P(A)} \tag{3} \\
+\]</span></p>
+<p>公式(3)的等号右边即为公式(2)的右边, 即: <span class="math display">\[
+    P(A|B) * \frac{P(B)}{P(A)} = P(B|A) \tag{4}
+\]</span></p>
+<p>公式(4) 即为贝叶斯定理公式</p>
+]]></content>
+      <categories>
+        <category>数学</category>
+        <category>概率论</category>
+      </categories>
+      <tags>
+        <tag>bayes</tag>
+        <tag>贝叶斯</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常见函数导数公式</title>
+    <url>/2020/05/08/derivation-table/</url>
+    <content><![CDATA[<h1 id="常用函数导数公式">常用函数导数公式</h1>
+<blockquote>
+<p>本篇主要总结常见的函数形式的导数公式。以类别为要。其他形式的函数和复合形式的函数均可以通过变形套用本篇公式来结合 <a href="/2020/05/03/derivation-rules/" title="求导规则">求导规则</a> 推导导函数。</p>
+</blockquote>
+<h3 id="常数函数导数">常数函数导数</h3>
+<p>常数函数, 形如</p>
+<p><span class="math display">\[
+f(x) = C 
+\]</span></p>
+<p>其中C为常数, 则导数为0</p>
+<p><span class="math display">\[
+f&#39;(x) = 0
+\]</span></p>
+<h3 id="幂函数导数">幂函数导数</h3>
+<p>幂函数形如:</p>
+<p><span class="math display">\[
+f(x) = x^{n}
+\]</span></p>
+<p>则幂函数的导函数为:</p>
+<p><span class="math display">\[
+f&#39;(x) = nx^{n-1}
+\]</span></p>
+<blockquote>
+<p>有些幂函数不以明显的形式来表现出来, 例如 <span class="math inline">\(f(x) = \sqrt{x}\)</span> 或者 <span class="math inline">\(f(x) = \frac{1}{x}\)</span> 的形式, 实际上, 他们只是 <span class="math inline">\(n\)</span> 取值不同的表达, 开根号表达形式的 <span class="math inline">\(n\)</span> 为一个自然数为底的分数,分式形式时 <span class="math inline">\(n\)</span> 为自然数的负值, 但是他们都遵从幂函数的导函数形式。</p>
+</blockquote>
+<h3 id="指数函数的导数">指数函数的导数</h3>
+<p>指数函数形如:</p>
+<p><span class="math display">\[
+f(x) = n^x
+\]</span></p>
+<p>其导数为:</p>
+<p><span class="math display">\[
+f(x) = n^x\ln{n}
+\]</span></p>
+<h3 id="对数函数导数">对数函数导数</h3>
+<p>形如</p>
+<p><span class="math display">\[
+f(x) = log_n(x)
+\]</span></p>
+<p>的函数。</p>
+<p><span class="math display">\[
+f&#39;(x) = \cfrac{1}{\ln{n}x}
+\]</span></p>
+<h3 id="三角函数导数">三角函数导数</h3>
+<p>常用三角函数导数</p>
+<p><strong>正弦函数</strong>:</p>
+<p><span class="math display">\[
+f(x) = sin(x)
+\]</span></p>
+<p><span class="math display">\[
+f&#39;(x) = cos(x)
+\]</span></p>
+<p><strong>余弦函数</strong></p>
+<p><span class="math display">\[
+f(x) = cos(x)
+\]</span></p>
+<p><span class="math display">\[
+f&#39;(x) = -sin(x)
+\]</span></p>
+]]></content>
+      <categories>
+        <category>数学</category>
+        <category>微积分</category>
+      </categories>
+      <tags>
+        <tag>导数</tag>
+        <tag>微积分</tag>
+        <tag>导函数</tag>
+        <tag>常见函数</tag>
+        <tag>导数表</tag>
+        <tag>三角导数</tag>
       </tags>
   </entry>
 </search>
