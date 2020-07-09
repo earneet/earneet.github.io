@@ -1362,7 +1362,7 @@ f(x) = log_n(x)
 \]</span></p>
 <p>的函数。</p>
 <p><span class="math display">\[
-f&#39;(x) = \cfrac{1}{\ln{n}x}
+f&#39;(x) = \cfrac{1}{x\ln{n}}
 \]</span></p>
 <h3 id="三角函数导数">三角函数导数</h3>
 <p>常用三角函数导数</p>
@@ -1813,7 +1813,7 @@ c&#39;_{rc} = c_{cr}
 <h5 id="三维矩阵行列式">三维矩阵行列式</h5>
 <p><span class="math display">\[
 \begin{aligned}
-|\boldsymbol{M}| &amp; = 
+|\boldsymbol{M}| &amp;=
 \left|
 \begin{matrix} 
     c_{11} &amp; c_{12} &amp; c_{13} \\
@@ -1821,7 +1821,8 @@ c&#39;_{rc} = c_{cr}
     c_{31} &amp; c_{32} &amp; c_{33} \\
 \end{matrix}
 \right| \\
-&amp; = (c_{11}c_{22}c_{33})+(c_{12}c_{23}c_{31})+(c_{13}c_{21}c_{32}) \\ &amp;  -(c_{11}c_{23}c_{32})-(c_{12}c_{21}c_{33})-(c_{13}c_{22}c_{31})
+&amp;=(c_{11}c_{22}c_{33})+(c_{12}c_{23}c_{31})+(c_{13}c_{21}c_{32}) \\ 
+&amp;\;-(c_{11}c_{23}c_{32})-(c_{12}c_{21}c_{33})-(c_{13}c_{22}c_{31})
 \end{aligned}
 \]</span></p>
 <h5 id="更高维矩阵行列式">更高维矩阵行列式</h5>
@@ -2154,6 +2155,37 @@ F(k\boldsymbol{a}) &amp;=&amp; kF(\boldsymbol{a}) \tag{2}
       <tags>
         <tag>线性代数</tag>
         <tag>变换</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++在编译期实现源码层级的转换检测</title>
+    <url>/2020/07/09/cpp-cast-check-on-compile-time/</url>
+    <content><![CDATA[<h3 id="背景">背景</h3>
+<p>近期我们在做一个通用AI的项目时使用了UE4引擎，一个同事在阅读源码时发现了这一段代码写的比较“秀”，于是推荐给我，我阅读之后在此记录笔记。</p>
+<h3 id="原代码">原代码</h3>
+<p>这一段代码来自Epic Games Unreal Engine 4，其最新版本为: <a href="https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Source/Runtime/Core/Public/Templates/PointerIsConvertibleFromTo.h" target="_blank" rel="noopener">Github</a> 这是一个私有仓库，访问代码可能需要先加入<a href="https://github.com/orgs/EpicGames/teams/developers" target="_blank" rel="noopener">开发组</a></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> once</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"CoreTypes.h"</span></span><br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Tests if a From* is convertible to a To*</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> From, <span class="hljs-keyword">typename</span> To&gt;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">TPointerIsConvertibleFromTo</span></span><br><span class="hljs-class">&#123;</span><br><span class="hljs-keyword">private</span>:<br>	<span class="hljs-function"><span class="hljs-keyword">static</span> uint8  <span class="hljs-title">Test</span><span class="hljs-params">(...)</span></span>;<br>	<span class="hljs-function"><span class="hljs-keyword">static</span> uint16 <span class="hljs-title">Test</span><span class="hljs-params">(To*)</span></span>;<br><br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-keyword">enum</span> &#123; Value  = <span class="hljs-keyword">sizeof</span>(Test((From*)<span class="hljs-literal">nullptr</span>)) - <span class="hljs-number">1</span> &#125;;<br>&#125;;<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TPointerIsConvertibleFromTo_TestBase</span></span><br><span class="hljs-class">&#123;</span><br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TPointerIsConvertibleFromTo_TestDerived</span> :</span> <span class="hljs-keyword">public</span> TPointerIsConvertibleFromTo_TestBase<br>&#123;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TPointerIsConvertibleFromTo_Unrelated</span></span><br><span class="hljs-class">&#123;</span><br>&#125;;<br><br><span class="hljs-keyword">static_assert</span>(TPointerIsConvertibleFromTo&lt;<span class="hljs-keyword">bool</span>, <span class="hljs-keyword">bool</span>&gt;::Value, <span class="hljs-string">"Platform TPointerIsConvertibleFromTo test failed."</span>);<br><span class="hljs-keyword">static_assert</span>(TPointerIsConvertibleFromTo&lt;<span class="hljs-keyword">void</span>, <span class="hljs-keyword">void</span>&gt;::Value, <span class="hljs-string">"Platform TPointerIsConvertibleFromTo test failed."</span>);<br><span class="hljs-keyword">static_assert</span>(TPointerIsConvertibleFromTo&lt;<span class="hljs-keyword">bool</span>, <span class="hljs-keyword">void</span>&gt;::Value, <span class="hljs-string">"Platform TPointerIsConvertibleFromTo test failed."</span>);<br><span class="hljs-keyword">static_assert</span>(TPointerIsConvertibleFromTo&lt;<span class="hljs-keyword">const</span> <span class="hljs-keyword">bool</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">void</span>&gt;::Value, <span class="hljs-string">"Platform TPointerIsConvertibleFromTo test failed."</span>);<br><span class="hljs-keyword">static_assert</span>(TPointerIsConvertibleFromTo&lt;TPointerIsConvertibleFromTo_TestDerived, TPointerIsConvertibleFromTo_TestBase&gt;::Value, <span class="hljs-string">"Platform TPointerIsConvertibleFromTo test failed."</span>);<br><span class="hljs-keyword">static_assert</span>(TPointerIsConvertibleFromTo&lt;TPointerIsConvertibleFromTo_TestDerived, <span class="hljs-keyword">const</span> TPointerIsConvertibleFromTo_TestBase&gt;::Value, <span class="hljs-string">"Platform TPointerIsConvertibleFromTo test failed."</span>);<br><span class="hljs-keyword">static_assert</span>(TPointerIsConvertibleFromTo&lt;<span class="hljs-keyword">const</span> TPointerIsConvertibleFromTo_TestDerived, <span class="hljs-keyword">const</span> TPointerIsConvertibleFromTo_TestBase&gt;::Value, <span class="hljs-string">"Platform TPointerIsConvertibleFromTo test failed."</span>);<br><span class="hljs-keyword">static_assert</span>(TPointerIsConvertibleFromTo&lt;TPointerIsConvertibleFromTo_TestBase, TPointerIsConvertibleFromTo_TestBase&gt;::Value, <span class="hljs-string">"Platform TPointerIsConvertibleFromTo test failed."</span>);<br><span class="hljs-keyword">static_assert</span>(TPointerIsConvertibleFromTo&lt;TPointerIsConvertibleFromTo_TestBase, <span class="hljs-keyword">void</span>&gt;::Value, <span class="hljs-string">"Platform TPointerIsConvertibleFromTo test failed."</span>);<br><br><span class="hljs-keyword">static_assert</span>(!TPointerIsConvertibleFromTo&lt;TPointerIsConvertibleFromTo_TestBase, TPointerIsConvertibleFromTo_TestDerived&gt;::Value, <span class="hljs-string">"Platform TPointerIsConvertibleFromTo test failed."</span>);<br><span class="hljs-keyword">static_assert</span>(!TPointerIsConvertibleFromTo&lt;TPointerIsConvertibleFromTo_Unrelated, TPointerIsConvertibleFromTo_TestBase&gt;::Value, <span class="hljs-string">"Platform TPointerIsConvertibleFromTo test failed."</span>);<br><span class="hljs-keyword">static_assert</span>(!TPointerIsConvertibleFromTo&lt;<span class="hljs-keyword">bool</span>, TPointerIsConvertibleFromTo_TestBase&gt;::Value, <span class="hljs-string">"Platform TPointerIsConvertibleFromTo test failed."</span>);<br><span class="hljs-keyword">static_assert</span>(!TPointerIsConvertibleFromTo&lt;<span class="hljs-keyword">void</span>, TPointerIsConvertibleFromTo_TestBase&gt;::Value, <span class="hljs-string">"Platform TPointerIsConvertibleFromTo test failed."</span>);<br><span class="hljs-keyword">static_assert</span>(!TPointerIsConvertibleFromTo&lt;TPointerIsConvertibleFromTo_TestBase, <span class="hljs-keyword">bool</span>&gt;::Value, <span class="hljs-string">"Platform TPointerIsConvertibleFromTo test failed."</span>);<br><span class="hljs-keyword">static_assert</span>(!TPointerIsConvertibleFromTo&lt;<span class="hljs-keyword">void</span>, <span class="hljs-keyword">bool</span>&gt;::Value, <span class="hljs-string">"Platform TPointerIsConvertibleFromTo test failed."</span>);<br></code></pre></td></tr></table></figure>
+<h3 id="分析">分析</h3>
+<p>C++编程语言可以在编译期间确定一个类型是否可以转换为另一个类型，但是它没有提供一个展示这个信息的关键字，如果不加检测的直接使用类型转换操作符(C style转换和 static_cast&lt;&gt;)操作符，则会引起编译器报错。</p>
+<p>上面这个代码实现了一个这样的转换检测的类似“编译期运算符”的操作， 可以在编译期获知两个类型是否可转换的关系。</p>
+<h4 id="利用-sizeof-和-函数调用编译期绑定的特性">利用 sizeof 和 函数调用编译期绑定的特性</h4>
+<p>C++ sizeof运算符可以在编译期实现“常量替换” (这里注意sizeof并不总是在编译期就能确定其值)。</p>
+<p>C++ 在进行函数调用时，基于编译期函数调用解析（有些资料把它命名为静态多态）的特征，我们在编译时即可确定将要调用哪一个具体函数。这里，就是利用了函数返回值类型不同来在源码层级上确定了到底是调用了哪一个函数，从而反映出目标类型与对照类型的转换关系。</p>
+<p>实现的关键代码:</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> From, <span class="hljs-keyword">typename</span> To&gt;<br><span class="hljs-keyword">enum</span> &#123; Value  = <span class="hljs-keyword">sizeof</span>(Test((From*)<span class="hljs-literal">nullptr</span>)) - <span class="hljs-number">1</span> &#125;;<br></code></pre></td></tr></table></figure>
+<p>对空指针做一个强制类型转换，解释为From类型指针，然后作为参数调用Test函数， 在代码中，Test有两个实现，其中一个为<code>To*</code>类型参数, 另一个则为任意类型的泛参。</p>
+<p>这个调用在编译期即可确定， 若From类型可以兼容<code>To</code>类型（即，有继承层级上的直接关系，或者满足隐式转换规则），则<code>uint16 Test(To*)</code> 函数将被绑定, 否则，<code>uint8 Test(...)</code> 函数将被绑定。而这两个函数的返回值类型被<code>sizeof</code>运算符在编译期捕捉到，并得到长度，使用长度来反映是否可以转换来给Value赋值，从而实现了一个源码级别上的在编译期确定是否兼容的检测运算符。</p>
+]]></content>
+      <categories>
+        <category>编程语言</category>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>编译期</tag>
+        <tag>类型转换</tag>
+        <tag>C++</tag>
+        <tag>sizeof</tag>
+        <tag>静态多态</tag>
       </tags>
   </entry>
 </search>
