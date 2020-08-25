@@ -183,6 +183,229 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/ARTS-6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/06/25/ARTS-6/" class="post-title-link" itemprop="url">ARTS-6</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-06-25 13:23:09" itemprop="dateCreated datePublished" datetime="2017-06-25T13:23:09+08:00">2017-06-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-06 12:18:25" itemprop="dateModified" datetime="2020-05-06T12:18:25+08:00">2020-05-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index"><span itemprop="name">ARTS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="arts-6">ARTS-6</h1>
+<h2 id="algorithm">Algorithm</h2>
+<h3 id="引言">引言</h3>
+<p>放了个劳动节假, 玩的有点疯了, 所以这个题目就来个简单点吧</p>
+<h3 id="description">Description</h3>
+<h4 id="题目">题目</h4>
+<p><strong>3Sum</strong></p>
+<pre><code>Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
+
+Note:
+
+The solution set must not contain duplicate triplets.
+
+Example:
+
+Given array nums = [-1, 0, 1, 2, -1, -4],
+
+A solution set is:
+
+    [
+      [-1, 0, 1],
+      [-1, -1, 2]
+    ]</code></pre>
+<h4 id="大意">大意</h4>
+<p>给出一个整数数组nums, 找出数组中所有的不同组合 a, b, c , 使之满足 a + b + c 之和等于0, 输出他们。</p>
+<h3 id="思路">思路</h3>
+<p>题目提供的数组是不保证顺序的,在这种情况下, 如果直接处理,那么我们不可避免的就要进行全遍历了, 显然这不可能是最优解, 所以, 最初的思路就是使源数组有序, 首先, 对它进行排序,使之升序排列。</p>
+<p>对于有序数组, 我们只需要控制游标移动就可以逐步进行和的数值调整, 所以, 每一次, 选取一个基准元素作为最左侧元素, 然后, 设置两个游标在它右侧, 逐步调整这两个游标使和为0即可。</p>
+<h3 id="resolution">Resolution</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; <span class="hljs-title">threeSum</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums)</span> </span>&#123;<br>      <span class="hljs-keyword">int</span> dimension = nums.<span class="hljs-built_in">size</span>();<br>      sort(nums.<span class="hljs-built_in">begin</span>(), nums.<span class="hljs-built_in">end</span>());<br>      <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; result;<br>      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;dimension<span class="hljs-number">-2</span>; ++i) &#123;<br>        <span class="hljs-keyword">if</span> (nums[i] &gt; <span class="hljs-number">0</span>) <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">int</span> f=i+<span class="hljs-number">1</span>, t=dimension<span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">while</span> (f &lt; t) &#123;<br>          <span class="hljs-keyword">int</span> sum = nums[i] + nums[f] + nums[t];<br>          <span class="hljs-keyword">if</span> (sum == <span class="hljs-number">0</span>) &#123;<br>            result.push_back(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;(&#123;nums[i], nums[f], nums[t]&#125;));<br>            <span class="hljs-keyword">while</span> (i &lt; dimension<span class="hljs-number">-2</span> &amp;&amp; nums[i]==nums[i+<span class="hljs-number">1</span>]) &#123;i++;&#125;<br>            <span class="hljs-keyword">do</span> &#123;t--;&#125; <span class="hljs-keyword">while</span>(f &lt; t &amp;&amp; nums[t]==nums[t+<span class="hljs-number">1</span>]);<br>            <span class="hljs-keyword">do</span> &#123;f++;&#125; <span class="hljs-keyword">while</span> (f &lt; t &amp;&amp; nums[f]==nums[f<span class="hljs-number">-1</span>]);<br>          &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (sum &gt; <span class="hljs-number">0</span>) &#123;<br>           t--;<br>          &#125; <span class="hljs-keyword">else</span> &#123;<br>           f++;<br>          &#125;<br>        &#125;<br>      &#125;<br>      <span class="hljs-keyword">return</span> result;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h3 id="result">Result</h3>
+<pre><code>Success
+Details 
+Runtime: 100 ms, faster than 91.61% of C++ online submissions for 3Sum.
+Memory Usage: 14.9 MB, less than 97.80% of C++ online submissions for 3Sum.</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>Time Submitted</th>
+<th>Status</th>
+<th>Runtime</th>
+<th>Memory</th>
+<th>Language</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>a few seconds ago</td>
+<td>Accepted</td>
+<td>100 ms</td>
+<td>14.9 MB</td>
+<td>cpp</td>
+</tr>
+</tbody>
+</table>
+<h3 id="还可能的优化">还可能的优化</h3>
+<p>在游标调整过程中, 感觉至少一个游标的调整可以使用二分调整, 不至于每次只调整一点, 这样感觉可以进一步优化执行效率。</p>
+<hr />
+<h2 id="review">Review</h2>
+<p>本次Review的文在这里: <a href="https://wiki.openjdk.java.net/display/HotSpot/Synchronization" target="_blank" rel="noopener">Synchronization and Object Locking</a></p>
+<h3 id="引言-1">引言</h3>
+<p>之前就立了Flag, 要写一篇java虚拟机关于锁实现的分享, 在参考了郑雨迪老师关于HotSpot关于实现synchronized的文章后, 整理了我对hotspot做法的理解, 这篇文章是其中一篇参考文, 在阅读之余, 进行分享。</p>
+<h3 id="内容">内容</h3>
+<p>作为java语言的主要优势之一, java语言提供了语言层面的内建多线程机制的支持。任意一个对象在不同线程间共享访问可以被加锁, 以同步不同线程的访问。java提供了原生的临界区代码设计, 它通过一个共享的锁对象, 一次仅允许一个进程进入临界区执行, 第一个进入临界区的线程会将对象加锁, 当下一个线程要进入同一个临界区之前就必须等待前一个对所对象加锁的线程释放锁。</p>
+<p>对于 Java HotSpot™ VM 一个对象由指向类的指针和一个字的头作为先导, 本文中,把它称呼为对象头。对象头存储对象特征哈希码和在垃圾回收标记代数的bit位, 也用于实现<font color="red"><em>瘦锁</em></font>方案。</p>
+<p>下图展示了对象头的布局结构和它在不同状态下所代表的含义。</p>
+<p>其中, 对象头的最后两个位标记其用途,这里需要<font color="red"><strong>特别特别特别</strong></font>注意, 因为其取值特别容易被记混, 而且, 我记错了好多次。</p>
+<h4 id="对象头的标记位的取值和含义">对象头的标记位的取值和含义</h4>
+<ul>
+<li>01 无锁或者偏向锁</li>
+<li>00 轻量锁</li>
+<li>10 重量锁</li>
+<li>11 垃圾回收相关</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>00</th>
+<th>01</th>
+<th>10</th>
+<th>11</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>轻量级锁</td>
+<td>无锁或者偏向锁</td>
+<td>重量级锁</td>
+<td>gc相关</td>
+</tr>
+</tbody>
+</table>
+<h4 id="为什么这么取值">为什么这么取值</h4>
+<p>如果不弄懂这个加锁的过程, 那么对于为何这么取值会感到很困惑, 为什么状态不是按照直观顺序的呢, 这里关键应该是轻量级锁的加锁过程。</p>
+<ol type="1">
+<li>判断如果标记位不为01(无锁), 那么按照加锁过程去处理,否则, 进行下一步</li>
+<li>将对象头和对象地址构造一个锁记录, 存入当前栈帧。</li>
+<li>将锁记录的地址cas存入对象头。 因为栈帧是按照字(word)对齐的, 其地址肯定是00结尾, 所以, cas成功后, 对象头的标记位肯定为00, 此状态为轻量级锁加锁成功。</li>
+</ol>
+<p>所以,以上轻量级加锁过程说明了为什么轻量级锁时对象头的标记位为00。 记住了这个过程, 就不太容易记混了00的含义了。</p>
+<figure>
+<img src="https://wiki.openjdk.java.net/download/attachments/11829266/Synchronization.gif?version=4&amp;modificationDate=1208918680000&amp;api=v2" alt="" /><figcaption>HotSpot™ 对象头结构</figcaption>
+</figure>
+<p>图片内容引自OpenJDK的Wiki https://wiki.openjdk.java.net/download/attachments/11829266/Synchronization.gif?version=4&amp;modificationDate=1208918680000&amp;api=v2</p>
+<p>图右侧部分展示的是正常(标准)的锁的状态转换过程。</p>
+<p>下面是我按照文档自己总结的一个轻量锁的加锁过程。</p>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs xl">graph TB<br>    <br>    SUCC[拿到锁,进入临界区]<br>    END(结束)<br>    S<span class="hljs-function"><span class="hljs-title">tart</span>(monitorenter)--&gt;</span>CheckBit&#123;末位是否为 <span class="hljs-number">01</span>&#125;<br>    C<span class="hljs-function"><span class="hljs-title">heckBit</span>--&gt;</span>|是|LightLocking[复制对象头到当前栈帧]<br>    L<span class="hljs-function"><span class="hljs-title">ightLocking</span>--&gt;</span>SwapHeader[构造锁记录到栈帧并将地址cas对象头]<br>    S<span class="hljs-function"><span class="hljs-title">wapHeader</span>--&gt;</span>CheckSwapSucc&#123;CAS操作成功&#125;<br>    C<span class="hljs-function"><span class="hljs-title">heckSwapSucc</span>--&gt;</span>|CAS成功|LightLocked[轻量级锁成功]<br>    L<span class="hljs-function"><span class="hljs-title">ightLocked</span>--&gt;</span>SUCC<br>    C<span class="hljs-function"><span class="hljs-title">heckSwapSucc</span>--&gt;</span>|CAS失败|SwapFailed&#123;对象头指针指向当前栈帧&#125;<br>    <br>    C<span class="hljs-function"><span class="hljs-title">heckBit</span>--&gt;</span>|否|HaveLocked[此时已有线程进入了临界区]<br>    H<span class="hljs-function"><span class="hljs-title">aveLocked</span>--&gt;</span>CheckLockType&#123;此时锁类型&#125;<br>    C<span class="hljs-function"><span class="hljs-title">heckLockType</span>--&gt;</span>|标记位<span class="hljs-number">00</span>|ThinLocked[此时该对象为轻量锁]<br>    T<span class="hljs-function"><span class="hljs-title">hinLocked</span>--&gt;</span>SwapFailed&#123;对象头指针指向当前栈帧&#125;<br>    <br>    S<span class="hljs-function"><span class="hljs-title">wapFailed</span>--&gt;</span>|是|HoldBySelf[栈帧内的锁记录置<span class="hljs-number">0</span>]<br>    H<span class="hljs-function"><span class="hljs-title">oldBySelf</span>--&gt;</span>LightLocked<br>        <br>    S<span class="hljs-function"><span class="hljs-title">wapFailed</span>--&gt;</span>|否|Inflate[膨胀为重锁]<br>    I<span class="hljs-function"><span class="hljs-title">nflate</span>--&gt;</span>END<br>    <br>    C<span class="hljs-function"><span class="hljs-title">heckLockType</span>--&gt;</span>|标记位<span class="hljs-number">10</span>|HeavyWeightLocked[此时该对象为重锁]<br>    H<span class="hljs-function"><span class="hljs-title">eavyWeightLocked</span>--&gt;</span>Suspend[线程挂起等待唤醒]<br>    S<span class="hljs-function"><span class="hljs-title">uspend</span>--&gt;</span>END<br>    SUCC--&gt;END<br></code></pre></td></tr></table></figure>
+<p>锁状态示意图, 图中忽略了偏向锁和自旋过程。</p>
+<hr />
+<h2 id="tips">Tips</h2>
+<p>Vim 中, 往命令中粘贴内容。</p>
+<h3 id="引言-2">引言</h3>
+<p>我是一个资深vimer, 我承认我现在分享这个内容真实丢vimer的脸。但是作为一个手动挡, 我一直都是这么做的。 每当要在文档中搜索或者替换一个内容的时候, 我都会不厌其烦的一个个字符敲入, <code>:% s/search_my_content_balabalabala/i am the new balabalabala/g</code> 然后认真反复检查3遍, 按下<code>enter</code>键, 一次替换完成, 我在过去的七八年里都是这样做的。</p>
+<p>我见要分享的这个小技巧, 就是为了简化这个过程的, 虽然我自己并不常用它。 如何在命令行里粘贴剪切板的内容。</p>
+<h3 id="做法">做法</h3>
+<p>&lt;C-r&gt; 在命令输入模式下, 按快捷键 Ctrl + R 开启粘贴模式, 再键入一个寄存器名, 就会将该寄存器内的内容粘贴在命令上。</p>
+<p>于是, 搜索做法就变成了 1. 切换成visual模式 (v) 2. 复制想要搜索的内容 (y) 3. 进入命令模式, 敲入搜索/ 4. Ctrl + R 5. 按", 将刚复制的内容贴入命令, 然后<code>Enter</code>搜索</p>
+<p><strong>给出一个demo</strong></p>
+<p>预备一个文件:</p>
+<p><img src="https://img.earneet.xyz/arts6/original.png" alt="原文件" /> 1. 切换成visual模式, 复制搜索内容Text (normal下移动光标到Text按v,然后e到单词末尾, 按y)</p>
+<figure>
+<img src="https://img.earneet.xyz/arts6/vimdemo_step1_2.png" alt="" /><figcaption>复制待选内容</figcaption>
+</figure>
+<ol start="2" type="1">
+<li>进入命令模式, 搜索/</li>
+</ol>
+<figure>
+<img src="https://img.earneet.xyz/arts6/vimdemo_step3.png" alt="" /><figcaption>搜索</figcaption>
+</figure>
+<ol start="3" type="1">
+<li>键入<code>Ctrl + r</code> 进入选取寄存器步骤</li>
+</ol>
+<figure>
+<img src="https://img.earneet.xyz/arts6/vimdemo_step4.png" alt="" /><figcaption>选取寄存器</figcaption>
+</figure>
+<ol start="4" type="1">
+<li>键入<code>"</code>, 匿名寄存器刚复制的内容上屏, 回车搜索</li>
+</ol>
+<figure>
+<img src="https://img.earneet.xyz/arts6/vimdemo_step5.png" alt="" /><figcaption>搜索内容</figcaption>
+</figure>
+<p><em><font color="red">这里有一点, 如果要粘贴系统剪切板的内容, 那么寄存器名字应输入0,而不是+</font></em></p>
+<hr />
+<h2 id="share">Share</h2>
+<h3 id="引言-3">引言</h3>
+<p>这是一篇版权文章, 非订阅用户阅读可能会受到限制。这是一篇讲解hotspot关于如何实现synchronized关键字的简单教学文, 后面我会分享我参考这篇文章写得自己关于jvm的synchronized的见解。</p>
+<h3 id="内容-1">内容</h3>
+<p><a href="https://time.geekbang.org/column/article/13530" target="_blank" rel="noopener"><strong>Java虚拟机是怎么实现synchronized的？</strong></a></p>
+<hr />
+<h2 id="end">End</h2>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/04/01/pip%E5%B7%A5%E5%85%B7%E5%88%87%E6%8D%A2%E5%9B%BD%E5%86%85%E6%BA%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -334,20 +557,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">41</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -504,6 +727,59 @@ window.addEventListener('pjax:success', () => {
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
