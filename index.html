@@ -183,6 +183,288 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/19/rsa-brief/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/19/rsa-brief/" class="post-title-link" itemprop="url">RSA算法的原理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-19 14:09:37 / 修改时间：14:21:18" itemprop="dateCreated datePublished" datetime="2020-10-19T14:09:37+08:00">2020-10-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E7%AE%80%E8%BF%B0/" itemprop="url" rel="index"><span itemprop="name">算法简述</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="rsa-非对称加密算法原理">RSA 非对称加密算法原理</h3>
+<h4 id="欧拉函数">欧拉函数</h4>
+<blockquote>
+<p>在数论中，对正整数n，欧拉函数 <span class="math inline">\(\varphi(n)\)</span> 是小于或等于n的正整数中与n互质的数的数目。此函数以其首名研究者欧拉命名，它又称为φ函数（由高斯所命名）或是欧拉总计函数（totient function，由西尔维斯特所命名）。 <a href="https://zh.wikipedia.org/wiki/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">欧拉函数</a></p>
+</blockquote>
+<h4 id="rsa-算法的核心-欧拉定理">RSA 算法的核心: 欧拉定理</h4>
+<blockquote>
+<p>在数论中，欧拉定理（也称费马-欧拉定理或欧拉 <span class="math inline">\({\varphi}\)</span> 函数定理）是一个关于同余的性质。欧拉定理表明，若 <strong>n,a</strong>为正整数，且 <strong>n,a</strong> 互素（即 <span class="math inline">\(\gcd(a,n)=1\)</span> ），则</p>
+</blockquote>
+<p><span class="math display">\[
+a^{\phi{\left(n\right)}} \equiv 1 \pmod n 
+\]</span></p>
+<blockquote>
+<p><a href="https://zh.wikipedia.org/wiki/%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86_(%E6%95%B0%E8%AE%BA)" target="_blank" rel="noopener">欧拉定理</a></p>
+</blockquote>
+<h4 id="费马小定理-欧拉定理的特例">费马小定理: 欧拉定理的特例</h4>
+<p>费马定理的表达式 :</p>
+<p><span class="math display">\[
+a^{\phi{\left(n\right)}} \equiv 1 \pmod n
+\]</span></p>
+<p>在特殊情况下, 当n为质数时, <span class="math inline">\(\varphi(n)=n-1\)</span> , 此时, 欧拉定理的表述即为:</p>
+<p><span class="math display">\[
+a^{n-1} \equiv 1\pmod n
+\]</span></p>
+<p>这个公式即为就是费马小定理。</p>
+<h4 id="模反元素">模反元素</h4>
+<p>如果两个正整数 a 和 n 互质, 那么一定存在一个整数 b 满足:</p>
+<p><span class="math display">\[
+ab \equiv 1\pmod n
+\]</span></p>
+<p>即, (ab - 1)能被n整除。 b就叫做a的<strong>模反元素</strong>。 显然的, 模反元素并不唯一, 对于模反元素b, 对于所有的正整数 <span class="math inline">\(m=b+kn\)</span> 也为a的模反元素。</p>
+<p><strong>模反元素必然存在</strong></p>
+<p>对费马定理进行变形:</p>
+<p><span class="math display">\[
+a^{\phi\left({n}\right)}\equiv a\times a^{\phi\left(n\right)-1}\equiv 1 \pmod n
+\]</span></p>
+<p>在此变形中, <span class="math inline">\(a^{\phi\left(n\right)-1}\)</span> 即为a的模反元素。</p>
+<h4 id="rsa-基本概念">RSA 基本概念</h4>
+<p>我们约定:</p>
+<ul>
+<li>RSA加密秘钥为<strong>E</strong>, 它是一个大整数。</li>
+<li>RSA解密秘钥为<strong>D</strong>, 它是一个大整数。</li>
+<li>RSA加密和解密需要用的模数<strong>N</strong>, 它是一个大整数。</li>
+</ul>
+<h5 id="rsa-加密过程">RSA 加密过程</h5>
+<p><span class="math display">\[
+    密文 = 明文^E mod N
+\]</span></p>
+<p>RSA 加密过程就是这么简单, 它对明文做一个E次幂运算, 然后对N取模。 在这个过程中, E和N的组合就是<strong>公钥</strong>。</p>
+<h5 id="rsa-解密过程">RSA 解密过程</h5>
+<p>对应的, RSA的解密过程也非常简单:</p>
+<p><span class="math display">\[
+    明文 = 密文^D mod N
+\]</span></p>
+<p>RSA 的加密和解密过程完全一致, 只是它们换了一个秘钥, 进行了完全一样的运算。 在这个过程中, D和N的组合就是<strong>私钥</strong>。</p>
+<h4 id="非对称秘钥对的生成">非对称秘钥对的生成</h4>
+<p>在基本概念中, 约定了几个量, E, D, N 在这里,我么继续沿用, 额外的,在生成密钥对的过程中, 引入一个新的量L, 它只用于生成密钥对, 但是最终结果中我们并不体现它。</p>
+<h5 id="求n">1. 求N</h5>
+<p>准备两个大质数p, q。(p和q要最够大)</p>
+<p>$ N=p q$ $</p>
+<h5 id="求l">2. 求L</h5>
+<p>L是 p-1 和 q-1 的最小公倍数。</p>
+<p><span class="math display">\[
+L=lcm(p-1, q-1)
+\]</span></p>
+<p><em>实际上, 理论公式上, L应为ϕ(n), 这样后面的一系列推倒便是欧拉定理的应用了, 但是在实际中,它可以化简为更小的最小公倍数L, 这里,我们使用了实际中的化简方案</em></p>
+<h5 id="求e">3. 求E</h5>
+<p>E是一个比1大, 比L小的数字,且E和L要互质, 即 E和L的最大公约数为1, 表达为数学语言为。</p>
+<p><span class="math display">\[
+1 &lt; E &lt; L \\
+gcd(E, L) = 1
+\]</span></p>
+<p>计算E的过程我们采用随机穷举的模式, 使用伪随机数生成器, 随机生成一个1和L之间的数字, 判断是否满足它与L互质, 如果不满足, 则重复生成并判断下一个随机数。</p>
+<p>至此, RSA的公钥部分E,N我们已经得到了, 公钥: (E, N)。</p>
+<p><em>我们加入E和L互质的这个条件,是为了满足我们需要的解密参数D一定存在</em></p>
+<h5 id="求d">4. 求D</h5>
+<p><span class="math display">\[
+\begin{eqnarray*}
+1 &lt; D &lt; L \\\\
+E \times D\ mod\ L = 1
+\end{eqnarray*}
+\]</span></p>
+<p>按照上述的限制条件, 计算出D, 至此, 私钥部分也计算完成, 私钥为(D, N)。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/28/init-log4j-with-external-config/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/28/init-log4j-with-external-config/" class="post-title-link" itemprop="url">Log4J 使用外部配置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-28 12:28:29" itemprop="dateCreated datePublished" datetime="2020-08-28T12:28:29+08:00">2020-08-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-28 12:36:35" itemprop="dateModified" datetime="2020-09-28T12:36:35+08:00">2020-09-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="log4j使用外部配置">Log4J使用外部配置</h3>
+<p>使用 Java语言开发的程序员和爱好者们应当对log4j并不陌生。 它是一个Java的日志系统实现。<a href="https://logging.apache.org/log4j/2.x/" target="_blank" rel="noopener">log4j主页</a></p>
+<h4 id="解决方案">解决方案</h4>
+<p>先上解决方案一便以后查阅。</p>
+<ol type="1">
+<li>更改位置需要放在Main类的静态初始化块最开始的位置。</li>
+<li>两个方式：
+<ul>
+<li>配置系统变量log4j.defaultInitOveride。此方法要比较繁琐，且对用户行为不可控，不推荐这种。</li>
+<li>在代码中使用<code>System.setProperty("log4j.defaultInitOverride", "true")</code> 配置变量。这个接口在初始时调用，完全程序员指定，即使外部有配置也可覆盖，所以推荐这种方式来避免用户的奇葩行为。</li>
+</ul></li>
+<li>调用 <code>PropertyConfigurator.configure</code>接口指定外部配置的位置。</li>
+</ol>
+<h4 id="背景">背景</h4>
+<p>最近做一个决策服务器，为了跟踪调试我需要大量的Debug级别的日志，这台服务器在部署生产环境时则不需要这么多日志。我决定让用户使用外部自己的日志配置来定义日志，如果用户没有指定自定义的日志配置，那么就使用默认内建的日志配置。这样也方便随时更改日志而无需重新打包（默认的配置会被打进jar包）。</p>
+<h4 id="踩坑过程">踩坑过程</h4>
+<p>如果不做额外的操作， 那么log4j的配置文件默认去代码目录寻找配置文件。 经过谷歌搜了一下如何使用自定义配置文件，得到了一个方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">PropertyConfigurator.configure();<br></code></pre></td></tr></table></figure>
+<p>我只使用了Configurator.configure 来指定了外部配置文件后发现，只是外部的配置文件替换了默认配置的配置，但是没有删除外部配置的Logger。明显与预期不符。</p>
+<p>于是开始阅读 Configurator.configure 的实现代码。以下是adoptOpenJdk14版本的源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">static</span><br><span class="hljs-keyword">public</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">configure</span><span class="hljs-params">(String configFilename)</span> </span>&#123;<br>  <span class="hljs-keyword">new</span> PropertyConfigurator().doConfigure(configFilename,<br>			   LogManager.getLoggerRepository());<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>我发现，接口的最后是用LogManager.getLoggerRepository()。</p>
+<p>如果使用默认位置配置的话，那么是无需指定配置的，可以直接通过 LogManager.getLogger() 来获取logger，由此不难想到，默认配置的加载过程</p>
+<ul>
+<li>要么是在LogManager的静态初始化块中完成。</li>
+<li>要么是在getLogger()初次调用时完成。</li>
+</ul>
+<p>首先检查LogManager的初始化代码:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs java"> <span class="hljs-keyword">static</span> &#123;<br>   <span class="hljs-comment">// By default we use a DefaultRepositorySelector which always returns 'h'.</span><br>   Hierarchy h = <span class="hljs-keyword">new</span> Hierarchy(<span class="hljs-keyword">new</span> RootLogger((Level) Level.DEBUG));<br>   repositorySelector = <span class="hljs-keyword">new</span> DefaultRepositorySelector(h);<br><br>   <span class="hljs-comment">/** Search for the properties file log4j.properties in the CLASSPATH.  */</span><br>   String override =OptionConverter.getSystemProperty(DEFAULT_INIT_OVERRIDE_KEY,<br>					       <span class="hljs-keyword">null</span>);<br><br>   <span class="hljs-comment">// if there is no default init override, then get the resource</span><br>   <span class="hljs-comment">// specified by the user or the default config file.</span><br>   <span class="hljs-keyword">if</span>(override == <span class="hljs-keyword">null</span> || <span class="hljs-string">"false"</span>.equalsIgnoreCase(override)) &#123;<br><br>     String configurationOptionStr = OptionConverter.getSystemProperty(<br>						  DEFAULT_CONFIGURATION_KEY, <br>						  <span class="hljs-keyword">null</span>);<br><br>     String configuratorClassName = OptionConverter.getSystemProperty(<br>                                                  CONFIGURATOR_CLASS_KEY, <br>					   <span class="hljs-keyword">null</span>);<br><br>     URL url = <span class="hljs-keyword">null</span>;<br><br>     <span class="hljs-comment">// if the user has not specified the log4j.configuration</span><br>     <span class="hljs-comment">// property, we search first for the file "log4j.xml" and then</span><br>     <span class="hljs-comment">// "log4j.properties"</span><br>     <span class="hljs-keyword">if</span>(configurationOptionStr == <span class="hljs-keyword">null</span>) &#123;	<br>    url = Loader.getResource(DEFAULT_XML_CONFIGURATION_FILE);<br>    <span class="hljs-keyword">if</span>(url == <span class="hljs-keyword">null</span>) &#123;<br>        url = Loader.getResource(DEFAULT_CONFIGURATION_FILE);<br>    &#125;<br>     &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        url = <span class="hljs-keyword">new</span> URL(configurationOptionStr);<br>    &#125; <span class="hljs-keyword">catch</span> (MalformedURLException ex) &#123;<br>           <span class="hljs-comment">// so, resource is not a URL:</span><br>           <span class="hljs-comment">// attempt to get the resource from the class path</span><br>           url = Loader.getResource(configurationOptionStr); <br><br>           <span class="hljs-comment">//////////////////////Ignore Code ////////////////</span><br>       &#125;<br>&#125;	<br> &#125;<br></code></pre></td></tr></table></figure>
+<p>其中，第12行代码发现，若DEFAULT_INIT_OVERRIDE_KEY这个环境变量被配置且不为"false"，就会执行加载默认配置的过程。那我们想要log4j不加载默认配置，只需要将DEFAULT_INIT_OVERRIDE_KEY 变量设置为一个不为"false"的值即可达到目的，这里我使用的是"true"。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* <span class="hljs-doctag">@deprecated</span> This variable is for internal use only. It will</span><br><span class="hljs-comment">* become private in future versions.</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String DEFAULT_INIT_OVERRIDE_KEY = <br>                                               <span class="hljs-string">"log4j.defaultInitOverride"</span>;<br></code></pre></td></tr></table></figure>
+<p>DEFAULT_INIT_OVERRIDE_KEY 定义的是<code>log4j.defaultInitOverride</code>所以，只需要:</p>
+<ul>
+<li>在操作系统变量配置 log4j.defaultInitOverride=true</li>
+<li>或者虚拟机启动参数 -Dlog4j.defaultInitOverride=true</li>
+<li>或者在LogManager类被初始化前的位置调用Java代码<code>System.setProperty("log4j.defaultInitOverride", "true")</code></li>
+</ul>
+<p>这三个操作任选其一即可。</p>
+<p>结合我的需求，我不想让用户有太多干扰能力，也降低用户的使用学习成本，选择了最后一个方案。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;<br>    <span class="hljs-keyword">static</span> &#123;<br>        initLog4j();<br>    &#125;<br>    <br>    <span class="hljs-comment">//other static field</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;<br>        <span class="hljs-comment">//ServerStart Code</span><br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">initLog4j</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">//check configuration file</span><br>        Path configurationPath = Paths.get(<span class="hljs-string">"cfg"</span>, <span class="hljs-string">"log4j.properties"</span>);<br>        <span class="hljs-keyword">if</span> (!Files.exists(configurationPath) || !Files.isRegularFile(configurationPath)) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">try</span> &#123;<br>            PropertyConfigurator.configure(configurationPath.toString());<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="额外一些说明">额外一些说明</h4>
+<p><strong>为什么要把initLog4j方法调用放在Main类的静态初始化块中且放在初始化块最前面?</strong></p>
+<p>这牵扯到Java虚拟机类加载的机制。</p>
+<p><img src="https://img.earneet.xyz/JavaClassLoadingProcess.jpg" /></p>
+<p>类加载各个过程严格按照图中所示顺序启动。但是它们并不要求按要求结束，但这个不重要。这里重要的是在一个类的相关功能要能使用前，必然会先完成初始化。</p>
+<p>其中，我们类的静态代码块在初始化过程中执行。它在类使用前执行完。</p>
+<p>那问题就归结在了何时会触发类的加载，这里指的是org.apache.log4j.LogManager首次加载。</p>
+<p>按照jvm规范，当执行以下四个指令时，触发类加载：</p>
+<ul>
+<li>new</li>
+<li>getstatic</li>
+<li>putstatic</li>
+<li>invokestatic</li>
+</ul>
+<p>其中 getstatic 和 putstatic 两个执行分别是读写类的静态成员产生，而invokestatic指令在调用类的静态方法时产生。 而这些语句，都可以在出现在类的静态初始化块中。所以，Main类的静态初始化块就很有可能使用别的类的静态域，它又可能使用其他类的静态域，这将会构成一个复杂的依赖链。我们很难保持，或者很难长期保持我们的initLog4j方法总在这些之前执行，所以，我们把它放到了一个最稳妥的地方，在Main类最上方，使用一个静态块来抢先完成配置。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/25/try-proceduralmeshcomponent/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -206,10 +488,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-08-25 12:11:11 / 修改时间：12:14:14" itemprop="dateCreated datePublished" datetime="2020-08-25T12:11:11+08:00">2020-08-25</time>
+              <time title="创建时间：2020-08-25 12:11:11" itemprop="dateCreated datePublished" datetime="2020-08-25T12:11:11+08:00">2020-08-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-27 16:46:08" itemprop="dateModified" datetime="2020-09-27T16:46:08+08:00">2020-09-27</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -237,7 +525,7 @@
       
           <h3 id="ue4-使用proceduralmeshcomponent运行时显示动态物体的坑">UE4 使用ProceduralMeshComponent运行时显示动态物体的坑</h3>
 <h4 id="主要使用的接口">主要使用的接口</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CreateMeshSection</span><span class="hljs-params">(int32 SectionIndex, <span class="hljs-keyword">const</span> TArray&lt;FVector&gt;&amp; Vertices, <span class="hljs-keyword">const</span> TArray&lt;int32&gt;&amp; Triangles, <span class="hljs-keyword">const</span> TArray&lt;FVector&gt;&amp; Normals, <span class="hljs-keyword">const</span> TArray&lt;FVector2D&gt;&amp; UV0, <span class="hljs-keyword">const</span> TArray&lt;FColor&gt;&amp; VertexColors, <span class="hljs-keyword">const</span> TArray&lt;FProcMeshTangent&gt;&amp; Tangents, <span class="hljs-keyword">bool</span> bCreateCollision)</span></span><br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CreateMeshSection</span><span class="hljs-params">(</span></span><br><span class="hljs-function"><span class="hljs-params">	int32 SectionIndex, </span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">const</span> TArray&lt;FVector&gt;&amp; Vertices, </span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">const</span> TArray&lt;int32&gt;&amp; Triangles, </span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">const</span> TArray&lt;FVector&gt;&amp; Normals, </span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">const</span> TArray&lt;FVector2D&gt;&amp; UV0,</span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">const</span> TArray&lt;FColor&gt;&amp; VertexColors, </span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">const</span> TArray&lt;FProcMeshTangent&gt;&amp; Tangents,</span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">bool</span> bCreateCollision)</span></span><br></code></pre></td></tr></table></figure>
 <h4 id="首先遇到的问题">首先遇到的问题</h4>
 <ul>
 <li><strong>无法导入"ProceduralMeshComponent.h" 头文件, 明明我可以找到这个文件，但是却无法导入。</strong></li>
@@ -455,397 +743,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/08/derivation-table/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar_head_icon.png">
-      <meta itemprop="name" content="Earneet">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Learning & Sharing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/08/derivation-table/" class="post-title-link" itemprop="url">常见函数导数公式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-05-08 09:45:25 / 修改时间：19:04:45" itemprop="dateCreated datePublished" datetime="2020-05-08T09:45:25+08:00">2020-05-08</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E5%BE%AE%E7%A7%AF%E5%88%86/" itemprop="url" rel="index"><span itemprop="name">微积分</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="常用函数导数公式">常用函数导数公式</h1>
-<blockquote>
-<p>本篇主要总结常见的函数形式的导数公式。以类别为要。其他形式的函数和复合形式的函数均可以通过变形套用本篇公式来结合 <a href="/2020/05/03/derivation-rules/" title="求导规则">求导规则</a> 推导导函数。</p>
-</blockquote>
-<h3 id="常数函数导数">常数函数导数</h3>
-<p>常数函数, 形如</p>
-<p><span class="math display">\[
-f(x) = C 
-\]</span></p>
-<p>其中C为常数, 则导数为0</p>
-<p><span class="math display">\[
-f&#39;(x) = 0
-\]</span></p>
-<h3 id="幂函数导数">幂函数导数</h3>
-<p>幂函数形如:</p>
-<p><span class="math display">\[
-f(x) = x^{n}
-\]</span></p>
-<p>则幂函数的导函数为:</p>
-<p><span class="math display">\[
-f&#39;(x) = nx^{n-1}
-\]</span></p>
-<blockquote>
-<p>有些幂函数不以明显的形式来表现出来, 例如 <span class="math inline">\(f(x) = \sqrt{x}\)</span> 或者 <span class="math inline">\(f(x) = \frac{1}{x}\)</span> 的形式, 实际上, 他们只是 <span class="math inline">\(n\)</span> 取值不同的表达, 开根号表达形式的 <span class="math inline">\(n\)</span> 为一个自然数为底的分数,分式形式时 <span class="math inline">\(n\)</span> 为自然数的负值, 但是他们都遵从幂函数的导函数形式。</p>
-</blockquote>
-<h3 id="指数函数的导数">指数函数的导数</h3>
-<p>指数函数形如:</p>
-<p><span class="math display">\[
-f(x) = n^x
-\]</span></p>
-<p>其导数为:</p>
-<p><span class="math display">\[
-f(x) = n^x\ln{n}
-\]</span></p>
-<h3 id="对数函数导数">对数函数导数</h3>
-<p>形如</p>
-<p><span class="math display">\[
-f(x) = log_n(x)
-\]</span></p>
-<p>的函数。</p>
-<p><span class="math display">\[
-f&#39;(x) = \cfrac{1}{x\ln{n}}
-\]</span></p>
-<h3 id="三角函数导数">三角函数导数</h3>
-<p>常用三角函数导数</p>
-<p><strong>正弦函数</strong>:</p>
-<p><span class="math display">\[
-f(x) = sin(x)
-\]</span></p>
-<p><span class="math display">\[
-f&#39;(x) = cos(x)
-\]</span></p>
-<p><strong>余弦函数</strong></p>
-<p><span class="math display">\[
-f(x) = cos(x)
-\]</span></p>
-<p><span class="math display">\[
-f&#39;(x) = -sin(x)
-\]</span></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/07/matrix-conceptions/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar_head_icon.png">
-      <meta itemprop="name" content="Earneet">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Learning & Sharing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/07/matrix-conceptions/" class="post-title-link" itemprop="url">矩阵相关一些粗浅概念</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-07 09:25:38" itemprop="dateCreated datePublished" datetime="2020-05-07T09:25:38+08:00">2020-05-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-10 13:12:43" itemprop="dateModified" datetime="2020-05-10T13:12:43+08:00">2020-05-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" itemprop="url" rel="index"><span itemprop="name">线性代数</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="矩阵相关知识">矩阵相关知识</h1>
-<blockquote>
-<p>首先声明一个“原矩阵”的概念。我们用作参考来说明的原始矩阵 <span class="math inline">\(\boldsymbol{M}\)</span> , 在下面的文字中被称为原矩阵。为了方便描述各种矩阵，先建立一个矩阵假设原型 <span class="math display">\[
-\boldsymbol{M} = \begin{bmatrix} 
-c_{11} &amp; c_{12} &amp; c_{13} \\
-c_{21} &amp; c_{22} &amp; c_{23} \\
-c_{31} &amp; c_{32} &amp; c_{33} \\
-\end{bmatrix}
-\]</span></p>
-</blockquote>
-<blockquote>
-<p>约定对角线为方阵从左上角到后下角各行号与列号相等的元素构成，反对角线为方阵从右上角到左下角其行号和列号互补的元素构成。</p>
-</blockquote>
-<blockquote>
-<p>由于学习过程中参考了不同的资料，对于n维矩阵和n阶矩阵交替出现， 但是他们都代表相同的含义。</p>
-</blockquote>
-<h3 id="转置矩阵">转置矩阵</h3>
-<p>将原矩阵中所有元素的行列编号颠倒构成新的矩阵 <span class="math inline">\(\boldsymbol{M}^T\)</span> , 该矩阵就叫做原矩阵的<strong>转置矩阵</strong></p>
-<p>其变换公式为 <span class="math inline">\(c&#39;_{rc} = c_{cr}\)</span></p>
-<p><span class="math display">\[
-c&#39;_{rc} = c_{cr}
-\]</span></p>
-<p>公式中 <span class="math inline">\(c_{cr}\)</span> 代表原矩阵第c行第r列的元素。 <span class="math inline">\(c&#39;_{rc}\)</span> 代表转置矩阵中第r行第c列的元素。</p>
-<p>用更形象一点的表述为，将原矩阵沿对角线进行了“翻转”。</p>
-<p>转置矩阵 <span class="math inline">\(\boldsymbol{M}^T\)</span> 为:</p>
-<p><span class="math display">\[
-\boldsymbol{M}^T = 
-\begin{bmatrix}
-    c_{11} &amp; c_{21} &amp; c_{31} \\
-    c_{12} &amp; c_{22} &amp; c_{32} \\
-    c_{13} &amp; c_{23} &amp; c_{33} \\
-\end{bmatrix}
-\]</span></p>
-<h4 id="转置矩阵的性质">转置矩阵的性质</h4>
-<p>一个重要的性质是：<strong>转置矩阵的行列式和原矩阵行列式保持不变</strong></p>
-<p>对于转置矩阵的运算性质</p>
-<p><span class="math display">\[
-\begin{eqnarray}
-(\boldsymbol{M}^T)^T &amp;=&amp; \boldsymbol{M}  \tag{1} \\
-(k\boldsymbol{M})^T &amp;=&amp; k\boldsymbol{M}^T \tag{2} \\
-(\boldsymbol{A}\boldsymbol{B})^T &amp;=&amp; \boldsymbol{B}^T\boldsymbol{A}^T \tag{3} \\
-(\boldsymbol{A} + \boldsymbol{B})^T &amp;=&amp; \boldsymbol{A}^T + \boldsymbol{B}^T \tag{4} \\
-\det{\boldsymbol{M}} &amp;=&amp; \det{\boldsymbol{M}^T} \tag{5}
-\end{eqnarray}
-\]</span></p>
-<p>即:</p>
-<ul>
-<li>(1)矩阵转置后再转置，得到原矩阵。</li>
-<li>(2)矩阵数乘后转置，等于转置矩阵数乘。 (该条性质可以由(1)根据数乘性质推得)</li>
-<li>(3)两矩阵乘后转置，等于其转置矩阵反向乘。</li>
-<li>(4)两矩阵加和后转置，等于他们的转置矩阵的和。</li>
-<li>(5)原矩阵的行列式和转置矩阵的行列式相等。</li>
-</ul>
-<h3 id="对称矩阵与反对称矩阵">对称矩阵与反对称矩阵</h3>
-<p>特别的，对于矩阵是方阵的类型，若 <span class="math inline">\(\boldsymbol{M}^T = \boldsymbol{M}\)</span> , 则方阵可以被称为<strong>对称矩阵</strong>。</p>
-<p>对于矩阵是方阵的类型，若 <span class="math inline">\(\boldsymbol{M}^T = \boldsymbol{-M}\)</span> , 则方阵可以被称为<strong>反对称矩阵</strong>。</p>
-<blockquote>
-<p>由于转置过程中 <span class="math inline">\(c&#39;_{rc} = c_{cr}\)</span> ， <span class="math inline">\(r=c\)</span> 位置(即对角线位)的元素不会变化， 要满足 <span class="math inline">\(c&#39;_{rc}=-c_{cr}\)</span> 的唯一条件是该位置元素为0。所以我们可以得出结论，<strong>非对称矩阵对角线元素一定为0</strong>。</p>
-</blockquote>
-<blockquote>
-<p>形象的记忆，这里的对称，可以理解为方阵沿主对角线轴对称</p>
-</blockquote>
-<h3 id="行列式">行列式</h3>
-<p>我一时找不到一个合适的描述来给行列式下一个定义。</p>
-<p>对于任意<strong>方阵</strong>，总存在这么一个<strong>标量</strong>， 它可以由“行列式定义”计算得到，我们把这个标量称呼为矩阵的<strong>行列式</strong>。</p>
-<blockquote>
-<p>需要注意的是，行列式只对方阵有定义，对非方阵没有定义。1维矩阵的行列式与它唯一的元素相等。</p>
-</blockquote>
-<h4 id="行列式的记号">行列式的记号</h4>
-<p>对于矩阵 <span class="math inline">\(\boldsymbol{M}\)</span> 来说，学术圈主流有两种记号来表达它的行列式</p>
-<ul>
-<li><span class="math inline">\(|\boldsymbol{M}|\)</span></li>
-<li><span class="math inline">\(\det{\boldsymbol{M}}\)</span></li>
-</ul>
-<h4 id="行列式的几何意义">行列式的几何意义</h4>
-<p>对于任意的二维/三维矩阵 <span class="math inline">\(\boldsymbol{M}\)</span> 来说，我们把它视为一个变换，那么行列式在几何上表达这个变换前后物体的<strong>面积/体积的变化率</strong>(即变化倍数)。</p>
-<p>若行列式为负值，其表明物体的 <strong>面积/体积翻转</strong>(可类比镜像变换，但是这里并不能表达出其角度打小的恒定，只表达出方向的变化)。</p>
-<p>当行列式值为0时，则说明其面积/体积变为0，直接说明此变换包含一个投影， 此时有至少一个维度上所有信息被归零丢失, 我们无法做此变换的逆变换了，矩阵 <span class="math inline">\(\boldsymbol{M}\)</span> 不可逆，为奇异矩阵。</p>
-<p>拓展到更高的维度上， 行列式也表达高维体积的变化率。对于一维向量来说，它表达更丰富的含义，但最直接的，它表达向量的模（长度信息）的变化率。</p>
-<h4 id="行列式的定义">行列式的定义</h4>
-<p>我在这里将行列式用复合形式定义，对于低维度矩阵使用表式定义，对于高维矩阵使用递归定义。</p>
-<h5 id="二维矩阵行列式">二维矩阵行列式</h5>
-<p><span class="math display">\[
-\begin{aligned}
-|\boldsymbol{M}| &amp; = 
-\left|
-\begin{matrix} 
-    c_{11} &amp; c_{12} \\
-    c_{21} &amp; c_{22} \\
-\end{matrix}
-\right| \\
-&amp; = (c_{11}c_{22})-(c_{12}c_{21})
-\end{aligned}
-\]</span></p>
-<h5 id="三维矩阵行列式">三维矩阵行列式</h5>
-<p><span class="math display">\[
-\begin{aligned}
-|\boldsymbol{M}| &amp;=
-\left|
-\begin{matrix} 
-    c_{11} &amp; c_{12} &amp; c_{13} \\
-    c_{21} &amp; c_{22} &amp; c_{23} \\
-    c_{31} &amp; c_{32} &amp; c_{33} \\
-\end{matrix}
-\right| \\
-&amp;=(c_{11}c_{22}c_{33})+(c_{12}c_{23}c_{31})+(c_{13}c_{21}c_{32}) \\ 
-&amp;\;-(c_{11}c_{23}c_{32})-(c_{12}c_{21}c_{33})-(c_{13}c_{22}c_{31})
-\end{aligned}
-\]</span></p>
-<h5 id="更高维矩阵行列式">更高维矩阵行列式</h5>
-<p>更高维度的矩阵的行列式定义，这里需要引入一个概念，叫做<strong>余子式</strong>。余子式的概念和相关性质在后文中给出，这里只是先使用。</p>
-<p>从矩阵中任意选择<strong>一行</strong>或者<strong>一列</strong>, 对该行或列的每个元素都乘以该元素对应的代数余子式， 将他们作和就是该矩阵的行列式。</p>
-<p>以下公式将选择一行i做为固定值， 对元素按列进行迭代。</p>
-<p><span class="math display">\[
-\begin{aligned}
-\det\boldsymbol{M} &amp;= \sum_{j=1}^{n} m_{ij}c_{ij} \\
-&amp;= \sum_{j=1}^{n}m_{ij}(-1)^{i+j}\left| \boldsymbol{M}^{\{ij\}}\right|
-\end{aligned}
-\]</span></p>
-<p>这里 <span class="math inline">\(|\boldsymbol{M}^{\{ij\}}|\)</span> 又为其余子式的行列式， 但是其阶数为(n-1), 递归的套用上式， 最终可使得公式中代数余子式的维度为1（或者2，或者3皆可）， 然后我们套用之前的定义，可以求得其行列式。</p>
-<h4 id="行列式的性质">行列式的性质</h4>
-<p><span class="math display">\[
-\begin{aligned}
-|\boldsymbol{A}| &amp;= |\boldsymbol{A}^T| \\
-|\boldsymbol{A}\boldsymbol{B}| &amp;= |\boldsymbol{B}\boldsymbol{A}| \\
-|k\boldsymbol{A}| &amp;= k^n|\boldsymbol{A}| \\
-|\boldsymbol{A}\boldsymbol{B}| &amp;= |\boldsymbol{A}||\boldsymbol{B}| \\
-|\boldsymbol{A}^n| &amp;= |\boldsymbol{A}|^n \\
-\end{aligned}
-\]</span></p>
-<p>n 为矩阵的维数</p>
-<h3 id="余子式">余子式</h3>
-<p>余子式是一个与原矩阵行列相关的子矩阵。将矩阵 <span class="math inline">\(\boldsymbol{M}\)</span> 中某些行/列去掉后,剩余的矩阵就叫做余子式,也有叫法叫做余因式。</p>
-<p>n阶矩阵 <span class="math inline">\(\boldsymbol{M}\)</span> , 选定其第i行j列的元素 <span class="math inline">\(c_{ij}\)</span> ,去除矩阵 <span class="math inline">\(\boldsymbol{M}\)</span> 的第i行和第j列, 剩下的元素保持位置组成的矩阵就叫做元素 <span class="math inline">\(c_{ij}\)</span> 的余子式。余子式与元素 <span class="math inline">\(c_{ij}\)</span> 的值无关,只与元素所在的位置有关。</p>
-<p>第 <span class="math inline">\(i\)</span> 行第 <span class="math inline">\(j\)</span> 列的余子式记做 <span class="math inline">\(\boldsymbol{M}^{\{ij\}}\)</span> 。</p>
-<h4 id="代数余子式">代数余子式</h4>
-<p>区别于余子式，<em>代数余子式是一个</em> <strong>标量</strong>, 它是由矩阵元素 <span class="math inline">\(m_{ij}\)</span> 与其对应余子式 <span class="math inline">\(\boldsymbol{M}^{\{ij\}}\)</span> 的行列式的乘积再乘以符号因子 <span class="math inline">\((-1)^{i+j}\)</span> 。 显然的， 当行列号之和 <span class="math inline">\(j+j\)</span> 为偶数时符号因子为正，行列号之和 <span class="math inline">\(i+j\)</span> 为奇数时，符号因子为负。</p>
-<p>第i行j列的代数余子式记做 <span class="math inline">\(c_{ij}\)</span> 。</p>
-<p><span class="math display">\[
-c_{ij} = (-1)^{i+j}m_{ij}\left|\boldsymbol{M}^{\{ij\}}\right|
-\]</span></p>
-<h3 id="伴随矩阵">伴随矩阵</h3>
-<p>伴随矩阵是原矩阵的代数余子式构成的矩阵的转置矩阵。记做 <span class="math inline">\(adj\boldsymbol{M}\)</span></p>
-<p><span class="math display">\[
-\begin{aligned}
-adj\boldsymbol{M} &amp;= 
-\begin{bmatrix} 
-c_{11}  &amp;   c_{12}  &amp;   c_{13} \\
-c_{21}  &amp;   c_{22}  &amp;   c_{23}  \\
-c_{31}  &amp;   c_{32}  &amp;   c_{33}
-\end{bmatrix}^T \\
-&amp; = \begin{bmatrix} 
-c_{11}  &amp;   c_{21}  &amp;   c_{31} \\
-c_{12}  &amp;   c_{22}  &amp;   c_{32}  \\
-c_{13}  &amp;   c_{23}  &amp;   c_{33}
-\end{bmatrix}
-\end{aligned}
-\]</span></p>
-<h3 id="逆矩阵">逆矩阵</h3>
-<p>一个(组)向量 经过矩阵 <span class="math inline">\(\boldsymbol{M}\)</span> 变换后再经过矩阵 <span class="math inline">\(\boldsymbol{N}\)</span> 变换仍得到原先的向量， 此时，就仿佛 <span class="math inline">\(\boldsymbol{N}\)</span> 将 <span class="math inline">\(\boldsymbol{M}\)</span> 所施加的变换“撤销”了。 使用公式表述即 <span class="math inline">\(\boldsymbol{N}\boldsymbol{M}\boldsymbol{A}=\boldsymbol{A}\)</span> , <span class="math inline">\(\boldsymbol{N}\boldsymbol{M}=\boldsymbol{I}\)</span> 。若满足这个条件 <span class="math inline">\(\boldsymbol{N}\)</span> 叫做 <span class="math inline">\(\boldsymbol{M}\)</span> 的<strong>逆矩阵</strong>，记做 <span class="math inline">\(\boldsymbol{M}^{-1}\)</span></p>
-<p>更简短一点的表述，若两个方阵的积为单位矩阵， 则这两个矩阵互为逆矩阵。</p>
-<p><span class="math display">\[
-\boldsymbol{M}\boldsymbol{M}^{-1} = \boldsymbol{I}
-\]</span></p>
-<h4 id="逆矩阵的性质">逆矩阵的性质</h4>
-<p><span class="math display">\[
-\begin{aligned}
-\boldsymbol{M}\boldsymbol{M}^{-1} &amp;= \boldsymbol{I} \\
-\boldsymbol{I}^{-1} &amp;= \boldsymbol{I} \\
-(\boldsymbol{M}^{-1})^{-1} &amp;= \boldsymbol{M} \\
-(\boldsymbol{M}^{-1})^T &amp;= (\boldsymbol{M}^T)^{-1} \\
-(\boldsymbol{A}\boldsymbol{B})^{-1} &amp;= \boldsymbol{A}^{-1}\boldsymbol{B}^{-1}
-\end{aligned}
-\]</span></p>
-<h4 id="求逆矩阵的主要方式">求逆矩阵的主要方式</h4>
-<h5 id="a.-伴随矩阵法">a. 伴随矩阵法</h5>
-<p><span class="math display">\[
-\boldsymbol{M}^{-1} = \dfrac{adj\boldsymbol{M}}{\det{\boldsymbol{M}}}
-\]</span></p>
-<h5 id="b.-高斯消元">b. 高斯消元</h5>
-<h5 id="c.-对于确定的正交矩阵直接使用其转置矩阵">c. 对于确定的正交矩阵，直接使用其转置矩阵</h5>
-<p>对于正交矩阵来说，由于其性质 <span class="math inline">\(\boldsymbol{M}\boldsymbol{M}^T = \boldsymbol{I}\)</span> ， 所以其逆矩阵就是其转置矩阵。</p>
-<h3 id="正交矩阵">正交矩阵</h3>
-<p>若对于方阵 <span class="math inline">\(\boldsymbol{M}\)</span> , 满足 <span class="math inline">\(\boldsymbol{M}\)</span> 与它的转置矩阵 <span class="math inline">\(\boldsymbol{M}^T\)</span> 的乘积为单位矩阵, 则矩阵 <span class="math inline">\(\boldsymbol{M}\)</span> 被称为正交矩阵。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -917,20 +814,20 @@ c_{13}  &amp;   c_{23}  &amp;   c_{33}
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-count">49</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

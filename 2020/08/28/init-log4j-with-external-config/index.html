@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Log4J使用外部配置 使用 Java语言开发的程序员和爱好者们应当对log4j并不陌生。 它是一个Java的日志系统实现。log4j主页 解决方案 先上解决方案一便以后查阅。  更改位置需要放在Main类的静态初始化块最开始的位置。 两个方式：  配置系统变量log4j.defaultInitOveride。此方法要比较繁琐，且对用户行为不可控，不推荐这种。 在代码中使用System.setPr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Log4J 使用外部配置">
+<meta property="og:url" content="http://yoursite.com/2020/08/28/init-log4j-with-external-config/index.html">
+<meta property="og:site_name" content="Learning &amp; Sharing">
+<meta property="og:description" content="Log4J使用外部配置 使用 Java语言开发的程序员和爱好者们应当对log4j并不陌生。 它是一个Java的日志系统实现。log4j主页 解决方案 先上解决方案一便以后查阅。  更改位置需要放在Main类的静态初始化块最开始的位置。 两个方式：  配置系统变量log4j.defaultInitOveride。此方法要比较繁琐，且对用户行为不可控，不推荐这种。 在代码中使用System.setPr">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.earneet.xyz/JavaClassLoadingProcess.jpg">
+<meta property="article:published_time" content="2020-08-28T04:28:29.000Z">
+<meta property="article:modified_time" content="2020-09-28T04:36:35.866Z">
+<meta property="article:author" content="Earneet">
+<meta property="article:tag" content="log4j">
+<meta property="article:tag" content="外部配置">
+<meta property="article:tag" content="自定义配置">
+<meta property="article:tag" content="配置">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.earneet.xyz/JavaClassLoadingProcess.jpg">
+
+<link rel="canonical" href="http://yoursite.com/2020/08/28/init-log4j-with-external-config/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Log4J 使用外部配置 | Learning & Sharing</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Learning & Sharing</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/28/init-log4j-with-external-config/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Log4J 使用外部配置
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-28 12:28:29" itemprop="dateCreated datePublished" datetime="2020-08-28T12:28:29+08:00">2020-08-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-28 12:36:35" itemprop="dateModified" datetime="2020-09-28T12:36:35+08:00">2020-09-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="log4j使用外部配置">Log4J使用外部配置</h3>
+<p>使用 Java语言开发的程序员和爱好者们应当对log4j并不陌生。 它是一个Java的日志系统实现。<a href="https://logging.apache.org/log4j/2.x/" target="_blank" rel="noopener">log4j主页</a></p>
+<h4 id="解决方案">解决方案</h4>
+<p>先上解决方案一便以后查阅。</p>
+<ol type="1">
+<li>更改位置需要放在Main类的静态初始化块最开始的位置。</li>
+<li>两个方式：
+<ul>
+<li>配置系统变量log4j.defaultInitOveride。此方法要比较繁琐，且对用户行为不可控，不推荐这种。</li>
+<li>在代码中使用<code>System.setProperty("log4j.defaultInitOverride", "true")</code> 配置变量。这个接口在初始时调用，完全程序员指定，即使外部有配置也可覆盖，所以推荐这种方式来避免用户的奇葩行为。</li>
+</ul></li>
+<li>调用 <code>PropertyConfigurator.configure</code>接口指定外部配置的位置。</li>
+</ol>
+<h4 id="背景">背景</h4>
+<p>最近做一个决策服务器，为了跟踪调试我需要大量的Debug级别的日志，这台服务器在部署生产环境时则不需要这么多日志。我决定让用户使用外部自己的日志配置来定义日志，如果用户没有指定自定义的日志配置，那么就使用默认内建的日志配置。这样也方便随时更改日志而无需重新打包（默认的配置会被打进jar包）。</p>
+<h4 id="踩坑过程">踩坑过程</h4>
+<p>如果不做额外的操作， 那么log4j的配置文件默认去代码目录寻找配置文件。 经过谷歌搜了一下如何使用自定义配置文件，得到了一个方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">PropertyConfigurator.configure();<br></code></pre></td></tr></table></figure>
+<p>我只使用了Configurator.configure 来指定了外部配置文件后发现，只是外部的配置文件替换了默认配置的配置，但是没有删除外部配置的Logger。明显与预期不符。</p>
+<p>于是开始阅读 Configurator.configure 的实现代码。以下是adoptOpenJdk14版本的源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">static</span><br><span class="hljs-keyword">public</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">configure</span><span class="hljs-params">(String configFilename)</span> </span>&#123;<br>  <span class="hljs-keyword">new</span> PropertyConfigurator().doConfigure(configFilename,<br>			   LogManager.getLoggerRepository());<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>我发现，接口的最后是用LogManager.getLoggerRepository()。</p>
+<p>如果使用默认位置配置的话，那么是无需指定配置的，可以直接通过 LogManager.getLogger() 来获取logger，由此不难想到，默认配置的加载过程</p>
+<ul>
+<li>要么是在LogManager的静态初始化块中完成。</li>
+<li>要么是在getLogger()初次调用时完成。</li>
+</ul>
+<p>首先检查LogManager的初始化代码:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs java"> <span class="hljs-keyword">static</span> &#123;<br>   <span class="hljs-comment">// By default we use a DefaultRepositorySelector which always returns 'h'.</span><br>   Hierarchy h = <span class="hljs-keyword">new</span> Hierarchy(<span class="hljs-keyword">new</span> RootLogger((Level) Level.DEBUG));<br>   repositorySelector = <span class="hljs-keyword">new</span> DefaultRepositorySelector(h);<br><br>   <span class="hljs-comment">/** Search for the properties file log4j.properties in the CLASSPATH.  */</span><br>   String override =OptionConverter.getSystemProperty(DEFAULT_INIT_OVERRIDE_KEY,<br>					       <span class="hljs-keyword">null</span>);<br><br>   <span class="hljs-comment">// if there is no default init override, then get the resource</span><br>   <span class="hljs-comment">// specified by the user or the default config file.</span><br>   <span class="hljs-keyword">if</span>(override == <span class="hljs-keyword">null</span> || <span class="hljs-string">"false"</span>.equalsIgnoreCase(override)) &#123;<br><br>     String configurationOptionStr = OptionConverter.getSystemProperty(<br>						  DEFAULT_CONFIGURATION_KEY, <br>						  <span class="hljs-keyword">null</span>);<br><br>     String configuratorClassName = OptionConverter.getSystemProperty(<br>                                                  CONFIGURATOR_CLASS_KEY, <br>					   <span class="hljs-keyword">null</span>);<br><br>     URL url = <span class="hljs-keyword">null</span>;<br><br>     <span class="hljs-comment">// if the user has not specified the log4j.configuration</span><br>     <span class="hljs-comment">// property, we search first for the file "log4j.xml" and then</span><br>     <span class="hljs-comment">// "log4j.properties"</span><br>     <span class="hljs-keyword">if</span>(configurationOptionStr == <span class="hljs-keyword">null</span>) &#123;	<br>    url = Loader.getResource(DEFAULT_XML_CONFIGURATION_FILE);<br>    <span class="hljs-keyword">if</span>(url == <span class="hljs-keyword">null</span>) &#123;<br>        url = Loader.getResource(DEFAULT_CONFIGURATION_FILE);<br>    &#125;<br>     &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        url = <span class="hljs-keyword">new</span> URL(configurationOptionStr);<br>    &#125; <span class="hljs-keyword">catch</span> (MalformedURLException ex) &#123;<br>           <span class="hljs-comment">// so, resource is not a URL:</span><br>           <span class="hljs-comment">// attempt to get the resource from the class path</span><br>           url = Loader.getResource(configurationOptionStr); <br><br>           <span class="hljs-comment">//////////////////////Ignore Code ////////////////</span><br>       &#125;<br>&#125;	<br> &#125;<br></code></pre></td></tr></table></figure>
+<p>其中，第12行代码发现，若DEFAULT_INIT_OVERRIDE_KEY这个环境变量被配置且不为"false"，就会执行加载默认配置的过程。那我们想要log4j不加载默认配置，只需要将DEFAULT_INIT_OVERRIDE_KEY 变量设置为一个不为"false"的值即可达到目的，这里我使用的是"true"。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* <span class="hljs-doctag">@deprecated</span> This variable is for internal use only. It will</span><br><span class="hljs-comment">* become private in future versions.</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String DEFAULT_INIT_OVERRIDE_KEY = <br>                                               <span class="hljs-string">"log4j.defaultInitOverride"</span>;<br></code></pre></td></tr></table></figure>
+<p>DEFAULT_INIT_OVERRIDE_KEY 定义的是<code>log4j.defaultInitOverride</code>所以，只需要:</p>
+<ul>
+<li>在操作系统变量配置 log4j.defaultInitOverride=true</li>
+<li>或者虚拟机启动参数 -Dlog4j.defaultInitOverride=true</li>
+<li>或者在LogManager类被初始化前的位置调用Java代码<code>System.setProperty("log4j.defaultInitOverride", "true")</code></li>
+</ul>
+<p>这三个操作任选其一即可。</p>
+<p>结合我的需求，我不想让用户有太多干扰能力，也降低用户的使用学习成本，选择了最后一个方案。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;<br>    <span class="hljs-keyword">static</span> &#123;<br>        initLog4j();<br>    &#125;<br>    <br>    <span class="hljs-comment">//other static field</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;<br>        <span class="hljs-comment">//ServerStart Code</span><br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">initLog4j</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">//check configuration file</span><br>        Path configurationPath = Paths.get(<span class="hljs-string">"cfg"</span>, <span class="hljs-string">"log4j.properties"</span>);<br>        <span class="hljs-keyword">if</span> (!Files.exists(configurationPath) || !Files.isRegularFile(configurationPath)) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">try</span> &#123;<br>            PropertyConfigurator.configure(configurationPath.toString());<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="额外一些说明">额外一些说明</h4>
+<p><strong>为什么要把initLog4j方法调用放在Main类的静态初始化块中且放在初始化块最前面?</strong></p>
+<p>这牵扯到Java虚拟机类加载的机制。</p>
+<p><img src="https://img.earneet.xyz/JavaClassLoadingProcess.jpg" /></p>
+<p>类加载各个过程严格按照图中所示顺序启动。但是它们并不要求按要求结束，但这个不重要。这里重要的是在一个类的相关功能要能使用前，必然会先完成初始化。</p>
+<p>其中，我们类的静态代码块在初始化过程中执行。它在类使用前执行完。</p>
+<p>那问题就归结在了何时会触发类的加载，这里指的是org.apache.log4j.LogManager首次加载。</p>
+<p>按照jvm规范，当执行以下四个指令时，触发类加载：</p>
+<ul>
+<li>new</li>
+<li>getstatic</li>
+<li>putstatic</li>
+<li>invokestatic</li>
+</ul>
+<p>其中 getstatic 和 putstatic 两个执行分别是读写类的静态成员产生，而invokestatic指令在调用类的静态方法时产生。 而这些语句，都可以在出现在类的静态初始化块中。所以，Main类的静态初始化块就很有可能使用别的类的静态域，它又可能使用其他类的静态域，这将会构成一个复杂的依赖链。我们很难保持，或者很难长期保持我们的initLog4j方法总在这些之前执行，所以，我们把它放到了一个最稳妥的地方，在Main类最上方，使用一个静态块来抢先完成配置。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/log4j/" rel="tag"># log4j</a>
+              <a href="/tags/%E5%A4%96%E9%83%A8%E9%85%8D%E7%BD%AE/" rel="tag"># 外部配置</a>
+              <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE/" rel="tag"># 自定义配置</a>
+              <a href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag"># 配置</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/08/25/try-proceduralmeshcomponent/" rel="prev" title="UE4 ProceduralMeshComponent踩坑日记">
+      <i class="fa fa-chevron-left"></i> UE4 ProceduralMeshComponent踩坑日记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/10/19/rsa-brief/" rel="next" title="RSA算法的原理">
+      RSA算法的原理 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#log4j使用外部配置"><span class="nav-number">1.</span> <span class="nav-text">Log4J使用外部配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方案"><span class="nav-number">1.1.</span> <span class="nav-text">解决方案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#背景"><span class="nav-number">1.2.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#踩坑过程"><span class="nav-number">1.3.</span> <span class="nav-text">踩坑过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#额外一些说明"><span class="nav-number">1.4.</span> <span class="nav-text">额外一些说明</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Earneet"
+      src="/images/avatar_head_icon.png">
+  <p class="site-author-name" itemprop="name">Earneet</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:earneet@gmail.com" title="E-Mail → mailto:earneet@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">鲁ICP备17028859号 </a>
+      <img src="/images/beian.png" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502037496" rel="noopener" target="_blank">京公网安备 11010502037496号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Earneet</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'f683935999f7972c4028',
+      clientSecret: '2759f62055ea0ca2f418d98c64fcb333551797c8',
+      repo        : 'GitResponse',
+      owner       : 'earneet',
+      admin       : ['earneet'],
+      id          : '3b039d90d4e756ca120b613477768848',
+        language: 'zh-CN',
+      distractionFreeMode: false
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
+</body>
+</html>

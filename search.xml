@@ -2217,7 +2217,7 @@ c_{13}  &amp;   c_{23}  &amp;   c_{33}
     <url>/2020/08/25/try-proceduralmeshcomponent/</url>
     <content><![CDATA[<h3 id="ue4-使用proceduralmeshcomponent运行时显示动态物体的坑">UE4 使用ProceduralMeshComponent运行时显示动态物体的坑</h3>
 <h4 id="主要使用的接口">主要使用的接口</h4>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CreateMeshSection</span><span class="hljs-params">(int32 SectionIndex, <span class="hljs-keyword">const</span> TArray&lt;FVector&gt;&amp; Vertices, <span class="hljs-keyword">const</span> TArray&lt;int32&gt;&amp; Triangles, <span class="hljs-keyword">const</span> TArray&lt;FVector&gt;&amp; Normals, <span class="hljs-keyword">const</span> TArray&lt;FVector2D&gt;&amp; UV0, <span class="hljs-keyword">const</span> TArray&lt;FColor&gt;&amp; VertexColors, <span class="hljs-keyword">const</span> TArray&lt;FProcMeshTangent&gt;&amp; Tangents, <span class="hljs-keyword">bool</span> bCreateCollision)</span></span><br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CreateMeshSection</span><span class="hljs-params">(</span></span><br><span class="hljs-function"><span class="hljs-params">	int32 SectionIndex, </span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">const</span> TArray&lt;FVector&gt;&amp; Vertices, </span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">const</span> TArray&lt;int32&gt;&amp; Triangles, </span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">const</span> TArray&lt;FVector&gt;&amp; Normals, </span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">const</span> TArray&lt;FVector2D&gt;&amp; UV0,</span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">const</span> TArray&lt;FColor&gt;&amp; VertexColors, </span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">const</span> TArray&lt;FProcMeshTangent&gt;&amp; Tangents,</span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">bool</span> bCreateCollision)</span></span><br></code></pre></td></tr></table></figure>
 <h4 id="首先遇到的问题">首先遇到的问题</h4>
 <ul>
 <li><strong>无法导入"ProceduralMeshComponent.h" 头文件, 明明我可以找到这个文件，但是却无法导入。</strong></li>
@@ -2265,6 +2265,173 @@ c_{13}  &amp;   c_{23}  &amp;   c_{33}
         <tag>Games</tag>
         <tag>ProceduralMeshComponent</tag>
         <tag>VertexColor]</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>RSA算法的原理</title>
+    <url>/2020/10/19/rsa-brief/</url>
+    <content><![CDATA[<h3 id="rsa-非对称加密算法原理">RSA 非对称加密算法原理</h3>
+<h4 id="欧拉函数">欧拉函数</h4>
+<blockquote>
+<p>在数论中，对正整数n，欧拉函数 <span class="math inline">\(\varphi(n)\)</span> 是小于或等于n的正整数中与n互质的数的数目。此函数以其首名研究者欧拉命名，它又称为φ函数（由高斯所命名）或是欧拉总计函数（totient function，由西尔维斯特所命名）。 <a href="https://zh.wikipedia.org/wiki/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">欧拉函数</a></p>
+</blockquote>
+<h4 id="rsa-算法的核心-欧拉定理">RSA 算法的核心: 欧拉定理</h4>
+<blockquote>
+<p>在数论中，欧拉定理（也称费马-欧拉定理或欧拉 <span class="math inline">\({\varphi}\)</span> 函数定理）是一个关于同余的性质。欧拉定理表明，若 <strong>n,a</strong>为正整数，且 <strong>n,a</strong> 互素（即 <span class="math inline">\(\gcd(a,n)=1\)</span> ），则</p>
+</blockquote>
+<p><span class="math display">\[
+a^{\phi{\left(n\right)}} \equiv 1 \pmod n 
+\]</span></p>
+<blockquote>
+<p><a href="https://zh.wikipedia.org/wiki/%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86_(%E6%95%B0%E8%AE%BA)" target="_blank" rel="noopener">欧拉定理</a></p>
+</blockquote>
+<h4 id="费马小定理-欧拉定理的特例">费马小定理: 欧拉定理的特例</h4>
+<p>费马定理的表达式 :</p>
+<p><span class="math display">\[
+a^{\phi{\left(n\right)}} \equiv 1 \pmod n
+\]</span></p>
+<p>在特殊情况下, 当n为质数时, <span class="math inline">\(\varphi(n)=n-1\)</span> , 此时, 欧拉定理的表述即为:</p>
+<p><span class="math display">\[
+a^{n-1} \equiv 1\pmod n
+\]</span></p>
+<p>这个公式即为就是费马小定理。</p>
+<h4 id="模反元素">模反元素</h4>
+<p>如果两个正整数 a 和 n 互质, 那么一定存在一个整数 b 满足:</p>
+<p><span class="math display">\[
+ab \equiv 1\pmod n
+\]</span></p>
+<p>即, (ab - 1)能被n整除。 b就叫做a的<strong>模反元素</strong>。 显然的, 模反元素并不唯一, 对于模反元素b, 对于所有的正整数 <span class="math inline">\(m=b+kn\)</span> 也为a的模反元素。</p>
+<p><strong>模反元素必然存在</strong></p>
+<p>对费马定理进行变形:</p>
+<p><span class="math display">\[
+a^{\phi\left({n}\right)}\equiv a\times a^{\phi\left(n\right)-1}\equiv 1 \pmod n
+\]</span></p>
+<p>在此变形中, <span class="math inline">\(a^{\phi\left(n\right)-1}\)</span> 即为a的模反元素。</p>
+<h4 id="rsa-基本概念">RSA 基本概念</h4>
+<p>我们约定:</p>
+<ul>
+<li>RSA加密秘钥为<strong>E</strong>, 它是一个大整数。</li>
+<li>RSA解密秘钥为<strong>D</strong>, 它是一个大整数。</li>
+<li>RSA加密和解密需要用的模数<strong>N</strong>, 它是一个大整数。</li>
+</ul>
+<h5 id="rsa-加密过程">RSA 加密过程</h5>
+<p><span class="math display">\[
+    密文 = 明文^E mod N
+\]</span></p>
+<p>RSA 加密过程就是这么简单, 它对明文做一个E次幂运算, 然后对N取模。 在这个过程中, E和N的组合就是<strong>公钥</strong>。</p>
+<h5 id="rsa-解密过程">RSA 解密过程</h5>
+<p>对应的, RSA的解密过程也非常简单:</p>
+<p><span class="math display">\[
+    明文 = 密文^D mod N
+\]</span></p>
+<p>RSA 的加密和解密过程完全一致, 只是它们换了一个秘钥, 进行了完全一样的运算。 在这个过程中, D和N的组合就是<strong>私钥</strong>。</p>
+<h4 id="非对称秘钥对的生成">非对称秘钥对的生成</h4>
+<p>在基本概念中, 约定了几个量, E, D, N 在这里,我么继续沿用, 额外的,在生成密钥对的过程中, 引入一个新的量L, 它只用于生成密钥对, 但是最终结果中我们并不体现它。</p>
+<h5 id="求n">1. 求N</h5>
+<p>准备两个大质数p, q。(p和q要最够大)</p>
+<p>$ N=p q$ $</p>
+<h5 id="求l">2. 求L</h5>
+<p>L是 p-1 和 q-1 的最小公倍数。</p>
+<p><span class="math display">\[
+L=lcm(p-1, q-1)
+\]</span></p>
+<p><em>实际上, 理论公式上, L应为ϕ(n), 这样后面的一系列推倒便是欧拉定理的应用了, 但是在实际中,它可以化简为更小的最小公倍数L, 这里,我们使用了实际中的化简方案</em></p>
+<h5 id="求e">3. 求E</h5>
+<p>E是一个比1大, 比L小的数字,且E和L要互质, 即 E和L的最大公约数为1, 表达为数学语言为。</p>
+<p><span class="math display">\[
+1 &lt; E &lt; L \\
+gcd(E, L) = 1
+\]</span></p>
+<p>计算E的过程我们采用随机穷举的模式, 使用伪随机数生成器, 随机生成一个1和L之间的数字, 判断是否满足它与L互质, 如果不满足, 则重复生成并判断下一个随机数。</p>
+<p>至此, RSA的公钥部分E,N我们已经得到了, 公钥: (E, N)。</p>
+<p><em>我们加入E和L互质的这个条件,是为了满足我们需要的解密参数D一定存在</em></p>
+<h5 id="求d">4. 求D</h5>
+<p><span class="math display">\[
+\begin{eqnarray*}
+1 &lt; D &lt; L \\\\
+E \times D\ mod\ L = 1
+\end{eqnarray*}
+\]</span></p>
+<p>按照上述的限制条件, 计算出D, 至此, 私钥部分也计算完成, 私钥为(D, N)。</p>
+]]></content>
+      <categories>
+        <category>算法简述</category>
+      </categories>
+      <tags>
+        <tag>RSA</tag>
+        <tag>费马</tag>
+        <tag>欧拉公式</tag>
+        <tag>非对称</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Log4J 使用外部配置</title>
+    <url>/2020/08/28/init-log4j-with-external-config/</url>
+    <content><![CDATA[<h3 id="log4j使用外部配置">Log4J使用外部配置</h3>
+<p>使用 Java语言开发的程序员和爱好者们应当对log4j并不陌生。 它是一个Java的日志系统实现。<a href="https://logging.apache.org/log4j/2.x/" target="_blank" rel="noopener">log4j主页</a></p>
+<h4 id="解决方案">解决方案</h4>
+<p>先上解决方案一便以后查阅。</p>
+<ol type="1">
+<li>更改位置需要放在Main类的静态初始化块最开始的位置。</li>
+<li>两个方式：
+<ul>
+<li>配置系统变量log4j.defaultInitOveride。此方法要比较繁琐，且对用户行为不可控，不推荐这种。</li>
+<li>在代码中使用<code>System.setProperty("log4j.defaultInitOverride", "true")</code> 配置变量。这个接口在初始时调用，完全程序员指定，即使外部有配置也可覆盖，所以推荐这种方式来避免用户的奇葩行为。</li>
+</ul></li>
+<li>调用 <code>PropertyConfigurator.configure</code>接口指定外部配置的位置。</li>
+</ol>
+<h4 id="背景">背景</h4>
+<p>最近做一个决策服务器，为了跟踪调试我需要大量的Debug级别的日志，这台服务器在部署生产环境时则不需要这么多日志。我决定让用户使用外部自己的日志配置来定义日志，如果用户没有指定自定义的日志配置，那么就使用默认内建的日志配置。这样也方便随时更改日志而无需重新打包（默认的配置会被打进jar包）。</p>
+<h4 id="踩坑过程">踩坑过程</h4>
+<p>如果不做额外的操作， 那么log4j的配置文件默认去代码目录寻找配置文件。 经过谷歌搜了一下如何使用自定义配置文件，得到了一个方法：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">PropertyConfigurator.configure();<br></code></pre></td></tr></table></figure>
+<p>我只使用了Configurator.configure 来指定了外部配置文件后发现，只是外部的配置文件替换了默认配置的配置，但是没有删除外部配置的Logger。明显与预期不符。</p>
+<p>于是开始阅读 Configurator.configure 的实现代码。以下是adoptOpenJdk14版本的源码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">static</span><br><span class="hljs-keyword">public</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">configure</span><span class="hljs-params">(String configFilename)</span> </span>&#123;<br>  <span class="hljs-keyword">new</span> PropertyConfigurator().doConfigure(configFilename,<br>			   LogManager.getLoggerRepository());<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>我发现，接口的最后是用LogManager.getLoggerRepository()。</p>
+<p>如果使用默认位置配置的话，那么是无需指定配置的，可以直接通过 LogManager.getLogger() 来获取logger，由此不难想到，默认配置的加载过程</p>
+<ul>
+<li>要么是在LogManager的静态初始化块中完成。</li>
+<li>要么是在getLogger()初次调用时完成。</li>
+</ul>
+<p>首先检查LogManager的初始化代码:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"> <span class="hljs-keyword">static</span> &#123;<br>   <span class="hljs-comment">// By default we use a DefaultRepositorySelector which always returns 'h'.</span><br>   Hierarchy h = <span class="hljs-keyword">new</span> Hierarchy(<span class="hljs-keyword">new</span> RootLogger((Level) Level.DEBUG));<br>   repositorySelector = <span class="hljs-keyword">new</span> DefaultRepositorySelector(h);<br><br>   <span class="hljs-comment">/** Search for the properties file log4j.properties in the CLASSPATH.  */</span><br>   String override =OptionConverter.getSystemProperty(DEFAULT_INIT_OVERRIDE_KEY,<br>					       <span class="hljs-keyword">null</span>);<br><br>   <span class="hljs-comment">// if there is no default init override, then get the resource</span><br>   <span class="hljs-comment">// specified by the user or the default config file.</span><br>   <span class="hljs-keyword">if</span>(override == <span class="hljs-keyword">null</span> || <span class="hljs-string">"false"</span>.equalsIgnoreCase(override)) &#123;<br><br>     String configurationOptionStr = OptionConverter.getSystemProperty(<br>						  DEFAULT_CONFIGURATION_KEY, <br>						  <span class="hljs-keyword">null</span>);<br><br>     String configuratorClassName = OptionConverter.getSystemProperty(<br>                                                  CONFIGURATOR_CLASS_KEY, <br>					   <span class="hljs-keyword">null</span>);<br><br>     URL url = <span class="hljs-keyword">null</span>;<br><br>     <span class="hljs-comment">// if the user has not specified the log4j.configuration</span><br>     <span class="hljs-comment">// property, we search first for the file "log4j.xml" and then</span><br>     <span class="hljs-comment">// "log4j.properties"</span><br>     <span class="hljs-keyword">if</span>(configurationOptionStr == <span class="hljs-keyword">null</span>) &#123;	<br>    url = Loader.getResource(DEFAULT_XML_CONFIGURATION_FILE);<br>    <span class="hljs-keyword">if</span>(url == <span class="hljs-keyword">null</span>) &#123;<br>        url = Loader.getResource(DEFAULT_CONFIGURATION_FILE);<br>    &#125;<br>     &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        url = <span class="hljs-keyword">new</span> URL(configurationOptionStr);<br>    &#125; <span class="hljs-keyword">catch</span> (MalformedURLException ex) &#123;<br>           <span class="hljs-comment">// so, resource is not a URL:</span><br>           <span class="hljs-comment">// attempt to get the resource from the class path</span><br>           url = Loader.getResource(configurationOptionStr); <br><br>           <span class="hljs-comment">//////////////////////Ignore Code ////////////////</span><br>       &#125;<br>&#125;	<br> &#125;<br></code></pre></td></tr></table></figure>
+<p>其中，第12行代码发现，若DEFAULT_INIT_OVERRIDE_KEY这个环境变量被配置且不为"false"，就会执行加载默认配置的过程。那我们想要log4j不加载默认配置，只需要将DEFAULT_INIT_OVERRIDE_KEY 变量设置为一个不为"false"的值即可达到目的，这里我使用的是"true"。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* <span class="hljs-doctag">@deprecated</span> This variable is for internal use only. It will</span><br><span class="hljs-comment">* become private in future versions.</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String DEFAULT_INIT_OVERRIDE_KEY = <br>                                               <span class="hljs-string">"log4j.defaultInitOverride"</span>;<br></code></pre></td></tr></table></figure>
+<p>DEFAULT_INIT_OVERRIDE_KEY 定义的是<code>log4j.defaultInitOverride</code>所以，只需要:</p>
+<ul>
+<li>在操作系统变量配置 log4j.defaultInitOverride=true</li>
+<li>或者虚拟机启动参数 -Dlog4j.defaultInitOverride=true</li>
+<li>或者在LogManager类被初始化前的位置调用Java代码<code>System.setProperty("log4j.defaultInitOverride", "true")</code></li>
+</ul>
+<p>这三个操作任选其一即可。</p>
+<p>结合我的需求，我不想让用户有太多干扰能力，也降低用户的使用学习成本，选择了最后一个方案。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;<br>    <span class="hljs-keyword">static</span> &#123;<br>        initLog4j();<br>    &#125;<br>    <br>    <span class="hljs-comment">//other static field</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;<br>        <span class="hljs-comment">//ServerStart Code</span><br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">initLog4j</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">//check configuration file</span><br>        Path configurationPath = Paths.get(<span class="hljs-string">"cfg"</span>, <span class="hljs-string">"log4j.properties"</span>);<br>        <span class="hljs-keyword">if</span> (!Files.exists(configurationPath) || !Files.isRegularFile(configurationPath)) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">try</span> &#123;<br>            PropertyConfigurator.configure(configurationPath.toString());<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="额外一些说明">额外一些说明</h4>
+<p><strong>为什么要把initLog4j方法调用放在Main类的静态初始化块中且放在初始化块最前面?</strong></p>
+<p>这牵扯到Java虚拟机类加载的机制。</p>
+<p><img src="https://img.earneet.xyz/JavaClassLoadingProcess.jpg" /></p>
+<p>类加载各个过程严格按照图中所示顺序启动。但是它们并不要求按要求结束，但这个不重要。这里重要的是在一个类的相关功能要能使用前，必然会先完成初始化。</p>
+<p>其中，我们类的静态代码块在初始化过程中执行。它在类使用前执行完。</p>
+<p>那问题就归结在了何时会触发类的加载，这里指的是org.apache.log4j.LogManager首次加载。</p>
+<p>按照jvm规范，当执行以下四个指令时，触发类加载：</p>
+<ul>
+<li>new</li>
+<li>getstatic</li>
+<li>putstatic</li>
+<li>invokestatic</li>
+</ul>
+<p>其中 getstatic 和 putstatic 两个执行分别是读写类的静态成员产生，而invokestatic指令在调用类的静态方法时产生。 而这些语句，都可以在出现在类的静态初始化块中。所以，Main类的静态初始化块就很有可能使用别的类的静态域，它又可能使用其他类的静态域，这将会构成一个复杂的依赖链。我们很难保持，或者很难长期保持我们的initLog4j方法总在这些之前执行，所以，我们把它放到了一个最稳妥的地方，在Main类最上方，使用一个静态块来抢先完成配置。</p>
+]]></content>
+      <categories>
+        <category>编程语言</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>log4j</tag>
+        <tag>外部配置</tag>
+        <tag>自定义配置</tag>
+        <tag>配置</tag>
       </tags>
   </entry>
 </search>

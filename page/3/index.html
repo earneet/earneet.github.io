@@ -183,6 +183,295 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/20/random_number_property/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/20/random_number_property/" class="post-title-link" itemprop="url">随机数的性质</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-20 21:26:45" itemprop="dateCreated datePublished" datetime="2019-09-20T21:26:45+08:00">2019-09-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-06 12:51:33" itemprop="dateModified" datetime="2020-05-06T12:51:33+08:00">2020-05-06</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="随机数的性质">随机数的性质</h1>
+<h2 id="随机性">随机性</h2>
+<p>顾名思义, 就是生成的随机数数列具有杂乱无章的性质的性质, 即, 无规律性, 生成的序列应该无统计数偏差。</p>
+<p>例如:</p>
+<p>若生成的序列为 <code>1, 2, 3, 4, 5, 6 ....</code> 这样的与序列相关的, 异或是 <code>1, 2, 3, 1, 2, 3, 1, 2, 3</code> 这样的周期性的, 异或是 <code>6, 1, 6, 2, 6, 6 , 1, 6</code> 这样某一个或者几个特殊元素优于其他元素大概率出现的, 则是不具有随机性的表现。</p>
+<h2 id="不可预测性">不可预测性</h2>
+<p>不可以预测性指的是, 在得知已经生成了的随机序列和随机算法的情况下, 也无法预测接下来随机的结果会是什么的性质。</p>
+<p>要满足该性质,那么必然要满足, 从后一个或者多个随机数中, 无法反推出随机数生成器的内部状态的性质。</p>
+<p>如果一个随机数生成器能满足不可预测性, 那么它一定是满足随机性的。</p>
+<h2 id="不可重现性">不可重现性</h2>
+<p>不可重现性指的是, 在至少具备了所有相同的初始条件下, 通过生成器两次或者多次生成的随机数数列不相同, 即, 没有办法重现某次输出的随机数列。</p>
+<p>仅使用软件无法实现具有不可重现性的随机数生成器。</p>
+<p>如果一个随机数生成器能满足不可重现性, 那么它一定是满足不可预测性的。</p>
+<h2 id="真随机">真随机?</h2>
+<p>只具备随机性和不可预测性的随机数叫做<strong>伪随机数</strong>, 具备不可重现性的随机数叫做<strong>真随机数</strong>。</p>
+<h2 id="计算机科学中使用的随机算法">计算机科学中使用的随机算法</h2>
+<p>在一般编程语言中, 都会提供两类随机, 例如Java提供了<code>java.util.Random</code>, 但是它并不能用于密码和安全相关的用途, Java另外提供了 <code>java.security.SecureRandom</code> 类用于实现这个用途。</p>
+<p><strong>安全相关的用途应该使用安全的随机算法, 不可以直接使用普通的随机</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/%E9%87%8D%E8%A6%81%E7%9A%84%E8%BF%9E%E7%BB%AD%E5%88%86%E5%B8%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/31/%E9%87%8D%E8%A6%81%E7%9A%84%E8%BF%9E%E7%BB%AD%E5%88%86%E5%B8%83/" class="post-title-link" itemprop="url">重要的连续分布</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-31 14:01:00" itemprop="dateCreated datePublished" datetime="2019-07-31T14:01:00+08:00">2019-07-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-07 09:20:22" itemprop="dateModified" datetime="2020-05-07T09:20:22+08:00">2020-05-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E6%A6%82%E7%8E%87%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">概率论</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="重要的连续分布">重要的连续分布</h1>
+<h2 id="各分布简介">各分布简介</h2>
+<table>
+<thead>
+<tr class="header">
+<th>分布类型</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>均匀分布</td>
+<td>古典派中的几何概型</td>
+</tr>
+<tr class="even">
+<td>正态分布</td>
+<td>二项分布的另一种极限</td>
+</tr>
+<tr class="odd">
+<td>指数分布</td>
+<td>泊松分布的间隔, 连续的几何分布</td>
+</tr>
+</tbody>
+</table>
+<h2 id="均匀分布">均匀分布</h2>
+<h3 id="均匀分布的定义">均匀分布的定义</h3>
+<p>如果连续随机变量X的概率密度函数为：</p>
+<p><span class="math display">\[
+p(x)=
+\begin{cases}
+    \frac{1}{b-a}, &amp;a &lt; x &lt; b\\
+    0, &amp; 其它
+\end{cases}
+\]</span></p>
+<p>则称X服从区间(a,b)上的均匀分布，记作 <span class="math inline">\(X\sim U(a,b)\)</span> ，其累积分布函数为：</p>
+<p><span class="math display">\[
+F(x)=\begin{cases}
+    0,&amp;x &lt; a\\
+    \frac{x-a}{b-a},&amp;a\le x \le b\\
+    1,&amp;x &gt; b
+\end{cases}
+\]</span></p>
+<p>期望和方差分别为：</p>
+<p><span class="math display">\[
+E(X)=\frac{a+b}{2},\quad Var(X)=\frac{(b-a)^2}{12}
+\]</span></p>
+<h2 id="正态分布">正态分布</h2>
+<p>二项分布原是一个离散分布模型。 但是, 当伯努利实验次数较多的时候, 二项分布的计算较为困难(没有计算机的时候), 所以, 就有了逼近二项分布, 在当n比较大的时候用于逼近二项分布。</p>
+<h3 id="逼近二项分布的定义">逼近二项分布的定义</h3>
+<p>X服从于二项分布</p>
+<p><span class="math display">\[
+X \sim b(n, p)
+\]</span></p>
+<p>那么它的期望和方差为</p>
+<p><span class="math display">\[
+\begin{split}
+\mu &amp; = np  \\
+\sigma^2 &amp; = np(1-p)
+\end{split}
+\]</span></p>
+<p>则可以使用以下公式逼近二项分布</p>
+<p><span class="math display">\[
+p(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}},\quad -\infty &lt; x &lt; +\infty
+\]</span></p>
+<p>这个逼近的分布方式, 就是 <font color="red"><strong>正态分布</strong></font> (normal distribution), 也叫做 <font color="red"><strong>高斯分布</strong></font> (Gaussian distribution)</p>
+<p>其<strong>累积分布函数</strong>为:</p>
+<p><span class="math display">\[
+F(x)=\frac{1}{\sigma\sqrt{2\pi}}\int_{-\infty}^{x}e^{-\frac{(t-\mu)^2}{2\sigma^2}}\mathrm{d}t
+\]</span></p>
+<h3 id="正态分布的重要性质">正态分布的重要性质</h3>
+<h4 id="线性">线性</h4>
+<p>若有随机变量X符合正态分布</p>
+<p><span class="math display">\[
+X\sim N(\mu, \sigma^2)
+\]</span></p>
+<p>那么则有</p>
+<p><span class="math display">\[
+aX+b \sim N(a\mu + b, a^2\sigma^2)
+\]</span></p>
+<p><strong>这条重要的性质可以使得任意的正态分布转换为标准正态分布</strong>。</p>
+<p>即:</p>
+<p>若有</p>
+<p><span class="math display">\[
+\text{若有} X \sim N(\mu, \sigma^2) 
+\]</span></p>
+<p>则有</p>
+<p><span class="math display">\[
+\ Z = \frac{X-\mu}{\sigma} \sim N(0, 1)
+\]</span></p>
+<h4 id="上α分位点">上α分位点</h4>
+<p>如果有 <span class="math inline">\(Z\sim N(0,1)\)</span> ，如果 <span class="math inline">\(z_\alpha\)</span> 满足：</p>
+<p><span class="math display">\[
+P(Z &gt; z_\alpha) = \alpha,\quad 0 &lt; \alpha &lt; 1
+\]</span></p>
+<p>那么称点 <span class="math inline">\(z_\alpha\)</span> 为标准正态分布的 <font color="red"><strong>上α分位点</strong></font>。</p>
+<h4 id="六西格玛">六西格玛</h4>
+<p>对于随机变量 <span class="math inline">\(X\sim N(\mu, \sigma^2)\)</span></p>
+<p>不论 <span class="math inline">\(\mu , \sigma\)</span> 的取值是什么, 其中, 关于 <span class="math inline">\(\mu\)</span> 对称的面积都是确定的</p>
+<p><span class="math display">\[
+\begin{split}
+P(\mu-\sigma\le X\le \mu+\sigma)\approx 68.26\% \\
+P(\mu-3\sigma\le X\le \mu+3\sigma)\approx 99.72\%
+\end{split}
+\]</span></p>
+<h3 id="指数分布">指数分布</h3>
+<h4 id="指数分布的定义">指数分布的定义</h4>
+<p>若随机变量X的概率密度函数为：</p>
+<p><span class="math display">\[
+p(x)=\begin{cases}
+\lambda e^{-\lambda x}, &amp; x \ge 0\\
+0,&amp; x &lt; 0
+\end{cases}
+\]</span></p>
+<p>其中 <span class="math inline">\(\lambda &gt; 0\)</span> ，称X服从<font color="red"><strong>指数分布</strong></font>，也可以记为：</p>
+<p><span class="math display">\[
+X \sim Exp(\lambda)
+\]</span></p>
+<p>累积分布函数为：</p>
+<p><span class="math display">\[
+F(x)=\begin{cases}
+1-e^{-\lambda x}, &amp; x \ge 0\\
+0,&amp; x &lt; 0
+\end{cases}
+\]</span></p>
+<p>指数分布 <span class="math inline">\(X\sim Exp(\lambda)\)</span> 的期望和方差为：</p>
+<p><span class="math display">\[
+E(X)=\frac{1}{\lambda},\quad Var(X)=\frac{1}{\lambda^2}
+\]</span></p>
+<h4 id="指数分布的性质">指数分布的性质</h4>
+<h5 id="无记忆性">无记忆性</h5>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/02/ARTS-10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -698,379 +987,6 @@ Memory Usage: 9.1 MB, less than 38.74% of C++ online submissions for Count and S
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/09/ARTS-7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar_head_icon.png">
-      <meta itemprop="name" content="Earneet">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Learning & Sharing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/05/09/ARTS-7/" class="post-title-link" itemprop="url">ARTS-7</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-05-09 12:30:00" itemprop="dateCreated datePublished" datetime="2019-05-09T12:30:00+08:00">2019-05-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-06 12:18:39" itemprop="dateModified" datetime="2020-05-06T12:18:39+08:00">2020-05-06</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ARTS/" itemprop="url" rel="index"><span itemprop="name">ARTS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="arts-7">ARTS-7</h1>
-<h2 id="algorithm">Algorithm</h2>
-<p><a href="https://leetcode.com/problems/sudoku-solver/" target="_blank" rel="noopener"><strong>Sudoku Solver</strong></a></p>
-<h3 id="引言">引言</h3>
-<p>上回, ARTS-5 做了一个验证sudoku是否有效的题目, 本题是它的后续。</p>
-<h3 id="description">Description</h3>
-<ol start="37" type="1">
-<li><a href="https://leetcode.com/problems/sudoku-solver/" target="_blank" rel="noopener">Sudoku Solver</a></li>
-</ol>
-<p>Write a program to solve a Sudoku puzzle by filling the empty cells.</p>
-<p>A sudoku solution must satisfy all of the following rules:</p>
-<p>Each of the digits 1-9 must occur exactly once in each row. Each of the digits 1-9 must occur exactly once in each column. Each of the the digits 1-9 must occur exactly once in each of the 9 3x3 sub-boxes of the grid. Empty cells are indicated by the character '.'.</p>
-<p>A sudoku puzzle...</p>
-<figure>
-<img src="https://img.earneet.xyz/arts7/250px-Sudoku-by-L2G-20050714.svg.png" alt="" /><figcaption>数独谜题</figcaption>
-</figure>
-<p>...and its solution numbers marked in red.</p>
-<figure>
-<img src="https://img.earneet.xyz/arts7/250px-Sudoku-by-L2G-20050714_solution.svg.png" alt="" /><figcaption>数独完成</figcaption>
-</figure>
-<p>Note:</p>
-<p>The given board contain only digits 1-9 and the character '.'. You may assume that the given Sudoku puzzle will have a single unique solution. The given board size is always 9x9</p>
-<h4 id="大意">大意</h4>
-<p>前面的分享已经介绍过数独游戏, 本次题目提供一个未完成的数组, 其中未填充的数字使用字符<code>.</code>来填充。</p>
-<p>我们的解决方案需要替换原数组中的<code>.</code>, 使数独结构成立, 假设题目给出的数组都只有唯一解。</p>
-<h3 id="思路">思路</h3>
-<p>首先最容易想到的就是最简单直接的解法, 本科阶段学习数据接口课程, 对于<code>栈</code>和<code>递归</code>这两个章节都拿数独举过例子。数独的解法和迷宫一样, 都是一个简单直接的栈结构, 一个个放入尝试, 如果成立则递归解下一个单元格, 否则则退回上一步重新放置一个上一步的数字再试。</p>
-<h3 id="解法-1">解法 1</h3>
-<p>这里先使用了最直接的解法, 我实现了cpp和java两个版本的方案, 这里贴出一个java版本的方案, 因为后面还继续讨论一下jvm对于这个情况的优化。</p>
-<p>第一段代码 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">solveSudoku</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] board)</span> </span>&#123;<br>        solveNext(board);<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">solveNext</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] board)</span></span>&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> row = <span class="hljs-number">0</span>; row &lt; <span class="hljs-number">9</span>; row++)&#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> col = <span class="hljs-number">0</span>; col &lt; <span class="hljs-number">9</span>; col++)&#123;<br>                <span class="hljs-keyword">if</span>(board[row][col] == <span class="hljs-string">'.'</span>)&#123;<br>                    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">char</span> c = <span class="hljs-string">'1'</span>; c &lt;= <span class="hljs-string">'9'</span>; c++)&#123;<br>                        <span class="hljs-keyword">if</span>(!canSet(board, row, col, c)) <span class="hljs-keyword">continue</span>;   <span class="hljs-comment">//check if can set c</span><br>                        board[row][col] = c; <br>                        <span class="hljs-keyword">if</span>(!solveNext(board))<br>                            board[row][col] = <span class="hljs-string">'.'</span>;  <span class="hljs-comment">//rollback if failed</span><br>                        <span class="hljs-keyword">else</span><br>                            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>; <br>                    &#125;<br>                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">canSet</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] board, <span class="hljs-keyword">int</span> row, <span class="hljs-keyword">int</span> col, <span class="hljs-keyword">char</span> c)</span></span>&#123;<br>        <span class="hljs-keyword">int</span> brow = row /<span class="hljs-number">3</span> * <span class="hljs-number">3</span>;<br>        <span class="hljs-keyword">int</span> bcol = col /<span class="hljs-number">3</span> * <span class="hljs-number">3</span>;  <span class="hljs-comment">// recaculate the block's begin position</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">9</span>; i++) &#123;<br>            <span class="hljs-keyword">if</span>(board[i][col] != <span class="hljs-string">'.'</span> &amp;&amp; board[i][col] == c) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>; <br>            <span class="hljs-keyword">if</span>(board[row][i] != <span class="hljs-string">'.'</span> &amp;&amp; board[row][i] == c) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>; <br>            <span class="hljs-keyword">if</span>(board[brow + i / <span class="hljs-number">3</span>][ bcol + i % <span class="hljs-number">3</span>] != <span class="hljs-string">'.'</span> &amp;&amp; <br>                board[brow + i / <span class="hljs-number">3</span>][bcol + i % <span class="hljs-number">3</span>] == c) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>; <br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<hr />
-<p>第二段代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">solveSudoku</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] board)</span> </span>&#123;<br>        solveNext(board, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">solveNext</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] board, <span class="hljs-keyword">int</span> row, <span class="hljs-keyword">int</span> col)</span></span>&#123;<br>        <span class="hljs-keyword">for</span>(; row &lt; <span class="hljs-number">9</span>; row++)&#123;<br>            <span class="hljs-keyword">for</span>(; col &lt; <span class="hljs-number">9</span>; col++)&#123;<br>                <span class="hljs-keyword">if</span>(board[row][col] == <span class="hljs-string">'.'</span>)&#123;<br>                    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">char</span> c = <span class="hljs-string">'1'</span>; c &lt;= <span class="hljs-string">'9'</span>; c++)&#123;<br>                        <span class="hljs-keyword">if</span>(!canSet(board, row, col, c)) <span class="hljs-keyword">continue</span>;<br>                        board[row][col] = c; <br>                        <span class="hljs-keyword">if</span>(!solveNext(board, row, col))<br>                            board[row][col] = <span class="hljs-string">'.'</span>; <br>                        <span class="hljs-keyword">else</span><br>                            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>; <br>                    &#125;<br>                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>                &#125;<br>            &#125;<br>            col = <span class="hljs-number">0</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">canSet</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] board, <span class="hljs-keyword">int</span> row, <span class="hljs-keyword">int</span> col, <span class="hljs-keyword">char</span> c)</span></span>&#123;<br>        <span class="hljs-keyword">int</span> brow = row /<span class="hljs-number">3</span> * <span class="hljs-number">3</span>;<br>        <span class="hljs-keyword">int</span> bcol = col /<span class="hljs-number">3</span> * <span class="hljs-number">3</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">9</span>; i++) &#123;<br>            <span class="hljs-keyword">if</span>(board[i][col] != <span class="hljs-string">'.'</span> &amp;&amp; board[i][col] == c) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>; <br>            <span class="hljs-keyword">if</span>(board[row][i] != <span class="hljs-string">'.'</span> &amp;&amp; board[row][i] == c) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>; <br>            <span class="hljs-keyword">if</span>(board[brow + i / <span class="hljs-number">3</span>][ bcol + i % <span class="hljs-number">3</span>] != <span class="hljs-string">'.'</span> &amp;&amp; <br>                board[brow + i / <span class="hljs-number">3</span>][bcol + i % <span class="hljs-number">3</span>] == c) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>; <br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>贴出一个c++的代码对比</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">solveSudoku</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">char</span>&gt;&gt;&amp; board)</span> </span>&#123;<br>        solveNextStep(board);<br>    &#125;<br>    <br><span class="hljs-keyword">private</span>:  <br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">solveNextStep</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">char</span>&gt;&gt;&amp; board)</span> </span>&#123;<br>      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> row = <span class="hljs-number">0</span>; row &lt; <span class="hljs-number">9</span>; ++row) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> column = <span class="hljs-number">0</span>; column &lt; <span class="hljs-number">9</span>; ++column) &#123;<br>          <span class="hljs-keyword">if</span> (board[row][column] != <span class="hljs-string">'.'</span>) <span class="hljs-keyword">continue</span>;<br>          <span class="hljs-keyword">for</span> (<span class="hljs-keyword">char</span> iv = <span class="hljs-string">'1'</span>; iv &lt;= <span class="hljs-string">'9'</span>; ++iv) &#123;<br>            <span class="hljs-keyword">if</span> (isValid(board, row, column, iv)) &#123;<br>              board[row][column] = iv;<br>              <span class="hljs-keyword">if</span> (solveNextStep(board))<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>              <span class="hljs-keyword">else</span><br>                board[row][column] = <span class="hljs-string">'.'</span>;<br>            &#125;<br>          &#125;<br>          <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>      &#125;<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>  <br>    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">isValid</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">char</span>&gt;&gt;&amp; board, <span class="hljs-keyword">int</span> row, <span class="hljs-keyword">int</span> col, <span class="hljs-keyword">char</span> c)</span> </span>&#123;<br>      <span class="hljs-keyword">int</span> brow = row/<span class="hljs-number">3</span>*<span class="hljs-number">3</span>;<br>      <span class="hljs-keyword">int</span> bcol = col/<span class="hljs-number">3</span>*<span class="hljs-number">3</span>;<br>      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">9</span>; ++i) &#123;<br>        <span class="hljs-keyword">if</span> (board[row][i]!=<span class="hljs-string">'.'</span> &amp;&amp; board[row][i]==c) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">if</span> (board[i][col]!=<span class="hljs-string">'.'</span> &amp;&amp; board[i][col]==c) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">if</span> (board[brow + i/<span class="hljs-number">3</span>][bcol + i%<span class="hljs-number">3</span>] !=<span class="hljs-string">'.'</span> &amp;&amp; board[brow + i/<span class="hljs-number">3</span>][bcol + i%<span class="hljs-number">3</span>]==c) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>      &#125;<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h3 id="result-1">Result 1</h3>
-<table>
-<thead>
-<tr class="header">
-<th>Time Submitted</th>
-<th>Status</th>
-<th>Runtime</th>
-<th>Memory</th>
-<th>Language</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>3 minutes ago</td>
-<td>Accepted</td>
-<td>7 ms</td>
-<td>36.6 MB</td>
-<td>java</td>
-</tr>
-<tr class="even">
-<td>12 minutes ago</td>
-<td>Accepted</td>
-<td>6 ms</td>
-<td>36.3 MB</td>
-<td>java</td>
-</tr>
-<tr class="odd">
-<td>a few seconds ago</td>
-<td>Accepted</td>
-<td>20 ms</td>
-<td>8.7 MB</td>
-<td>cpp</td>
-</tr>
-</tbody>
-</table>
-<p>其中, 第一行结果对应上面代码的第二段。 第二行结果对应上面结果的第一段。我本来是想稍微进行一点优化(虽然我知道这个"优化"聊胜于无), 反而结果更糟糕了, 下面我会分享一下我的猜想。</p>
-<p>C++ 代码上在内存用量上完胜(这个应该是由于java基于jvm, 额外消耗了更多内存吧), 但是在执行时间上cpp代码完败, 猜想应该是由于cpp的标准vector类的实现问题, 和无法基于profiling 做编译时优化而造成的劣势。 针对cpp代码, 我也做了同样的传递行列参数的优化, 但是执行时间上和未优化的版本完全一致。</p>
-<h3 id="分析总结">分析总结</h3>
-<p>我虽然提供了可以AC的答案, 但是这个答案应该是最基础的, 跟"好答案"相去甚远, 这个解法真的是对不起"Hard"这个难度。至于更优秀的解决方案, 后面我去看看讨论区大佬有什么精彩解法。</p>
-<p>这里, 我只讨论我这两段代码, 为什么"优化"后的代码反而表现更差。 看上面的贴图相差无几, 也许可能纯粹认为是偶发的误差导致的, 但是, 我在本地机器上使用JMH反复做了测试, 结果依然如此。</p>
-<h4 id="猜想">猜想</h4>
-<p>这里可能涉及到一个jvm层面的优化, 可能jvm针对固定的计数循环使用了"循环展开"和"向量化"的优化技术。(这里我参考了<a href="https://time.geekbang.org/column/article/39814" target="_blank" rel="noopener">循环优化</a>和<a href="https://time.geekbang.org/column/article/39838" target="_blank" rel="noopener">向量化</a>), 由于第二种方法,我通过参数设置了循环开始条件,破坏了固定的循环计数, 导致即时编译器无法采用优化, 反而导致了运行效率更低。</p>
-<p>对比cpp代码的两个方案, 两个代码执行时间基本一致, 所以我觉得这个java代码的差异应该就是由于编译时的优化失败导致的。</p>
-<hr />
-<h2 id="review">Review</h2>
-<p><a href="https://medium.com/javascript-in-plain-english/javascript-fundamental-prototypal-inheritance-9153ab434aae" target="_blank" rel="noopener"><strong>JavaScript Fundamental: Prototypal Inheritance</strong></a></p>
-<p>JavaScript 基本规则 : 原型式继承</p>
-<h3 id="引言-1">引言</h3>
-<p>本周的review内容依然来自于Medium Daily Digest, 就随缘吧, 哪天我开始写review了, 就直接使用哪天的digest了, 当然, 我绝对不是每周只读这一篇。 然后, 本篇较短。</p>
-<h3 id="内容">内容</h3>
-<p>JavaScript的原型式继承</p>
-<p>首先, 我写JavaScript并不多, 偶尔写两句。</p>
-<pre><code>作为JavaScript开发者, 理解JavaScript的继承的工作原理是必备知识, 面试尤其得心应手, 今天, 我来说道说道JavaScript实现的继承的优缺点。</code></pre>
-<p><font color="red"><strong>下面的内容为原文翻译</strong></font> <a href="https://medium.com/javascript-in-plain-english/javascript-fundamental-prototypal-inheritance-9153ab434aae" target="_blank" rel="noopener">原文链接</a></p>
-<h4 id="what-is-an-inheritance">What is an inheritance?</h4>
-<p>什么是继承?</p>
-<p>继承是面向对象编程的四个基本概念之一, (四个概念是: 抽象, 封装, 继承, 多态), 继承可以使一个对象获取另一个已存在的对象的属性。</p>
-<h4 id="does-javascript-have-inheritance">Does JavaScript have inheritance?</h4>
-<p>JavaScript支持继承吗?</p>
-<p>当然, JavaScript使用一个叫做原型式继承的类型, 它与类似Java语言的经典继承模型有很大差别。</p>
-<h4 id="what-is-prototypal-inheritance">What is prototypal inheritance?</h4>
-<p>什么是原型继承?</p>
-<p>要搞明白原型继承, 我们先要搞明白原型链, 原型链是每个对象与其原型之间的一系列联系，它以某种方式充当“父对象”(通过原型)，直到链到达null的引用。 此外，可以使用__proto__手动设置对象的原型。举个栗子:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> vehicle = &#123;<br>    numWheels: <span class="hljs-number">4</span><br>&#125;<br><span class="hljs-keyword">const</span> car = &#123;<br>    numDoors: <span class="hljs-number">4</span><br>&#125;<br><span class="hljs-comment">// Setting vehicle as car object's prototype</span><br>car.__proto__ = vehicle<br><span class="hljs-built_in">console</span>.log(car.numWheels)<br>=&gt; <span class="hljs-number">4</span><br></code></pre></td></tr></table></figure>
-<p>card对象本身不包含<code>numWheels</code>属性, 但是, 当我们设置<code>vehicle</code>对象作为它的<code>prototype</code>属性, <code>car.numWheels</code> 取值为4, 在原型式继承中, 如果一个属性在原对象中不存在, JavaScript(执行引擎)将会通过原对象的<code>prototype</code>属性开始递归的搜索目标属性,直到找到目标属性,或者对象的<code>prototype</code>属性为<code>null</code>为止。</p>
-<h4 id="good-or-bad">Good or bad?</h4>
-<p>优缺点</p>
-<ul>
-<li>Good 优点
-<ol type="1">
-<li>简单直接</li>
-<li>更适合JavaScript的动态特性本质</li>
-<li>代码冗余度低 (ps. 我表示并没有低的明显)</li>
-</ol></li>
-<li>Bad 缺点
-<ol type="1">
-<li>习惯于经典继承模型的人难以掌握(例如Java)</li>
-<li>JavaScript的原型继承使用构造函数模式，对象继承自另一个对象的构造函数，而不是整个对象类型，我(作者)认为它更符合原型继承试图实现的目标。</li>
-</ol>
-“I was under marketing orders to make it look like Java but not make it too big for its britches. It’s just this sort of silly little brother language, right? The sidekick to Java.” -- Brandan Eich (Creator of JavaScript)</li>
-</ul>
-<hr />
-<h2 id="tips">Tips</h2>
-<p><strong>在生产环境的机器上,尤其是低配置机器,不要尝试去打开查看或者处理大文件</strong></p>
-<h3 id="引言-2">引言</h3>
-<p>本次Tips特别简单,真的, 它是一个警告, 只有一句话。如上</p>
-<h3 id="讲个故事">讲个故事</h3>
-<p>基于我国国情, 每一个通过域名可以访问的国内服务器(80和8080端口)都必须经过备案, 否则不可能访问通, 所以, 我购买了一个处于国外机房的vps(对, 我从不通过它访问谷歌, 那是违法的)。</p>
-<p>本着钻研和学习的精神, 我在上面运行了一个 ss 进程, 用它来搭建代理, 提供我公司研发网络的穿透, 以便我可以在下班忘记打卡的时候可以在家里打卡下班(对, 不用来翻墙, 那样做违法)。</p>
-<p>某天, 我又回到了家, 熟练的打开了teamviewer, 连上工位的机器, 签退页面打开, 看看还差五分钟就又满一小时了(多工作没有加班费, 我就是贱), 想着再等我分钟退吧。</p>
-<p>正好某视频网站源码被我clone了一份在这个vps上, 而且压了一个压缩包准备下到本地, 然后手贱了一个view命令给到了压缩包上。</p>
-<p>然后teamviewer熟练的断开了, 一查, 果然ss进程被oom关闭了, 工位上的机器teamviewer只会重试一次, 果然我没能在这个时间内重启, 于是, 考勤异常了。</p>
-<h3 id="相关知识">相关知识</h3>
-<p>Linux的内存管理机制, 当linux内核发现可用内存不足时, 会通过3种途径来回收内存</p>
-<ul>
-<li>基于 LRU（Least Recently Used）算法, 回收缓存</li>
-<li>基于 Swap 机制，回收不常访问的匿名页</li>
-<li>基于 OOM（Out of Memory）机制，杀掉占用大量内存的进程。</li>
-</ul>
-<p>我的故事里, ss 进程被杀死就是第三种途径在产生效果。</p>
-<pre><code>第三种方式，OOM 机制按照 oom_score 给进程排序。oom_score 越大，进程就越容易被系统杀死。
-
-当然了，如果你不希望应用程序被 OOM 杀死，可以调整进程的 oom_score_adj，减小 OOM分值，进而降低被杀死的概率。
-
-或者，你还可以开启内存的 overcommit，允许进程申请超过物理内存的虚拟内存（这儿实际上假设的是，进程不会用光申请到的虚拟内存）。</code></pre>
-<p>上面机制的内容引自<a href="https://time.geekbang.org/column/article/76675" target="_blank" rel="noopener">倪朋飞发表在极客时间的课程</a>, 版权文章, 阅读完成版可能需要付费。</p>
-<hr />
-<h2 id="share">Share</h2>
-<p><a href="https://zhuanlan.zhihu.com/p/64916177?utm_source=wechat_session&amp;utm_medium=social&amp;utm_oi=540994080696434688&amp;from=timeline&amp;isappinstalled=0&amp;wechatShare=1&amp;s_s_i=hw36OvKwGR7iQ1T74AlKZRRC1J1XliA8AEly3EqM9Vk%3D&amp;s_r=0" target="_blank" rel="noopener">微软最爽命令行工具发布！引诱开发者叛逃Mac，开源六小时冲上GitHub第二</a></p>
-<p>我竟然分享的是一篇软文, 没错, 它击中了部分我对ide和开发环境的幻想, 即使它是一篇软文, 我仍旧期待。在此分享, 给所有ide洁癖者。</p>
-<hr />
-<h2 id="end">End</h2>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/21/ARTS-4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar_head_icon.png">
-      <meta itemprop="name" content="Earneet">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Learning & Sharing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/04/21/ARTS-4/" class="post-title-link" itemprop="url">ARTS-4</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-04-21 18:34:20" itemprop="dateCreated datePublished" datetime="2019-04-21T18:34:20+08:00">2019-04-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-06 12:18:00" itemprop="dateModified" datetime="2020-05-06T12:18:00+08:00">2020-05-06</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ARTS/" itemprop="url" rel="index"><span itemprop="name">ARTS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="rts第四周">RTS第四周</h1>
-<h2 id="algorithm">Algorithm</h2>
-<p><strong>Search in Rotated Sorted Array</strong> ### 引言 本周leetcode的推送又是一道easy难度的题目, 还是一个使用二分查找来解决的简单猜数问题, 本着要进步的想法, 做完了那道题, 但是感觉没什么可分享的点, 于是顺延之前解决的问题的顺序做了本题。</p>
-<h3 id="description">Description</h3>
-<blockquote>
-<p>Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.</p>
-<p>(i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).</p>
-<p>You are given a target value to search. If found in the array return its index, otherwise return -1.</p>
-<p>You may assume no duplicate exists in the array.</p>
-<p>Your algorithm's runtime complexity must be in the order of O(log n).</p>
-<p>Example 1:</p>
-<p>Input: nums = [4,5,6,7,0,1,2], target = 0 Output: 4 Example 2:</p>
-<p>Input: nums = [4,5,6,7,0,1,2], target = 3 Output: -1</p>
-</blockquote>
-<p>有一个已经升序排列的数组, 从其中一个元素的位置给他截断, 然后移动拼接, 成为新的数组, 就是按照元素为单位对数组进行循环移位。</p>
-<h3 id="思路">思路</h3>
-<p>一看到这个题目, 二分搜索马上出现在脑海里, 后来一分析, 貌似行不通, 因为一般的二分搜索只能处理单调的数组(这个位置我被自己蠢哭了)。</p>
-<p>这个问题的关键是, 第一次进行取mid操作时, mid落在哪个区间, 如图 (sorry, oos 到期了, 待更换):</p>
-<ul>
-<li>当 mid 落于左半边时, 记它为midl,否则,记为midr。若v[mid]恰等于target, 则查找结束。</li>
-<li>当 mid = midl , 此时mid落于左半边, 典型特征为 v[mid] &gt; v[left] 此时, 再以一般的二分法判断该如何移动left和right指针即可, 此时, 若目标小于v[mid] 且大于v[left] 则 right指针左移, 否则left指针右移。</li>
-<li>当 mid = midr, 此时mid落于右半边, 典型特征为 v[mid] &lt; v[left] 此时, 以一般二分判断移动指针, 若target &lt; v[mid]且target &lt; v[right] 则左移right 否则, 右移left。</li>
-</ul>
-<h3 id="代码">代码</h3>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">search</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-keyword">int</span> target)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> left=<span class="hljs-number">0</span>, right=nums.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">while</span>(left&lt;=right)&#123;<br>            <span class="hljs-keyword">int</span> mid=(left+right)/<span class="hljs-number">2</span>;<br>            <span class="hljs-keyword">if</span> (nums[mid]==target) <span class="hljs-keyword">return</span> mid;<br>            <span class="hljs-keyword">if</span> (nums[mid]&gt;=nums[left]) &#123;    <span class="hljs-comment">// mid is midl</span><br>                <span class="hljs-keyword">if</span> (target&gt;=nums[left]&amp;&amp;target&lt;=nums[mid]) &#123;<br>                    right=mid<span class="hljs-number">-1</span>;<br>                &#125;<span class="hljs-keyword">else</span>&#123;<br>                    left=mid+<span class="hljs-number">1</span>;<br>                &#125;<br>            &#125;<span class="hljs-keyword">else</span>&#123;                          <span class="hljs-comment">// mid is midr</span><br>                <span class="hljs-keyword">if</span> (target&gt;=nums[mid]&amp;&amp;target&lt;=nums[right])&#123;<br>                    left=mid+<span class="hljs-number">1</span>;<br>                &#125;<span class="hljs-keyword">else</span>&#123;<br>                    right=mid<span class="hljs-number">-1</span>;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h3 id="result">Result</h3>
-<table>
-<thead>
-<tr class="header">
-<th>Status</th>
-<th>Runtime</th>
-<th>Memory</th>
-<th>Language</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Accepted</td>
-<td>4 ms</td>
-<td>8.6 MB</td>
-<td>cpp</td>
-</tr>
-</tbody>
-</table>
-<h2 id="review">Review</h2>
-<h3 id="引言">引言</h3>
-<p>本周review文章来自medium的一次每日推送, 高亮文章为 "被你所不知道的追踪器填满的手机App", 我平时使用手机也比较洁癖, 一个app如果要求我授权一个我认为它不需要的权限我是坚决不给的, 我宁可不用这个app, 这里就不得不说各政府部门外包给三流公司做的官方app了, 各种权限要求一大堆, 包括位置、电话短信、通讯录 什么的, 我就纳闷了,你一个公积金管理的app要这些权限干啥!!!</p>
-<p>所以, 当我第一眼看见这个题目的时候, 确认过眼神, 就是它了。 <a href="https://onezero.medium.com/the-app-privacy-crisis-apple-and-google-need-to-fix-now-4e3590f2fc52" target="_blank" rel="noopener">Your Smartphone Apps Are Filled With Trackers You Know Nothing About</a></p>
-<h3 id="文章主旨">文章主旨</h3>
-<ul>
-<li>我们使用手机App大多收集了各种各样的传感器数据和用户行为数据。</li>
-<li>手机app的崩溃日志可能带有大量其他的信息。</li>
-<li>即使开发者无意使用和收集这些数据,但是他们继承的各种SDK无时无刻不在做这些工作。</li>
-</ul>
-<h3 id="section"></h3>
-<h2 id="tips">Tips</h2>
-<p><strong>Lua的代理模型</strong></p>
-<h3 id="引言-1">引言</h3>
-<p>最新一个资料片要上一个跨服的好友功能, 之前我们已经有一个本服务器的好友功能了, 其实现是在玩家进行登录的时候将所有好友信息推送给客户端, 每当添加一个好友时,也将好友信息推送给客户端保存, 这样, 客户端可以即时的展示好友的界面和功能。 新的功能要求玩家可以跨服务器添加好友, 这样一来, 如果要做到在玩家登陆时推送好友信息, 那么玩家所属服务器或者中心服务器必须去各个服务器拉取好友信息,然后统一推送给玩家, 但是这个方案很复杂, 涉及到很多的拉取同步问题。</p>
-<p>所以, 我设计新的方案, 在玩家登陆时, 只发送玩家的好友id和服务器id给客户端, 当客户端需要展示ui的时候再去目标服务器拉取, 然后展示。</p>
-<p>之前思虑不周, 等新的好友模块都做完了, 才发现, 一些其他的模块对好友模块的数据有依赖, 它们没有去拉取再显示, 而是直接从好友模块中去取数据, 所以, 报空异常了。 稍微统计了一下, 这样的ui有很多很多, 单靠我挨个去改动是忙不完的。</p>
-<p>此时, 一个牛逼的同事提出了他的解决方案(实际上之前他就说过, 但是我没在意), 使用一个代理的模式, 其他模块拿去数据的时候返回给他一个代理的包装对象, 此时好友模块再去动态的拉取信息, 响应回来后, 再去使用事件机制更新ui。</p>
-<p>本技巧, 就是这个方案的实现。</p>
-<h3 id="原方案伪代码">原方案伪代码</h3>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">--[[</span><br><span class="hljs-comment">    这是最早的代码, 本地缓存了好友数据, 所以, 可以直接拉取到好友数据, 用以UI显示</span><br><span class="hljs-comment">]]</span><br>    <span class="hljs-keyword">local</span> friendinfo = friendmodule.getFriendInfo(friendid)<br>    ui.panelXXX:Show(friendinfo)<br></code></pre></td></tr></table></figure>
-<p>基于之前的功能需求,这样做无可厚非, 也是最简易的做法, 但是这个方案给后面功能的拓展埋下了坑,再增加跨服支持的时候需要修改大量的内容。</p>
-<h3 id="我改过后好友模块相关ui的实现伪代码">我改过后好友模块相关ui的实现伪代码</h3>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">--[[</span><br><span class="hljs-comment">    修改后的代码, 尝试去从好友模块获取数据, 若存在,则跟之前一样用, 若不存在, 那么去请求数据, 然后在回调中重新渲染ui</span><br><span class="hljs-comment">]]</span><br><br>    <span class="hljs-keyword">local</span> friendinfo = friendmodule.getFriendInfo(friendid)<br>    <span class="hljs-keyword">if</span> friendinfo <span class="hljs-keyword">then</span><br>        ui.panelXXX:Show(friendinfo)<br>    <span class="hljs-keyword">else</span> <br>        friendmodule.queryFriendFromServer(friendid, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span> <span class="hljs-comment">-- callback function</span><br>            friendinfo = friendmodule.getFriendInfo(friendid)<br>            ui.panelXXX:Show(friendinfo)<br>        <span class="hljs-keyword">end</span>)<br>    <span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
-<p>这个做法基本实现了新的功能要求, 而且基于懒加载节省了大多数时候不必要的内存消耗(实际游戏中, 玩家大多数的时候整个游戏过程都不会开好友ui), 但是, 这个修改需要改动的位置非常多, 几乎所有涉及到好友数据的ui都需这么改, 几乎无可避免会出现遗漏。</p>
-<h3 id="代理方案">代理方案</h3>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">--[[</span><br><span class="hljs-comment">    这是最早的代码, 本地缓存了好友数据, 所以, 可以直接拉取到好友数据, 用以UI显示</span><br><span class="hljs-comment">]]</span><br>    <span class="hljs-keyword">local</span> friendinfo = friendmodule.getFriendInfo(friendid)<br>    ui.panelXXX:Show(friendinfo)<br></code></pre></td></tr></table></figure>
-<p>简单从上面伪代码看来,我们并没有做任何的更改。 确实, 因为这个方案就是为了减少我第二个方案的复杂度来做的。 实际上<code>friendmodule.getFriendInfo</code>这个函数的实现做了修改, 它所返回的不再是一个 "<code>rawdata</code>"了, 而是一个代理对象<code>wrapper</code>。</p>
-<p>原先的实现: <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs lua">friendmodule.getFreindInfo = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(friend)</span></span><br>    <span class="hljs-keyword">return</span> data[friend]<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure></p>
-<p>修改后的实现</p>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs lua">wrapper = &#123; data = &#123;&#125;&#125;<br>wrapper.new = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(id)</span></span> <br>    <span class="hljs-keyword">local</span> instance = &#123; __data=&#123;&#125;&#125;<br>    <span class="hljs-built_in">setmetatable</span>(instance, &#123;<span class="hljs-built_in">__index</span> = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(table, key)</span></span><br>        <span class="hljs-keyword">local</span> res = instance.__data[key]<br>        <span class="hljs-keyword">if</span> res <span class="hljs-keyword">then</span><br>            <span class="hljs-keyword">return</span> res;<br>        <span class="hljs-keyword">end</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">rawget</span>(<span class="hljs-built_in">table</span>, key)<br>    <span class="hljs-keyword">end</span>&#125;)<br>    friendmodule.queryFriendFromServer(id, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(callbackdata)</span></span> <span class="hljs-comment">-- callback </span><br>            instance.__data = callbackdata<br>            eventsystem.redraw()<br>        <span class="hljs-keyword">end</span>)<br>    <span class="hljs-keyword">return</span> instance<br><span class="hljs-keyword">end</span><br><br>friendmodule.getFreindInfo = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(friend)</span></span><br>    <span class="hljs-keyword">local</span> friendinfo = data[friend]<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> friendinfo <span class="hljs-keyword">then</span><br>        <span class="hljs-keyword">local</span> res = warpper.new(friend)<br>        data[friend] = res<br>        <span class="hljs-keyword">return</span> res<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">return</span> friendinfo<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
-<h2 id="share">Share</h2>
-<h3 id="引言-2">引言</h3>
-<p>本次本来想分享我自己写的关于java语言的锁同步的一些总结, 但是在写另一篇博文的时候, 我尝试向博文里添加几个流程图, 我使用draw.io画好了图, 但是同事告诉我markdown本身可以画流程图, 没想到它这么强大, 临时改成本次分享一篇半官方的帮助指南, 介绍markdown的各种特性和功能。</p>
-<h3 id="正文">正文</h3>
-<p><a href="https://coding.net/help/doc/project/markdown.html" target="_blank" rel="noopener">MarkDown语法介绍</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1142,20 +1058,20 @@ Memory Usage: 9.1 MB, less than 38.74% of C++ online submissions for Count and S
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-count">49</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
