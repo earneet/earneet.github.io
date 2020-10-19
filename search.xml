@@ -2329,7 +2329,7 @@ a^{\phi\left({n}\right)}\equiv a\times a^{\phi\left(n\right)-1}\equiv 1 \pmod n
 <p>在基本概念中, 约定了几个量, E, D, N 在这里,我么继续沿用, 额外的,在生成密钥对的过程中, 引入一个新的量L, 它只用于生成密钥对, 但是最终结果中我们并不体现它。</p>
 <h5 id="求n">1. 求N</h5>
 <p>准备两个大质数p, q。(p和q要最够大)</p>
-<p>$ N=p q$ $</p>
+<p><span class="math display">\[ N=p \times q \]</span></p>
 <h5 id="求l">2. 求L</h5>
 <p>L是 p-1 和 q-1 的最小公倍数。</p>
 <p><span class="math display">\[
