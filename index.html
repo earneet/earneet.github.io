@@ -208,7 +208,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-10-19 14:09:37 / 修改时间：14:28:08" itemprop="dateCreated datePublished" datetime="2020-10-19T14:09:37+08:00">2020-10-19</time>
+              <time title="创建时间：2020-10-19 14:09:37 / 修改时间：14:39:58" itemprop="dateCreated datePublished" datetime="2020-10-19T14:09:37+08:00">2020-10-19</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -300,8 +300,10 @@ L=lcm(p-1, q-1)
 <h5 id="求e">3. 求E</h5>
 <p>E是一个比1大, 比L小的数字,且E和L要互质, 即 E和L的最大公约数为1, 表达为数学语言为。</p>
 <p><span class="math display">\[
+\begin{eqnarray*}
 1 &lt; E &lt; L \\
 gcd(E, L) = 1
+\end{eqnarray*}
 \]</span></p>
 <p>计算E的过程我们采用随机穷举的模式, 使用伪随机数生成器, 随机生成一个1和L之间的数字, 判断是否满足它与L互质, 如果不满足, 则重复生成并判断下一个随机数。</p>
 <p>至此, RSA的公钥部分E,N我们已经得到了, 公钥: (E, N)。</p>
