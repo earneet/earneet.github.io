@@ -183,6 +183,92 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/09/cpp-cast-check-on-compile-time/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/09/cpp-cast-check-on-compile-time/" class="post-title-link" itemprop="url">C++在编译期实现源码层级的转换检测</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-09 14:20:56 / 修改时间：14:30:07" itemprop="dateCreated datePublished" datetime="2020-07-09T14:20:56+08:00">2020-07-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="背景">背景</h3>
+<p>近期我们在做一个通用AI的项目时使用了UE4引擎，一个同事在阅读源码时发现了这一段代码写的比较“秀”，于是推荐给我，我阅读之后在此记录笔记。</p>
+<h3 id="原代码">原代码</h3>
+<p>这一段代码来自Epic Games Unreal Engine 4，其最新版本为: <a href="https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Source/Runtime/Core/Public/Templates/PointerIsConvertibleFromTo.h" target="_blank" rel="noopener">Github</a> 这是一个私有仓库，访问代码可能需要先加入<a href="https://github.com/orgs/EpicGames/teams/developers" target="_blank" rel="noopener">开发组</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> once</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"CoreTypes.h"</span></span><br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Tests if a From* is convertible to a To*</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> From, <span class="hljs-keyword">typename</span> To&gt;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">TPointerIsConvertibleFromTo</span></span><br><span class="hljs-class">&#123;</span><br><span class="hljs-keyword">private</span>:<br>	<span class="hljs-function"><span class="hljs-keyword">static</span> uint8  <span class="hljs-title">Test</span><span class="hljs-params">(...)</span></span>;<br>	<span class="hljs-function"><span class="hljs-keyword">static</span> uint16 <span class="hljs-title">Test</span><span class="hljs-params">(To*)</span></span>;<br><br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-keyword">enum</span> &#123; Value  = <span class="hljs-keyword">sizeof</span>(Test((From*)<span class="hljs-literal">nullptr</span>)) - <span class="hljs-number">1</span> &#125;;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h3 id="分析">分析</h3>
+<p>C++编程语言可以在编译期间确定一个类型是否可以转换为另一个类型，但是它没有提供一个展示这个信息的关键字，如果不加检测的直接使用类型转换操作符(C style转换和 static_cast&lt;&gt;)操作符，则会引起编译器报错。</p>
+<p>上面这个代码实现了一个这样的转换检测的类似“编译期运算符”的操作， 可以在编译期获知两个类型是否可转换的关系。</p>
+<h4 id="利用-sizeof-和-函数调用编译期绑定的特性">利用 sizeof 和 函数调用编译期绑定的特性</h4>
+<p>C++ sizeof运算符可以在编译期实现“常量替换” (这里注意sizeof并不总是在编译期就能确定其值)。</p>
+<p>C++ 在进行函数调用时，基于编译期函数调用解析（有些资料把它命名为静态多态）的特征，我们在编译时即可确定将要调用哪一个具体函数。这里，就是利用了函数返回值类型不同来在源码层级上确定了到底是调用了哪一个函数，从而反映出目标类型与对照类型的转换关系。</p>
+<p>实现的关键代码:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> From, <span class="hljs-keyword">typename</span> To&gt;<br><span class="hljs-keyword">enum</span> &#123; Value  = <span class="hljs-keyword">sizeof</span>(Test((From*)<span class="hljs-literal">nullptr</span>)) - <span class="hljs-number">1</span> &#125;;<br></code></pre></td></tr></table></figure>
+<p>对空指针做一个强制类型转换，解释为From类型指针，然后作为参数调用Test函数， 在代码中，Test有两个实现，其中一个为<code>To*</code>类型参数, 另一个则为任意类型的泛参。</p>
+<p>这个调用在编译期即可确定， 若From类型可以兼容<code>To</code>类型（即，有继承层级上的直接关系，或者满足隐式转换规则），则<code>uint16 Test(To*)</code> 函数将被绑定, 否则，<code>uint8 Test(...)</code> 函数将被绑定。而这两个函数的返回值类型被<code>sizeof</code>运算符在编译期捕捉到，并得到长度，使用长度来反映是否可以转换来给Value赋值，从而实现了一个源码级别上的在编译期确定是否兼容的检测运算符。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/08/derivation-table/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -889,229 +975,6 @@ F(k\boldsymbol{a}) &amp;=&amp; kF(\boldsymbol{a}) \tag{2}
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/18/java%E4%B8%AD%E4%B8%80%E8%88%AC%E4%B8%8D%E6%98%93%E7%9F%A5%E7%9A%84%E7%82%B9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar_head_icon.png">
-      <meta itemprop="name" content="Earneet">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Learning & Sharing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/18/java%E4%B8%AD%E4%B8%80%E8%88%AC%E4%B8%8D%E6%98%93%E7%9F%A5%E7%9A%84%E7%82%B9/" class="post-title-link" itemprop="url">java中一般不易知的点</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-18 20:05:22" itemprop="dateCreated datePublished" datetime="2020-04-18T20:05:22+08:00">2020-04-18</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="java中一般不太为新人所知的一些技术点">Java中一般不太为新人所知的一些技术点</h1>
-<h2 id="一般比较容易接触的点">一般比较容易接触的点</h2>
-<h3 id="java对象结构">Java对象结构</h3>
-<h4 id="jvm中的java数据类型">JVM中的Java数据类型</h4>
-<p>JVM的<strong>java方法栈</strong>中的数据结构大致的分为两类:</p>
-<ul>
-<li>内置类型 (一说也叫原子类型)
-<ul>
-<li>内置类型指的是java语言规范规定的8个类型,即 boolean, byte, char, short, int, long, float, double</li>
-<li>内置类型依据不同的类型在栈帧中占用不同的空间, 他们在堆中存储时按照缩进规则进行padding, 在本地变量表中时, 32位及以下的类型占用一个槽(Variable Slot), double 和 long 占用两个。</li>
-</ul></li>
-<li>对象类型 (一说也叫做引用类型, 这里不计较返回地址类型)</li>
-</ul>
-<h4 id="指针压缩">指针压缩</h4>
-<h3 id="java代码是如何运行的">Java代码是如何运行的</h3>
-<p>java代码的执行大概分为两大类三种类型。</p>
-<ul>
-<li><p>对于本地代码</p>
-<p>这里说的本地代码指的是JVM通过JNI机制调用的本地代码。</p></li>
-<li><p>对于Java字节码</p>
-<p>对于java字节码需要分两个情形来讨论。</p>
-<ul>
-<li>解释执行java字节码</li>
-<li>运行JIT代码</li>
-</ul></li>
-</ul>
-<h3 id="类加载和执行过程">类加载和执行过程</h3>
-<p><strong>装载</strong> -&gt; <strong>链接</strong> -&gt; <strong>初始化</strong></p>
-<p>如上过程就是一个类被虚拟机发现并到可用的全部过程, 其中每个步骤执行不同的操作。</p>
-<p><a href="http://note.youdao.com/noteshare?id=6e9fb6aa0d4b85c07c6cf49befb0d52b&amp;sub=A6313E2BC9D0429080142B0848316EB4" target="_blank" rel="noopener">类装载过程</a></p>
-<h4 id="类加载器">类加载器</h4>
-<p>类加载器是负责加载class到JVM中的组件</p>
-<p>在java9之前, 类加载器基本可以分为以下几类:</p>
-<ul>
-<li><p><strong>启动类加载器 (bootstrap class loader)</strong></p>
-<p>使用与JVM相同的实现语言编写(Hotspot的话是c++), 它是唯一一个java对象的类加载器, 同时它也是唯一一个不需要其他类加载器加载自身的加载器, 由虚拟机负责加载它。 j9以前负责加载最基础的类库 e.g. JRE的lib目录下的类, 通过虚拟机参数 -Xbootclasspath 指定的类。</p></li>
-<li><p><strong>扩展类加载器(extension class loader)</strong></p>
-<p>它的父加载器是bootstrap加载器, 同时它负责加载那些次一级的重要的类, e.g. JRE的 lib/ext目录下的jar包中的类, java.ext.dirs系统变量指定的类</p></li>
-<li><p><strong>应用类加载器(application class loader)</strong></p>
-<p>它的父加载器是extension加载器, 同时它负责加载应用程序目录下的类和由虚拟机参数 -cp/-classpath 和系统变量 java.class.path指定目录的类的加载。</p></li>
-<li><p><strong>自定义类加载器</strong></p>
-<p>自定义类加载器必须继承java.lang.ClassLoader。由于<em>双亲委派模型</em>,它只能负责加载它的祖先类加载器不能加载的类。</p></li>
-</ul>
-<p>Java 9 引入了模块系统，并且略微更改了上述的类加载器。扩展类加载器被改名为平台类加载器(platform class loader), Java SE 中除了少数几个关键模块(如java.base)是由启动类加载器加载外, 其他模块都是由平台类加载器加载。</p>
-<h4 id="双亲委派模型">双亲委派模型</h4>
-<p>由于包含但不限于安全角度的考量,java的类加载器不可以随意决定加载类,java的各类加载器职能明确, 他们基本都有自己固定的职责, 例如启动类加载器只负责加载基础的重要的类(不然随意一个类加载器加载一个来源不明的Object类或者String类之类的重要类可就玩完了)。</p>
-<p>类加载器基本遵循一个原则, <em>当收到加载一个类的委托时(这个委托可能是虚拟机发起, 也可能是其他类加载器发起), 需要先去委托自己的父类加载器尝试加载, 如果自己的父类加载器不能加载, 那么则由自己加载, 否则是用父类加载器加载。</em> 这个原则, 就是<strong>双亲委派</strong>。</p>
-<h4 id="定义加载器和初始加载器-这是俩名词-不是动词">定义加载器和初始加载器 (这是俩名词, 不是动词)</h4>
-<h4 id="类加载的时机">类加载的时机</h4>
-<ol type="1">
-<li><p>JVM采用按需加载类的模式, 类似于脚本语言中的缺页加载, 当JVM需要一个类的结构信息时, 发现它缺少, 才会去尝试加载它。</p></li>
-<li><p>方法字节码加载, 一些类库的功能可以提供类加载的操作, 例如反射机制, 例如 ClassLoader.load()等。</p></li>
-</ol>
-<h4 id="最初的过程">最初的过程</h4>
-<p>JVM是按需加载的类, 那么最初的一个类是谁, 如果我们不把引导类加载器(bootstrap class loader)的初始化考虑在内, 那么第一个被加载的类由外部参数指定(就是那个包含 static void main(String[])方法的类, 暂且我们叫他Main类。在Main类的链接和初始化过程中, 可能级联的需要装载更多的类。在Main类初始化完成后, JVM从它的main方法开始执行字节码, 在执行过程中可能再次触发类加载。</p>
-<h3 id="数组">数组</h3>
-<p>数组是一类特殊的类, 它不由类加载器创建(当然, 也就不用编译器生成), 而是有JVM来创建。</p>
-<p>数组类的二进制名规则为对于N维数组, 则以N个<code>[</code>作为前缀, 后接元素类型的名称构成名字。</p>
-<h3 id="运行时常量池">运行时常量池</h3>
-<p><strong>运行时常量池</strong>区别与<strong>常量池</strong>和<strong>字符串常量池</strong> 概念</p>
-<p>其中, <strong>常量池</strong>表是Java类文件结构中的一个区块, <strong>运行时常量池</strong>是该结构在类加载后在JVM中维护的一个关联数据结构。每一个类实例在链接后都会有一个自己的运行时常量池。</p>
-<p>最容易搞混的是 <strong>字符串常量池</strong>, 包括很多教材都弄错了, 它是java.lang.String类维护的一个私有的类似于KV结构的常量池, String.intern方法就使用了该结构的数据, 它是使用本地代码来维护的,</p>
-<p>它用于在大量重复字符串时优化内存用量(例如某业务中大量使用全国地名, 性别字符串等... 使用intern能节省真的不少内存)。但是intern方法是线程安全的,所以, 在高频代码中我们应该把它的竞争特性考虑在编码中。 <font color="red"><strong><em>(未验证)</em></strong></font></p>
-<pre><code>这个内容在JVM规范5.1节中介绍</code></pre>
-<h3 id="更高级一些的加载约束">更高级一些的加载约束</h3>
-<pre><code>JVM规范5.3.4小节</code></pre>
-<h3 id="jvm如何调用java函数">JVM如何调用Java函数</h3>
-<p>JVM执行java字节码产生函数调用。调用的指令有:</p>
-<table>
-<thead>
-<tr class="header">
-<th>指令</th>
-<th>用途</th>
-<th>效果</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>invokespecial</td>
-<td>用以调用私有方法和final方法 (大意)</td>
-<td>---------</td>
-</tr>
-<tr class="even">
-<td>invokestatic</td>
-<td>用以调用类的静态方法</td>
-<td>---------</td>
-</tr>
-<tr class="odd">
-<td>invokevirtual</td>
-<td>用以调用一般的类成员方法</td>
-<td>---------</td>
-</tr>
-<tr class="even">
-<td>invokeinterface</td>
-<td>用以调用接口方法</td>
-<td>---------</td>
-</tr>
-<tr class="odd">
-<td>invokedynamic</td>
-<td>用以调用动态调用点</td>
-<td>---------</td>
-</tr>
-</tbody>
-</table>
-<p>其中, 就调用效率而言</p>
-<p>invokestatic &gt; invokespecial &gt; invokevirtual &gt; invokeinterface &gt; invokedynamic</p>
-<ul>
-<li><p><strong>invokestatic</strong> 采用静态绑定, 在方法进行调用点解析一次之后无需再次解析, 每次调用都直接跳转到调用点, 相比于invokespecial因为静态方法无需this指针, 所以并不会将调用者对象压栈。</p></li>
-<li><p><strong>invokespecial</strong> 采用静态绑定, 类似于invokestatic, 相比后者, 它需要一个this指针, 所以需要对调用的主题进行压栈。 <font color="orange"><em>(我本来以为它只能用于对私有或者final方法的调用的, 但是看了虚拟机标准之后发现它可以用于调用protected的方法, 还有一系列的查找规则, 但是我没能实现出这些场景, 还是简单以我以上的认为吧, 八成应该都是正确的。)</em></font></p></li>
-<li><p><strong>invokevirtual</strong> 采用类似于虚表的方式将方法列出, 然后再在调用时根据第一个操作数去查找虚表,在虚表中匹配合适的方法产生调用。这其中比之invokespecial至少多出一个查表的查询操作。 <font color="gray"><em>(未经验证的资料指出, jvm会通过记录虚表索引的方式来进行查找优化,使每次调用不必进行搜索,这个有待考证,我想因为泛华的类型去查找最具体的方法,使用最直接的方法应该是不行的,实际测试效率也是这样, 所以对这个说法存疑)</em></font></p></li>
-<li><p><strong>invokeinterface</strong> 采用动态绑定, 类似于invokevitual, <font color="gray">(它不需要检查方法的访问权限, 但是可能一个类同时实现多个接口的原因, 它至少每次调用都去查表, 所以我认为它比invokevirtual更慢)。</font></p></li>
-<li><p><strong>invokedynamic</strong> 采用程序自定义绑定, 每次这个指令出现的位置都成为一个动态调用点(dynamic call site), 它执行引导代码等一系列过程完成绑定, 然后执行该调用点。对于极少数的情况虚拟机会进行优化, 使之不需要每次执行这个指令都进行绑定, 但是在大多数情况下, 每次调用都需进行引导绑定。它复杂的一笔, 所以效率最低。</p>
-<p>invokedynamic在jvm7首次加入(但是jdk7版本的javac编译器并不能生成含有该指令的字节码)供运行在jvm上的其他基于字节码的动态语言使用, java8中javac首次能生成包含该指令的字节码, 用以实现lanmbda表达式。</p></li>
-</ul>
-<p><strong>就实际工程上来说, 这些调用方式的额外开销几乎可以忽略, 但是应该知道。</strong></p>
-<h3 id="jvm是怎么实现invokedynamic的">JVM是怎么实现invokedynamic的</h3>
-<p>这个问题单独写了一篇, 这里 <font color="red"><strong>指向引用</strong></font></p>
-<h3 id="java内存模型">Java内存模型</h3>
-<p>java内存模型大概有7条happens-before规则, 不必一一记住,因为都挺简单直观。</p>
-<p>这里需要知道的是, 这里的happens-before规则所确定的不是<strong>代码执行顺序</strong>而是<strong>可见性</strong>保证。</p>
-<p>举个栗子: <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">int</span> a = <span class="hljs-number">10</span>;<br><span class="hljs-keyword">int</span> b = a;<br></code></pre></td></tr></table></figure> java 内存模型规则不保证 <code>a=10</code> 代码一定在 <code>b=a</code>之前执行, 而是保证, 在执行<code>b=a</code>代码的时候, a=10 这个值已经可见。例子有点极端, 但是没有错误。在更复杂一点的场景下可以阐述这个事实。</p>
-<h2 id="更深一层的点">更深一层的点</h2>
-<h3 id="即时编译-jit">即时编译 JIT</h3>
-<h4 id="编译器类型">编译器类型</h4>
-<ul>
-<li>C1编译器
-<ul>
-<li>j7之前hotspot在-client模式默认使用的编译器, 编译效率快, 但是目标代码执行效率较低。</li>
-</ul></li>
-<li>C2编译器
-<ul>
-<li>j7之前hotspot在-server模式默认使用的编译器, 编译效率低, 但是生成的目标代码执行效率高。</li>
-</ul></li>
-<li>Graal编译器
-<ul>
-<li>j10采用的实验性质的编译器, 它本身使用java编写, 运行于jvm环境, 自身也可受到jit的优化。相较于C2, 它采用更加激进的优化策略。编译效率未测试,但是编译的目标代码不比C2的编译成果效率低。</li>
-</ul></li>
-</ul>
-<h4 id="分层编译">分层编译</h4>
-<h3 id="方法内联">方法内联</h3>
-<h3 id="hotspot虚拟机的intrinsic">HotSpot虚拟机的intrinsic</h3>
-<h3 id="逃逸分析">逃逸分析</h3>
-<h4 id="基于逃逸分析做的优化">基于逃逸分析做的优化</h4>
-<ol type="1">
-<li>锁消除</li>
-</ol>
-<ul>
-<li><p>如果即时编译器能够证明锁对象不逃逸，那么对该锁对象的加锁、解锁操作没有意义。这是因为其他线程并不能获得该锁对象，因此也不可能对其进行加锁。在这种情况下，即时编译器可以消除对该不逃逸锁对象的加锁、解锁操作。</p></li>
-<li><p>实际上，传统编译器仅需证明锁对象不逃逸出线程，便可以进行锁消除。由于 Java 虚拟机即时编译的限制，上述条件被强化为证明锁对象不逃逸出当前编译的方法。</p></li>
-</ul>
-<ol start="2" type="1">
-<li>栈上分配(OSR)</li>
-</ol>
-<ul>
-<li>由于实现起来需要更改大量假设了“对象只能堆分配”的代码，因此 HotSpot 虚拟机并没有采用栈上分配，而是使用了标量替换这么一项技术。</li>
-</ul>
-<ol start="3" type="1">
-<li>标量替换</li>
-</ol>
-<ul>
-<li>所谓的标量，就是仅能存储一个值的变量，比如 Java 代码中的局部变量。与之相反，聚合量则可能同时存储多个值，其中一个典型的例子便是 Java 对象。 标量替换这项优化技术，可以看成将原本对对象的字段的访问，替换为一个个局部变量的访问。这些变量不再要求按照堆对象那样连续分配，甚至可以直接存储在寄存器中不占用内存，对象头则直接消失。</li>
-</ul>
-<h3 id="java-agent与字节码注入">Java Agent与字节码注入</h3>
-<h2 id="可以不知道的点">可以不知道的点</h2>
-<h3 id="即时编译器的中间表达形式">即时编译器的中间表达形式</h3>
-<h3 id="volatile-字段的虚共享">volatile 字段的虚共享</h3>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1183,20 +1046,20 @@ F(k\boldsymbol{a}) &amp;=&amp; kF(\boldsymbol{a}) \tag{2}
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">53</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

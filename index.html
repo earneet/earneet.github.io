@@ -183,6 +183,104 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/28/quadratic-equation-root/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/28/quadratic-equation-root/" class="post-title-link" itemprop="url">一元二次方程求根公式推导</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-28 09:35:54 / 修改时间：09:48:52" itemprop="dateCreated datePublished" datetime="2020-10-28T09:35:54+08:00">2020-10-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E5%9F%BA%E7%A1%80%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">基础数学</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="一元二次方程求根公式推导">一元二次方程求根公式推导</h3>
+<p>最近在阅读微积分相关的一个题目时，需要求解一个一元二次方程组，大概是上了年纪和许久不求解一元二次方程，竟然一时想不起求根公式，所以决定推导一遍，记录以加深印象。</p>
+<h3 id="一元二次函数">一元二次函数</h3>
+<p>说到一元二次方程先回顾一下一元二次函数。</p>
+<p><span class="math display">\[
+f(x) = ax^2 + bx + c (a \neq 0)
+\]</span></p>
+<p>其中 a, b, c 分别为其二次项系数，一次项系数和常数项。</p>
+<p>而一元二次方程就是函数值为0的情况。</p>
+<h3 id="推导">推导</h3>
+<p><span class="math display">\[
+ax^2 + bx + c = 0 
+\]</span></p>
+<p>将自变量项提公因式a:</p>
+<p><span class="math display">\[
+a(x^2+ \frac{b}{a}x) = -c 
+\]</span></p>
+<p>移项，并使用平方和公式构造自变量平方项:</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;x^2 + \frac{b}{a}x + \frac{b^2}{4a^2} = -\frac{c}{a} + \frac{b^2}{4a^2} \\
+&amp;\rightarrow (x+\frac{b}{2a})^2 = \frac{b^2-4ac}{4a^2} \\
+&amp;\rightarrow x+\frac{b}{2a} = \pm \sqrt{\frac{b^2-4ac}{4a^2}} =  \pm \frac {\sqrt{b^2-4ac}}{2a} \\
+&amp;\rightarrow x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}
+\end{aligned}
+\]</span></p>
+<p>整个变换过程中，因为a不为0，且只有a会出现在分母中，所以这里是没问题的。关键是 <span class="math inline">\(b^2-4ac\)</span> 出现在开平方操作中，我们知道，在实数中，负数是没有平方根的，所以，一元二次方程有实根的条件是 $b^2-4ac  $, 且当 $b^2-4ac = 0 $ 时，方程存在唯一解。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/19/rsa-brief/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -659,92 +757,6 @@ E \times D\ mod\ L = 1
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/09/cpp-cast-check-on-compile-time/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar_head_icon.png">
-      <meta itemprop="name" content="Earneet">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Learning & Sharing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/09/cpp-cast-check-on-compile-time/" class="post-title-link" itemprop="url">C++在编译期实现源码层级的转换检测</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-07-09 14:20:56 / 修改时间：14:30:07" itemprop="dateCreated datePublished" datetime="2020-07-09T14:20:56+08:00">2020-07-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="背景">背景</h3>
-<p>近期我们在做一个通用AI的项目时使用了UE4引擎，一个同事在阅读源码时发现了这一段代码写的比较“秀”，于是推荐给我，我阅读之后在此记录笔记。</p>
-<h3 id="原代码">原代码</h3>
-<p>这一段代码来自Epic Games Unreal Engine 4，其最新版本为: <a href="https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Source/Runtime/Core/Public/Templates/PointerIsConvertibleFromTo.h" target="_blank" rel="noopener">Github</a> 这是一个私有仓库，访问代码可能需要先加入<a href="https://github.com/orgs/EpicGames/teams/developers" target="_blank" rel="noopener">开发组</a></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> once</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"CoreTypes.h"</span></span><br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Tests if a From* is convertible to a To*</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> From, <span class="hljs-keyword">typename</span> To&gt;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">TPointerIsConvertibleFromTo</span></span><br><span class="hljs-class">&#123;</span><br><span class="hljs-keyword">private</span>:<br>	<span class="hljs-function"><span class="hljs-keyword">static</span> uint8  <span class="hljs-title">Test</span><span class="hljs-params">(...)</span></span>;<br>	<span class="hljs-function"><span class="hljs-keyword">static</span> uint16 <span class="hljs-title">Test</span><span class="hljs-params">(To*)</span></span>;<br><br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-keyword">enum</span> &#123; Value  = <span class="hljs-keyword">sizeof</span>(Test((From*)<span class="hljs-literal">nullptr</span>)) - <span class="hljs-number">1</span> &#125;;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h3 id="分析">分析</h3>
-<p>C++编程语言可以在编译期间确定一个类型是否可以转换为另一个类型，但是它没有提供一个展示这个信息的关键字，如果不加检测的直接使用类型转换操作符(C style转换和 static_cast&lt;&gt;)操作符，则会引起编译器报错。</p>
-<p>上面这个代码实现了一个这样的转换检测的类似“编译期运算符”的操作， 可以在编译期获知两个类型是否可转换的关系。</p>
-<h4 id="利用-sizeof-和-函数调用编译期绑定的特性">利用 sizeof 和 函数调用编译期绑定的特性</h4>
-<p>C++ sizeof运算符可以在编译期实现“常量替换” (这里注意sizeof并不总是在编译期就能确定其值)。</p>
-<p>C++ 在进行函数调用时，基于编译期函数调用解析（有些资料把它命名为静态多态）的特征，我们在编译时即可确定将要调用哪一个具体函数。这里，就是利用了函数返回值类型不同来在源码层级上确定了到底是调用了哪一个函数，从而反映出目标类型与对照类型的转换关系。</p>
-<p>实现的关键代码:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> From, <span class="hljs-keyword">typename</span> To&gt;<br><span class="hljs-keyword">enum</span> &#123; Value  = <span class="hljs-keyword">sizeof</span>(Test((From*)<span class="hljs-literal">nullptr</span>)) - <span class="hljs-number">1</span> &#125;;<br></code></pre></td></tr></table></figure>
-<p>对空指针做一个强制类型转换，解释为From类型指针，然后作为参数调用Test函数， 在代码中，Test有两个实现，其中一个为<code>To*</code>类型参数, 另一个则为任意类型的泛参。</p>
-<p>这个调用在编译期即可确定， 若From类型可以兼容<code>To</code>类型（即，有继承层级上的直接关系，或者满足隐式转换规则），则<code>uint16 Test(To*)</code> 函数将被绑定, 否则，<code>uint8 Test(...)</code> 函数将被绑定。而这两个函数的返回值类型被<code>sizeof</code>运算符在编译期捕捉到，并得到长度，使用长度来反映是否可以转换来给Value赋值，从而实现了一个源码级别上的在编译期确定是否兼容的检测运算符。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -816,20 +828,20 @@ E \times D\ mod\ L = 1
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">53</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

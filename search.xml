@@ -2436,4 +2436,46 @@ E \times D\ mod\ L = 1
         <tag>配置</tag>
       </tags>
   </entry>
+  <entry>
+    <title>一元二次方程求根公式推导</title>
+    <url>/2020/10/28/quadratic-equation-root/</url>
+    <content><![CDATA[<h3 id="一元二次方程求根公式推导">一元二次方程求根公式推导</h3>
+<p>最近在阅读微积分相关的一个题目时，需要求解一个一元二次方程组，大概是上了年纪和许久不求解一元二次方程，竟然一时想不起求根公式，所以决定推导一遍，记录以加深印象。</p>
+<h3 id="一元二次函数">一元二次函数</h3>
+<p>说到一元二次方程先回顾一下一元二次函数。</p>
+<p><span class="math display">\[
+f(x) = ax^2 + bx + c (a \neq 0)
+\]</span></p>
+<p>其中 a, b, c 分别为其二次项系数，一次项系数和常数项。</p>
+<p>而一元二次方程就是函数值为0的情况。</p>
+<h3 id="推导">推导</h3>
+<p><span class="math display">\[
+ax^2 + bx + c = 0 
+\]</span></p>
+<p>将自变量项提公因式a:</p>
+<p><span class="math display">\[
+a(x^2+ \frac{b}{a}x) = -c 
+\]</span></p>
+<p>移项，并使用平方和公式构造自变量平方项:</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;x^2 + \frac{b}{a}x + \frac{b^2}{4a^2} = -\frac{c}{a} + \frac{b^2}{4a^2} \\
+&amp;\rightarrow (x+\frac{b}{2a})^2 = \frac{b^2-4ac}{4a^2} \\
+&amp;\rightarrow x+\frac{b}{2a} = \pm \sqrt{\frac{b^2-4ac}{4a^2}} =  \pm \frac {\sqrt{b^2-4ac}}{2a} \\
+&amp;\rightarrow x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}
+\end{aligned}
+\]</span></p>
+<p>整个变换过程中，因为a不为0，且只有a会出现在分母中，所以这里是没问题的。关键是 <span class="math inline">\(b^2-4ac\)</span> 出现在开平方操作中，我们知道，在实数中，负数是没有平方根的，所以，一元二次方程有实根的条件是 $b^2-4ac  $, 且当 $b^2-4ac = 0 $ 时，方程存在唯一解。</p>
+]]></content>
+      <categories>
+        <category>数学</category>
+        <category>基础数学</category>
+      </categories>
+      <tags>
+        <tag>一元二次</tag>
+        <tag>求根公式</tag>
+        <tag>方程</tag>
+        <tag>推导</tag>
+      </tags>
+  </entry>
 </search>
