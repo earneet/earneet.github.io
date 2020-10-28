@@ -183,6 +183,85 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/13/cursor-disappear/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/13/cursor-disappear/" class="post-title-link" itemprop="url">Terminal光标不显示</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-13 17:15:41 / 修改时间：17:21:27" itemprop="dateCreated datePublished" datetime="2020-07-13T17:15:41+08:00">2020-07-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BA%94%E7%94%A8%E6%8A%80%E5%B7%A7/" itemprop="url" rel="index"><span itemprop="name">应用技巧</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BA%94%E7%94%A8%E6%8A%80%E5%B7%A7/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="背景">背景</h3>
+<p>Windows10下 WSL(Ubuntu), 之前使用没有注意过，今天需要写个很长的编译命令，写错了之后想修改，发现光标不显示，但是能正常写入和删除字符。目测只是光标的问题。</p>
+<h3 id="解决方案">解决方案</h3>
+<p>谷歌搜索来的方法，试了一下，it's works!!!. 我没搞懂其中的原理，但是确实好用了。记入笔记以收藏。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">显示光标</span><br>echo -e "\033[?25h" <br><br><span class="hljs-meta">#</span><span class="bash">隐藏光标</span><br>echo -e "\033[?25l"<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>感谢<a href="https://sparkydogx.github.io/2018/10/19/linux-terminal-cursor-disappear/" target="_blank" rel="noopener">sparkydogX的解决方案</a></p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/09/cpp-cast-check-on-compile-time/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -868,117 +947,10 @@ f&#39;(x) = g&#39;(z) \cdot h&#39;(x)
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/01/3dtransform/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar_head_icon.png">
-      <meta itemprop="name" content="Earneet">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Learning & Sharing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/01/3dtransform/" class="post-title-link" itemprop="url">3d坐标中的变换概念</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-01 11:48:16" itemprop="dateCreated datePublished" datetime="2020-05-01T11:48:16+08:00">2020-05-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-07 08:54:07" itemprop="dateModified" datetime="2020-05-07T08:54:07+08:00">2020-05-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" itemprop="url" rel="index"><span itemprop="name">线性代数</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="常见变换">常见变换</h2>
-<blockquote>
-<p>先约定一下，本文中使用的向量都是列向量，相应的公式也都是基于此前提。</p>
-</blockquote>
-<h3 id="线性变换">线性变换</h3>
-<p>如果变换F保持了基本运算，加法和数乘，那么就可以称该变换是线性的。</p>
-<p>数学上，要求线性变换满足这样的性质：</p>
-<p><span class="math display">\[
-\begin{eqnarray}
-F(\boldsymbol{a}+\boldsymbol{b}) &amp;=&amp; F(\boldsymbol{a}) + F(\boldsymbol{b}) \tag{1} \\
-F(k\boldsymbol{a}) &amp;=&amp; kF(\boldsymbol{a}) \tag{2}
-\end{eqnarray}
-\]</span></p>
-<p>需要注意的是，这里的函数自变量 <span class="math inline">\(\boldsymbol{a} \boldsymbol{b}\)</span> 都是<font color="red"><strong>向量</strong></font>，公式中已经使用粗体表达， 再次强调一下。在自变量为标量时，公式2 可以由公式1推导得出，但是对于向量， 我们只能单独列出公式2，使变换满足。</p>
-<h3 id="仿射变换">仿射变换</h3>
-<p>仿射变换是线性变换后接着平移。所以，线性变换是一类特殊的仿射变换，它的平移量为 <span class="math inline">\(\boldsymbol{0}\)</span> 。 换一句更加专业一点的表达方式。<strong>仿射变换是线性变换的超集，任何线性变换都是仿射变换</strong>。</p>
-<p><span class="math display">\[
-\boldsymbol{v}&#39; = \boldsymbol{Mv} + \boldsymbol{b} 
-\]</span></p>
-<p>其更正式一点的表达, 所有满足公式3的变换都是仿射变换，其中 <span class="math inline">\(\boldsymbol{b}\)</span> 可以为0向量。</p>
-<h3 id="可逆变换">可逆变换</h3>
-<p>如果一个变换 <span class="math inline">\(F\)</span> 可以被另一个变换 <span class="math inline">\(F^{-1}\)</span> 所"撤销"，那么，这个变换叫做<strong>可逆变换</strong>。一个重要的事实是，所有的仿射变换，除了“<strong>投影</strong>”，其他所有形式的仿射变换都是可逆的。当然，也存在一些可逆的非仿射变换，这里先不做讨论。</p>
-<h3 id="等角变换">等角变换</h3>
-<p>如果变换前后各向量之间的夹角不发生变化（包括大小和方向）那么，该变换即成为等角变换。 仅有<strong>平移</strong>，<strong>旋转</strong>，<strong>均匀缩放</strong>是等角变换，而<strong>镜像</strong>非等角变换，因为镜像变换会更改角方向。</p>
-<p>按照这里的说法，其实“方向”一词的出现是不严谨的，因为我们往往在空间中定义角度时会预先约定角方向，其方向信息可以使用角打小的符号来表示。</p>
-<h3 id="正交变换">正交变换</h3>
-<p>正交变换是坐标轴保持垂直，且不进行缩放的变换。</p>
-<p><strong>平移</strong>，<strong>旋转</strong>，<strong>镜像</strong>变换是仅有的正交变换。</p>
-<h3 id="刚体变换">刚体变换</h3>
-<p>只改变物体位置和方向的变换是刚体变换。它不改变物体任何的自由属性（面积，体积，形状 等）。 刚体变换是<strong>正交变换</strong>和<strong>等角变换</strong>的交集。 同时，刚体变换本身具有可逆的性质（非<strong>投影</strong>均可逆）， 所以它也是可逆的变换。实际上，刚体变换是本文以上所有变换的“交集”。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1046,20 +1018,20 @@ F(k\boldsymbol{a}) &amp;=&amp; kF(\boldsymbol{a}) \tag{2}
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-count">57</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

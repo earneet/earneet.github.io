@@ -183,6 +183,174 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/31/ARTS-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/31/ARTS-2/" class="post-title-link" itemprop="url">ARTS-2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-31 11:01:57" itemprop="dateCreated datePublished" datetime="2019-03-31T11:01:57+08:00">2019-03-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-06 12:17:34" itemprop="dateModified" datetime="2020-05-06T12:17:34+08:00">2020-05-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index"><span itemprop="name">ARTS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="这是第三周的arts篇">这是第三周的ARTS篇</h1>
+<h2 id="algorithm">Algorithm</h2>
+<h3 id="引子">引子</h3>
+<p>本周这篇算法是一个Medium难度的Leetcode题目, 我从之前没有做的题目中随机选了一道题目。无特别原因, 其中的规律考虑了半个小时之后才发现, 中间有事情耽搁,大概从看题目到AC经过了两天。 题目 <a href="https://leetcode.com/problems/next-permutation/" target="_blank" rel="noopener">Next Permutation</a>。</p>
+<p>先展示下成果</p>
+<pre><code>Success
+Details 
+Runtime: 8 ms, faster than 100.00% of C++ online submissions for Next Permutation.
+Memory Usage: 8.6 MB, less than 100.00% of C++ online submissions for Next Permutation.</code></pre>
+<h3 id="description">Description</h3>
+<pre><code>Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
+
+If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order).
+
+The replacement must be in-place and use only constant extra memory.
+
+Here are some examples. Inputs are in the left-hand column and its corresponding outputs are in the right-hand column.
+
+1,2,3 → 1,3,2
+3,2,1 → 1,2,3
+1,1,5 → 1,5,1</code></pre>
+<p>即为, 给定一个整数数列, 看做一个排列, 求出比它大的下一个字典序的排列。如果它已经是最大的了, 那么就给出最小的字典序序列。 题目里给出了几个例子, 比较通俗好懂。</p>
+<h3 id="思路">思路</h3>
+<p>这个题目的点应该是找规律, 如何排列才是下一个大的字典序列。</p>
+<p>这里, 分两种情况讨论:</p>
+<ul>
+<li>给出的序列已经是最大字典序列了:<br>这种情况很好理解, 要满足这个条件,那么给出的序列中的单值最大的数字一定占最高位(就是最前面), 次大的数字占据次高位 ... 依次递推, 很容易判断是否是最大的序列, 而这个特点也使的处理这种情况简单高效, <strong>只需要翻转序列即可</strong>。所以,这种情况不再讨论。</li>
+<li>给出的序列不是最大的字典序列。依照上一点, 如果一个序列不是最大序列,那么从高位开始遍历它时, 则必然会出现后值大于前值的情况, 即 <code>a[i] &lt; a[i+1]</code>, 若<strong>交换这两个值,那么字典序必然变大</strong>。</li>
+</ul>
+<p>那么, 思路转换为<strong>将后面更大的值前移</strong>, 这样只是保证了字典序变大, 而如何使之为 <strong>变大的幅度最小</strong> 这个目标实现, 需要再分析。</p>
+<p>我考虑一下权重影响, 高位自然权重更大, 不管低位怎么变化, 只要高位变动, 低位的变动就不影响结果了, 所以, 这个调节, 应该从低位开始。就如 我有序列 <code>12345</code>, 如果我调节高位,编程 <code>21345</code> 肯定比调节低位 <code>12354</code> 变化更大, 所以, 从低位开始着手准没错。</p>
+<p>正常是顺序序列应该是从最低位往最高位依次单值递减的, 那么如果出现有低位比高位单值低的情况, 这个位置就应该是突破点, <strong>在这个位置上换上一个比这个值稍微大一点的值, 序列的字典序就变大了!!!</strong> 问题依旧在,这个操作之后, 不能保证恰好就能是比前一个字典序刚好大一点的值, 这个时候, 得对这个位之后的序列进行重排, 使它是升序的,这样就是满足条件最小的了。总结一下: 从后往前看, 在出现后值小于前值的点, 交换一个这个点后面的比当前值大的最小值, 然后重排这个位置之后的序列。 依照这个规则,写一个代码实现:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">nextPermutation</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (nums.size()==<span class="hljs-number">1</span>)<br>          <span class="hljs-keyword">return</span> ;<br>        <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> size = nums.size();<br>        <span class="hljs-keyword">int</span> i=size<span class="hljs-number">-2</span>;<br>        <span class="hljs-keyword">for</span> (; i&gt;=<span class="hljs-number">0</span>; i--) &#123;<br>          <span class="hljs-keyword">if</span> (nums[i] &lt; nums[i+<span class="hljs-number">1</span>]) &#123;<br>            <span class="hljs-keyword">break</span>;<br>          &#125;<br>        &#125;<br>        <span class="hljs-keyword">int</span> chIndex = i;<br>        <span class="hljs-keyword">int</span> chValue = nums[i];<br>        <span class="hljs-keyword">if</span> (i&lt;<span class="hljs-number">0</span>) &#123;<br>          <span class="hljs-built_in">std</span>::reverse(nums.begin(), nums.end());<br>          <span class="hljs-keyword">return</span> ;<br>        &#125;<br>        <span class="hljs-keyword">int</span> minCanChange = nums[chIndex + <span class="hljs-number">1</span>];<br>        <span class="hljs-keyword">int</span> minCanIndex = chIndex;<br>        <span class="hljs-keyword">for</span> (i = chIndex + <span class="hljs-number">1</span>; i &lt; size; ++i) &#123;<br>          <span class="hljs-keyword">if</span> (nums[i] &gt; chValue &amp;&amp; nums[i] &lt;= minCanChange) &#123;<br>            minCanChange = nums[i];<br>            minCanIndex = i;<br>          &#125;<br>        &#125;<br>      <br>        <span class="hljs-keyword">int</span> t = nums[chIndex];<br>        nums[chIndex] = nums[minCanIndex];<br>        nums[minCanIndex] = t;<br>        <span class="hljs-built_in">std</span>:sort(nums.begin()+chIndex+<span class="hljs-number">1</span>, nums.end());<br>        <span class="hljs-keyword">return</span> ;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>这个代码是初版, 看起来还有很多的优化的空间, 后面我会再优化一版。</p>
+<h2 id="review">Review</h2>
+<p>本次Review的内容是一篇叫做 <a href="https://edgecoders.com/the-mistakes-i-made-as-a-beginner-programmer-ac8b3e54c312" target="_blank" rel="noopener"><code>The Mistakes I Made As a Beginner Programmer - Learn to identify them, make habits to avoid them</code> <code>(作为新手程序员我所犯的错)</code></a></p>
+<h3 id="引言">引言</h3>
+<p>我是一个有着七年工作经验的"老"程序员了, 至少, 不能算是一个新人, 但是,有一些错误在工作和学习中还是"不可避免"的发生了,甚至,有一些错误是新人的常见错误, 所以,在Medium推送给我这么一篇文章的时候, 我觉得我被深深的吸引了,忍不住要把它发出来大家共勉。 也许这不是一篇规范review, 我打算把它的主旨简略翻出来, 以供警醒。</p>
+<h3 id="文章主旨">文章主旨</h3>
+<pre><code>Let me make one thing clear first. If you are a beginner programmer, this article is not meant to make you feel bad about the mistakes that you might be making but rather to make you aware of them, teach you to spot signs of them, and remind you to avoid them.
+
+I have made these mistakes in the past and learned from each and every one of them. I am happy to have formed coding habits to help me avoid them. You should do too.</code></pre>
+<p>译: 首先让我们搞清楚一件事情, 如果你是个新手程序员,本文并不是让你来觉得因犯这些错误而有不好的感觉,而是教你了解它们, 发现它们的迹象, 从而避免它们。</p>
+<p>我过去曾犯过这些错误,并且从它们每一个当中学到东西。我很高兴能形成编码习惯让我避免犯这些错, 希望你也能。</p>
+<p>作者以上这个观点,同样是本文的观点。</p>
+<pre><code>These mistakes are not presented here in any particular order</code></pre>
+<p>以下错误并不以特定顺序呈现</p>
+<h4 id="没有计划的写代码">没有计划的写代码</h4>
+<pre><code>High-quality written content, in general, cannot be created easily. It requires careful thinking and research. High-quality programs are no exception.</code></pre>
+<p>高质量的写错内容通常不易创造, 它要求深思熟虑和仔细的验证, 高质量的程序亦然如此。</p>
+<pre><code>Writing quality programs is a process with a flow: 
+** Think. Research. Plan. Write. Validate. Modify. **</code></pre>
+<p>编写高质量的程序是一个这样的流式的过程: 思考, 研究, 计划, 写, 验证, 修改。 但是并没有这样一个首字母的缩略词汇, 你需要自己去创建始终遵循这个活动的习惯。</p>
+<pre><code>作为新人我犯过的重要错误之一, 就是没有经过思考和调查就开始码代码, 这对于小程序还好, 但是对于大型的程序, 它有严重的负面影响。</code></pre>
+<h4 id="写代码前计划太多">写代码前计划太多</h4>
+<pre><code>Yes. Planning before jumping into writing code is a good thing, but even good things can hurt you when you do too much of them. Too much water might poison you.</code></pre>
+<p>在开始码代码之前做计划是一件好事儿, 但是, 好事过量也可能伤害你, 就像喝水太多会中毒。</p>
+<p>看起来这条跟第一条自相矛盾, 不过, 总结来说就是太多不好,太少也不好, 在每个功能点上进行计划, 不要对整体完整进行规划即可。 所谓的瀑布模型即如此。</p>
+<h4 id="低估了代码质量的重要性">低估了代码质量的重要性</h4>
+<pre><code>If you can only focus on one aspect of the code that you write, it should be its readability. Unclear code is trash. It is not even recyclable.</code></pre>
+<p>如果你仅能关注你写的代码的其中一项, 那么它一定是代码可读性, 不清楚的代码就是垃圾, 它甚至不可回收。</p>
+<p>不得不说, 作为一只工作多年的老鸟,这个错误我还是经常犯, 有自己的原因,但是更多是因为项目进度逼迫。国内环境常常是项目管理者将程序员的加班时长也计划在正常工作时间内来计划项目进度,而且并不能将出现问题而攻关的时间计算在内, 所以, 在一切管理者没有意料到的意外而产生的额外时间消费都只能由程序员买单, 这样导致了程序员在写完自己的功能时, 只要通过了测试就不再理会,更别说<code>modify</code>这个过程, 而通常, 业务变动, 程序员限于时间,都只能采用打补丁的方式解决, 导致了代码进一步不可读。 当然, 由于程序员个人的原因也是有的, 对代码质量的过分不重视, 导致程序员在完成测试后就认为工作已经结束,留下了质量低下的代码。</p>
+<p>作者给出了自己的格言:</p>
+<pre><code>Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live.</code></pre>
+<p>总是要认为最终维护你代码的人是一个知道你住在哪里的精神病患者。</p>
+<p>另一个简单的条目是<code>过长行</code>任何的超过80个字符的行将导致代码更难以阅读。许多类似的问题都可以通过工具来解决。</p>
+<h4 id="选取最初的方案">选取最初的方案</h4>
+<p>新手程序员急于求成, 当遇到问题, 想到一个可能的解决方案时,立即投入编码, 一旦验证通过, 那么这几乎就是最终的方案了, 不会考虑到其中的风险利弊。</p>
+<p>所以, 程序员当想出一个解决方案后,应该多想想其他的解决方案,从其中对比利弊, 选出"最简单"的方案来实现。这里最简单指的是, 在能够满足正确性和性能要求的前提下,尽可能的实现简单,可读性强,可维护性高。</p>
+<h4 id="不放弃">不放弃</h4>
+<p>原文为"Not Quitting", 直译为"不戒烟", 对于这个错误上这是个非常形象贴切的词汇, 但是为了更加直接明了,我还是使用不放弃作为本错误的标题。</p>
+<p>有时候, 在一个方案开始做了之后马上意识到它并不是"最简单"的防范, 也能相处一个更优秀的方案, 但是就是不愿意放弃它,还以老方案把它做完。 不放弃可能放到大多数地方都是一个好习惯,但是不适合在编程领域。编程领域的优秀习惯是尽快失败和经常失败。</p>
+<h4 id="不搜索">不搜索</h4>
+<p>原文为"Not Googling", 鉴于国内的环境, 这个词在这里明显是不合适的, 改换为不搜索。 在寻找解决方案的时候,一味的蛮干, 浪费了太多的时间在这上面, 枉顾网上已经有很多成熟并且优秀的方案。 除非你做的是边缘技术, 否则都应该先搜索一下看看, 至少, 能从中受到启发和避免踩一些他人已经趟过的坑。</p>
+<h4 id="不封装">不封装</h4>
+<p>这个错误不仅仅限于和针对面向对象编程, 在其他的范式下, 封装这个概念依然很有帮助, 不封装通常会导致系统难以维护。</p>
+<h4 id="为未知做计划">为未知做计划</h4>
+<pre><code>It is often tempting to think beyond the solution that you are writing. All sort of what-ifs will pop into your head with every line of code that you write. This is a good thing for testing edge cases, but it is just wrong to use as a driver for potential needs.</code></pre>
+<p>在你写作的时候，人们往往倾向于超越解决方案去思考。在你写的每一行代码中，所有的“如果”都会突然出现在你的脑海中。这对于测试边缘用例来说是一件好事，但是将它用作潜在需求的驱动程序是错误的。</p>
+<p>这确实是一个我也犯过的严重的错误, 很多时候自己意识不到,或者并不承认是一个错误, 因为在写一个方案的时候,总认为考虑方方面面时候一件好事,然而恰恰是这个"好习惯"使我做了大量的无用功, 写了很多根本用不到的代码, 当时还安慰自己"如果需求变成这样", 而事实证明了, 百分之九十九的这些准备都用不上, 而他可能使我比预期多花了一倍的时间来完成。</p>
+<h4 id="使用不正确的数据结构">使用不正确的数据结构</h4>
+<p>作者在这章的观点我无法全部赞同, 作者强调程序开发人员对于数据结构优缺点的掌握要生于对算法的掌握。我还未能达到作者的高度, 但我认为,这二者应该同等重要, 数据结构还是要配合算法来使用才是正道。</p>
+<h4 id="后面几节略过">后面几节略过</h4>
+<p>因为作者针对这篇文章写了大量的内容, 一时吸收不了, 后面几节我将来补充。</p>
+<h3 id="后言">后言</h3>
+<p>当我完成这篇读后感的时候, 本文内容已经被更新, 并已经收入作者新书中, 最新的内容我没有查阅, 还是仅以作者文章初版作为依据。最新内容在本文开始已经给出了链接, 诸位读着可自行查阅。</p>
+<h2 id="tip">Tip</h2>
+<p>原打算写一个自己的心得技巧, 看本周的工作安排我知道我没有时间了, 所以, 再次分享一个之前学习并收录在笔记中的技巧吧。</p>
+<h3 id="sudo拾取上一条命令">sudo拾取上一条命令</h3>
+<p><strong>sudo !!</strong></p>
+<p>很多时候, 命令行输入一条命令后, 提示权限不足无法执行, 这个时候需要用 <code>sudo ${command}</code> 来执行, 然而需要重新sudo 然后敲一遍上次的命令, 很繁琐。稍微改进一些, 按一下向上导航键显示上一条命令,然后光标移动到行首, 插入一个sudo 命令来执行, 还是稍显繁琐。</p>
+<p>sudo 的一个小技巧可以解决这个问题, 使用 <code>sudo !!</code> , <code>sudo !!</code> 可以自动拾取上一条命令,并在前面补充sudo 重新执行。</p>
+<h2 id="share">Share</h2>
+<p>本周分享无助于学习, 纯属私人趣味, 也许大家都很熟悉了</p>
+<p><a href="https://github.com/996icu/996.ICU" target="_blank" rel="noopener">996.ICU</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/21/ARTS-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -951,94 +1119,10 @@ Memory Usage: 14.9 MB, less than 97.80% of C++ online submissions for 3Sum.</cod
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/04/01/pip%E5%B7%A5%E5%85%B7%E5%88%87%E6%8D%A2%E5%9B%BD%E5%86%85%E6%BA%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar_head_icon.png">
-      <meta itemprop="name" content="Earneet">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Learning & Sharing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2015/04/01/pip%E5%B7%A5%E5%85%B7%E5%88%87%E6%8D%A2%E5%9B%BD%E5%86%85%E6%BA%90/" class="post-title-link" itemprop="url">pip 切换国内源</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2015-04-01 21:08:04" itemprop="dateCreated datePublished" datetime="2015-04-01T21:08:04+08:00">2015-04-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-28 18:56:45" itemprop="dateModified" datetime="2020-04-28T18:56:45+08:00">2020-04-28</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="pip-切换源">Pip 切换源</h1>
-<h2 id="背景">背景</h2>
-<p>一些必备库往往位于海外, 由于伟大防火墙存在, 加之海外线路带宽有限, 往往使用pip的官方源的时候安装一些库的时候速度感人。所以, 有必要使用国内的源来加速库的安装。</p>
-<h2 id="方法">方法</h2>
-<h3 id="源地址">源地址</h3>
-<p><strong>test</strong></p>
-<p>国内源： 新版ubuntu要求使用https源，要注意。</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs groovy">清华：<span class="hljs-string">https:</span><span class="hljs-comment">//pypi.tuna.tsinghua.edu.cn/simple</span><br><br>阿里云：<span class="hljs-string">http:</span><span class="hljs-comment">//mirrors.aliyun.com/pypi/simple/</span><br><br>中国科技大学 <span class="hljs-string">https:</span><span class="hljs-comment">//pypi.mirrors.ustc.edu.cn/simple/</span><br><br>华中理工大学：<span class="hljs-string">http:</span><span class="hljs-comment">//pypi.hustunique.com/</span><br><br>山东理工大学：<span class="hljs-string">http:</span><span class="hljs-comment">//pypi.sdutlinux.org/ </span><br><br>豆瓣：<span class="hljs-string">http:</span><span class="hljs-comment">//pypi.douban.com/simple/</span><br></code></pre></td></tr></table></figure>
-<h3 id="临时">临时</h3>
-<p>pip 有一个参数<code>-i</code>可以用于指定仓库的url, 但是很遗憾这个参数我通过 <code>pip --help</code>无法查到, 大概是个黑科技。</p>
-<p>仅临时修改使用的源, 可以使用 pip <command> -i <理想源地址> 来指定使用的源</p>
-<h3 id="永久">永久</h3>
-<h4 id="like-unix">Like unix</h4>
-<p>如果用户目录下不存在.pip目录, 则创建一个</p>
-<p>/home/user/.pip 目录下创建一个<font color="red"><strong>pip.conf</strong></font> 文件, 并编辑其内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">[global]<br>index-url &#x3D; https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple<br></code></pre></td></tr></table></figure>
-<h4 id="windows">Windows</h4>
-<p>用户目录下如果不存在pip目录, 则创建一个</p>
-<p>在pip目录中创建<font color="red"><strong>pip.ini</strong></font>文件, 编辑其内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">[global]<br>index-url &#x3D; https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple<br></code></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1106,20 +1190,20 @@ Memory Usage: 14.9 MB, less than 97.80% of C++ online submissions for 3Sum.</cod
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-count">57</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
