@@ -183,6 +183,123 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/25/try-proceduralmeshcomponent/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/25/try-proceduralmeshcomponent/" class="post-title-link" itemprop="url">UE4 ProceduralMeshComponent踩坑日记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-25 12:11:11" itemprop="dateCreated datePublished" datetime="2020-08-25T12:11:11+08:00">2020-08-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-27 16:46:08" itemprop="dateModified" datetime="2020-09-27T16:46:08+08:00">2020-09-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B8%B8%E6%88%8F/" itemprop="url" rel="index"><span itemprop="name">游戏</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B8%B8%E6%88%8F/UE-4/" itemprop="url" rel="index"><span itemprop="name">UE-4</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="ue4-使用proceduralmeshcomponent运行时显示动态物体的坑">UE4 使用ProceduralMeshComponent运行时显示动态物体的坑</h3>
+<h4 id="主要使用的接口">主要使用的接口</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CreateMeshSection</span><span class="hljs-params">(</span></span><br><span class="hljs-function"><span class="hljs-params">	int32 SectionIndex, </span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">const</span> TArray&lt;FVector&gt;&amp; Vertices, </span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">const</span> TArray&lt;int32&gt;&amp; Triangles, </span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">const</span> TArray&lt;FVector&gt;&amp; Normals, </span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">const</span> TArray&lt;FVector2D&gt;&amp; UV0,</span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">const</span> TArray&lt;FColor&gt;&amp; VertexColors, </span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">const</span> TArray&lt;FProcMeshTangent&gt;&amp; Tangents,</span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">bool</span> bCreateCollision)</span></span><br></code></pre></td></tr></table></figure>
+<h4 id="首先遇到的问题">首先遇到的问题</h4>
+<ul>
+<li><strong>无法导入"ProceduralMeshComponent.h" 头文件, 明明我可以找到这个文件，但是却无法导入。</strong></li>
+</ul>
+<p>查阅官方文档获得答案，则是个实验性功能， 需要<ProjectName>.build.cs 文件中添加对模块的依赖。</p>
+<p>创建工程后的默认构建文件内容： <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp">PublicDependencyModuleNames.AddRange(<span class="hljs-keyword">new</span> <span class="hljs-keyword">string</span>[] &#123; <span class="hljs-string">"Core"</span>, <span class="hljs-string">"CoreUObject"</span>, <span class="hljs-string">"Engine"</span>, <span class="hljs-string">"InputCore"</span> &#125;);<br></code></pre></td></tr></table></figure></p>
+<p>这里我的项目名字是ProceduralMeshDemo, 所以构建文件在VS中的路径 <code>Games/Source/ProceduralMeshDemo/ProceduralMeshDemo.build.cs</code></p>
+<p>在依赖中添加 "ProceduralMeshComponent", 最终内容为:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp">PublicDependencyModuleNames.AddRange(<span class="hljs-keyword">new</span> <span class="hljs-keyword">string</span>[] &#123; <span class="hljs-string">"Core"</span>, <span class="hljs-string">"CoreUObject"</span>, <span class="hljs-string">"Engine"</span>, <span class="hljs-string">"InputCore"</span>, <span class="hljs-string">"ProceduralMeshComponent"</span> &#125;);<br></code></pre></td></tr></table></figure>
+<p>按照官方文档的说法，我需要再在 &lt;ProjectName&gt; 中添加插件配置， 官方文档较旧，我发现我没有那么做，插件依然可见可用了。我的UE4版本是4.24.3，所以，至少这个版本之后就可以不用这个步骤了。</p>
+<p><img src="https://img.earneet.xyz/ue4/UE4Plugins_ForProceduralMeshComponent.png" /></p>
+<h4 id="接下来的问题">接下来的问题</h4>
+<ul>
+<li><strong>成功创建了Mesh并展示出来了，但是VertexColor没有生效，模型没有颜色。</strong></li>
+</ul>
+<p>这个问题我没有找到官方的文档解决方式， 网上资料也了了少的可怜，只有少数朋友使用ProceduralMeshComponent来动态创建模型，但是并不对模型进行着色。最终在问答区找到了一个还比较贴切的问题，有大佬给了个含糊的回答。</p>
+<blockquote>
+<p>Creating a material with "vertex colors" node plugged into the base color slot, &gt; then using <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">mesh-&gt;SetMaterial(<span class="hljs-number">2</span>, Cast&lt;UMaterial&gt;(StaticLoadObject(UMaterial::StaticClass(), <span class="hljs-literal">NULL</span>, *FString(UISC::florMTLoc + materials[<span class="hljs-number">0</span>])))); <br></code></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>Be sure to set the material index to match that of the element index of your procedural mesh. In my case it was indexs 1 and 2 (which is why it didn't show before because I used set material with index 0).</p>
+</blockquote>
+<p>原答案地址: <a href="https://answers.unrealengine.com/questions/395390/how-can-i-see-vertex-colors-on-procedural-mesh.html" target="_blank" rel="noopener">How can i see vertex colors on procedural mesh?</a></p>
+<p>意思是要使用要给Vertex Clolors 作为基色的材质才行。</p>
+<p>于是创建一个材质：</p>
+<p><img src="https://img.earneet.xyz/ue4/VertexColorMaterial.jpg" /></p>
+<p>贴一下构建平面的关键代码。 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">const</span> <span class="hljs-keyword">auto</span> RowCount = <span class="hljs-number">5</span>;<br><span class="hljs-keyword">const</span> <span class="hljs-keyword">auto</span> ColCount = <span class="hljs-number">5</span>;<br><span class="hljs-comment">//Construct Vertices </span><br>TArray&lt;FVector&gt; Vertices;<br>TArray&lt;FColor&gt; VertColors;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> Row = <span class="hljs-number">0</span>; Row &lt; RowCount; ++Row)<br>&#123;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> Col = <span class="hljs-number">0</span>; Col &lt; ColCount; ++Col)<br>	&#123;<br>		Vertices.Add(FVector(Row*<span class="hljs-number">10</span>, Col*<span class="hljs-number">10</span>, <span class="hljs-number">10</span>));<br>		VertColors.Add(FColor(Row*<span class="hljs-number">40</span>, Col*<span class="hljs-number">40</span>, <span class="hljs-number">100</span>));<br>	&#125;<br>&#125;<br><br><span class="hljs-comment">//Construct Triangles</span><br>TArray&lt;int32&gt; TriangleIndexes;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> Row = <span class="hljs-number">0</span>; Row &lt; RowCount<span class="hljs-number">-1</span>; ++Row)<br>&#123;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> Col = <span class="hljs-number">0</span>; Col &lt; ColCount<span class="hljs-number">-1</span>; ++Col)<br>	&#123;<br>		TriangleIndexes.Add(Row * ColCount + Col);<br>		TriangleIndexes.Add(Row * ColCount + Col + <span class="hljs-number">1</span>);<br>		TriangleIndexes.Add((Row + <span class="hljs-number">1</span>) * ColCount + Col);<br><br>		TriangleIndexes.Add((Row + <span class="hljs-number">1</span>) * ColCount + Col);<br>		TriangleIndexes.Add(Row * ColCount + Col + <span class="hljs-number">1</span>);<br>		TriangleIndexes.Add((Row + <span class="hljs-number">1</span> )* ColCount + Col + <span class="hljs-number">1</span>);<br>	&#125;<br>&#125;<br><br>Mesh-&gt;CreateMeshSection(<span class="hljs-number">0</span>, Vertices, TriangleIndexes, TArray&lt;FVector&gt;(), TArray&lt;FVector2D&gt;(), VertColors, TArray&lt;FProcMeshTangent&gt;(), <span class="hljs-literal">false</span>);<br>Mesh-&gt;SetMaterial(<span class="hljs-number">0</span>, Material);<br></code></pre></td></tr></table></figure></p>
+<p>至此，终于初见效果了：</p>
+<p><img src="https://img.earneet.xyz/ue4/ProceduralMeshRun.jpg" /></p>
+<h4 id="生活处处皆是坑">生活处处皆是坑</h4>
+<p>本以为是守得云开见月明， 明月就闪了一下。一段优化之后，莫名奇妙的出现了问题，Demo是在BeginPlay事件中创建的。莫名奇妙的Tick函数就不调了，九牛二虎没找到原因，只好重启了一次UE4Editor，莫名其妙就好了。</p>
+<ul>
+<li><strong>优化过后在Tick中清理并创建后， 无法渲染出平面了。</strong></li>
+</ul>
+<p>一番折腾后发现，在CreateSection / UpdateSection 调用后，必须再次SetMaterial，即使材质从未改变。。。</p>
+<p>有点心累， 先记到这里。</p>
+<hr />
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/13/cursor-disappear/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -735,218 +852,6 @@ c_{13}  &amp;   c_{23}  &amp;   c_{33}
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/03/derivation-rules/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar_head_icon.png">
-      <meta itemprop="name" content="Earneet">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Learning & Sharing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/03/derivation-rules/" class="post-title-link" itemprop="url">复杂函数求导规则</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-03 20:54:15" itemprop="dateCreated datePublished" datetime="2020-05-03T20:54:15+08:00">2020-05-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-06 21:07:16" itemprop="dateModified" datetime="2020-05-06T21:07:16+08:00">2020-05-06</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E5%BE%AE%E7%A7%AF%E5%88%86/" itemprop="url" rel="index"><span itemprop="name">微积分</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="求导法则">求导法则</h2>
-<p>复杂函数的求导, 可以看做是对几个简单函数(暂且称为子函数)的复合函数的求导。一般可以分以下几个情况。</p>
-<h3 id="常数项系数">常数项系数</h3>
-<p>函数的常数项系数的复合方式是最简单的, 它的形式一般如:</p>
-<p><span class="math display">\[
-f(x) = c \cdot h(x)
-\]</span></p>
-<p>其中, <span class="math inline">\(c\)</span> 是常数, <span class="math inline">\(h(x)\)</span> 是任意关于 <span class="math inline">\(x\)</span> 的函数, 则 <span class="math inline">\(f(x)\)</span> 的求导规则为:</p>
-<p><span class="math display">\[
-f&#39;(x) = c \cdot h&#39;(x)
-\]</span></p>
-<p>就是简单的对 <span class="math inline">\(h(x)\)</span> 求导数, 然后乘以常数 <span class="math inline">\(c\)</span></p>
-<h3 id="子函数的和差">子函数的和/差</h3>
-<p>若一个函数, 它可以被表述为多个子函数的和或者差的形式, 这里只以和的形式距离(差可以认为其中一个子函数乘以-1就好了), 形如:</p>
-<p><span class="math display">\[
-f(x) = h(x) + g(x)
-\]</span></p>
-<p>此类函数的导数, 可以对其子函数分别求导, 然后再相加:</p>
-<p><span class="math display">\[
-f&#39;(x) = h&#39;(x) + g&#39;(x)
-\]</span></p>
-<h3 id="多项乘积">多项乘积</h3>
-<h4 id="两项的情况">两项的情况</h4>
-<p>若一个函数, 他可以被表述为<strong>两个</strong>子函数的乘积的形式, 形如:</p>
-<p><span class="math display">\[
-f(x) = h(x) \cdot g(x)
-\]</span></p>
-<p>则, 它的导数为:</p>
-<p><span class="math display">\[
-f&#39;(x) = h&#39;(x) \cdot g(x) + h(x) \cdot g&#39;(x)
-\]</span></p>
-<blockquote>
-<p>记忆方式为 将两个子函数相乘, 加两次, 然后分别依次在各项的对应函数上加一个撇号</p>
-</blockquote>
-<h4 id="三项的情况">三项的情况</h4>
-<p>三项乘积的形式形如:</p>
-<p><span class="math display">\[
-f(x) = h(x) \cdot g(x) \cdot k(x)
-\]</span></p>
-<p>其求导规则为</p>
-<p><span class="math display">\[
-f&#39;(x) = h&#39;(x) \cdot g(x) \cdot k(x) + h(x) \cdot g&#39;(x) \cdot k(x) + h(x) \cdot g(x) \cdot k&#39;(x)
-\]</span></p>
-<blockquote>
-<p>记忆方式为 将三个子函数相乘, 加三次, 然后分别依次在各项的对应函数上加一个撇号</p>
-</blockquote>
-<p>实际上, 多个函数的相乘, 都可以分解为两个项的相乘, 然后使用两项求导公式求导, 然后对每个子项递归下去。</p>
-<p>推导一下:</p>
-<p><span class="math display">\[
-f(x) = h(x) \cdot g(x) \cdot k(x)
-\]</span></p>
-<p>设 <span class="math display">\[u(x) = h(x) \cdot g(x)\]</span></p>
-<p>则 <span class="math display">\[f(x) = u(x) \cdot k(x)\]</span></p>
-<p>那么,根据两项相乘的求导公式:</p>
-<p><span class="math display">\[
-\begin{eqnarray}
-f&#39;(x) = u&#39;(x) \cdot k(x) + u(x) \cdot k&#39;(x) \tag{1} \\
-u&#39;(x) = h&#39;(x) \cdot g(x) + h(x) \cdot g&#39;(x) \tag{2}
-\end{eqnarray}
-\]</span></p>
-<p>将(2)带入(1)得:</p>
-<p><span class="math display">\[
-f&#39;(x) = (h&#39;(x) \cdot g(x) + h(x) \cdot g&#39;(x)) \cdot k(x) + h(x) \cdot g(x) \cdot k&#39;(x)
-\]</span></p>
-<p>将上式乘开:</p>
-<p><span class="math display">\[
-f&#39;(x) = h&#39;(x) \cdot g(x) \cdot k(x) + h(x) \cdot g&#39;(x) \cdot k(x) 
-+h(x) \cdot g(x) \cdot k&#39;(x)
-\]</span></p>
-<p>即得到三项乘积的导数公式。</p>
-<h3 id="商式">商式</h3>
-<p>若一个函数, 可以写作两个子函数商的形式, 形如:</p>
-<p><span class="math display">\[
-f(x) = \frac{g(x)}{h(x)}
-\]</span></p>
-<p>它的导数公式为:</p>
-<p><span class="math display">\[
-f&#39;(x) = \frac{g&#39;(x)\cdot h(x) - g(x) \cdot h&#39;(x)}{h(x)^2}
-\]</span></p>
-<blockquote>
-<p>记忆方式: 按照两项乘积的公式, 对后项取负号, 然后除以商函数的平方</p>
-</blockquote>
-<p>实际上, 商公式可以简单的由乘积公式推导而来。</p>
-<p>推导:</p>
-<p><span class="math display">\[
-f(x) = \frac{g(x)}{h(x)}
-\]</span></p>
-<p>我们假设有函数</p>
-<p><span class="math display">\[
-k(x) = h(x)^{-1}    \tag{2.1}
-\]</span></p>
-<p>则:</p>
-<p><span class="math display">\[
-\begin{eqnarray}
-f(x) &amp;= g(x) \cdot k(x)  \tag{2.2} \\
-f&#39;(x) &amp;= g&#39;(x) \cdot k(x) + g(x) \cdot k&#39;(x)  \tag{2.3}
-\end{eqnarray}
-\]</span></p>
-<p>这里要提前引入一下链式函数的求导法则:</p>
-<p><span class="math display">\[
-k&#39;(x) = -1 \cdot h(x)^{-2} \dot h&#39;(x) \tag{2.4}
-\]</span></p>
-<p>然后, 将 <span class="math inline">\((2.1) (2.4)\)</span> 代入 <span class="math inline">\((2.3)\)</span> 得到</p>
-<p><span class="math display">\[
-f&#39;(x) = g&#39;(x)\cdot h(x)^{-1} - g(x) \cdot h(x)^{-2} \cdot h&#39;(x)
-\]</span></p>
-<p>对上式提公因式</p>
-<p><span class="math display">\[
-\begin{eqnarray}
-f&#39;(x) &amp;= (g&#39;(x) \cdot h(x) - g(x)\cdot h&#39;(x)) \cdot h(x)^{-2} \notag \\
-f&#39;(x) &amp;= \frac{g&#39;(x) \cdot h(x) - g(x) \cdot h&#39;(x)}{h(x)^{2}} \notag
-\end{eqnarray}
-\]</span></p>
-<p>至此, 由乘法求导公式推导得到商式的求导公式。</p>
-<h3 id="链式函数">链式函数</h3>
-<p>若一个函数由几层函数复合而成, 形如:</p>
-<p><span class="math display">\[
-f(x) = g(h(x))
-\]</span></p>
-<p>这里需要注意一下, 所谓的 "<strong>链式</strong>" 隐含一层自变量替换的概念, 它是指, 其中一个子函数作为另一个函数的 "<strong>自变量</strong>", 而非原生的自变量 <span class="math inline">\(x\)</span> 。</p>
-<p>那么, 链式求导法则为:</p>
-<p><span class="math display">\[
-f&#39;(x) = g&#39;(h(x)) \cdot h&#39;(x)
-\]</span></p>
-<p>上式正确, 但是稍显凌乱, 我重新表达一下</p>
-<p><span class="math display">\[
-设变量 z = h(x)
-\]</span></p>
-<p><span class="math display">\[
-f&#39;(x) = g&#39;(z) \cdot h&#39;(x)
-\]</span></p>
-<p>用偏自然语言描述就是: 把作为自变量的函数看做一个整体, 对外层函数求导, 然后将结果乘以内层函数关于原生自变量<code>$x$</code>的导数。</p>
-<blockquote>
-<p>更深层一点的是多层链式函数, 即可能一层复合函数无法精简的表达整个函数, 需要将关于<code>$x$</code>的函数复合多次, 这种情况下可以一层层套用两层链式法则。(每层展开乘以下层关于自己的自变量的导数即可)</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1018,20 +923,20 @@ f&#39;(x) = g&#39;(z) \cdot h&#39;(x)
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">57</span>
+        <span class="site-state-item-count">65</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
