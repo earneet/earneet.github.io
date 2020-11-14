@@ -2624,4 +2624,66 @@ a(x^2+ \frac{b}{a}x) = -c
         <tag>JDI</tag>
       </tags>
   </entry>
+  <entry>
+    <title>快速幂算法</title>
+    <url>/2020/11/14/fast-power/</url>
+    <content><![CDATA[<h1 id="快速幂算法">快速幂算法</h1>
+<h3 id="大数幂的模问题">大数幂的模问题</h3>
+<p>快速幂算法用于高效的计算大数次幂，实际上对于绝对值大于1的数的大数次幂，我们常常只关心其低位部分，因为它结果的精确值趋向于一个我们无法直接使用的超级大数字。对于绝对值小于1的数进行高幂次运算，它将趋向于0，实际用处也不是很大。而快速幂算法也正是立足于我们只关心结果的尾数部分来实现高效计算的。</p>
+<h3 id="常规的求幂算法">常规的求幂算法</h3>
+<p>对于一个求幂问题 <span class="math inline">\(base^{pow}\%N\)</span>按照最直接的求幂过程，我们需要把base做pow-1次乘法运算, 然后再做一次取模运算， 其时间复杂度为O(n)。</p>
+<p>其中，对于时间复杂度，尚处于我们可以接受的程度，即使pow的值很大，我们总可以在线性的时间内计算完。但是，对于其结果来说，对于我们常用的编程语言种的数据类型来说，几乎是不可承受的。</p>
+<p>就当下最流行的高级编程语言C语言来说，其最大的整数类型长度为64位(long long 类型), 所能表示的最大数值是<code>$18,446,744,073,709,551,615$</code>， 这个看起来相当大的数字在幂运算面前却不值一提，我们取比1大的最小整数2作为base的值，当exp的值为64时，就已经比这个数字还大了，64确实不能算作一个“大数”，然而，这已经是我们CPU的运算器所能计算的极限了。一旦超出了这个值，就遭遇了计算机领域常见的错误“溢出”，在cpu的寄存器中所存储的计算结果就已经是不正确的了。</p>
+<p>所以，常规的求幂算法在计算大数幂中是不适用的。</p>
+<p>常规求幂算法使用python表达：</p>
+<p><del>要注意这个方法在计算数稍微大一点之后就会溢出，其结果不正确。</del></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pow_mod</span><span class="hljs-params">(base, pow, mod)</span>:</span><br>    product = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">for</span> idx <span class="hljs-keyword">in</span> range(pow):<br>        product = product * base<br>    <span class="hljs-keyword">return</span> product % mod<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">pow_mod(<span class="hljs-number">321</span>, <span class="hljs-number">1234567</span>, <span class="hljs-number">1000</span>)<br></code></pre></td></tr></table></figure>
+<p>在我的i56500cpu上，这个算法需要314秒才结束。</p>
+<h3 id="快速幂算法-1">快速幂算法</h3>
+<p>快速幂算法是一种相对于常规的求幂算法更加高效准确的求幂算法。它无法准确的计算幂的结果，退而求其次它可以高效的计算出大数幂的模。而往往，在大数幂的相关问题中，我们也更关注结果的尾数部分，它恰恰是一个大数幂的模的计算。</p>
+<h4 id="快速幂算法的理论基础">快速幂算法的理论基础</h4>
+<p>我们在取模运算中，有一些性质。</p>
+<p><span class="math display">\[
+\begin{aligned}
+(a+b) \% p &amp;= (a\%p + b\%p) \% p \\
+(a \times b)\%p &amp;= (a\%p \times b\%p) \% p 
+\end{aligned}
+\]</span></p>
+<p>在快速幂算法种，使用了性质2。</p>
+<p>拓展一下性质2的表达, 通俗语言来讲，有任意项连续相乘的表达式，其结果对p取余，可以写成它们每一项对p取余然后再相乘，最后对p取余的形式，在这期间，任意步骤中都可以插入一个对p取余的计算而不影响其结果:</p>
+<p><span class="math display">\[
+(a\times b\times ... \times n) \% p = (a\%p \times b\%p \times ... \times n\%p)\%p
+\]</span></p>
+<p>由以上性质可知，要简化幂运算防止其结果溢出，那么可以在常规幂算法的每一次乘法运算后即进行采模。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pow_mod</span><span class="hljs-params">(base, pow, mod)</span>:</span><br>    product = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">for</span> idx <span class="hljs-keyword">in</span> range(pow):<br>        product = product * base % mod<br>    <span class="hljs-keyword">return</span> product<br></code></pre></td></tr></table></figure>
+<p>这一步改进，我们额外引入了pow次取模运算，但至少，近乎能保证不会溢出，结果基本可以正确了。</p>
+<p>结合幂运算的性质:</p>
+<p><span class="math display">\[
+\begin{aligned}
+base^{pow1 + pow2} &amp;= base^{pow1} \times base^{pow2} \\
+base^{pow1 \times pow2} &amp;= {(base^{pow1})}^{pow2}
+\end{aligned}
+\]</span></p>
+<p>再进一步的优化一下运算，那么现在可以拆指数来减少计算次数了。对指数pow进行因式分解，我们无法保证pow是否是素数，也不好说如何分解才最优，干脆就用计算机算法领域常用的二分法，每次将指数减小一半，此时又出分歧，要区分指数每次是偶数还是奇数时采用不同的处理。</p>
+<p>当exp为偶数时:</p>
+<p><span class="math display">\[
+base^{pow} = (base^{2})^{\frac{pow}{2}}
+\]</span></p>
+<p>当exp为奇数时:</p>
+<p><span class="math display">\[
+base^{pow} = (base^{2})^{\frac{pow}{2}} \times base
+\]</span></p>
+<p>python代码表达一下:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pow_mod</span><span class="hljs-params">(base, pow, mod)</span>:</span><br>    result = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">while</span> pow &gt; <span class="hljs-number">0</span>:<br>        <span class="hljs-keyword">if</span> pow &amp; <span class="hljs-number">1</span> == <span class="hljs-number">0</span>:<br>            result = result * base % mod<br>        base = base * base % mod<br>        pow = pow &gt;&gt; <span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> result<br></code></pre></td></tr></table></figure>
+<p>基本也能讲清楚快速幂算法的思想了，就记到这里吧。</p>
+]]></content>
+      <categories>
+        <category>算法简述</category>
+      </categories>
+      <tags>
+        <tag>快速幂</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
 </search>

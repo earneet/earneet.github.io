@@ -183,6 +183,267 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/07/matrix-conceptions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/07/matrix-conceptions/" class="post-title-link" itemprop="url">矩阵相关一些粗浅概念</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-07 09:25:38" itemprop="dateCreated datePublished" datetime="2020-05-07T09:25:38+08:00">2020-05-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-10 13:12:43" itemprop="dateModified" datetime="2020-05-10T13:12:43+08:00">2020-05-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" itemprop="url" rel="index"><span itemprop="name">线性代数</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="矩阵相关知识">矩阵相关知识</h1>
+<blockquote>
+<p>首先声明一个“原矩阵”的概念。我们用作参考来说明的原始矩阵 <span class="math inline">\(\boldsymbol{M}\)</span> , 在下面的文字中被称为原矩阵。为了方便描述各种矩阵，先建立一个矩阵假设原型 <span class="math display">\[
+\boldsymbol{M} = \begin{bmatrix} 
+c_{11} &amp; c_{12} &amp; c_{13} \\
+c_{21} &amp; c_{22} &amp; c_{23} \\
+c_{31} &amp; c_{32} &amp; c_{33} \\
+\end{bmatrix}
+\]</span></p>
+</blockquote>
+<blockquote>
+<p>约定对角线为方阵从左上角到后下角各行号与列号相等的元素构成，反对角线为方阵从右上角到左下角其行号和列号互补的元素构成。</p>
+</blockquote>
+<blockquote>
+<p>由于学习过程中参考了不同的资料，对于n维矩阵和n阶矩阵交替出现， 但是他们都代表相同的含义。</p>
+</blockquote>
+<h3 id="转置矩阵">转置矩阵</h3>
+<p>将原矩阵中所有元素的行列编号颠倒构成新的矩阵 <span class="math inline">\(\boldsymbol{M}^T\)</span> , 该矩阵就叫做原矩阵的<strong>转置矩阵</strong></p>
+<p>其变换公式为 <span class="math inline">\(c&#39;_{rc} = c_{cr}\)</span></p>
+<p><span class="math display">\[
+c&#39;_{rc} = c_{cr}
+\]</span></p>
+<p>公式中 <span class="math inline">\(c_{cr}\)</span> 代表原矩阵第c行第r列的元素。 <span class="math inline">\(c&#39;_{rc}\)</span> 代表转置矩阵中第r行第c列的元素。</p>
+<p>用更形象一点的表述为，将原矩阵沿对角线进行了“翻转”。</p>
+<p>转置矩阵 <span class="math inline">\(\boldsymbol{M}^T\)</span> 为:</p>
+<p><span class="math display">\[
+\boldsymbol{M}^T = 
+\begin{bmatrix}
+    c_{11} &amp; c_{21} &amp; c_{31} \\
+    c_{12} &amp; c_{22} &amp; c_{32} \\
+    c_{13} &amp; c_{23} &amp; c_{33} \\
+\end{bmatrix}
+\]</span></p>
+<h4 id="转置矩阵的性质">转置矩阵的性质</h4>
+<p>一个重要的性质是：<strong>转置矩阵的行列式和原矩阵行列式保持不变</strong></p>
+<p>对于转置矩阵的运算性质</p>
+<p><span class="math display">\[
+\begin{eqnarray}
+(\boldsymbol{M}^T)^T &amp;=&amp; \boldsymbol{M}  \tag{1} \\
+(k\boldsymbol{M})^T &amp;=&amp; k\boldsymbol{M}^T \tag{2} \\
+(\boldsymbol{A}\boldsymbol{B})^T &amp;=&amp; \boldsymbol{B}^T\boldsymbol{A}^T \tag{3} \\
+(\boldsymbol{A} + \boldsymbol{B})^T &amp;=&amp; \boldsymbol{A}^T + \boldsymbol{B}^T \tag{4} \\
+\det{\boldsymbol{M}} &amp;=&amp; \det{\boldsymbol{M}^T} \tag{5}
+\end{eqnarray}
+\]</span></p>
+<p>即:</p>
+<ul>
+<li>(1)矩阵转置后再转置，得到原矩阵。</li>
+<li>(2)矩阵数乘后转置，等于转置矩阵数乘。 (该条性质可以由(1)根据数乘性质推得)</li>
+<li>(3)两矩阵乘后转置，等于其转置矩阵反向乘。</li>
+<li>(4)两矩阵加和后转置，等于他们的转置矩阵的和。</li>
+<li>(5)原矩阵的行列式和转置矩阵的行列式相等。</li>
+</ul>
+<h3 id="对称矩阵与反对称矩阵">对称矩阵与反对称矩阵</h3>
+<p>特别的，对于矩阵是方阵的类型，若 <span class="math inline">\(\boldsymbol{M}^T = \boldsymbol{M}\)</span> , 则方阵可以被称为<strong>对称矩阵</strong>。</p>
+<p>对于矩阵是方阵的类型，若 <span class="math inline">\(\boldsymbol{M}^T = \boldsymbol{-M}\)</span> , 则方阵可以被称为<strong>反对称矩阵</strong>。</p>
+<blockquote>
+<p>由于转置过程中 <span class="math inline">\(c&#39;_{rc} = c_{cr}\)</span> ， <span class="math inline">\(r=c\)</span> 位置(即对角线位)的元素不会变化， 要满足 <span class="math inline">\(c&#39;_{rc}=-c_{cr}\)</span> 的唯一条件是该位置元素为0。所以我们可以得出结论，<strong>非对称矩阵对角线元素一定为0</strong>。</p>
+</blockquote>
+<blockquote>
+<p>形象的记忆，这里的对称，可以理解为方阵沿主对角线轴对称</p>
+</blockquote>
+<h3 id="行列式">行列式</h3>
+<p>我一时找不到一个合适的描述来给行列式下一个定义。</p>
+<p>对于任意<strong>方阵</strong>，总存在这么一个<strong>标量</strong>， 它可以由“行列式定义”计算得到，我们把这个标量称呼为矩阵的<strong>行列式</strong>。</p>
+<blockquote>
+<p>需要注意的是，行列式只对方阵有定义，对非方阵没有定义。1维矩阵的行列式与它唯一的元素相等。</p>
+</blockquote>
+<h4 id="行列式的记号">行列式的记号</h4>
+<p>对于矩阵 <span class="math inline">\(\boldsymbol{M}\)</span> 来说，学术圈主流有两种记号来表达它的行列式</p>
+<ul>
+<li><span class="math inline">\(|\boldsymbol{M}|\)</span></li>
+<li><span class="math inline">\(\det{\boldsymbol{M}}\)</span></li>
+</ul>
+<h4 id="行列式的几何意义">行列式的几何意义</h4>
+<p>对于任意的二维/三维矩阵 <span class="math inline">\(\boldsymbol{M}\)</span> 来说，我们把它视为一个变换，那么行列式在几何上表达这个变换前后物体的<strong>面积/体积的变化率</strong>(即变化倍数)。</p>
+<p>若行列式为负值，其表明物体的 <strong>面积/体积翻转</strong>(可类比镜像变换，但是这里并不能表达出其角度打小的恒定，只表达出方向的变化)。</p>
+<p>当行列式值为0时，则说明其面积/体积变为0，直接说明此变换包含一个投影， 此时有至少一个维度上所有信息被归零丢失, 我们无法做此变换的逆变换了，矩阵 <span class="math inline">\(\boldsymbol{M}\)</span> 不可逆，为奇异矩阵。</p>
+<p>拓展到更高的维度上， 行列式也表达高维体积的变化率。对于一维向量来说，它表达更丰富的含义，但最直接的，它表达向量的模（长度信息）的变化率。</p>
+<h4 id="行列式的定义">行列式的定义</h4>
+<p>我在这里将行列式用复合形式定义，对于低维度矩阵使用表式定义，对于高维矩阵使用递归定义。</p>
+<h5 id="二维矩阵行列式">二维矩阵行列式</h5>
+<p><span class="math display">\[
+\begin{aligned}
+|\boldsymbol{M}| &amp; = 
+\left|
+\begin{matrix} 
+    c_{11} &amp; c_{12} \\
+    c_{21} &amp; c_{22} \\
+\end{matrix}
+\right| \\
+&amp; = (c_{11}c_{22})-(c_{12}c_{21})
+\end{aligned}
+\]</span></p>
+<h5 id="三维矩阵行列式">三维矩阵行列式</h5>
+<p><span class="math display">\[
+\begin{aligned}
+|\boldsymbol{M}| &amp;=
+\left|
+\begin{matrix} 
+    c_{11} &amp; c_{12} &amp; c_{13} \\
+    c_{21} &amp; c_{22} &amp; c_{23} \\
+    c_{31} &amp; c_{32} &amp; c_{33} \\
+\end{matrix}
+\right| \\
+&amp;=(c_{11}c_{22}c_{33})+(c_{12}c_{23}c_{31})+(c_{13}c_{21}c_{32}) \\ 
+&amp;\;-(c_{11}c_{23}c_{32})-(c_{12}c_{21}c_{33})-(c_{13}c_{22}c_{31})
+\end{aligned}
+\]</span></p>
+<h5 id="更高维矩阵行列式">更高维矩阵行列式</h5>
+<p>更高维度的矩阵的行列式定义，这里需要引入一个概念，叫做<strong>余子式</strong>。余子式的概念和相关性质在后文中给出，这里只是先使用。</p>
+<p>从矩阵中任意选择<strong>一行</strong>或者<strong>一列</strong>, 对该行或列的每个元素都乘以该元素对应的代数余子式， 将他们作和就是该矩阵的行列式。</p>
+<p>以下公式将选择一行i做为固定值， 对元素按列进行迭代。</p>
+<p><span class="math display">\[
+\begin{aligned}
+\det\boldsymbol{M} &amp;= \sum_{j=1}^{n} m_{ij}c_{ij} \\
+&amp;= \sum_{j=1}^{n}m_{ij}(-1)^{i+j}\left| \boldsymbol{M}^{\{ij\}}\right|
+\end{aligned}
+\]</span></p>
+<p>这里 <span class="math inline">\(|\boldsymbol{M}^{\{ij\}}|\)</span> 又为其余子式的行列式， 但是其阶数为(n-1), 递归的套用上式， 最终可使得公式中代数余子式的维度为1（或者2，或者3皆可）， 然后我们套用之前的定义，可以求得其行列式。</p>
+<h4 id="行列式的性质">行列式的性质</h4>
+<p><span class="math display">\[
+\begin{aligned}
+|\boldsymbol{A}| &amp;= |\boldsymbol{A}^T| \\
+|\boldsymbol{A}\boldsymbol{B}| &amp;= |\boldsymbol{B}\boldsymbol{A}| \\
+|k\boldsymbol{A}| &amp;= k^n|\boldsymbol{A}| \\
+|\boldsymbol{A}\boldsymbol{B}| &amp;= |\boldsymbol{A}||\boldsymbol{B}| \\
+|\boldsymbol{A}^n| &amp;= |\boldsymbol{A}|^n \\
+\end{aligned}
+\]</span></p>
+<p>n 为矩阵的维数</p>
+<h3 id="余子式">余子式</h3>
+<p>余子式是一个与原矩阵行列相关的子矩阵。将矩阵 <span class="math inline">\(\boldsymbol{M}\)</span> 中某些行/列去掉后,剩余的矩阵就叫做余子式,也有叫法叫做余因式。</p>
+<p>n阶矩阵 <span class="math inline">\(\boldsymbol{M}\)</span> , 选定其第i行j列的元素 <span class="math inline">\(c_{ij}\)</span> ,去除矩阵 <span class="math inline">\(\boldsymbol{M}\)</span> 的第i行和第j列, 剩下的元素保持位置组成的矩阵就叫做元素 <span class="math inline">\(c_{ij}\)</span> 的余子式。余子式与元素 <span class="math inline">\(c_{ij}\)</span> 的值无关,只与元素所在的位置有关。</p>
+<p>第 <span class="math inline">\(i\)</span> 行第 <span class="math inline">\(j\)</span> 列的余子式记做 <span class="math inline">\(\boldsymbol{M}^{\{ij\}}\)</span> 。</p>
+<h4 id="代数余子式">代数余子式</h4>
+<p>区别于余子式，<em>代数余子式是一个</em> <strong>标量</strong>, 它是由矩阵元素 <span class="math inline">\(m_{ij}\)</span> 与其对应余子式 <span class="math inline">\(\boldsymbol{M}^{\{ij\}}\)</span> 的行列式的乘积再乘以符号因子 <span class="math inline">\((-1)^{i+j}\)</span> 。 显然的， 当行列号之和 <span class="math inline">\(j+j\)</span> 为偶数时符号因子为正，行列号之和 <span class="math inline">\(i+j\)</span> 为奇数时，符号因子为负。</p>
+<p>第i行j列的代数余子式记做 <span class="math inline">\(c_{ij}\)</span> 。</p>
+<p><span class="math display">\[
+c_{ij} = (-1)^{i+j}m_{ij}\left|\boldsymbol{M}^{\{ij\}}\right|
+\]</span></p>
+<h3 id="伴随矩阵">伴随矩阵</h3>
+<p>伴随矩阵是原矩阵的代数余子式构成的矩阵的转置矩阵。记做 <span class="math inline">\(adj\boldsymbol{M}\)</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+adj\boldsymbol{M} &amp;= 
+\begin{bmatrix} 
+c_{11}  &amp;   c_{12}  &amp;   c_{13} \\
+c_{21}  &amp;   c_{22}  &amp;   c_{23}  \\
+c_{31}  &amp;   c_{32}  &amp;   c_{33}
+\end{bmatrix}^T \\
+&amp; = \begin{bmatrix} 
+c_{11}  &amp;   c_{21}  &amp;   c_{31} \\
+c_{12}  &amp;   c_{22}  &amp;   c_{32}  \\
+c_{13}  &amp;   c_{23}  &amp;   c_{33}
+\end{bmatrix}
+\end{aligned}
+\]</span></p>
+<h3 id="逆矩阵">逆矩阵</h3>
+<p>一个(组)向量 经过矩阵 <span class="math inline">\(\boldsymbol{M}\)</span> 变换后再经过矩阵 <span class="math inline">\(\boldsymbol{N}\)</span> 变换仍得到原先的向量， 此时，就仿佛 <span class="math inline">\(\boldsymbol{N}\)</span> 将 <span class="math inline">\(\boldsymbol{M}\)</span> 所施加的变换“撤销”了。 使用公式表述即 <span class="math inline">\(\boldsymbol{N}\boldsymbol{M}\boldsymbol{A}=\boldsymbol{A}\)</span> , <span class="math inline">\(\boldsymbol{N}\boldsymbol{M}=\boldsymbol{I}\)</span> 。若满足这个条件 <span class="math inline">\(\boldsymbol{N}\)</span> 叫做 <span class="math inline">\(\boldsymbol{M}\)</span> 的<strong>逆矩阵</strong>，记做 <span class="math inline">\(\boldsymbol{M}^{-1}\)</span></p>
+<p>更简短一点的表述，若两个方阵的积为单位矩阵， 则这两个矩阵互为逆矩阵。</p>
+<p><span class="math display">\[
+\boldsymbol{M}\boldsymbol{M}^{-1} = \boldsymbol{I}
+\]</span></p>
+<h4 id="逆矩阵的性质">逆矩阵的性质</h4>
+<p><span class="math display">\[
+\begin{aligned}
+\boldsymbol{M}\boldsymbol{M}^{-1} &amp;= \boldsymbol{I} \\
+\boldsymbol{I}^{-1} &amp;= \boldsymbol{I} \\
+(\boldsymbol{M}^{-1})^{-1} &amp;= \boldsymbol{M} \\
+(\boldsymbol{M}^{-1})^T &amp;= (\boldsymbol{M}^T)^{-1} \\
+(\boldsymbol{A}\boldsymbol{B})^{-1} &amp;= \boldsymbol{A}^{-1}\boldsymbol{B}^{-1}
+\end{aligned}
+\]</span></p>
+<h4 id="求逆矩阵的主要方式">求逆矩阵的主要方式</h4>
+<h5 id="a.-伴随矩阵法">a. 伴随矩阵法</h5>
+<p><span class="math display">\[
+\boldsymbol{M}^{-1} = \dfrac{adj\boldsymbol{M}}{\det{\boldsymbol{M}}}
+\]</span></p>
+<h5 id="b.-高斯消元">b. 高斯消元</h5>
+<h5 id="c.-对于确定的正交矩阵直接使用其转置矩阵">c. 对于确定的正交矩阵，直接使用其转置矩阵</h5>
+<p>对于正交矩阵来说，由于其性质 <span class="math inline">\(\boldsymbol{M}\boldsymbol{M}^T = \boldsymbol{I}\)</span> ， 所以其逆矩阵就是其转置矩阵。</p>
+<h3 id="正交矩阵">正交矩阵</h3>
+<p>若对于方阵 <span class="math inline">\(\boldsymbol{M}\)</span> , 满足 <span class="math inline">\(\boldsymbol{M}\)</span> 与它的转置矩阵 <span class="math inline">\(\boldsymbol{M}^T\)</span> 的乘积为单位矩阵, 则矩阵 <span class="math inline">\(\boldsymbol{M}\)</span> 被称为正交矩阵。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/03/derivation-rules/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -803,213 +1064,6 @@ F(k\boldsymbol{a}) &amp;=&amp; kF(\boldsymbol{a}) \tag{2}
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/%E9%87%8D%E8%A6%81%E7%9A%84%E8%BF%9E%E7%BB%AD%E5%88%86%E5%B8%83/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar_head_icon.png">
-      <meta itemprop="name" content="Earneet">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Learning & Sharing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/07/31/%E9%87%8D%E8%A6%81%E7%9A%84%E8%BF%9E%E7%BB%AD%E5%88%86%E5%B8%83/" class="post-title-link" itemprop="url">重要的连续分布</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-07-31 14:01:00" itemprop="dateCreated datePublished" datetime="2019-07-31T14:01:00+08:00">2019-07-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-07 09:20:22" itemprop="dateModified" datetime="2020-05-07T09:20:22+08:00">2020-05-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E6%A6%82%E7%8E%87%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">概率论</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="重要的连续分布">重要的连续分布</h1>
-<h2 id="各分布简介">各分布简介</h2>
-<table>
-<thead>
-<tr class="header">
-<th>分布类型</th>
-<th>简介</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>均匀分布</td>
-<td>古典派中的几何概型</td>
-</tr>
-<tr class="even">
-<td>正态分布</td>
-<td>二项分布的另一种极限</td>
-</tr>
-<tr class="odd">
-<td>指数分布</td>
-<td>泊松分布的间隔, 连续的几何分布</td>
-</tr>
-</tbody>
-</table>
-<h2 id="均匀分布">均匀分布</h2>
-<h3 id="均匀分布的定义">均匀分布的定义</h3>
-<p>如果连续随机变量X的概率密度函数为：</p>
-<p><span class="math display">\[
-p(x)=
-\begin{cases}
-    \frac{1}{b-a}, &amp;a &lt; x &lt; b\\
-    0, &amp; 其它
-\end{cases}
-\]</span></p>
-<p>则称X服从区间(a,b)上的均匀分布，记作 <span class="math inline">\(X\sim U(a,b)\)</span> ，其累积分布函数为：</p>
-<p><span class="math display">\[
-F(x)=\begin{cases}
-    0,&amp;x &lt; a\\
-    \frac{x-a}{b-a},&amp;a\le x \le b\\
-    1,&amp;x &gt; b
-\end{cases}
-\]</span></p>
-<p>期望和方差分别为：</p>
-<p><span class="math display">\[
-E(X)=\frac{a+b}{2},\quad Var(X)=\frac{(b-a)^2}{12}
-\]</span></p>
-<h2 id="正态分布">正态分布</h2>
-<p>二项分布原是一个离散分布模型。 但是, 当伯努利实验次数较多的时候, 二项分布的计算较为困难(没有计算机的时候), 所以, 就有了逼近二项分布, 在当n比较大的时候用于逼近二项分布。</p>
-<h3 id="逼近二项分布的定义">逼近二项分布的定义</h3>
-<p>X服从于二项分布</p>
-<p><span class="math display">\[
-X \sim b(n, p)
-\]</span></p>
-<p>那么它的期望和方差为</p>
-<p><span class="math display">\[
-\begin{split}
-\mu &amp; = np  \\
-\sigma^2 &amp; = np(1-p)
-\end{split}
-\]</span></p>
-<p>则可以使用以下公式逼近二项分布</p>
-<p><span class="math display">\[
-p(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}},\quad -\infty &lt; x &lt; +\infty
-\]</span></p>
-<p>这个逼近的分布方式, 就是 <font color="red"><strong>正态分布</strong></font> (normal distribution), 也叫做 <font color="red"><strong>高斯分布</strong></font> (Gaussian distribution)</p>
-<p>其<strong>累积分布函数</strong>为:</p>
-<p><span class="math display">\[
-F(x)=\frac{1}{\sigma\sqrt{2\pi}}\int_{-\infty}^{x}e^{-\frac{(t-\mu)^2}{2\sigma^2}}\mathrm{d}t
-\]</span></p>
-<h3 id="正态分布的重要性质">正态分布的重要性质</h3>
-<h4 id="线性">线性</h4>
-<p>若有随机变量X符合正态分布</p>
-<p><span class="math display">\[
-X\sim N(\mu, \sigma^2)
-\]</span></p>
-<p>那么则有</p>
-<p><span class="math display">\[
-aX+b \sim N(a\mu + b, a^2\sigma^2)
-\]</span></p>
-<p><strong>这条重要的性质可以使得任意的正态分布转换为标准正态分布</strong>。</p>
-<p>即:</p>
-<p>若有</p>
-<p><span class="math display">\[
-\text{若有} X \sim N(\mu, \sigma^2) 
-\]</span></p>
-<p>则有</p>
-<p><span class="math display">\[
-\ Z = \frac{X-\mu}{\sigma} \sim N(0, 1)
-\]</span></p>
-<h4 id="上α分位点">上α分位点</h4>
-<p>如果有 <span class="math inline">\(Z\sim N(0,1)\)</span> ，如果 <span class="math inline">\(z_\alpha\)</span> 满足：</p>
-<p><span class="math display">\[
-P(Z &gt; z_\alpha) = \alpha,\quad 0 &lt; \alpha &lt; 1
-\]</span></p>
-<p>那么称点 <span class="math inline">\(z_\alpha\)</span> 为标准正态分布的 <font color="red"><strong>上α分位点</strong></font>。</p>
-<h4 id="六西格玛">六西格玛</h4>
-<p>对于随机变量 <span class="math inline">\(X\sim N(\mu, \sigma^2)\)</span></p>
-<p>不论 <span class="math inline">\(\mu , \sigma\)</span> 的取值是什么, 其中, 关于 <span class="math inline">\(\mu\)</span> 对称的面积都是确定的</p>
-<p><span class="math display">\[
-\begin{split}
-P(\mu-\sigma\le X\le \mu+\sigma)\approx 68.26\% \\
-P(\mu-3\sigma\le X\le \mu+3\sigma)\approx 99.72\%
-\end{split}
-\]</span></p>
-<h3 id="指数分布">指数分布</h3>
-<h4 id="指数分布的定义">指数分布的定义</h4>
-<p>若随机变量X的概率密度函数为：</p>
-<p><span class="math display">\[
-p(x)=\begin{cases}
-\lambda e^{-\lambda x}, &amp; x \ge 0\\
-0,&amp; x &lt; 0
-\end{cases}
-\]</span></p>
-<p>其中 <span class="math inline">\(\lambda &gt; 0\)</span> ，称X服从<font color="red"><strong>指数分布</strong></font>，也可以记为：</p>
-<p><span class="math display">\[
-X \sim Exp(\lambda)
-\]</span></p>
-<p>累积分布函数为：</p>
-<p><span class="math display">\[
-F(x)=\begin{cases}
-1-e^{-\lambda x}, &amp; x \ge 0\\
-0,&amp; x &lt; 0
-\end{cases}
-\]</span></p>
-<p>指数分布 <span class="math inline">\(X\sim Exp(\lambda)\)</span> 的期望和方差为：</p>
-<p><span class="math display">\[
-E(X)=\frac{1}{\lambda},\quad Var(X)=\frac{1}{\lambda^2}
-\]</span></p>
-<h4 id="指数分布的性质">指数分布的性质</h4>
-<h5 id="无记忆性">无记忆性</h5>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1081,7 +1135,7 @@ E(X)=\frac{1}{\lambda},\quad Var(X)=\frac{1}{\lambda^2}
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1094,7 +1148,7 @@ E(X)=\frac{1}{\lambda},\quad Var(X)=\frac{1}{\lambda^2}
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">65</span>
+        <span class="site-state-item-count">67</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
