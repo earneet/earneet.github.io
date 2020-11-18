@@ -183,6 +183,114 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/08/bayes-theorem/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/05/08/bayes-theorem/" class="post-title-link" itemprop="url">贝叶斯定理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-05-08 10:26:23" itemprop="dateCreated datePublished" datetime="2018-05-08T10:26:23+08:00">2018-05-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-08 10:33:55" itemprop="dateModified" datetime="2020-05-08T10:33:55+08:00">2020-05-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E6%A6%82%E7%8E%87%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">概率论</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="贝叶斯定理">贝叶斯定理</h1>
+<h3 id="贝叶斯定理定义">贝叶斯定理定义</h3>
+<p>贝叶斯定理的定义:</p>
+<p>对于随机事件 <span class="math inline">\(A、B\)</span> 若有 <span class="math inline">\(P(B) \neq 0\)</span> 则存在: <span class="math display">\[
+\begin{aligned}
+    P(A|B)*\frac{P(B)}{P(A)} &amp;= \frac{P(AB)}{P(B)} * \frac{P(B)}{P(A)}  \\
+    &amp;= \frac{P(AB)}{P(A)} \\
+    &amp;= P(B|A)
+\end{aligned}
+\]</span></p>
+<p>稍微变一下, 可以写一个更好记的形式</p>
+<p><span class="math display">\[
+    P(B|A) = P(A|B)*\frac{P(B)}{P(A)}
+\]</span></p>
+<h3 id="贝叶斯定理的推导">贝叶斯定理的推导</h3>
+<p>由条件概率公式:</p>
+<p><span class="math display">\[
+    P(A|B) = \frac{P(A\bigcap B)}{P(B)} \tag{1}
+\]</span> <span class="math display">\[
+    P(B|A) = \frac{P(A\bigcap B)}{P(A)} \tag{2}
+\]</span></p>
+<p>我们将(1)式做如下变换:</p>
+<p>将公式1乘以 <span class="math display">\[
+    \frac{P(B)}{P(A)} \\
+\]</span> 得到 <span class="math display">\[
+    P(A|B) * \frac{P(B)}{P(A)} = \frac{P(A\bigcap B)}{P(A)} \tag{3} \\
+\]</span></p>
+<p>公式(3)的等号右边即为公式(2)的右边, 即: <span class="math display">\[
+    P(A|B) * \frac{P(B)}{P(A)} = P(B|A) \tag{4}
+\]</span></p>
+<p>公式(4) 即为贝叶斯定理公式</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/13/ARTS-5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -856,20 +964,20 @@ Memory Usage: 14.9 MB, less than 97.80% of C++ online submissions for 3Sum.</cod
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">67</span>
+        <span class="site-state-item-count">72</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
