@@ -2820,4 +2820,68 @@ base^{pow} = (base^{2})^{\frac{pow}{2}} \times base
         <tag>CDN</tag>
       </tags>
   </entry>
+  <entry>
+    <title>换底规则的证明</title>
+    <url>/2020/12/28/proof-of-base-changing-formula/</url>
+    <content><![CDATA[<h3 id="对数换底公式的表达">对数换底公式的表达</h3>
+<p>对数的换底法则，或者称为换底公式表达为:</p>
+<p><span class="math display">\[
+\log_{a}b = \frac{\log_{c}{b}}{\log_{c}{a}} (c \neq 0,1)
+\]</span></p>
+<p>此公式中， c的取值是无关的，无论c取何值，它总是成立。</p>
+<h3 id="换底法则的证明过程">换底法则的证明过程</h3>
+<p>换底法则先变形一下：</p>
+<p>设</p>
+<p><span class="math display">\[
+\begin{eqnarray*}
+\log_{x}{y} &amp;= m \tag{1} \\
+\log_{c}{y} &amp;= n \tag{2} \\
+\log_{c}{x} &amp;= p \tag{3} \\
+\end{eqnarray*}
+\]</span></p>
+<p>由式(1)得出</p>
+<p><span class="math display">\[
+y = x^m \tag{4}
+\]</span></p>
+<p>由式(2)得出</p>
+<p><span class="math display">\[
+y = c^n \tag{5}
+\]</span></p>
+<p>由式(3)得出</p>
+<p><span class="math display">\[
+x = c^p \tag{6}
+\]</span></p>
+<p>联合式(4)式(5)得到</p>
+<p><span class="math display">\[
+x^m = c^n \tag{7}
+\]</span></p>
+<p>将式(6)代入式(7)得到</p>
+<p><span class="math display">\[
+\begin{eqnarray*}
+(c^p)^m &amp;= c^n \\
+\rightarrow c^{pm} &amp;= c^n \\
+\rightarrow pm &amp;= n \tag{8}
+\end{eqnarray*}
+\]</span></p>
+<p>将式(1)(2)(3) 结果带入(8)</p>
+<p><span class="math display">\[
+\log_{c}{x} \cdot \log_{x}{y} = \log_{c}{y} \rightarrow \log_{x}{y} = \frac{\log_{c}{y}}{\log_{c}{x}} \tag{9}
+\]</span></p>
+<p>上式在 <span class="math inline">\(c \notin \{ 0, 1\}\)</span> 时成立。</p>
+<p>综上，换底法则得证。</p>
+<hr />
+<p><em>这里写个拓展。对于对数函数 <span class="math inline">\(f(x) = \log_{a}x\)</span> 和函数 <span class="math inline">\(g(x) = \log_{b}x\)</span> 存在常数 <span class="math inline">\(k\)</span> 使得 <span class="math inline">\(f(x) = k \cdot g(x)\)</span> 。通俗点说，就是， 一个对数函数的图像，将它在y轴方向上拉伸或者压缩，它可以与任意的对数图像重合。利用换底公式可以很容易的证得。</em></p>
+]]></content>
+      <categories>
+        <category>数学</category>
+        <category>基础数学</category>
+      </categories>
+      <tags>
+        <tag>对数</tag>
+        <tag>换底</tag>
+        <tag>证明</tag>
+        <tag>logarithm</tag>
+        <tag>base changing formula</tag>
+      </tags>
+  </entry>
 </search>

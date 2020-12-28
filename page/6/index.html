@@ -183,6 +183,148 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/21/ARTS-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/21/ARTS-1/" class="post-title-link" itemprop="url">ARTS-1</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-21 07:37:38" itemprop="dateCreated datePublished" datetime="2019-03-21T07:37:38+08:00">2019-03-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-06 12:17:08" itemprop="dateModified" datetime="2020-05-06T12:17:08+08:00">2020-05-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index"><span itemprop="name">ARTS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="arts-第一周">ARTS 第一周</h1>
+<h2 id="algorithm">Algorithm</h2>
+<h3 id="引子">引子</h3>
+<p>本周题目起源于一次QQ交流群的讨论, 一位群友参加面试,被问到如何在一个数组原地对元素进行重排列, 要求所有奇数元素在数组头部,所有偶数元素在数组尾部。不知道群友是如何作答的, 只是说方案为On复杂度的时候被面试官否了, 群主发出一道leetcode类似题目, 于是做了一下, 给出两种解答。</p>
+<h3 id="题目描述">题目描述</h3>
+<p>这是一道easy难度的题目, 对算法实力可能并没有什么要求,确实到ac也就只花了五六分钟, 但是本周由于无休止工作上的事情耽搁, 就它了。</p>
+<pre><code>Given an array A of non-negative integers, return an array consisting of all the even elements of A, followed by all the odd elements of A.
+
+You may return any answer array that satisfies this condition.
+
+
+
+Example 1:
+
+Input: [3,1,2,4]
+Output: [2,4,3,1]
+The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.
+
+
+Note:
+
+1 &lt;= A.length &lt;= 5000
+0 &lt;= A[i] &lt;= 5000</code></pre>
+<h3 id="分析">分析</h3>
+<ol type="1">
+<li>首先采取的想法是首尾指针, 向中间靠拢,当遇到不符合自己迭代条件的元素时交换他们, 这个做法,时间复杂度为On, 无需额外空间, 首先使用C++写了个实现测试了一下, 32ms, 11.2M空间使用, 差不多每个分量都在前5%了。</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">sortArrayByParity</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; A)</span> </span>&#123;<br>        <span class="hljs-keyword">register</span> <span class="hljs-keyword">int</span> begin = <span class="hljs-number">0</span>, end = A.size() <span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">while</span> (begin &lt; end) &#123;<br>          <span class="hljs-keyword">while</span> ((A[begin] &amp; <span class="hljs-number">0x01</span>) == <span class="hljs-number">0</span> &amp;&amp; begin &lt; end) begin++;<br>          <span class="hljs-keyword">while</span> ((A[end] &amp; <span class="hljs-number">0x01</span>) == <span class="hljs-number">1</span> &amp;&amp; begin &lt; end) end--;<br>          <span class="hljs-keyword">if</span> (begin &gt;= end) <span class="hljs-keyword">break</span>;<br>          <span class="hljs-keyword">register</span> <span class="hljs-keyword">int</span> t = A[begin];<br>          A[begin++] = A[end];<br>          A[end--] = t;<br>        &#125;<br>        <span class="hljs-keyword">return</span> A;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>其中, 在不声明关键字 register 时, 空间消耗要多0.1M, 将 <code>begin</code>,<code>end</code> 声明为寄存器变量后, 可以节约一点点内存使用,同时应该能加快一点点访存速度。实际上在声明它之前,我并不确定它有效, 测试了一下,果然是可以的。</p>
+<ol start="2" type="1">
+<li>这一个方案源于一次信口开河, 讨论时凭直觉我感觉可以只用一次循环完成任务, 而并不像第一个方案中需要大循环里面嵌两个平级的循环。当时没有想到方案, 当天睡前忽然灵光一闪, 第二天写出来试了一下, 果然可行。 这个思路是使用跟随指针<code>(follow)</code>, 当步进指针<code>(step)</code>遇到不满足的元素后, 使用跟随指针标记位置, 步进指针去寻找合适的替换元素, 交换后跟随指针直接跟随步进指针。</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">sortArrayByParity</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; A)</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> follow=<span class="hljs-number">0</span>, step=<span class="hljs-number">0</span>, end = A.size();<br>    <span class="hljs-keyword">bool</span> finding = <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">while</span>(step &lt; end) &#123;<br>        <span class="hljs-keyword">if</span> (!finding &amp;&amp; (A[step] &amp; <span class="hljs-number">0x1</span>) == <span class="hljs-number">0</span>) &#123;<br>            step++;<br>            <span class="hljs-keyword">continue</span>;<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (finding &amp;&amp; (A[step] &amp; <span class="hljs-number">0x1</span>) == <span class="hljs-number">1</span>) &#123;<br>            step++;<br>            <span class="hljs-keyword">continue</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (finding) &#123;<br>            A[step] ^= A[follow];<br>            A[follow] ^= A[step];<br>            A[step] ^= A[follow];<br>            step = follow;<br>        &#125;     <br>        follow = step;<br>        finding = !finding;<br>    &#125;<br>    <span class="hljs-keyword">return</span> A;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>实际上, 上面代码并没有体现完整思路, 它是个阉割版, 而运行时间也证明了这一点60ms, 它在发生交换后, step指针回溯到了folow位置, 那么从follow位置,到当前的step位置的所有元素,都要重新进行比较计算,它时间复杂度可不是On, 这里应该再引入一个记录指针 <code>rec</code>, 用来在发生交换时, 记录<code>step</code>当前的位置, 这样, 我们就知道 <code>follow ~ rec</code> 之间的所有元素也是需要进行交换的, step可以不回溯而直接向前寻找,而又能使用单层的简单循环实现AC, <strong>这个方案我没有贴出来</strong> 因为我还没有写一个AC版本, 本周实在太忙了。</p>
+<h2 id="review">Review</h2>
+<p>本周, 其实是上周日开始看一篇medium上的文, 作者是从业几十年的技术前辈,从经历看来开发过各种面向对象语言的程序, 他以诙谐幽默风趣又不是严谨的批判风格揭露了面向对象编程范式的缺陷。</p>
+<pre><code>[ 再见!面向对象编程 (GoodBye, Object Oriented Programming) ](https://medium.com/@cscalfani/goodbye-object-oriented-programming-a59cda4c0e53)</code></pre>
+<h3 id="读后反思">读后反思</h3>
+<p>本人从一入行开始就接触的是面向对象编程, 并以之为圭臬, 从未敢质疑这个最主流的编程范式, 虽然有时对于继承感到不方便, 也总是找各种偏门左道的小技巧来完成, 看过这篇文章竟然有种恍然大悟的感觉, 没有什么范式是十全十美的, <strong>应是各有优劣, 总有它最适合的舞台</strong>。</p>
+<p>文章反复读之,我认为作者并不是在纯粹反对面向对象编程范式, 而是针对它的缺点漏洞进行针砭, 尤其对于它重要的承诺"重用", 文中举的例子有力的证明了这一点。</p>
+<h4 id="第一点-继承是最大的错误">第一点 继承是最大的错误</h4>
+<p>表面看, 继承似乎是面向对象的范式的最大好处, 层次结构明确,似乎逻辑意义明确, 也贴近现实世界的表达。但是重用这个年度词也就停留在了那一刻。 ### 第二点 香蕉猴丛林问题 这个问题就是由于继承引发的典型问题, 本来仅需要一个工具类A, 若它有父类, 那么则还需要引用PA, 如果PA中依赖了其他类,那么不得不映入PA', 以及PA'的父类, 这就导致了本来只想要一个香蕉, 但是却要拿来正片森林, 森林里有个猴子, 它手里拿着个香蕉, 特别形象, 忍不住拍案叫绝。是的, 这就是为了代码重用而引来的包袱负担。</p>
+<p>原文机译</p>
+<pre><code>面向对象语言的问题在于它们具有所有这些隐含的环境，它们随身携带。你想要一个香蕉，但你得到的是一只拿着香蕉和整个丛林的大猩猩。</code></pre>
+<p>同时, 作者提出针对这个问题的方案, 尽量限制继承的层级, 因为继承而引入了对重用性的限制, 那么宁愿不要继承。</p>
+<h3 id="第三点-菱形引用问题">第三点 菱形引用问题</h3>
+<p>我个人认为应该是不单单针对C++编程语言中的多继承, 对于我熟悉的java来讲,它虽然不支持多继承, 但是也通过另一个形式"接口"的实现, 引入了这个问题。 作者在这里引入了大量的例子来阐述这个问题, 我并不打算一一列举, 大致就是, 如果继承自的多个类拥有同样签名的两个方法,那么在调用时会出现迷惑, 到底是哪个, 如果接口有同样的声明, 那么复写时又该是哪个, 更遑论c++中, 还存在父类对象的内存空间分配问题,造成污染和浪费。</p>
+<h3 id="第四点-脆弱的基类问题">第四点 脆弱的基类问题</h3>
+<p>在进行继承时, 父类可以隐藏其实现,那么当父类的实现发生了变化的时候, 子类的行为将会不可控, 例如, 父类的一个被子类复写的方法实现了一个统计值, 那么, 由于子类的复写, 这个值可能并不能被正确计数, 从而导致后面一系列的行为不可控。 想想确实可怕。</p>
+<h3 id="第五点-封装引入的问题暂时缺席">第五点 封装引入的问题暂时缺席</h3>
+<p>作者对于封装引入的一些问题, 我还有些内容需要再想想, 这里先不描述封装的一些问题。</p>
+<h3 id="第六点-多态">第六点 多态</h3>
+<p>作者貌似也没整明白这里应该怎么说, 这里多态应该通过Interfaces提供, 而不是面向对象, 这样就可以弃其糟粕了, 貌似的推崇了下函数式编程, 我认为, golang所实现的面向对象方式也很好。</p>
+<h2 id="tip-小技巧">Tip 小技巧</h2>
+<p>在文件系统中按照内容搜索文件。 ### 引子</p>
+<p>今天我遇到一个错误, 大概是这样的, 浏览器报出有个js文件找不到, 但是这个文件在浏览器端根本看不出它到底是在哪个位置(服务器做了路径重新映射), 只知道是个fancybox.js, 应该是某个配置或者是什么指定需要加载的文件, 然后我在服务器上搜索了一番, 果然应该不存在这样一个文件, 那我得找找看是哪里写了引用它了, 问题来了, 工程下包含资源文件在内几万个文件, 几百个目录, 找到这个文件将是个问题。</p>
+<h3 id="过程">过程</h3>
+<p>为了这个几乎还是一次性的需求写一个脚本无疑是不合成本的。</p>
+<p>隐约还记得在文件系统中查找文件有几个命令, 分别是whereis, search, find , 其中,前两个应该是必须要知道文件名的情况下,从文件系统索引数据库中找到该文件的完整路径, 而find是按照或者名称,或者类型或者修改时间列出所有符合条件的文件, 看起来,这几个命令并不适合直接用来寻找。</p>
+<p>通常, 我过滤或者统计信息的时候,都是用grep和awk命令, awk命令主要用来做一些统计性工作多一些, 那么 grep 就跳出了视野。</p>
+<p>所以, 我想, 利用 find命令列出所有文件路径, 通过grep 命令读取他们的内容并过滤我想要的结果</p>
+<h3 id="按照文件内容查找文件">按照文件内容查找文件</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">find . | xargs grep "i wanted content"<br></code></pre></td></tr></table></figure>
+<p>首先我写出尝试 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">find . -name * | xargs grep "xxxx"<br></code></pre></td></tr></table></figure> 却发现会有报错</p>
+<pre><code>find: paths must precede expression: db.json
+Usage: find [-H] [-L] [-P] [-Olevel] [-D help|tree|search|stat|rates|opt|exec|time] [path...] [expression]</code></pre>
+<p>表面意思大概是路径必须跟在表达式之前??? 虽然不明白什么意思,大概是通配符的问题, 把通配符加上<code>''</code>之后果然没问题了, 后来试了下, 如果 <code>-name *</code> 那么可以直接省略。 于是最后得到上面一个式子。</p>
+<h2 id="share">Share</h2>
+<p><a href="http://www.hawstein.com/posts/dp-novice-to-advanced.html" target="_blank" rel="noopener">动规问题, 从新手到专家</a> 这篇并不是本周才看到的, 这是之前我还不懂什么是动规的时候(现在也称不上懂)反复阅读的一篇文, 发在这里, 贡献大家。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/08/bayes-theorem/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -964,7 +1106,7 @@ Memory Usage: 14.9 MB, less than 97.80% of C++ online submissions for 3Sum.</cod
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -977,7 +1119,7 @@ Memory Usage: 14.9 MB, less than 97.80% of C++ online submissions for 3Sum.</cod
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-count">77</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
