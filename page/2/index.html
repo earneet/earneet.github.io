@@ -183,6 +183,104 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/28/quadratic-equation-root/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/28/quadratic-equation-root/" class="post-title-link" itemprop="url">一元二次方程求根公式推导</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-28 09:35:54 / 修改时间：09:48:52" itemprop="dateCreated datePublished" datetime="2020-10-28T09:35:54+08:00">2020-10-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E5%9F%BA%E7%A1%80%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">基础数学</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="一元二次方程求根公式推导">一元二次方程求根公式推导</h3>
+<p>最近在阅读微积分相关的一个题目时，需要求解一个一元二次方程组，大概是上了年纪和许久不求解一元二次方程，竟然一时想不起求根公式，所以决定推导一遍，记录以加深印象。</p>
+<h3 id="一元二次函数">一元二次函数</h3>
+<p>说到一元二次方程先回顾一下一元二次函数。</p>
+<p><span class="math display">\[
+f(x) = ax^2 + bx + c (a \neq 0)
+\]</span></p>
+<p>其中 a, b, c 分别为其二次项系数，一次项系数和常数项。</p>
+<p>而一元二次方程就是函数值为0的情况。</p>
+<h3 id="推导">推导</h3>
+<p><span class="math display">\[
+ax^2 + bx + c = 0 
+\]</span></p>
+<p>将自变量项提公因式a:</p>
+<p><span class="math display">\[
+a(x^2+ \frac{b}{a}x) = -c 
+\]</span></p>
+<p>移项，并使用平方和公式构造自变量平方项:</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;x^2 + \frac{b}{a}x + \frac{b^2}{4a^2} = -\frac{c}{a} + \frac{b^2}{4a^2} \\
+&amp;\rightarrow (x+\frac{b}{2a})^2 = \frac{b^2-4ac}{4a^2} \\
+&amp;\rightarrow x+\frac{b}{2a} = \pm \sqrt{\frac{b^2-4ac}{4a^2}} =  \pm \frac {\sqrt{b^2-4ac}}{2a} \\
+&amp;\rightarrow x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}
+\end{aligned}
+\]</span></p>
+<p>整个变换过程中，因为a不为0，且只有a会出现在分母中，所以这里是没问题的。关键是 <span class="math inline">\(b^2-4ac\)</span> 出现在开平方操作中，我们知道，在实数中，负数是没有平方根的，所以，一元二次方程有实根的条件是 $b^2-4ac  $, 且当 $b^2-4ac = 0 $ 时，方程存在唯一解。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/20/css-selector-priority/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -703,89 +801,10 @@ E \times D\ mod\ L = 1
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/13/cursor-disappear/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar_head_icon.png">
-      <meta itemprop="name" content="Earneet">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Learning & Sharing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/13/cursor-disappear/" class="post-title-link" itemprop="url">Terminal光标不显示</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-07-13 17:15:41 / 修改时间：17:21:27" itemprop="dateCreated datePublished" datetime="2020-07-13T17:15:41+08:00">2020-07-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BA%94%E7%94%A8%E6%8A%80%E5%B7%A7/" itemprop="url" rel="index"><span itemprop="name">应用技巧</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BA%94%E7%94%A8%E6%8A%80%E5%B7%A7/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="背景">背景</h3>
-<p>Windows10下 WSL(Ubuntu), 之前使用没有注意过，今天需要写个很长的编译命令，写错了之后想修改，发现光标不显示，但是能正常写入和删除字符。目测只是光标的问题。</p>
-<h3 id="解决方案">解决方案</h3>
-<p>谷歌搜索来的方法，试了一下，it's works!!!. 我没搞懂其中的原理，但是确实好用了。记入笔记以收藏。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">显示光标</span><br>echo -e "\033[?25h" <br><br><span class="hljs-meta">#</span><span class="bash">隐藏光标</span><br>echo -e "\033[?25l"<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>感谢<a href="https://sparkydogx.github.io/2018/10/19/linux-terminal-cursor-disappear/" target="_blank" rel="noopener">sparkydogX的解决方案</a></p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -853,20 +872,20 @@ E \times D\ mod\ L = 1
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-count">78</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -901,7 +920,7 @@ E \times D\ mod\ L = 1
 <div class="copyright">
   
   &copy; 2017 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
