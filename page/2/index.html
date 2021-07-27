@@ -183,6 +183,143 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/29/remote-debug/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/29/remote-debug/" class="post-title-link" itemprop="url">Java远程调试</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-29 10:55:50 / 修改时间：11:02:20" itemprop="dateCreated datePublished" datetime="2020-10-29T10:55:50+08:00">2020-10-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BA%94%E7%94%A8%E6%8A%80%E5%B7%A7/" itemprop="url" rel="index"><span itemprop="name">应用技巧</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BA%94%E7%94%A8%E6%8A%80%E5%B7%A7/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="java平台远程调试">Java平台远程调试</h3>
+<h4 id="背景">背景</h4>
+<p>最近我们做的AI决策算法作为服务器逻辑为诛仙2项目提供服务。由于公司采用了内外网分离的开发策略，我们的服务器在内网进行开发，项目组的服务器是严谨进入外网的。到了联调的时候就特别头疼。因为我们大多数的逻辑都是一场战役的逻辑处理和NPC行为的决策展现，使用log调试的方式分外艰难。所以，就想法在测试服进行调试，测试服属于运维网段，是项目组游戏服务器除了它的开发环境和最终生产环境唯一能接触的生产环境了。这个服务器上，我们偷偷钻个洞进行远程调试。</p>
+<h4 id="java的远程调试">Java的远程调试</h4>
+<h5 id="jpda-体系">JPDA 体系</h5>
+<blockquote>
+<p>对于 Java 虚拟机接口熟悉的人来说，您一定还记得 Java 提供了两个接口体系，JVMPI（Java Virtual Machine Profiler Interface）和 JVMDI（Java Virtual Machine Debug Interface），而它们，以及在 Java SE 5 中准备代替它们的 JVMTI（Java Virtual Machine Tool Interface），都是 Java 平台调试体系（Java Platform Debugger Architecture，JPDA）的重要组成部分。</p>
+</blockquote>
+<h5 id="jpda-组成模块">JPDA 组成模块</h5>
+<p>JPDA 定义了一个完整独立的体系，它由三个相对独立的层次共同组成，而且规定了它们三者之间的交互方式，或者说定义了它们通信的接口。这三个层次由低到高分别是 - Java 虚拟机工具接口（JVMTI） - Java 调试线协议（JDWP） - Java 调试接口（JDI）</p>
+<p>这三个模块把调试过程分解成几个很自然的概念：调试者（debugger）和被调试者（debuggee），以及他们中间的通信器。</p>
+<p>在调试者和被调试着之间，调试命令和调试结果，都是通过 JDWP 的通讯协议传输的。所有的命令被封装成 JDWP 命令包，通过传输层发送给被调试者，被调试者接收到 JDWP 命令包后，解析这个命令并转化为 JVMTI 的调用，在被调试者上运行。类似的，JVMTI 的运行结果，被格式化成 JDWP 数据包，发送给调试者并返回给 JDI 调用。而调试器开发人员就是通过 JDI 得到数据，发出指令。</p>
+<figure>
+<img src="https://img.earneet.xyz/java/jpda.jpg" alt="" /><figcaption>jpda</figcaption>
+</figure>
+<table>
+<thead>
+<tr class="header">
+<th>模块</th>
+<th>层次</th>
+<th>编程语言</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>JVMTI</td>
+<td>底层</td>
+<td>C</td>
+<td>获取及控制当前虚拟机状态</td>
+</tr>
+<tr class="even">
+<td>JDWP</td>
+<td>中介层</td>
+<td>C</td>
+<td>定义 JVMTI 和 JDI 交互的数据格式</td>
+</tr>
+<tr class="odd">
+<td>JDI</td>
+<td>高层</td>
+<td>Java</td>
+<td>提供 Java API 来远程控制被调试虚拟机</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="java-调试连接模式">Java 调试连接模式</h4>
+<p>按照工作方式来分，Java调试工作模式有两种，Socket套接字或者共享内存。</p>
+<p>在远程调试中，显然共享内存是无法工作的，它只适应于同一台机器上的调试。所以，接下来只讨论基于网络套接字的工作模式。</p>
+<p>站在调试器(JDI)的视角，把调试分为两种类别，分别是：</p>
+<ul>
+<li>主动调试：jvm启动时设置调试端口并监听，在调试器发来调试信息时进行命令响应。这种模式在调试过程中很常用，适用于跟踪一些可重复性的逻辑bug。</li>
+<li>被动模式：jvm启动时设置调试器端口，在jvm启动时会尝试建立链接并停下等待命令。这种模式主要用于调试应用无法正常启动的情况。（主动调试无效，因为启动不起来我们没有机会做连接）</li>
+</ul>
+<h5 id="主动调试">主动调试</h5>
+<p>主动调试时，对jvm添加参数</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=$&#123;port&#125;<br></code></pre></td></tr></table></figure>
+<h5 id="被动调试">被动调试</h5>
+<p>被动调试时，对jvm添加参数</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">-Xdebug -Xrunjdwp:transport=dt_socket,address=$&#123;ip&#125;:$&#123;port&#125;,suspend=y<br></code></pre></td></tr></table></figure>
+<hr />
+<h4 id="在idea上实践">在IDEA上实践</h4>
+<p>菜单-&gt;Run-&gt;EditConfigurations...</p>
+<p><img src="https://img.earneet.xyz/java/remote_debug_idea_ui.jpg" /></p>
+<p>左侧点击+，添加Remote， 右侧选择 Use module classpath为要调试的项目， Debugger mode进行选择后， 虚拟机参数会提示给出，按照给出的参数启动虚拟机即可。</p>
+<hr />
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/28/quadratic-equation-root/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -684,123 +821,6 @@ E \times D\ mod\ L = 1
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/25/try-proceduralmeshcomponent/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar_head_icon.png">
-      <meta itemprop="name" content="Earneet">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Learning & Sharing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/25/try-proceduralmeshcomponent/" class="post-title-link" itemprop="url">UE4 ProceduralMeshComponent踩坑日记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-25 12:11:11" itemprop="dateCreated datePublished" datetime="2020-08-25T12:11:11+08:00">2020-08-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-27 16:46:08" itemprop="dateModified" datetime="2020-09-27T16:46:08+08:00">2020-09-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B8%B8%E6%88%8F/" itemprop="url" rel="index"><span itemprop="name">游戏</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B8%B8%E6%88%8F/UE-4/" itemprop="url" rel="index"><span itemprop="name">UE-4</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="ue4-使用proceduralmeshcomponent运行时显示动态物体的坑">UE4 使用ProceduralMeshComponent运行时显示动态物体的坑</h3>
-<h4 id="主要使用的接口">主要使用的接口</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CreateMeshSection</span><span class="hljs-params">(</span></span><br><span class="hljs-function"><span class="hljs-params">	int32 SectionIndex, </span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">const</span> TArray&lt;FVector&gt;&amp; Vertices, </span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">const</span> TArray&lt;int32&gt;&amp; Triangles, </span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">const</span> TArray&lt;FVector&gt;&amp; Normals, </span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">const</span> TArray&lt;FVector2D&gt;&amp; UV0,</span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">const</span> TArray&lt;FColor&gt;&amp; VertexColors, </span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">const</span> TArray&lt;FProcMeshTangent&gt;&amp; Tangents,</span></span><br><span class="hljs-function"><span class="hljs-params">	<span class="hljs-keyword">bool</span> bCreateCollision)</span></span><br></code></pre></td></tr></table></figure>
-<h4 id="首先遇到的问题">首先遇到的问题</h4>
-<ul>
-<li><strong>无法导入"ProceduralMeshComponent.h" 头文件, 明明我可以找到这个文件，但是却无法导入。</strong></li>
-</ul>
-<p>查阅官方文档获得答案，则是个实验性功能， 需要<ProjectName>.build.cs 文件中添加对模块的依赖。</p>
-<p>创建工程后的默认构建文件内容： <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp">PublicDependencyModuleNames.AddRange(<span class="hljs-keyword">new</span> <span class="hljs-keyword">string</span>[] &#123; <span class="hljs-string">"Core"</span>, <span class="hljs-string">"CoreUObject"</span>, <span class="hljs-string">"Engine"</span>, <span class="hljs-string">"InputCore"</span> &#125;);<br></code></pre></td></tr></table></figure></p>
-<p>这里我的项目名字是ProceduralMeshDemo, 所以构建文件在VS中的路径 <code>Games/Source/ProceduralMeshDemo/ProceduralMeshDemo.build.cs</code></p>
-<p>在依赖中添加 "ProceduralMeshComponent", 最终内容为:</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp">PublicDependencyModuleNames.AddRange(<span class="hljs-keyword">new</span> <span class="hljs-keyword">string</span>[] &#123; <span class="hljs-string">"Core"</span>, <span class="hljs-string">"CoreUObject"</span>, <span class="hljs-string">"Engine"</span>, <span class="hljs-string">"InputCore"</span>, <span class="hljs-string">"ProceduralMeshComponent"</span> &#125;);<br></code></pre></td></tr></table></figure>
-<p>按照官方文档的说法，我需要再在 &lt;ProjectName&gt; 中添加插件配置， 官方文档较旧，我发现我没有那么做，插件依然可见可用了。我的UE4版本是4.24.3，所以，至少这个版本之后就可以不用这个步骤了。</p>
-<p><img src="https://img.earneet.xyz/ue4/UE4Plugins_ForProceduralMeshComponent.png" /></p>
-<h4 id="接下来的问题">接下来的问题</h4>
-<ul>
-<li><strong>成功创建了Mesh并展示出来了，但是VertexColor没有生效，模型没有颜色。</strong></li>
-</ul>
-<p>这个问题我没有找到官方的文档解决方式， 网上资料也了了少的可怜，只有少数朋友使用ProceduralMeshComponent来动态创建模型，但是并不对模型进行着色。最终在问答区找到了一个还比较贴切的问题，有大佬给了个含糊的回答。</p>
-<blockquote>
-<p>Creating a material with "vertex colors" node plugged into the base color slot, &gt; then using <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">mesh-&gt;SetMaterial(<span class="hljs-number">2</span>, Cast&lt;UMaterial&gt;(StaticLoadObject(UMaterial::StaticClass(), <span class="hljs-literal">NULL</span>, *FString(UISC::florMTLoc + materials[<span class="hljs-number">0</span>])))); <br></code></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>Be sure to set the material index to match that of the element index of your procedural mesh. In my case it was indexs 1 and 2 (which is why it didn't show before because I used set material with index 0).</p>
-</blockquote>
-<p>原答案地址: <a href="https://answers.unrealengine.com/questions/395390/how-can-i-see-vertex-colors-on-procedural-mesh.html" target="_blank" rel="noopener">How can i see vertex colors on procedural mesh?</a></p>
-<p>意思是要使用要给Vertex Clolors 作为基色的材质才行。</p>
-<p>于是创建一个材质：</p>
-<p><img src="https://img.earneet.xyz/ue4/VertexColorMaterial.jpg" /></p>
-<p>贴一下构建平面的关键代码。 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">const</span> <span class="hljs-keyword">auto</span> RowCount = <span class="hljs-number">5</span>;<br><span class="hljs-keyword">const</span> <span class="hljs-keyword">auto</span> ColCount = <span class="hljs-number">5</span>;<br><span class="hljs-comment">//Construct Vertices </span><br>TArray&lt;FVector&gt; Vertices;<br>TArray&lt;FColor&gt; VertColors;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> Row = <span class="hljs-number">0</span>; Row &lt; RowCount; ++Row)<br>&#123;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> Col = <span class="hljs-number">0</span>; Col &lt; ColCount; ++Col)<br>	&#123;<br>		Vertices.Add(FVector(Row*<span class="hljs-number">10</span>, Col*<span class="hljs-number">10</span>, <span class="hljs-number">10</span>));<br>		VertColors.Add(FColor(Row*<span class="hljs-number">40</span>, Col*<span class="hljs-number">40</span>, <span class="hljs-number">100</span>));<br>	&#125;<br>&#125;<br><br><span class="hljs-comment">//Construct Triangles</span><br>TArray&lt;int32&gt; TriangleIndexes;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> Row = <span class="hljs-number">0</span>; Row &lt; RowCount<span class="hljs-number">-1</span>; ++Row)<br>&#123;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> Col = <span class="hljs-number">0</span>; Col &lt; ColCount<span class="hljs-number">-1</span>; ++Col)<br>	&#123;<br>		TriangleIndexes.Add(Row * ColCount + Col);<br>		TriangleIndexes.Add(Row * ColCount + Col + <span class="hljs-number">1</span>);<br>		TriangleIndexes.Add((Row + <span class="hljs-number">1</span>) * ColCount + Col);<br><br>		TriangleIndexes.Add((Row + <span class="hljs-number">1</span>) * ColCount + Col);<br>		TriangleIndexes.Add(Row * ColCount + Col + <span class="hljs-number">1</span>);<br>		TriangleIndexes.Add((Row + <span class="hljs-number">1</span> )* ColCount + Col + <span class="hljs-number">1</span>);<br>	&#125;<br>&#125;<br><br>Mesh-&gt;CreateMeshSection(<span class="hljs-number">0</span>, Vertices, TriangleIndexes, TArray&lt;FVector&gt;(), TArray&lt;FVector2D&gt;(), VertColors, TArray&lt;FProcMeshTangent&gt;(), <span class="hljs-literal">false</span>);<br>Mesh-&gt;SetMaterial(<span class="hljs-number">0</span>, Material);<br></code></pre></td></tr></table></figure></p>
-<p>至此，终于初见效果了：</p>
-<p><img src="https://img.earneet.xyz/ue4/ProceduralMeshRun.jpg" /></p>
-<h4 id="生活处处皆是坑">生活处处皆是坑</h4>
-<p>本以为是守得云开见月明， 明月就闪了一下。一段优化之后，莫名奇妙的出现了问题，Demo是在BeginPlay事件中创建的。莫名奇妙的Tick函数就不调了，九牛二虎没找到原因，只好重启了一次UE4Editor，莫名其妙就好了。</p>
-<ul>
-<li><strong>优化过后在Tick中清理并创建后， 无法渲染出平面了。</strong></li>
-</ul>
-<p>一番折腾后发现，在CreateSection / UpdateSection 调用后，必须再次SetMaterial，即使材质从未改变。。。</p>
-<p>有点心累， 先记到这里。</p>
-<hr />
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -872,7 +892,7 @@ E \times D\ mod\ L = 1
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -885,7 +905,7 @@ E \times D\ mod\ L = 1
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">78</span>
+        <span class="site-state-item-count">82</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

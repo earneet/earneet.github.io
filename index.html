@@ -183,6 +183,113 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/07/27/java-strictfp-keyword/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/27/java-strictfp-keyword/" class="post-title-link" itemprop="url">Java中的strictfp关键字</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-07-27 10:57:28 / 修改时间：11:09:13" itemprop="dateCreated datePublished" datetime="2021-07-27T10:57:28+08:00">2021-07-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="java中的strictfp关键字">Java中的strictfp关键字</h1>
+<h2 id="背景">背景</h2>
+<p>绝大多数Java程序员都没有使用过<code>strictfp</code>关键字, 大多数的Java程序员甚至都不知道这个关键字。 其原因跟<code>strictfp</code>的作用有关， 因为绝大多数的Java程序员都在做x86/64平台下的web应用，抑或也使用其他服务平台。 仅从其后，同样不太流行的Java关键字还有<code>transient</code>。</p>
+<h2 id="strictfp的作用"><code>strictfp</code>的作用</h2>
+<p>正是因为<code>strictfp</code>的作用导致Java程序员们甚至都没用过它。</p>
+<p>在更早的Java版本中，浮点数本身就是严格的，但近代java版本（也不怎么近，就java1.2和之后）为了更高效的运算，默认情况下，Java的浮点数运算是<strong>平台相关</strong>的，。jvm会依据当前平台的机器特性选用适合的浮点数处理方式，而不是严格按照标准进行计算，例如，在一些低性能嵌入式设备上，Java会利用更高效的浮点数运算指令进行浮点数计算，它的结果和精度都与高性能的硬件上不同。</p>
+<blockquote>
+<p>由于Java实现不再广泛使用x87浮点，因此有一个主动提议再次使所有浮点运算严格，有效地恢复1.2之前的语义。</p>
+</blockquote>
+<p><code>strictfp</code>允许程序员强制指定浮点数的运算遵循严格规范。当运行在不直接支持指令运算的硬件上时，Java会使用软件的形式去进行严格浮点数计算，这样会大大降低浮点数运行效率，但好处也是显而易见的， <strong>浮点数运算的结果可知可控且各平台一致</strong>。</p>
+<blockquote>
+<p>在没有溢出或下溢的情况下，有或没有strictfp的结果没有差异。如果重复性是必要的，则strictfp修饰符可用于确保在所有平台上的相同位置发生溢出和下溢。如果没有strictfp修饰符，中间结果可能会使用更大的指数范围。</p>
+</blockquote>
+<blockquote>
+<p>该strictfp修改由代表所有的中间值作为IEEE单精度和双精度值，如发生在早期版本的JVM实现这一目的。</p>
+</blockquote>
+<h2 id="strictfp-关键字的用法"><code>strictfp</code> 关键字的用法</h2>
+<p><code>strictfp</code>可用于修饰 类、非抽象方法或者接口。 除此之外均不可用，尤其是直觉上的用于属性和构造器。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">strictfp</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ScientificCalculator</span> </span>&#123;<br>    <span class="hljs-comment">// ...</span><br>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">sum</span><span class="hljs-params">(<span class="hljs-keyword">double</span> value1, <span class="hljs-keyword">double</span> value2)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> value1 + value2;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">diff</span><span class="hljs-params">(<span class="hljs-keyword">double</span> value1, <span class="hljs-keyword">double</span> value2)</span> </span>&#123; <br>        <span class="hljs-keyword">return</span> value1 - value2; <br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">strictfp</span> <span class="hljs-keyword">void</span> <span class="hljs-title">calculateMarksPercentage</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-comment">// ...</span><br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">strictfp</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Circle</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">computeArea</span><span class="hljs-params">(<span class="hljs-keyword">double</span> radius)</span></span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><code>strictfp</code>的修饰作用不会延伸到其子类（实现类）和子类方法中，除非是内部类。被<code>strictfp</code>修饰的类的子类如果要保持严格浮点计算的特性，那么，需要在它本身再次声明<code>strictfp</code>。 联系到抽象方法无法使用<code>strictfp</code>修饰，这一点比较好理解。</p>
+<p>但是对于接口，<code>strictfp</code>存在的意义仅为声明其默认方法为浮点运算严格的，一旦接口没有默认方法，它被<code>strictfp</code>修饰意义就仅剩其内部类了，然而接口的内部类使用并不常见。</p>
+<h2 id="何时使用strictfp">何时使用<code>strictfp</code>？</h2>
+<ol type="1">
+<li><strong>当在意浮点数运算的确定性和精度时</strong>，需要使用<code>strictfp</code>。</li>
+</ol>
+<p>在有些平台上，浮点数为了快速计算并不严格遵循IEEE754的规范，这可能导致浮点数运算结果在精度上与规范要求的不同，当我们的代码需要对这部分作出保证时，就要使用<code>strictfp</code>了。</p>
+<ol start="2" type="1">
+<li><strong>代码需要运行在不同的平台上产生相同的行为时</strong>，需要使用<code>strictfp</code>。</li>
+</ol>
+<p>随着分布式技术的投入使用和异构平台协同，同样的代码可能同时运行在不同平台的机器上协同工作，此时保证其计算结果的相同就尤为重要了，这种情况下，需要使用<code>strictfp</code>。</p>
+<h2 id="strictfp会影响代码性能么"><code>strictfp</code>会影响代码性能么？</h2>
+<p><strong>会，但不是全部</strong>。</p>
+<p>在回答这个问题上，我没有做大量的实验来验证，但从查阅到的资料和对strictfp实现的分析中得出这个结论。</p>
+<p>jvm在目标平台上往往会采取更高效的浮点数运算方法，这一般意味着硬件提供的快速的浮点数运算指令。这类指令往往不遵循IEEE规范但更高效。高效正式这类指令存在的重要原因（否则为什么不严格遵守规范呢？），高效不一定体现在计算速度上，也可以体现在硬件设计复杂性更低上，可以使用更少的门电路实现乘法器。</p>
+<p>使用了<code>strictfp</code>修饰类后，往往会造成jvm无法使用这类更加“高效”的指令，在简陋指令平台甚至需要使用软件控制来完成浮点运算，这样往往会大幅降低计算效率（一旦使用软件控制，效率降低可达几十倍）。</p>
+<p>但是，对于高端的现代平台，往往都提供了高效且严格遵循IEEE754规范的乘法器指令， jvm即使没有被告知<code>strictfp</code>本身就会使用这些指令，所以<code>strictfp</code> 在这类平台上是不会影响执行效率的。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/04/08/dotnet3absent/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -710,143 +817,6 @@ base^{pow} = (base^{2})^{\frac{pow}{2}} \times base
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/29/remote-debug/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar_head_icon.png">
-      <meta itemprop="name" content="Earneet">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Learning & Sharing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/29/remote-debug/" class="post-title-link" itemprop="url">Java远程调试</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-10-29 10:55:50 / 修改时间：11:02:20" itemprop="dateCreated datePublished" datetime="2020-10-29T10:55:50+08:00">2020-10-29</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BA%94%E7%94%A8%E6%8A%80%E5%B7%A7/" itemprop="url" rel="index"><span itemprop="name">应用技巧</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BA%94%E7%94%A8%E6%8A%80%E5%B7%A7/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="java平台远程调试">Java平台远程调试</h3>
-<h4 id="背景">背景</h4>
-<p>最近我们做的AI决策算法作为服务器逻辑为诛仙2项目提供服务。由于公司采用了内外网分离的开发策略，我们的服务器在内网进行开发，项目组的服务器是严谨进入外网的。到了联调的时候就特别头疼。因为我们大多数的逻辑都是一场战役的逻辑处理和NPC行为的决策展现，使用log调试的方式分外艰难。所以，就想法在测试服进行调试，测试服属于运维网段，是项目组游戏服务器除了它的开发环境和最终生产环境唯一能接触的生产环境了。这个服务器上，我们偷偷钻个洞进行远程调试。</p>
-<h4 id="java的远程调试">Java的远程调试</h4>
-<h5 id="jpda-体系">JPDA 体系</h5>
-<blockquote>
-<p>对于 Java 虚拟机接口熟悉的人来说，您一定还记得 Java 提供了两个接口体系，JVMPI（Java Virtual Machine Profiler Interface）和 JVMDI（Java Virtual Machine Debug Interface），而它们，以及在 Java SE 5 中准备代替它们的 JVMTI（Java Virtual Machine Tool Interface），都是 Java 平台调试体系（Java Platform Debugger Architecture，JPDA）的重要组成部分。</p>
-</blockquote>
-<h5 id="jpda-组成模块">JPDA 组成模块</h5>
-<p>JPDA 定义了一个完整独立的体系，它由三个相对独立的层次共同组成，而且规定了它们三者之间的交互方式，或者说定义了它们通信的接口。这三个层次由低到高分别是 - Java 虚拟机工具接口（JVMTI） - Java 调试线协议（JDWP） - Java 调试接口（JDI）</p>
-<p>这三个模块把调试过程分解成几个很自然的概念：调试者（debugger）和被调试者（debuggee），以及他们中间的通信器。</p>
-<p>在调试者和被调试着之间，调试命令和调试结果，都是通过 JDWP 的通讯协议传输的。所有的命令被封装成 JDWP 命令包，通过传输层发送给被调试者，被调试者接收到 JDWP 命令包后，解析这个命令并转化为 JVMTI 的调用，在被调试者上运行。类似的，JVMTI 的运行结果，被格式化成 JDWP 数据包，发送给调试者并返回给 JDI 调用。而调试器开发人员就是通过 JDI 得到数据，发出指令。</p>
-<figure>
-<img src="https://img.earneet.xyz/java/jpda.jpg" alt="" /><figcaption>jpda</figcaption>
-</figure>
-<table>
-<thead>
-<tr class="header">
-<th>模块</th>
-<th>层次</th>
-<th>编程语言</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>JVMTI</td>
-<td>底层</td>
-<td>C</td>
-<td>获取及控制当前虚拟机状态</td>
-</tr>
-<tr class="even">
-<td>JDWP</td>
-<td>中介层</td>
-<td>C</td>
-<td>定义 JVMTI 和 JDI 交互的数据格式</td>
-</tr>
-<tr class="odd">
-<td>JDI</td>
-<td>高层</td>
-<td>Java</td>
-<td>提供 Java API 来远程控制被调试虚拟机</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h4 id="java-调试连接模式">Java 调试连接模式</h4>
-<p>按照工作方式来分，Java调试工作模式有两种，Socket套接字或者共享内存。</p>
-<p>在远程调试中，显然共享内存是无法工作的，它只适应于同一台机器上的调试。所以，接下来只讨论基于网络套接字的工作模式。</p>
-<p>站在调试器(JDI)的视角，把调试分为两种类别，分别是：</p>
-<ul>
-<li>主动调试：jvm启动时设置调试端口并监听，在调试器发来调试信息时进行命令响应。这种模式在调试过程中很常用，适用于跟踪一些可重复性的逻辑bug。</li>
-<li>被动模式：jvm启动时设置调试器端口，在jvm启动时会尝试建立链接并停下等待命令。这种模式主要用于调试应用无法正常启动的情况。（主动调试无效，因为启动不起来我们没有机会做连接）</li>
-</ul>
-<h5 id="主动调试">主动调试</h5>
-<p>主动调试时，对jvm添加参数</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=$&#123;port&#125;<br></code></pre></td></tr></table></figure>
-<h5 id="被动调试">被动调试</h5>
-<p>被动调试时，对jvm添加参数</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">-Xdebug -Xrunjdwp:transport=dt_socket,address=$&#123;ip&#125;:$&#123;port&#125;,suspend=y<br></code></pre></td></tr></table></figure>
-<hr />
-<h4 id="在idea上实践">在IDEA上实践</h4>
-<p>菜单-&gt;Run-&gt;EditConfigurations...</p>
-<p><img src="https://img.earneet.xyz/java/remote_debug_idea_ui.jpg" /></p>
-<p>左侧点击+，添加Remote， 右侧选择 Use module classpath为要调试的项目， Debugger mode进行选择后， 虚拟机参数会提示给出，按照给出的参数启动虚拟机即可。</p>
-<hr />
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -918,7 +888,7 @@ base^{pow} = (base^{2})^{\frac{pow}{2}} \times base
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -931,7 +901,7 @@ base^{pow} = (base^{2})^{\frac{pow}{2}} \times base
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">78</span>
+        <span class="site-state-item-count">82</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

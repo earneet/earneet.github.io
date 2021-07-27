@@ -2925,4 +2925,55 @@ x^m = c^n \tag{7}
         <tag>dotNet</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Java中的strictfp关键字</title>
+    <url>/2021/07/27/java-strictfp-keyword/</url>
+    <content><![CDATA[<h1 id="java中的strictfp关键字">Java中的strictfp关键字</h1>
+<h2 id="背景">背景</h2>
+<p>绝大多数Java程序员都没有使用过<code>strictfp</code>关键字, 大多数的Java程序员甚至都不知道这个关键字。 其原因跟<code>strictfp</code>的作用有关， 因为绝大多数的Java程序员都在做x86/64平台下的web应用，抑或也使用其他服务平台。 仅从其后，同样不太流行的Java关键字还有<code>transient</code>。</p>
+<h2 id="strictfp的作用"><code>strictfp</code>的作用</h2>
+<p>正是因为<code>strictfp</code>的作用导致Java程序员们甚至都没用过它。</p>
+<p>在更早的Java版本中，浮点数本身就是严格的，但近代java版本（也不怎么近，就java1.2和之后）为了更高效的运算，默认情况下，Java的浮点数运算是<strong>平台相关</strong>的，。jvm会依据当前平台的机器特性选用适合的浮点数处理方式，而不是严格按照标准进行计算，例如，在一些低性能嵌入式设备上，Java会利用更高效的浮点数运算指令进行浮点数计算，它的结果和精度都与高性能的硬件上不同。</p>
+<blockquote>
+<p>由于Java实现不再广泛使用x87浮点，因此有一个主动提议再次使所有浮点运算严格，有效地恢复1.2之前的语义。</p>
+</blockquote>
+<p><code>strictfp</code>允许程序员强制指定浮点数的运算遵循严格规范。当运行在不直接支持指令运算的硬件上时，Java会使用软件的形式去进行严格浮点数计算，这样会大大降低浮点数运行效率，但好处也是显而易见的， <strong>浮点数运算的结果可知可控且各平台一致</strong>。</p>
+<blockquote>
+<p>在没有溢出或下溢的情况下，有或没有strictfp的结果没有差异。如果重复性是必要的，则strictfp修饰符可用于确保在所有平台上的相同位置发生溢出和下溢。如果没有strictfp修饰符，中间结果可能会使用更大的指数范围。</p>
+</blockquote>
+<blockquote>
+<p>该strictfp修改由代表所有的中间值作为IEEE单精度和双精度值，如发生在早期版本的JVM实现这一目的。</p>
+</blockquote>
+<h2 id="strictfp-关键字的用法"><code>strictfp</code> 关键字的用法</h2>
+<p><code>strictfp</code>可用于修饰 类、非抽象方法或者接口。 除此之外均不可用，尤其是直觉上的用于属性和构造器。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">strictfp</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ScientificCalculator</span> </span>&#123;<br>    <span class="hljs-comment">// ...</span><br>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">sum</span><span class="hljs-params">(<span class="hljs-keyword">double</span> value1, <span class="hljs-keyword">double</span> value2)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> value1 + value2;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">diff</span><span class="hljs-params">(<span class="hljs-keyword">double</span> value1, <span class="hljs-keyword">double</span> value2)</span> </span>&#123; <br>        <span class="hljs-keyword">return</span> value1 - value2; <br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">strictfp</span> <span class="hljs-keyword">void</span> <span class="hljs-title">calculateMarksPercentage</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-comment">// ...</span><br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">strictfp</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Circle</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">computeArea</span><span class="hljs-params">(<span class="hljs-keyword">double</span> radius)</span></span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><code>strictfp</code>的修饰作用不会延伸到其子类（实现类）和子类方法中，除非是内部类。被<code>strictfp</code>修饰的类的子类如果要保持严格浮点计算的特性，那么，需要在它本身再次声明<code>strictfp</code>。 联系到抽象方法无法使用<code>strictfp</code>修饰，这一点比较好理解。</p>
+<p>但是对于接口，<code>strictfp</code>存在的意义仅为声明其默认方法为浮点运算严格的，一旦接口没有默认方法，它被<code>strictfp</code>修饰意义就仅剩其内部类了，然而接口的内部类使用并不常见。</p>
+<h2 id="何时使用strictfp">何时使用<code>strictfp</code>？</h2>
+<ol type="1">
+<li><strong>当在意浮点数运算的确定性和精度时</strong>，需要使用<code>strictfp</code>。</li>
+</ol>
+<p>在有些平台上，浮点数为了快速计算并不严格遵循IEEE754的规范，这可能导致浮点数运算结果在精度上与规范要求的不同，当我们的代码需要对这部分作出保证时，就要使用<code>strictfp</code>了。</p>
+<ol start="2" type="1">
+<li><strong>代码需要运行在不同的平台上产生相同的行为时</strong>，需要使用<code>strictfp</code>。</li>
+</ol>
+<p>随着分布式技术的投入使用和异构平台协同，同样的代码可能同时运行在不同平台的机器上协同工作，此时保证其计算结果的相同就尤为重要了，这种情况下，需要使用<code>strictfp</code>。</p>
+<h2 id="strictfp会影响代码性能么"><code>strictfp</code>会影响代码性能么？</h2>
+<p><strong>会，但不是全部</strong>。</p>
+<p>在回答这个问题上，我没有做大量的实验来验证，但从查阅到的资料和对strictfp实现的分析中得出这个结论。</p>
+<p>jvm在目标平台上往往会采取更高效的浮点数运算方法，这一般意味着硬件提供的快速的浮点数运算指令。这类指令往往不遵循IEEE规范但更高效。高效正式这类指令存在的重要原因（否则为什么不严格遵守规范呢？），高效不一定体现在计算速度上，也可以体现在硬件设计复杂性更低上，可以使用更少的门电路实现乘法器。</p>
+<p>使用了<code>strictfp</code>修饰类后，往往会造成jvm无法使用这类更加“高效”的指令，在简陋指令平台甚至需要使用软件控制来完成浮点运算，这样往往会大幅降低计算效率（一旦使用软件控制，效率降低可达几十倍）。</p>
+<p>但是，对于高端的现代平台，往往都提供了高效且严格遵循IEEE754规范的乘法器指令， jvm即使没有被告知<code>strictfp</code>本身就会使用这些指令，所以<code>strictfp</code> 在这类平台上是不会影响执行效率的。</p>
+]]></content>
+      <categories>
+        <category>编程语言</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>冷门</tag>
+        <tag>java</tag>
+        <tag>strictfp</tag>
+        <tag>浮点运算</tag>
+      </tags>
+  </entry>
 </search>

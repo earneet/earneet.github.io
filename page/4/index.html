@@ -183,6 +183,218 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/03/derivation-rules/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/03/derivation-rules/" class="post-title-link" itemprop="url">复杂函数求导规则</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-03 20:54:15" itemprop="dateCreated datePublished" datetime="2020-05-03T20:54:15+08:00">2020-05-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-06 21:07:16" itemprop="dateModified" datetime="2020-05-06T21:07:16+08:00">2020-05-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E5%BE%AE%E7%A7%AF%E5%88%86/" itemprop="url" rel="index"><span itemprop="name">微积分</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="求导法则">求导法则</h2>
+<p>复杂函数的求导, 可以看做是对几个简单函数(暂且称为子函数)的复合函数的求导。一般可以分以下几个情况。</p>
+<h3 id="常数项系数">常数项系数</h3>
+<p>函数的常数项系数的复合方式是最简单的, 它的形式一般如:</p>
+<p><span class="math display">\[
+f(x) = c \cdot h(x)
+\]</span></p>
+<p>其中, <span class="math inline">\(c\)</span> 是常数, <span class="math inline">\(h(x)\)</span> 是任意关于 <span class="math inline">\(x\)</span> 的函数, 则 <span class="math inline">\(f(x)\)</span> 的求导规则为:</p>
+<p><span class="math display">\[
+f&#39;(x) = c \cdot h&#39;(x)
+\]</span></p>
+<p>就是简单的对 <span class="math inline">\(h(x)\)</span> 求导数, 然后乘以常数 <span class="math inline">\(c\)</span></p>
+<h3 id="子函数的和差">子函数的和/差</h3>
+<p>若一个函数, 它可以被表述为多个子函数的和或者差的形式, 这里只以和的形式距离(差可以认为其中一个子函数乘以-1就好了), 形如:</p>
+<p><span class="math display">\[
+f(x) = h(x) + g(x)
+\]</span></p>
+<p>此类函数的导数, 可以对其子函数分别求导, 然后再相加:</p>
+<p><span class="math display">\[
+f&#39;(x) = h&#39;(x) + g&#39;(x)
+\]</span></p>
+<h3 id="多项乘积">多项乘积</h3>
+<h4 id="两项的情况">两项的情况</h4>
+<p>若一个函数, 他可以被表述为<strong>两个</strong>子函数的乘积的形式, 形如:</p>
+<p><span class="math display">\[
+f(x) = h(x) \cdot g(x)
+\]</span></p>
+<p>则, 它的导数为:</p>
+<p><span class="math display">\[
+f&#39;(x) = h&#39;(x) \cdot g(x) + h(x) \cdot g&#39;(x)
+\]</span></p>
+<blockquote>
+<p>记忆方式为 将两个子函数相乘, 加两次, 然后分别依次在各项的对应函数上加一个撇号</p>
+</blockquote>
+<h4 id="三项的情况">三项的情况</h4>
+<p>三项乘积的形式形如:</p>
+<p><span class="math display">\[
+f(x) = h(x) \cdot g(x) \cdot k(x)
+\]</span></p>
+<p>其求导规则为</p>
+<p><span class="math display">\[
+f&#39;(x) = h&#39;(x) \cdot g(x) \cdot k(x) + h(x) \cdot g&#39;(x) \cdot k(x) + h(x) \cdot g(x) \cdot k&#39;(x)
+\]</span></p>
+<blockquote>
+<p>记忆方式为 将三个子函数相乘, 加三次, 然后分别依次在各项的对应函数上加一个撇号</p>
+</blockquote>
+<p>实际上, 多个函数的相乘, 都可以分解为两个项的相乘, 然后使用两项求导公式求导, 然后对每个子项递归下去。</p>
+<p>推导一下:</p>
+<p><span class="math display">\[
+f(x) = h(x) \cdot g(x) \cdot k(x)
+\]</span></p>
+<p>设 <span class="math display">\[u(x) = h(x) \cdot g(x)\]</span></p>
+<p>则 <span class="math display">\[f(x) = u(x) \cdot k(x)\]</span></p>
+<p>那么,根据两项相乘的求导公式:</p>
+<p><span class="math display">\[
+\begin{eqnarray}
+f&#39;(x) = u&#39;(x) \cdot k(x) + u(x) \cdot k&#39;(x) \tag{1} \\
+u&#39;(x) = h&#39;(x) \cdot g(x) + h(x) \cdot g&#39;(x) \tag{2}
+\end{eqnarray}
+\]</span></p>
+<p>将(2)带入(1)得:</p>
+<p><span class="math display">\[
+f&#39;(x) = (h&#39;(x) \cdot g(x) + h(x) \cdot g&#39;(x)) \cdot k(x) + h(x) \cdot g(x) \cdot k&#39;(x)
+\]</span></p>
+<p>将上式乘开:</p>
+<p><span class="math display">\[
+f&#39;(x) = h&#39;(x) \cdot g(x) \cdot k(x) + h(x) \cdot g&#39;(x) \cdot k(x) 
++h(x) \cdot g(x) \cdot k&#39;(x)
+\]</span></p>
+<p>即得到三项乘积的导数公式。</p>
+<h3 id="商式">商式</h3>
+<p>若一个函数, 可以写作两个子函数商的形式, 形如:</p>
+<p><span class="math display">\[
+f(x) = \frac{g(x)}{h(x)}
+\]</span></p>
+<p>它的导数公式为:</p>
+<p><span class="math display">\[
+f&#39;(x) = \frac{g&#39;(x)\cdot h(x) - g(x) \cdot h&#39;(x)}{h(x)^2}
+\]</span></p>
+<blockquote>
+<p>记忆方式: 按照两项乘积的公式, 对后项取负号, 然后除以商函数的平方</p>
+</blockquote>
+<p>实际上, 商公式可以简单的由乘积公式推导而来。</p>
+<p>推导:</p>
+<p><span class="math display">\[
+f(x) = \frac{g(x)}{h(x)}
+\]</span></p>
+<p>我们假设有函数</p>
+<p><span class="math display">\[
+k(x) = h(x)^{-1}    \tag{2.1}
+\]</span></p>
+<p>则:</p>
+<p><span class="math display">\[
+\begin{eqnarray}
+f(x) &amp;= g(x) \cdot k(x)  \tag{2.2} \\
+f&#39;(x) &amp;= g&#39;(x) \cdot k(x) + g(x) \cdot k&#39;(x)  \tag{2.3}
+\end{eqnarray}
+\]</span></p>
+<p>这里要提前引入一下链式函数的求导法则:</p>
+<p><span class="math display">\[
+k&#39;(x) = -1 \cdot h(x)^{-2} \dot h&#39;(x) \tag{2.4}
+\]</span></p>
+<p>然后, 将 <span class="math inline">\((2.1) (2.4)\)</span> 代入 <span class="math inline">\((2.3)\)</span> 得到</p>
+<p><span class="math display">\[
+f&#39;(x) = g&#39;(x)\cdot h(x)^{-1} - g(x) \cdot h(x)^{-2} \cdot h&#39;(x)
+\]</span></p>
+<p>对上式提公因式</p>
+<p><span class="math display">\[
+\begin{eqnarray}
+f&#39;(x) &amp;= (g&#39;(x) \cdot h(x) - g(x)\cdot h&#39;(x)) \cdot h(x)^{-2} \notag \\
+f&#39;(x) &amp;= \frac{g&#39;(x) \cdot h(x) - g(x) \cdot h&#39;(x)}{h(x)^{2}} \notag
+\end{eqnarray}
+\]</span></p>
+<p>至此, 由乘法求导公式推导得到商式的求导公式。</p>
+<h3 id="链式函数">链式函数</h3>
+<p>若一个函数由几层函数复合而成, 形如:</p>
+<p><span class="math display">\[
+f(x) = g(h(x))
+\]</span></p>
+<p>这里需要注意一下, 所谓的 "<strong>链式</strong>" 隐含一层自变量替换的概念, 它是指, 其中一个子函数作为另一个函数的 "<strong>自变量</strong>", 而非原生的自变量 <span class="math inline">\(x\)</span> 。</p>
+<p>那么, 链式求导法则为:</p>
+<p><span class="math display">\[
+f&#39;(x) = g&#39;(h(x)) \cdot h&#39;(x)
+\]</span></p>
+<p>上式正确, 但是稍显凌乱, 我重新表达一下</p>
+<p><span class="math display">\[
+设变量 z = h(x)
+\]</span></p>
+<p><span class="math display">\[
+f&#39;(x) = g&#39;(z) \cdot h&#39;(x)
+\]</span></p>
+<p>用偏自然语言描述就是: 把作为自变量的函数看做一个整体, 对外层函数求导, 然后将结果乘以内层函数关于原生自变量<code>$x$</code>的导数。</p>
+<blockquote>
+<p>更深层一点的是多层链式函数, 即可能一层复合函数无法精简的表达整个函数, 需要将关于<code>$x$</code>的函数复合多次, 这种情况下可以一层层套用两层链式法则。(每层展开乘以下层关于自己的自变量的导数即可)</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/01/3dtransform/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -798,208 +1010,6 @@ E(X)=\frac{1}{\lambda},\quad Var(X)=\frac{1}{\lambda^2}
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/02/ARTS-10/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar_head_icon.png">
-      <meta itemprop="name" content="Earneet">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Learning & Sharing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/06/02/ARTS-10/" class="post-title-link" itemprop="url">ARTS-10</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-06-02 16:07:02" itemprop="dateCreated datePublished" datetime="2019-06-02T16:07:02+08:00">2019-06-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-06 12:19:24" itemprop="dateModified" datetime="2020-05-06T12:19:24+08:00">2020-05-06</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ARTS/" itemprop="url" rel="index"><span itemprop="name">ARTS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="arts-10">ARTS-10</h1>
-<h2 id="algorithm">Algorithm</h2>
-<h3 id="引言">引言</h3>
-<p>做了太多的二叉, 本来想着尽量做一些从数学上的高效求解的题目, 但是我的博客数学公式渲染有问题,我还没能搞定, 所以这次来个DP问题。</p>
-<h3 id="description">Description</h3>
-<p><a href="https://leetcode.com/problems/climbing-stairs/" target="_blank" rel="noopener"><strong>70. Climbing Stairs</strong></a></p>
-<p>You are climbing a stair case. It takes n steps to reach to the top.</p>
-<p>Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?</p>
-<p>Note: Given n will be a positive integer.</p>
-<p><strong>Example 1:</strong></p>
-<pre><code>Input: 2
-Output: 2</code></pre>
-<p>Explanation: There are two ways to climb to the top. 1. 1 step + 1 step 2. 2 steps</p>
-<p><strong>Example 2:</strong></p>
-<pre><code>Input: 3
-Output: 3</code></pre>
-<p>Explanation: There are three ways to climb to the top. 1. 1 step + 1 step + 1 step 2. 1 step + 2 steps 3. 2 steps + 1 step</p>
-<h3 id="大意">大意</h3>
-<p>有一个n层的楼梯, 每次你可以迈一层或者两层, 问, 爬到楼梯顶部一共有多少种走法。</p>
-<h3 id="思路">思路</h3>
-<p>典型的动规问题。虽然也有其他一些不同的解法, 例如穷举, 但是效率太低,并不合适。</p>
-<p>这里具体不再展开, 本篇解法会在Share当中分享。</p>
-<h3 id="code">Code</h3>
-<p>代码可以更加精简, 基本4~5行就能够完成, 但是我为了尽量通过代码能体现思路, 按照思路的进行续来编码。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">climbStairs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n==<span class="hljs-number">1</span>)<br>          <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (n==<span class="hljs-number">2</span>)<br>          <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;<br>      <br>        <span class="hljs-keyword">int</span> stair_1 = <span class="hljs-number">2</span>;    <span class="hljs-comment">// pre stair ways</span><br>        <span class="hljs-keyword">int</span> stair_2 = <span class="hljs-number">1</span>;    <span class="hljs-comment">// the second pre stair ways</span><br>        <span class="hljs-keyword">int</span> stair = <span class="hljs-number">3</span>;<br>        <span class="hljs-keyword">while</span> (stair++ &lt;= n) &#123;<br>          <span class="hljs-keyword">int</span> old = stair_2;<br>          stair_2 = stair_1;<br>          stair_1 = stair_2 + old;<br>        &#125;<br>        <span class="hljs-keyword">return</span> stair_1;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h3 id="result">Result</h3>
-<p>Success Details</p>
-<p><strong>Runtime</strong>: <strong>4 ms</strong>, faster than <strong>87.64%</strong> of C++ online submissions for Climbing Stairs.</p>
-<p><strong>Memory Usage</strong>: <strong>8.2 MB</strong>, less than <strong>78.25%</strong> of C++ online submissions for Climbing Stairs.</p>
-<table>
-<thead>
-<tr class="header">
-<th>Time Submitted</th>
-<th>Status</th>
-<th>Runtime</th>
-<th>Memory</th>
-<th>Language</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>a few seconds ago</td>
-<td>Accepted</td>
-<td>4 ms</td>
-<td>8.2 MB</td>
-<td>cpp</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="review">Review</h2>
-<hr />
-<h2 id="tips">Tips</h2>
-<h3 id="rsa-非对称加密算法原理">RSA 非对称加密算法原理</h3>
-<h4 id="欧拉函数">欧拉函数</h4>
-<blockquote>
-<p>在数论中，对正整数n，欧拉函数 <span class="math inline">\(\varphi(n)\)</span> 是小于或等于n的正整数中与n互质的数的数目。此函数以其首名研究者欧拉命名，它又称为φ函数（由高斯所命名）或是欧拉总计函数（totient function，由西尔维斯特所命名）。 <a href="https://zh.wikipedia.org/wiki/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">欧拉函数</a></p>
-</blockquote>
-<h4 id="rsa-算法的核心-欧拉定理">RSA 算法的核心: 欧拉定理</h4>
-<p>. &gt; 在数论中，欧拉定理（也称费马-欧拉定理或欧拉 <span class="math inline">\(\varphi\)</span> 函数定理）是一个关于同余的性质。欧拉定理表明，若 <strong>n,a</strong>为正整数，且 <strong>n,a</strong> 互素（即 <span class="math inline">\(\gcd(a,n)=1\)</span> ），则</p>
-<p><span class="math display">\[\begin{equation}a^{\phi{\left(n\right)}} \equiv 1 \pmod n \end{equation}\]</span></p>
-<blockquote>
-<p><a href="https://zh.wikipedia.org/wiki/%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86_(%E6%95%B0%E8%AE%BA)" target="_blank" rel="noopener">欧拉定理</a></p>
-</blockquote>
-<h4 id="费马小定理-欧拉定理的特例">费马小定理: 欧拉定理的特例</h4>
-<p>费马定理的表达式 :</p>
-<p><span class="math display">\[
-a^{\phi{\left(n\right)}} \equiv 1 \pmod n
-\]</span></p>
-<p>在特殊情况下, 当n为质数时, <span class="math inline">\(\varphi(n)=n-1\)</span>, 此时, 欧拉定理的表述即为:</p>
-<p><span class="math display">\[
-a^{n-1} \equiv 1\pmod n
-\]</span></p>
-<p>这个公式就是费马小定理。</p>
-<h4 id="模反元素">模反元素</h4>
-<p>如果两个正整数 a 和 n 互质, 那么一定存在一个整数 b 满足:</p>
-<p><span class="math display">\[
-ab \equiv 1\pmod n
-\]</span></p>
-<p>即, (ab - 1)能被n整除。 b就叫做a的<strong>模反元素</strong>。 显然的, 模反元素并不唯一, 对于模反元素b, 对于所有的正整数 <code>$m=b+kn$</code>也为a的模反元素。</p>
-<p><strong>模反元素必然存在</strong></p>
-<p>对费马定理进行变形:</p>
-<p><span class="math display">\[
-a^{\phi\left({n}\right)}\equiv a\times a^{\phi\left(n\right)-1}\equiv 1 \pmod n
-\]</span></p>
-<p>在此变形中, <span class="math inline">\(a^{\phi\left(n\right)-1}\)</span> 即为a的模反元素。</p>
-<h4 id="rsa-基本概念">RSA 基本概念</h4>
-<p>我们约定:</p>
-<ul>
-<li>RSA加密秘钥为<strong>E</strong>, 它是一个大整数。</li>
-<li>RSA解密秘钥为<strong>D</strong>, 它是一个大整数。</li>
-<li>RSA加密和解密需要用的模数<strong>N</strong>, 它是一个大整数。</li>
-</ul>
-<h5 id="rsa-加密过程">RSA 加密过程</h5>
-<p><span class="math display">\[
-密文 = 明文^E mod N
-\]</span></p>
-<p>RSA 加密过程就是这么简单, 它对明文做一个E次幂运算, 然后对N取模。 在这个过程中, E和N的组合就是<strong>公钥</strong>。</p>
-<h5 id="rsa-解密过程">RSA 解密过程</h5>
-<p>对应的, RSA的解密过程也非常简单:</p>
-<p><span class="math display">\[
-明文 = 密文^D mod N
-\]</span></p>
-<p>RSA 的加密和解密过程完全一致, 只是它们换了一个秘钥, 进行了完全一样的运算。 在这个过程中, D和N的组合就是<strong>私钥</strong>。</p>
-<h4 id="非对称秘钥对的生成">非对称秘钥对的生成</h4>
-<p>在基本概念中, 约定了几个量, E, D, N 在这里,我么继续沿用, 额外的,在生成密钥对的过程中, 引入一个新的量L, 它只用于生成密钥对, 但是最终结果中我们并不体现它。</p>
-<h5 id="求n">1. 求N</h5>
-<p>准备两个大质数p, q。(p和q要最够大)</p>
-<p><span class="math inline">\(N=p \times q\)</span></p>
-<h5 id="求l">2. 求L</h5>
-<p>L是 p-1 和 q-1 的最小公倍数。</p>
-<p><span class="math inline">\(L=lcm(p-1. q-1)\)</span></p>
-<p><em>实际上, 理论公式上, L应为ϕ(n), 这样后面的一系列推倒便是欧拉定理的应用了, 但是在实际中,它可以化简为更小的最小公倍数L, 这里,我们使用了实际中的化简方案</em></p>
-<h5 id="求e">3. 求E</h5>
-<p>E是一个比1大, 比L小的数字,且E和L要互质, 即 E和L的最大公约数为1, 表达为数学语言为。</p>
-<p><span class="math display">\[1 &lt; E &lt; L\\
-\gcd(E, L) = 1\]</span></p>
-<p>计算E的过程我们采用随机穷举的模式, 使用伪随机数生成器, 随机生成一个1和L之间的数字, 判断是否满足它与L互质, 如果不满足, 则重复生成并判断下一个随机数。</p>
-<p>至此, RSA的公钥部分E,N我们已经得到了, 公钥: (E, N)。</p>
-<p><em>我们加入E和L互质的这个条件,是为了满足我们需要的解密参数D一定存在</em></p>
-<h5 id="求d">4. 求D</h5>
-<p><span class="math inline">\(1 &lt; D &lt; L\)</span></p>
-<p><span class="math inline">\(E \times D\ mod\ L = 1\)</span></p>
-<p>按照上述的限制条件, 计算出D, 至此, 私钥部分也计算完成, 私钥为(D, N)。</p>
-<hr />
-<h2 id="share">Share</h2>
-<p><a href="https://blog.csdn.net/u013309870/article/details/75193592" target="_blank" rel="noopener">算法-动态规划 Dynamic Programming--从菜鸟到老鸟</a></p>
-<hr />
-<h2 id="end">End</h2>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1071,7 +1081,7 @@ a^{\phi\left({n}\right)}\equiv a\times a^{\phi\left(n\right)-1}\equiv 1 \pmod n
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1084,7 +1094,7 @@ a^{\phi\left({n}\right)}\equiv a\times a^{\phi\left(n\right)-1}\equiv 1 \pmod n
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">78</span>
+        <span class="site-state-item-count">82</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
