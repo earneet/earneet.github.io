@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Linux重启机器后亮度无法恢复的问题 背景 使用Ubuntu已经好些年头了，一直都有启动机器后无法恢复亮度的问题。之前大多是使用台式电脑，基本无需解决，调整到最大亮度后，直接设置显示器，调整到合适的亮度就不再管了。现在换用了笔记本，这种策略不再好用。两方面， 一是笔记本内置显示器不带单独的配置，无法在外部调整亮度。二是笔记本的使用场景不固定，客厅，卧室，阳台等，场景不同受到的环境光照影响也就不同">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux重启机器后亮度无法恢复的问题">
+<meta property="og:url" content="http://yoursite.com/2022/02/04/ubuntu-brightness/index.html">
+<meta property="og:site_name" content="Learning &amp; Sharing">
+<meta property="og:description" content="Linux重启机器后亮度无法恢复的问题 背景 使用Ubuntu已经好些年头了，一直都有启动机器后无法恢复亮度的问题。之前大多是使用台式电脑，基本无需解决，调整到最大亮度后，直接设置显示器，调整到合适的亮度就不再管了。现在换用了笔记本，这种策略不再好用。两方面， 一是笔记本内置显示器不带单独的配置，无法在外部调整亮度。二是笔记本的使用场景不固定，客厅，卧室，阳台等，场景不同受到的环境光照影响也就不同">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-04T12:10:43.000Z">
+<meta property="article:modified_time" content="2022-02-04T12:14:24.024Z">
+<meta property="article:author" content="Earneet">
+<meta property="article:tag" content="ubuntu">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="brightness">
+<meta property="article:tag" content="亮度">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2022/02/04/ubuntu-brightness/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Linux重启机器后亮度无法恢复的问题 | Learning & Sharing</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Learning & Sharing</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/02/04/ubuntu-brightness/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux重启机器后亮度无法恢复的问题
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-02-04 20:10:43 / 修改时间：20:14:24" itemprop="dateCreated datePublished" datetime="2022-02-04T20:10:43+08:00">2022-02-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BA%94%E7%94%A8%E6%8A%80%E5%B7%A7/" itemprop="url" rel="index"><span itemprop="name">应用技巧</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BA%94%E7%94%A8%E6%8A%80%E5%B7%A7/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="linux重启机器后亮度无法恢复的问题">Linux重启机器后亮度无法恢复的问题</h1>
+<h2 id="背景">背景</h2>
+<p>使用Ubuntu已经好些年头了，一直都有启动机器后无法恢复亮度的问题。之前大多是使用台式电脑，基本无需解决，调整到最大亮度后，直接设置显示器，调整到合适的亮度就不再管了。现在换用了笔记本，这种策略不再好用。两方面， 一是笔记本内置显示器不带单独的配置，无法在外部调整亮度。二是笔记本的使用场景不固定，客厅，卧室，阳台等，场景不同受到的环境光照影响也就不同，一直不调节亮度这种就很难受了，遂决定解决。</p>
+<h2 id="问题">问题</h2>
+<h3 id="问题描述">问题描述</h3>
+<p>环境： Ubuntu20.04 kenal 5.11+, Gnome3 硬件: cpu amd4700U 核心显卡，无板载和独立显示芯片。其他硬件对此问题无影响。</p>
+<p>亮度调节：菜单调节显示器亮度有效，可以正确调整亮度。但是每次重新开机后，亮度都会被设置成最大值。菜单划条位置显示在1%左右的位置。调节后，实际亮度与菜单划条一致。（说的可能不是很明确，就是每次稍微一调节，就会导致亮度忽然变很暗，因为亮度划条的位置几乎初始在最暗的位置上）</p>
+<h3 id="日志内容">日志内容</h3>
+<p>使用journalctl查看日志内容： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">journalctl -b0 -p4<br></code></pre></td></tr></table></figure></p>
+<p>得到输出如下， 无关内容已经被删除。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs log">2月 04 18:22:47 redmi-book kernel: acpi PNP0C14:01: duplicate WMI GUID 05901221-D566-11D1-B2F0-00A0C9062910 (first instance was on PNP0C14:00)<br>2月 04 18:22:48 redmi-book kernel: amdgpu 0000:03:00.0: Direct firmware load for amdgpu&#x2F;renoir_ta.bin failed with error -2<br>2月 04 18:22:48 redmi-book kernel: ath10k_pci 0000:01:00.0: failed to fetch board data for bus&#x3D;pci,vendor&#x3D;168c,device&#x3D;003e,subsystem-vendor&#x3D;11ad,subsystem-device&#x3D;0847 from ath10k&#x2F;QCA6174&#x2F;hw3.0&#x2F;board-2.bin<br>2月 04 18:22:49 redmi-book systemd-backlight[627]: Failed to get backlight or LED device &#39;backlight:acpi_video0&#39;: No such device<br>2月 04 18:22:49 redmi-book systemd[1]: systemd-backlight@backlight:acpi_video0.service: Failed with result &#39;exit-code&#39;.<br>2月 04 18:22:49 redmi-book systemd[1]: Failed to start Load&#x2F;Save Screen Backlight Brightness of backlight:acpi_video0.<br>2月 04 18:22:49 redmi-book systemd-backlight[630]: amdgpu_bl0: Failed to write system &#39;brightness&#39; attribute: No such device or address<br>2月 04 18:22:49 redmi-book systemd[1]: systemd-backlight@backlight:amdgpu_bl0.service: Failed with result &#39;exit-code&#39;.<br>2月 04 18:22:49 redmi-book systemd[1]: Failed to start Load&#x2F;Save Screen Backlight Brightness of backlight:amdgpu_bl0.<br></code></pre></td></tr></table></figure></p>
+<p>从日志来看，背光亮度相关的日志内容有两条：</p>
+<ol type="1">
+<li>acpi_video0 无法找到。</li>
+<li>amdgpu_bl0 无法找到。</li>
+</ol>
+<h3 id="分析">分析</h3>
+<p>针对上面日志提到的内容，我查看<code>ls /sys/class/backlight/</code>。发现其中仅有一个文件夹，它是<code>amdgpu_bl0</code>, 根本没有acpi_video0。所以，对于第一个报错日志来说，确实正确反馈了这个情况。那么针对此条，本文方案1进行了修复，可以达到修复的目的。</p>
+<p>但是，对于日志第二条，明显对应不上，我这里确实是有这个设备的，它应该正确的工作才是。</p>
+<h2 id="解决方案">解决方案</h2>
+<p>针对现象的有效解决方案有两个，他们有各自的问题。后面就逐个说明一下。</p>
+<h3 id="方案1">方案1</h3>
+<h4 id="原理">原理</h4>
+<p>针对第一条日志内容，从中看来，服务尝试使用acpi_video0来设定亮度，然而我的机器上没有这个。看起来acpi应该是某个规范或者是总线类型，先搞清楚它是什么。阅读了 <a href="https://www.cnblogs.com/kuwoyidai/archive/2010/08/18/1870471.html" target="_blank" rel="noopener">acpi介绍</a>以后，发现它是os和硬件中间的一层抽象，那么没有它的话，可能是我机器就没有启用acpi，或者没有给他配置。那么问题就简单了，我们添加和检查一下配置就是了。</p>
+<h4 id="操作">操作</h4>
+<p>添加内核参数 acpi_backlight=video 在<code>/etc/default/grub</code>文件中，<code>GRUB_CMDLINE_LINUX_DEFAULT</code>条目后添加内和参数<code>acpi_backlight=video</code>保存。 重新生成grub配置，并更新。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grub-mkconfig -o /boot/grub/grub.cfg<br></code></pre></td></tr></table></figure>
+<p>重启。</p>
+<h4 id="修复情况">修复情况</h4>
+<p>重启后观察，可以正确恢复关机前的亮度了，且日志中报错的信息消除了。</p>
+<h4 id="副作用">副作用</h4>
+<p>但是，dmesg 日志内容中多出了一条无法识别显卡型号的日志，我不确定此时是否使用了正确的显卡驱动（或者全特性支持的驱动）。从视频测试上来看，播放youtube2k分辨率的视频，cpu占用率大概在20%-30%之前浮动。之前应该是在15%-20%浮动，看起来，这么做了之后多少还是影响了显示性能的。没有其他明显副作用。</p>
+<h3 id="方案2">方案2</h3>
+<h4 id="原理-1">原理</h4>
+<p>一开始我是懵逼的，于是我按照日志李的服务手动start了一下，竟然发现它成功了，而且没有任何报错，而且成功设置了亮度。于此时，我几乎可以肯定是这个服务的启动时机有问题了，也许这个服务被执行的时候，amdgpu的显卡驱动或者什么的还没有初始化好，所以导致了失败，那么，把时机往后延一下，应该就能解决问题了。</p>
+<h4 id="操作-1">操作</h4>
+<ol type="1">
+<li>在 <code>/etc/systemd/system/</code>目录下，创建一个新的systemctl unit, 我把它命名为 <code>backlight-restore.service</code>， 当然，这里名字不重要。</li>
+<li>编辑unit内容</li>
+</ol>
+<pre class="service"><code>[Unit]
+Description=Dummy service for attempting to start the problematic amdgpu_bl0 service
+
+[Service]
+Type=simple
+ExecStart=systemctl start systemd-backlight@backlight:amdgpu_bl0
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+<pre><code>实际上这个服务就是在机器启动后再次调用恢复亮度的服务而已，只是它的时机比较晚。</code></pre>
+<ol start="3" type="1">
+<li>启动这个service <code>sudo systemctl start backlight-restore.service</code></li>
+<li>检查这个service的启动输出和状态 <code>sudo systemctl status backlight-restore.service</code></li>
+<li>没问题了的话,就设置为自启动 <code>sudo systemctl enable backlight-restore.service</code></li>
+<li>重启机器 <code>sudo reboot</code></li>
+</ol>
+<h4 id="修复情况-1">修复情况</h4>
+<p>重启后发现，亮度可以正常恢复了。但是之前的日志报错还是在（预期中）。</p>
+<h4 id="副作用-1">副作用</h4>
+<p>暂未发现有什么副作用。</p>
+<h3 id="其他方案">其他方案</h3>
+<p>当然还有其他几个方案。</p>
+<p>其中包括</p>
+<p>1.编辑内核模块文件，内核启动时加载amdgpu模块。但此方案在内核升级时就需要再操作一次，ubuntu也经常更新内核，所以我不采取。 2.网上流行的一种非主流做法，编辑rc.local文件，跳过系统机制，在启动后手动 往亮度文件中写值。但是rc.local已经被标记为废弃了，不再是标准内容说不准哪个版本就给作废了呢，也不采取。</p>
+<h2 id="遗留问题">遗留问题</h2>
+<p>以上两种方案多多少少都有些问题，方案1会降低一些gpu性能，自然也就降低了一些续航，我个人对电池续航非常看重，所以不推荐方案1. 方案2采用事后补偿的方式，虽然解决了问题，但是启动前阶段并没有接入，所以报错的日志依然会出现。</p>
+<h2 id="总结">总结</h2>
+<p>我个人使用了方案2，暂时还不错。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ubuntu/" rel="tag"># ubuntu</a>
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/brightness/" rel="tag"># brightness</a>
+              <a href="/tags/%E4%BA%AE%E5%BA%A6/" rel="tag"># 亮度</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/27/java-strictfp-keyword/" rel="prev" title="Java中的strictfp关键字">
+      <i class="fa fa-chevron-left"></i> Java中的strictfp关键字
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux重启机器后亮度无法恢复的问题"><span class="nav-number">1.</span> <span class="nav-text">Linux重启机器后亮度无法恢复的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.2.</span> <span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题描述"><span class="nav-number">1.2.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日志内容"><span class="nav-number">1.2.2.</span> <span class="nav-text">日志内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">1.2.3.</span> <span class="nav-text">分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案"><span class="nav-number">1.3.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方案1"><span class="nav-number">1.3.1.</span> <span class="nav-text">方案1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原理"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修复情况"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">修复情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#副作用"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">副作用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方案2"><span class="nav-number">1.3.2.</span> <span class="nav-text">方案2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原理-1"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作-1"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修复情况-1"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">修复情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#副作用-1"><span class="nav-number">1.3.2.4.</span> <span class="nav-text">副作用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他方案"><span class="nav-number">1.3.3.</span> <span class="nav-text">其他方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遗留问题"><span class="nav-number">1.4.</span> <span class="nav-text">遗留问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.5.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Earneet"
+      src="/images/avatar_head_icon.png">
+  <p class="site-author-name" itemprop="name">Earneet</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">86</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:earneet@gmail.com" title="E-Mail → mailto:earneet@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">鲁ICP备17028859号 </a>
+      <img src="/images/beian.png" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502037496" rel="noopener" target="_blank">京公网安备 11010502037496号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Earneet</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'f683935999f7972c4028',
+      clientSecret: '2759f62055ea0ca2f418d98c64fcb333551797c8',
+      repo        : 'GitResponse',
+      owner       : 'earneet',
+      admin       : ['earneet'],
+      id          : 'b224960b2995edcd57651345c1151159',
+        language: 'zh-CN',
+      distractionFreeMode: false
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
+</body>
+</html>

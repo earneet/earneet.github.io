@@ -2976,4 +2976,86 @@ x^m = c^n \tag{7}
         <tag>浮点运算</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Linux重启机器后亮度无法恢复的问题</title>
+    <url>/2022/02/04/ubuntu-brightness/</url>
+    <content><![CDATA[<h1 id="linux重启机器后亮度无法恢复的问题">Linux重启机器后亮度无法恢复的问题</h1>
+<h2 id="背景">背景</h2>
+<p>使用Ubuntu已经好些年头了，一直都有启动机器后无法恢复亮度的问题。之前大多是使用台式电脑，基本无需解决，调整到最大亮度后，直接设置显示器，调整到合适的亮度就不再管了。现在换用了笔记本，这种策略不再好用。两方面， 一是笔记本内置显示器不带单独的配置，无法在外部调整亮度。二是笔记本的使用场景不固定，客厅，卧室，阳台等，场景不同受到的环境光照影响也就不同，一直不调节亮度这种就很难受了，遂决定解决。</p>
+<h2 id="问题">问题</h2>
+<h3 id="问题描述">问题描述</h3>
+<p>环境： Ubuntu20.04 kenal 5.11+, Gnome3 硬件: cpu amd4700U 核心显卡，无板载和独立显示芯片。其他硬件对此问题无影响。</p>
+<p>亮度调节：菜单调节显示器亮度有效，可以正确调整亮度。但是每次重新开机后，亮度都会被设置成最大值。菜单划条位置显示在1%左右的位置。调节后，实际亮度与菜单划条一致。（说的可能不是很明确，就是每次稍微一调节，就会导致亮度忽然变很暗，因为亮度划条的位置几乎初始在最暗的位置上）</p>
+<h3 id="日志内容">日志内容</h3>
+<p>使用journalctl查看日志内容： <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">journalctl -b0 -p4<br></code></pre></td></tr></table></figure></p>
+<p>得到输出如下， 无关内容已经被删除。 <figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs log">2月 04 18:22:47 redmi-book kernel: acpi PNP0C14:01: duplicate WMI GUID 05901221-D566-11D1-B2F0-00A0C9062910 (first instance was on PNP0C14:00)<br>2月 04 18:22:48 redmi-book kernel: amdgpu 0000:03:00.0: Direct firmware load for amdgpu&#x2F;renoir_ta.bin failed with error -2<br>2月 04 18:22:48 redmi-book kernel: ath10k_pci 0000:01:00.0: failed to fetch board data for bus&#x3D;pci,vendor&#x3D;168c,device&#x3D;003e,subsystem-vendor&#x3D;11ad,subsystem-device&#x3D;0847 from ath10k&#x2F;QCA6174&#x2F;hw3.0&#x2F;board-2.bin<br>2月 04 18:22:49 redmi-book systemd-backlight[627]: Failed to get backlight or LED device &#39;backlight:acpi_video0&#39;: No such device<br>2月 04 18:22:49 redmi-book systemd[1]: systemd-backlight@backlight:acpi_video0.service: Failed with result &#39;exit-code&#39;.<br>2月 04 18:22:49 redmi-book systemd[1]: Failed to start Load&#x2F;Save Screen Backlight Brightness of backlight:acpi_video0.<br>2月 04 18:22:49 redmi-book systemd-backlight[630]: amdgpu_bl0: Failed to write system &#39;brightness&#39; attribute: No such device or address<br>2月 04 18:22:49 redmi-book systemd[1]: systemd-backlight@backlight:amdgpu_bl0.service: Failed with result &#39;exit-code&#39;.<br>2月 04 18:22:49 redmi-book systemd[1]: Failed to start Load&#x2F;Save Screen Backlight Brightness of backlight:amdgpu_bl0.<br></code></pre></td></tr></table></figure></p>
+<p>从日志来看，背光亮度相关的日志内容有两条：</p>
+<ol type="1">
+<li>acpi_video0 无法找到。</li>
+<li>amdgpu_bl0 无法找到。</li>
+</ol>
+<h3 id="分析">分析</h3>
+<p>针对上面日志提到的内容，我查看<code>ls /sys/class/backlight/</code>。发现其中仅有一个文件夹，它是<code>amdgpu_bl0</code>, 根本没有acpi_video0。所以，对于第一个报错日志来说，确实正确反馈了这个情况。那么针对此条，本文方案1进行了修复，可以达到修复的目的。</p>
+<p>但是，对于日志第二条，明显对应不上，我这里确实是有这个设备的，它应该正确的工作才是。</p>
+<h2 id="解决方案">解决方案</h2>
+<p>针对现象的有效解决方案有两个，他们有各自的问题。后面就逐个说明一下。</p>
+<h3 id="方案1">方案1</h3>
+<h4 id="原理">原理</h4>
+<p>针对第一条日志内容，从中看来，服务尝试使用acpi_video0来设定亮度，然而我的机器上没有这个。看起来acpi应该是某个规范或者是总线类型，先搞清楚它是什么。阅读了 <a href="https://www.cnblogs.com/kuwoyidai/archive/2010/08/18/1870471.html" target="_blank" rel="noopener">acpi介绍</a>以后，发现它是os和硬件中间的一层抽象，那么没有它的话，可能是我机器就没有启用acpi，或者没有给他配置。那么问题就简单了，我们添加和检查一下配置就是了。</p>
+<h4 id="操作">操作</h4>
+<p>添加内核参数 acpi_backlight=video 在<code>/etc/default/grub</code>文件中，<code>GRUB_CMDLINE_LINUX_DEFAULT</code>条目后添加内和参数<code>acpi_backlight=video</code>保存。 重新生成grub配置，并更新。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">grub-mkconfig -o /boot/grub/grub.cfg<br></code></pre></td></tr></table></figure>
+<p>重启。</p>
+<h4 id="修复情况">修复情况</h4>
+<p>重启后观察，可以正确恢复关机前的亮度了，且日志中报错的信息消除了。</p>
+<h4 id="副作用">副作用</h4>
+<p>但是，dmesg 日志内容中多出了一条无法识别显卡型号的日志，我不确定此时是否使用了正确的显卡驱动（或者全特性支持的驱动）。从视频测试上来看，播放youtube2k分辨率的视频，cpu占用率大概在20%-30%之前浮动。之前应该是在15%-20%浮动，看起来，这么做了之后多少还是影响了显示性能的。没有其他明显副作用。</p>
+<h3 id="方案2">方案2</h3>
+<h4 id="原理-1">原理</h4>
+<p>一开始我是懵逼的，于是我按照日志李的服务手动start了一下，竟然发现它成功了，而且没有任何报错，而且成功设置了亮度。于此时，我几乎可以肯定是这个服务的启动时机有问题了，也许这个服务被执行的时候，amdgpu的显卡驱动或者什么的还没有初始化好，所以导致了失败，那么，把时机往后延一下，应该就能解决问题了。</p>
+<h4 id="操作-1">操作</h4>
+<ol type="1">
+<li>在 <code>/etc/systemd/system/</code>目录下，创建一个新的systemctl unit, 我把它命名为 <code>backlight-restore.service</code>， 当然，这里名字不重要。</li>
+<li>编辑unit内容</li>
+</ol>
+<pre class="service"><code>[Unit]
+Description=Dummy service for attempting to start the problematic amdgpu_bl0 service
+
+[Service]
+Type=simple
+ExecStart=systemctl start systemd-backlight@backlight:amdgpu_bl0
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+<pre><code>实际上这个服务就是在机器启动后再次调用恢复亮度的服务而已，只是它的时机比较晚。</code></pre>
+<ol start="3" type="1">
+<li>启动这个service <code>sudo systemctl start backlight-restore.service</code></li>
+<li>检查这个service的启动输出和状态 <code>sudo systemctl status backlight-restore.service</code></li>
+<li>没问题了的话,就设置为自启动 <code>sudo systemctl enable backlight-restore.service</code></li>
+<li>重启机器 <code>sudo reboot</code></li>
+</ol>
+<h4 id="修复情况-1">修复情况</h4>
+<p>重启后发现，亮度可以正常恢复了。但是之前的日志报错还是在（预期中）。</p>
+<h4 id="副作用-1">副作用</h4>
+<p>暂未发现有什么副作用。</p>
+<h3 id="其他方案">其他方案</h3>
+<p>当然还有其他几个方案。</p>
+<p>其中包括</p>
+<p>1.编辑内核模块文件，内核启动时加载amdgpu模块。但此方案在内核升级时就需要再操作一次，ubuntu也经常更新内核，所以我不采取。 2.网上流行的一种非主流做法，编辑rc.local文件，跳过系统机制，在启动后手动 往亮度文件中写值。但是rc.local已经被标记为废弃了，不再是标准内容说不准哪个版本就给作废了呢，也不采取。</p>
+<h2 id="遗留问题">遗留问题</h2>
+<p>以上两种方案多多少少都有些问题，方案1会降低一些gpu性能，自然也就降低了一些续航，我个人对电池续航非常看重，所以不推荐方案1. 方案2采用事后补偿的方式，虽然解决了问题，但是启动前阶段并没有接入，所以报错的日志依然会出现。</p>
+<h2 id="总结">总结</h2>
+<p>我个人使用了方案2，暂时还不错。</p>
+]]></content>
+      <categories>
+        <category>应用技巧</category>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>ubuntu</tag>
+        <tag>Linux</tag>
+        <tag>brightness</tag>
+        <tag>亮度</tag>
+      </tags>
+  </entry>
 </search>

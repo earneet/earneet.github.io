@@ -183,6 +183,144 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/02/04/ubuntu-brightness/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/04/ubuntu-brightness/" class="post-title-link" itemprop="url">Linux重启机器后亮度无法恢复的问题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-02-04 20:10:43 / 修改时间：20:14:24" itemprop="dateCreated datePublished" datetime="2022-02-04T20:10:43+08:00">2022-02-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BA%94%E7%94%A8%E6%8A%80%E5%B7%A7/" itemprop="url" rel="index"><span itemprop="name">应用技巧</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BA%94%E7%94%A8%E6%8A%80%E5%B7%A7/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="linux重启机器后亮度无法恢复的问题">Linux重启机器后亮度无法恢复的问题</h1>
+<h2 id="背景">背景</h2>
+<p>使用Ubuntu已经好些年头了，一直都有启动机器后无法恢复亮度的问题。之前大多是使用台式电脑，基本无需解决，调整到最大亮度后，直接设置显示器，调整到合适的亮度就不再管了。现在换用了笔记本，这种策略不再好用。两方面， 一是笔记本内置显示器不带单独的配置，无法在外部调整亮度。二是笔记本的使用场景不固定，客厅，卧室，阳台等，场景不同受到的环境光照影响也就不同，一直不调节亮度这种就很难受了，遂决定解决。</p>
+<h2 id="问题">问题</h2>
+<h3 id="问题描述">问题描述</h3>
+<p>环境： Ubuntu20.04 kenal 5.11+, Gnome3 硬件: cpu amd4700U 核心显卡，无板载和独立显示芯片。其他硬件对此问题无影响。</p>
+<p>亮度调节：菜单调节显示器亮度有效，可以正确调整亮度。但是每次重新开机后，亮度都会被设置成最大值。菜单划条位置显示在1%左右的位置。调节后，实际亮度与菜单划条一致。（说的可能不是很明确，就是每次稍微一调节，就会导致亮度忽然变很暗，因为亮度划条的位置几乎初始在最暗的位置上）</p>
+<h3 id="日志内容">日志内容</h3>
+<p>使用journalctl查看日志内容： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">journalctl -b0 -p4<br></code></pre></td></tr></table></figure></p>
+<p>得到输出如下， 无关内容已经被删除。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs log">2月 04 18:22:47 redmi-book kernel: acpi PNP0C14:01: duplicate WMI GUID 05901221-D566-11D1-B2F0-00A0C9062910 (first instance was on PNP0C14:00)<br>2月 04 18:22:48 redmi-book kernel: amdgpu 0000:03:00.0: Direct firmware load for amdgpu&#x2F;renoir_ta.bin failed with error -2<br>2月 04 18:22:48 redmi-book kernel: ath10k_pci 0000:01:00.0: failed to fetch board data for bus&#x3D;pci,vendor&#x3D;168c,device&#x3D;003e,subsystem-vendor&#x3D;11ad,subsystem-device&#x3D;0847 from ath10k&#x2F;QCA6174&#x2F;hw3.0&#x2F;board-2.bin<br>2月 04 18:22:49 redmi-book systemd-backlight[627]: Failed to get backlight or LED device &#39;backlight:acpi_video0&#39;: No such device<br>2月 04 18:22:49 redmi-book systemd[1]: systemd-backlight@backlight:acpi_video0.service: Failed with result &#39;exit-code&#39;.<br>2月 04 18:22:49 redmi-book systemd[1]: Failed to start Load&#x2F;Save Screen Backlight Brightness of backlight:acpi_video0.<br>2月 04 18:22:49 redmi-book systemd-backlight[630]: amdgpu_bl0: Failed to write system &#39;brightness&#39; attribute: No such device or address<br>2月 04 18:22:49 redmi-book systemd[1]: systemd-backlight@backlight:amdgpu_bl0.service: Failed with result &#39;exit-code&#39;.<br>2月 04 18:22:49 redmi-book systemd[1]: Failed to start Load&#x2F;Save Screen Backlight Brightness of backlight:amdgpu_bl0.<br></code></pre></td></tr></table></figure></p>
+<p>从日志来看，背光亮度相关的日志内容有两条：</p>
+<ol type="1">
+<li>acpi_video0 无法找到。</li>
+<li>amdgpu_bl0 无法找到。</li>
+</ol>
+<h3 id="分析">分析</h3>
+<p>针对上面日志提到的内容，我查看<code>ls /sys/class/backlight/</code>。发现其中仅有一个文件夹，它是<code>amdgpu_bl0</code>, 根本没有acpi_video0。所以，对于第一个报错日志来说，确实正确反馈了这个情况。那么针对此条，本文方案1进行了修复，可以达到修复的目的。</p>
+<p>但是，对于日志第二条，明显对应不上，我这里确实是有这个设备的，它应该正确的工作才是。</p>
+<h2 id="解决方案">解决方案</h2>
+<p>针对现象的有效解决方案有两个，他们有各自的问题。后面就逐个说明一下。</p>
+<h3 id="方案1">方案1</h3>
+<h4 id="原理">原理</h4>
+<p>针对第一条日志内容，从中看来，服务尝试使用acpi_video0来设定亮度，然而我的机器上没有这个。看起来acpi应该是某个规范或者是总线类型，先搞清楚它是什么。阅读了 <a href="https://www.cnblogs.com/kuwoyidai/archive/2010/08/18/1870471.html" target="_blank" rel="noopener">acpi介绍</a>以后，发现它是os和硬件中间的一层抽象，那么没有它的话，可能是我机器就没有启用acpi，或者没有给他配置。那么问题就简单了，我们添加和检查一下配置就是了。</p>
+<h4 id="操作">操作</h4>
+<p>添加内核参数 acpi_backlight=video 在<code>/etc/default/grub</code>文件中，<code>GRUB_CMDLINE_LINUX_DEFAULT</code>条目后添加内和参数<code>acpi_backlight=video</code>保存。 重新生成grub配置，并更新。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grub-mkconfig -o /boot/grub/grub.cfg<br></code></pre></td></tr></table></figure>
+<p>重启。</p>
+<h4 id="修复情况">修复情况</h4>
+<p>重启后观察，可以正确恢复关机前的亮度了，且日志中报错的信息消除了。</p>
+<h4 id="副作用">副作用</h4>
+<p>但是，dmesg 日志内容中多出了一条无法识别显卡型号的日志，我不确定此时是否使用了正确的显卡驱动（或者全特性支持的驱动）。从视频测试上来看，播放youtube2k分辨率的视频，cpu占用率大概在20%-30%之前浮动。之前应该是在15%-20%浮动，看起来，这么做了之后多少还是影响了显示性能的。没有其他明显副作用。</p>
+<h3 id="方案2">方案2</h3>
+<h4 id="原理-1">原理</h4>
+<p>一开始我是懵逼的，于是我按照日志李的服务手动start了一下，竟然发现它成功了，而且没有任何报错，而且成功设置了亮度。于此时，我几乎可以肯定是这个服务的启动时机有问题了，也许这个服务被执行的时候，amdgpu的显卡驱动或者什么的还没有初始化好，所以导致了失败，那么，把时机往后延一下，应该就能解决问题了。</p>
+<h4 id="操作-1">操作</h4>
+<ol type="1">
+<li>在 <code>/etc/systemd/system/</code>目录下，创建一个新的systemctl unit, 我把它命名为 <code>backlight-restore.service</code>， 当然，这里名字不重要。</li>
+<li>编辑unit内容</li>
+</ol>
+<pre class="service"><code>[Unit]
+Description=Dummy service for attempting to start the problematic amdgpu_bl0 service
+
+[Service]
+Type=simple
+ExecStart=systemctl start systemd-backlight@backlight:amdgpu_bl0
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+<pre><code>实际上这个服务就是在机器启动后再次调用恢复亮度的服务而已，只是它的时机比较晚。</code></pre>
+<ol start="3" type="1">
+<li>启动这个service <code>sudo systemctl start backlight-restore.service</code></li>
+<li>检查这个service的启动输出和状态 <code>sudo systemctl status backlight-restore.service</code></li>
+<li>没问题了的话,就设置为自启动 <code>sudo systemctl enable backlight-restore.service</code></li>
+<li>重启机器 <code>sudo reboot</code></li>
+</ol>
+<h4 id="修复情况-1">修复情况</h4>
+<p>重启后发现，亮度可以正常恢复了。但是之前的日志报错还是在（预期中）。</p>
+<h4 id="副作用-1">副作用</h4>
+<p>暂未发现有什么副作用。</p>
+<h3 id="其他方案">其他方案</h3>
+<p>当然还有其他几个方案。</p>
+<p>其中包括</p>
+<p>1.编辑内核模块文件，内核启动时加载amdgpu模块。但此方案在内核升级时就需要再操作一次，ubuntu也经常更新内核，所以我不采取。 2.网上流行的一种非主流做法，编辑rc.local文件，跳过系统机制，在启动后手动 往亮度文件中写值。但是rc.local已经被标记为废弃了，不再是标准内容说不准哪个版本就给作废了呢，也不采取。</p>
+<h2 id="遗留问题">遗留问题</h2>
+<p>以上两种方案多多少少都有些问题，方案1会降低一些gpu性能，自然也就降低了一些续航，我个人对电池续航非常看重，所以不推荐方案1. 方案2采用事后补偿的方式，虽然解决了问题，但是启动前阶段并没有接入，所以报错的日志依然会出现。</p>
+<h2 id="总结">总结</h2>
+<p>我个人使用了方案2，暂时还不错。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/07/27/java-strictfp-keyword/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -700,123 +838,6 @@ x^m = c^n \tag{7}
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/14/fast-power/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar_head_icon.png">
-      <meta itemprop="name" content="Earneet">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Learning & Sharing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/14/fast-power/" class="post-title-link" itemprop="url">快速幂算法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-11-14 19:30:52 / 修改时间：19:34:31" itemprop="dateCreated datePublished" datetime="2020-11-14T19:30:52+08:00">2020-11-14</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95%E7%AE%80%E8%BF%B0/" itemprop="url" rel="index"><span itemprop="name">算法简述</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="快速幂算法">快速幂算法</h1>
-<h3 id="大数幂的模问题">大数幂的模问题</h3>
-<p>快速幂算法用于高效的计算大数次幂，实际上对于绝对值大于1的数的大数次幂，我们常常只关心其低位部分，因为它结果的精确值趋向于一个我们无法直接使用的超级大数字。对于绝对值小于1的数进行高幂次运算，它将趋向于0，实际用处也不是很大。而快速幂算法也正是立足于我们只关心结果的尾数部分来实现高效计算的。</p>
-<h3 id="常规的求幂算法">常规的求幂算法</h3>
-<p>对于一个求幂问题 <span class="math inline">\(base^{pow}\%N\)</span>按照最直接的求幂过程，我们需要把base做pow-1次乘法运算, 然后再做一次取模运算， 其时间复杂度为O(n)。</p>
-<p>其中，对于时间复杂度，尚处于我们可以接受的程度，即使pow的值很大，我们总可以在线性的时间内计算完。但是，对于其结果来说，对于我们常用的编程语言种的数据类型来说，几乎是不可承受的。</p>
-<p>就当下最流行的高级编程语言C语言来说，其最大的整数类型长度为64位(long long 类型), 所能表示的最大数值是<code>$18,446,744,073,709,551,615$</code>， 这个看起来相当大的数字在幂运算面前却不值一提，我们取比1大的最小整数2作为base的值，当exp的值为64时，就已经比这个数字还大了，64确实不能算作一个“大数”，然而，这已经是我们CPU的运算器所能计算的极限了。一旦超出了这个值，就遭遇了计算机领域常见的错误“溢出”，在cpu的寄存器中所存储的计算结果就已经是不正确的了。</p>
-<p>所以，常规的求幂算法在计算大数幂中是不适用的。</p>
-<p>常规求幂算法使用python表达：</p>
-<p><del>要注意这个方法在计算数稍微大一点之后就会溢出，其结果不正确。</del></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pow_mod</span><span class="hljs-params">(base, pow, mod)</span>:</span><br>    product = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">for</span> idx <span class="hljs-keyword">in</span> range(pow):<br>        product = product * base<br>    <span class="hljs-keyword">return</span> product % mod<br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">pow_mod(<span class="hljs-number">321</span>, <span class="hljs-number">1234567</span>, <span class="hljs-number">1000</span>)<br></code></pre></td></tr></table></figure>
-<p>在我的i56500cpu上，这个算法需要314秒才结束。</p>
-<h3 id="快速幂算法-1">快速幂算法</h3>
-<p>快速幂算法是一种相对于常规的求幂算法更加高效准确的求幂算法。它无法准确的计算幂的结果，退而求其次它可以高效的计算出大数幂的模。而往往，在大数幂的相关问题中，我们也更关注结果的尾数部分，它恰恰是一个大数幂的模的计算。</p>
-<h4 id="快速幂算法的理论基础">快速幂算法的理论基础</h4>
-<p>我们在取模运算中，有一些性质。</p>
-<p><span class="math display">\[
-\begin{aligned}
-(a+b) \% p &amp;= (a\%p + b\%p) \% p \\
-(a \times b)\%p &amp;= (a\%p \times b\%p) \% p 
-\end{aligned}
-\]</span></p>
-<p>在快速幂算法种，使用了性质2。</p>
-<p>拓展一下性质2的表达, 通俗语言来讲，有任意项连续相乘的表达式，其结果对p取余，可以写成它们每一项对p取余然后再相乘，最后对p取余的形式，在这期间，任意步骤中都可以插入一个对p取余的计算而不影响其结果:</p>
-<p><span class="math display">\[
-(a\times b\times ... \times n) \% p = (a\%p \times b\%p \times ... \times n\%p)\%p
-\]</span></p>
-<p>由以上性质可知，要简化幂运算防止其结果溢出，那么可以在常规幂算法的每一次乘法运算后即进行采模。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pow_mod</span><span class="hljs-params">(base, pow, mod)</span>:</span><br>    product = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">for</span> idx <span class="hljs-keyword">in</span> range(pow):<br>        product = product * base % mod<br>    <span class="hljs-keyword">return</span> product<br></code></pre></td></tr></table></figure>
-<p>这一步改进，我们额外引入了pow次取模运算，但至少，近乎能保证不会溢出，结果基本可以正确了。</p>
-<p>结合幂运算的性质:</p>
-<p><span class="math display">\[
-\begin{aligned}
-base^{pow1 + pow2} &amp;= base^{pow1} \times base^{pow2} \\
-base^{pow1 \times pow2} &amp;= {(base^{pow1})}^{pow2}
-\end{aligned}
-\]</span></p>
-<p>再进一步的优化一下运算，那么现在可以拆指数来减少计算次数了。对指数pow进行因式分解，我们无法保证pow是否是素数，也不好说如何分解才最优，干脆就用计算机算法领域常用的二分法，每次将指数减小一半，此时又出分歧，要区分指数每次是偶数还是奇数时采用不同的处理。</p>
-<p>当exp为偶数时:</p>
-<p><span class="math display">\[
-base^{pow} = (base^{2})^{\frac{pow}{2}}
-\]</span></p>
-<p>当exp为奇数时:</p>
-<p><span class="math display">\[
-base^{pow} = (base^{2})^{\frac{pow}{2}} \times base
-\]</span></p>
-<p>python代码表达一下:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pow_mod</span><span class="hljs-params">(base, pow, mod)</span>:</span><br>    result = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">while</span> pow &gt; <span class="hljs-number">0</span>:<br>        <span class="hljs-keyword">if</span> pow &amp; <span class="hljs-number">1</span> == <span class="hljs-number">0</span>:<br>            result = result * base % mod<br>        base = base * base % mod<br>        pow = pow &gt;&gt; <span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> result<br></code></pre></td></tr></table></figure>
-<p>基本也能讲清楚快速幂算法的思想了，就记到这里吧。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -888,7 +909,7 @@ base^{pow} = (base^{2})^{\frac{pow}{2}} \times base
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -901,7 +922,7 @@ base^{pow} = (base^{2})^{\frac{pow}{2}} \times base
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">82</span>
+        <span class="site-state-item-count">86</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -936,7 +957,7 @@ base^{pow} = (base^{2})^{\frac{pow}{2}} \times base
 <div class="copyright">
   
   &copy; 2017 – 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

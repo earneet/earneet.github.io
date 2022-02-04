@@ -183,6 +183,213 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/%E9%87%8D%E8%A6%81%E7%9A%84%E8%BF%9E%E7%BB%AD%E5%88%86%E5%B8%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learning & Sharing">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/31/%E9%87%8D%E8%A6%81%E7%9A%84%E8%BF%9E%E7%BB%AD%E5%88%86%E5%B8%83/" class="post-title-link" itemprop="url">重要的连续分布</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-31 14:01:00" itemprop="dateCreated datePublished" datetime="2019-07-31T14:01:00+08:00">2019-07-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-07 09:20:22" itemprop="dateModified" datetime="2020-05-07T09:20:22+08:00">2020-05-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E6%A6%82%E7%8E%87%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">概率论</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="重要的连续分布">重要的连续分布</h1>
+<h2 id="各分布简介">各分布简介</h2>
+<table>
+<thead>
+<tr class="header">
+<th>分布类型</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>均匀分布</td>
+<td>古典派中的几何概型</td>
+</tr>
+<tr class="even">
+<td>正态分布</td>
+<td>二项分布的另一种极限</td>
+</tr>
+<tr class="odd">
+<td>指数分布</td>
+<td>泊松分布的间隔, 连续的几何分布</td>
+</tr>
+</tbody>
+</table>
+<h2 id="均匀分布">均匀分布</h2>
+<h3 id="均匀分布的定义">均匀分布的定义</h3>
+<p>如果连续随机变量X的概率密度函数为：</p>
+<p><span class="math display">\[
+p(x)=
+\begin{cases}
+    \frac{1}{b-a}, &amp;a &lt; x &lt; b\\
+    0, &amp; 其它
+\end{cases}
+\]</span></p>
+<p>则称X服从区间(a,b)上的均匀分布，记作 <span class="math inline">\(X\sim U(a,b)\)</span> ，其累积分布函数为：</p>
+<p><span class="math display">\[
+F(x)=\begin{cases}
+    0,&amp;x &lt; a\\
+    \frac{x-a}{b-a},&amp;a\le x \le b\\
+    1,&amp;x &gt; b
+\end{cases}
+\]</span></p>
+<p>期望和方差分别为：</p>
+<p><span class="math display">\[
+E(X)=\frac{a+b}{2},\quad Var(X)=\frac{(b-a)^2}{12}
+\]</span></p>
+<h2 id="正态分布">正态分布</h2>
+<p>二项分布原是一个离散分布模型。 但是, 当伯努利实验次数较多的时候, 二项分布的计算较为困难(没有计算机的时候), 所以, 就有了逼近二项分布, 在当n比较大的时候用于逼近二项分布。</p>
+<h3 id="逼近二项分布的定义">逼近二项分布的定义</h3>
+<p>X服从于二项分布</p>
+<p><span class="math display">\[
+X \sim b(n, p)
+\]</span></p>
+<p>那么它的期望和方差为</p>
+<p><span class="math display">\[
+\begin{split}
+\mu &amp; = np  \\
+\sigma^2 &amp; = np(1-p)
+\end{split}
+\]</span></p>
+<p>则可以使用以下公式逼近二项分布</p>
+<p><span class="math display">\[
+p(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}},\quad -\infty &lt; x &lt; +\infty
+\]</span></p>
+<p>这个逼近的分布方式, 就是 <font color="red"><strong>正态分布</strong></font> (normal distribution), 也叫做 <font color="red"><strong>高斯分布</strong></font> (Gaussian distribution)</p>
+<p>其<strong>累积分布函数</strong>为:</p>
+<p><span class="math display">\[
+F(x)=\frac{1}{\sigma\sqrt{2\pi}}\int_{-\infty}^{x}e^{-\frac{(t-\mu)^2}{2\sigma^2}}\mathrm{d}t
+\]</span></p>
+<h3 id="正态分布的重要性质">正态分布的重要性质</h3>
+<h4 id="线性">线性</h4>
+<p>若有随机变量X符合正态分布</p>
+<p><span class="math display">\[
+X\sim N(\mu, \sigma^2)
+\]</span></p>
+<p>那么则有</p>
+<p><span class="math display">\[
+aX+b \sim N(a\mu + b, a^2\sigma^2)
+\]</span></p>
+<p><strong>这条重要的性质可以使得任意的正态分布转换为标准正态分布</strong>。</p>
+<p>即:</p>
+<p>若有</p>
+<p><span class="math display">\[
+\text{若有} X \sim N(\mu, \sigma^2) 
+\]</span></p>
+<p>则有</p>
+<p><span class="math display">\[
+\ Z = \frac{X-\mu}{\sigma} \sim N(0, 1)
+\]</span></p>
+<h4 id="上α分位点">上α分位点</h4>
+<p>如果有 <span class="math inline">\(Z\sim N(0,1)\)</span> ，如果 <span class="math inline">\(z_\alpha\)</span> 满足：</p>
+<p><span class="math display">\[
+P(Z &gt; z_\alpha) = \alpha,\quad 0 &lt; \alpha &lt; 1
+\]</span></p>
+<p>那么称点 <span class="math inline">\(z_\alpha\)</span> 为标准正态分布的 <font color="red"><strong>上α分位点</strong></font>。</p>
+<h4 id="六西格玛">六西格玛</h4>
+<p>对于随机变量 <span class="math inline">\(X\sim N(\mu, \sigma^2)\)</span></p>
+<p>不论 <span class="math inline">\(\mu , \sigma\)</span> 的取值是什么, 其中, 关于 <span class="math inline">\(\mu\)</span> 对称的面积都是确定的</p>
+<p><span class="math display">\[
+\begin{split}
+P(\mu-\sigma\le X\le \mu+\sigma)\approx 68.26\% \\
+P(\mu-3\sigma\le X\le \mu+3\sigma)\approx 99.72\%
+\end{split}
+\]</span></p>
+<h3 id="指数分布">指数分布</h3>
+<h4 id="指数分布的定义">指数分布的定义</h4>
+<p>若随机变量X的概率密度函数为：</p>
+<p><span class="math display">\[
+p(x)=\begin{cases}
+\lambda e^{-\lambda x}, &amp; x \ge 0\\
+0,&amp; x &lt; 0
+\end{cases}
+\]</span></p>
+<p>其中 <span class="math inline">\(\lambda &gt; 0\)</span> ，称X服从<font color="red"><strong>指数分布</strong></font>，也可以记为：</p>
+<p><span class="math display">\[
+X \sim Exp(\lambda)
+\]</span></p>
+<p>累积分布函数为：</p>
+<p><span class="math display">\[
+F(x)=\begin{cases}
+1-e^{-\lambda x}, &amp; x \ge 0\\
+0,&amp; x &lt; 0
+\end{cases}
+\]</span></p>
+<p>指数分布 <span class="math inline">\(X\sim Exp(\lambda)\)</span> 的期望和方差为：</p>
+<p><span class="math display">\[
+E(X)=\frac{1}{\lambda},\quad Var(X)=\frac{1}{\lambda^2}
+\]</span></p>
+<h4 id="指数分布的性质">指数分布的性质</h4>
+<h5 id="无记忆性">无记忆性</h5>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/02/ARTS-10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -918,159 +1125,6 @@ Memory Usage: 9.1 MB, less than 38.74% of C++ online submissions for Count and S
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/21/ARTS-4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar_head_icon.png">
-      <meta itemprop="name" content="Earneet">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Learning & Sharing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/04/21/ARTS-4/" class="post-title-link" itemprop="url">ARTS-4</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-04-21 18:34:20" itemprop="dateCreated datePublished" datetime="2019-04-21T18:34:20+08:00">2019-04-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-06 12:18:00" itemprop="dateModified" datetime="2020-05-06T12:18:00+08:00">2020-05-06</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ARTS/" itemprop="url" rel="index"><span itemprop="name">ARTS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="rts第四周">RTS第四周</h1>
-<h2 id="algorithm">Algorithm</h2>
-<p><strong>Search in Rotated Sorted Array</strong> ### 引言 本周leetcode的推送又是一道easy难度的题目, 还是一个使用二分查找来解决的简单猜数问题, 本着要进步的想法, 做完了那道题, 但是感觉没什么可分享的点, 于是顺延之前解决的问题的顺序做了本题。</p>
-<h3 id="description">Description</h3>
-<blockquote>
-<p>Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.</p>
-<p>(i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).</p>
-<p>You are given a target value to search. If found in the array return its index, otherwise return -1.</p>
-<p>You may assume no duplicate exists in the array.</p>
-<p>Your algorithm's runtime complexity must be in the order of O(log n).</p>
-<p>Example 1:</p>
-<p>Input: nums = [4,5,6,7,0,1,2], target = 0 Output: 4 Example 2:</p>
-<p>Input: nums = [4,5,6,7,0,1,2], target = 3 Output: -1</p>
-</blockquote>
-<p>有一个已经升序排列的数组, 从其中一个元素的位置给他截断, 然后移动拼接, 成为新的数组, 就是按照元素为单位对数组进行循环移位。</p>
-<h3 id="思路">思路</h3>
-<p>一看到这个题目, 二分搜索马上出现在脑海里, 后来一分析, 貌似行不通, 因为一般的二分搜索只能处理单调的数组(这个位置我被自己蠢哭了)。</p>
-<p>这个问题的关键是, 第一次进行取mid操作时, mid落在哪个区间, 如图 (sorry, oos 到期了, 待更换):</p>
-<ul>
-<li>当 mid 落于左半边时, 记它为midl,否则,记为midr。若v[mid]恰等于target, 则查找结束。</li>
-<li>当 mid = midl , 此时mid落于左半边, 典型特征为 v[mid] &gt; v[left] 此时, 再以一般的二分法判断该如何移动left和right指针即可, 此时, 若目标小于v[mid] 且大于v[left] 则 right指针左移, 否则left指针右移。</li>
-<li>当 mid = midr, 此时mid落于右半边, 典型特征为 v[mid] &lt; v[left] 此时, 以一般二分判断移动指针, 若target &lt; v[mid]且target &lt; v[right] 则左移right 否则, 右移left。</li>
-</ul>
-<h3 id="代码">代码</h3>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">search</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-keyword">int</span> target)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> left=<span class="hljs-number">0</span>, right=nums.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">while</span>(left&lt;=right)&#123;<br>            <span class="hljs-keyword">int</span> mid=(left+right)/<span class="hljs-number">2</span>;<br>            <span class="hljs-keyword">if</span> (nums[mid]==target) <span class="hljs-keyword">return</span> mid;<br>            <span class="hljs-keyword">if</span> (nums[mid]&gt;=nums[left]) &#123;    <span class="hljs-comment">// mid is midl</span><br>                <span class="hljs-keyword">if</span> (target&gt;=nums[left]&amp;&amp;target&lt;=nums[mid]) &#123;<br>                    right=mid<span class="hljs-number">-1</span>;<br>                &#125;<span class="hljs-keyword">else</span>&#123;<br>                    left=mid+<span class="hljs-number">1</span>;<br>                &#125;<br>            &#125;<span class="hljs-keyword">else</span>&#123;                          <span class="hljs-comment">// mid is midr</span><br>                <span class="hljs-keyword">if</span> (target&gt;=nums[mid]&amp;&amp;target&lt;=nums[right])&#123;<br>                    left=mid+<span class="hljs-number">1</span>;<br>                &#125;<span class="hljs-keyword">else</span>&#123;<br>                    right=mid<span class="hljs-number">-1</span>;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h3 id="result">Result</h3>
-<table>
-<thead>
-<tr class="header">
-<th>Status</th>
-<th>Runtime</th>
-<th>Memory</th>
-<th>Language</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Accepted</td>
-<td>4 ms</td>
-<td>8.6 MB</td>
-<td>cpp</td>
-</tr>
-</tbody>
-</table>
-<h2 id="review">Review</h2>
-<h3 id="引言">引言</h3>
-<p>本周review文章来自medium的一次每日推送, 高亮文章为 "被你所不知道的追踪器填满的手机App", 我平时使用手机也比较洁癖, 一个app如果要求我授权一个我认为它不需要的权限我是坚决不给的, 我宁可不用这个app, 这里就不得不说各政府部门外包给三流公司做的官方app了, 各种权限要求一大堆, 包括位置、电话短信、通讯录 什么的, 我就纳闷了,你一个公积金管理的app要这些权限干啥!!!</p>
-<p>所以, 当我第一眼看见这个题目的时候, 确认过眼神, 就是它了。 <a href="https://onezero.medium.com/the-app-privacy-crisis-apple-and-google-need-to-fix-now-4e3590f2fc52" target="_blank" rel="noopener">Your Smartphone Apps Are Filled With Trackers You Know Nothing About</a></p>
-<h3 id="文章主旨">文章主旨</h3>
-<ul>
-<li>我们使用手机App大多收集了各种各样的传感器数据和用户行为数据。</li>
-<li>手机app的崩溃日志可能带有大量其他的信息。</li>
-<li>即使开发者无意使用和收集这些数据,但是他们继承的各种SDK无时无刻不在做这些工作。</li>
-</ul>
-<h3 id="section"></h3>
-<h2 id="tips">Tips</h2>
-<p><strong>Lua的代理模型</strong></p>
-<h3 id="引言-1">引言</h3>
-<p>最新一个资料片要上一个跨服的好友功能, 之前我们已经有一个本服务器的好友功能了, 其实现是在玩家进行登录的时候将所有好友信息推送给客户端, 每当添加一个好友时,也将好友信息推送给客户端保存, 这样, 客户端可以即时的展示好友的界面和功能。 新的功能要求玩家可以跨服务器添加好友, 这样一来, 如果要做到在玩家登陆时推送好友信息, 那么玩家所属服务器或者中心服务器必须去各个服务器拉取好友信息,然后统一推送给玩家, 但是这个方案很复杂, 涉及到很多的拉取同步问题。</p>
-<p>所以, 我设计新的方案, 在玩家登陆时, 只发送玩家的好友id和服务器id给客户端, 当客户端需要展示ui的时候再去目标服务器拉取, 然后展示。</p>
-<p>之前思虑不周, 等新的好友模块都做完了, 才发现, 一些其他的模块对好友模块的数据有依赖, 它们没有去拉取再显示, 而是直接从好友模块中去取数据, 所以, 报空异常了。 稍微统计了一下, 这样的ui有很多很多, 单靠我挨个去改动是忙不完的。</p>
-<p>此时, 一个牛逼的同事提出了他的解决方案(实际上之前他就说过, 但是我没在意), 使用一个代理的模式, 其他模块拿去数据的时候返回给他一个代理的包装对象, 此时好友模块再去动态的拉取信息, 响应回来后, 再去使用事件机制更新ui。</p>
-<p>本技巧, 就是这个方案的实现。</p>
-<h3 id="原方案伪代码">原方案伪代码</h3>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">--[[</span><br><span class="hljs-comment">    这是最早的代码, 本地缓存了好友数据, 所以, 可以直接拉取到好友数据, 用以UI显示</span><br><span class="hljs-comment">]]</span><br>    <span class="hljs-keyword">local</span> friendinfo = friendmodule.getFriendInfo(friendid)<br>    ui.panelXXX:Show(friendinfo)<br></code></pre></td></tr></table></figure>
-<p>基于之前的功能需求,这样做无可厚非, 也是最简易的做法, 但是这个方案给后面功能的拓展埋下了坑,再增加跨服支持的时候需要修改大量的内容。</p>
-<h3 id="我改过后好友模块相关ui的实现伪代码">我改过后好友模块相关ui的实现伪代码</h3>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">--[[</span><br><span class="hljs-comment">    修改后的代码, 尝试去从好友模块获取数据, 若存在,则跟之前一样用, 若不存在, 那么去请求数据, 然后在回调中重新渲染ui</span><br><span class="hljs-comment">]]</span><br><br>    <span class="hljs-keyword">local</span> friendinfo = friendmodule.getFriendInfo(friendid)<br>    <span class="hljs-keyword">if</span> friendinfo <span class="hljs-keyword">then</span><br>        ui.panelXXX:Show(friendinfo)<br>    <span class="hljs-keyword">else</span> <br>        friendmodule.queryFriendFromServer(friendid, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span> <span class="hljs-comment">-- callback function</span><br>            friendinfo = friendmodule.getFriendInfo(friendid)<br>            ui.panelXXX:Show(friendinfo)<br>        <span class="hljs-keyword">end</span>)<br>    <span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
-<p>这个做法基本实现了新的功能要求, 而且基于懒加载节省了大多数时候不必要的内存消耗(实际游戏中, 玩家大多数的时候整个游戏过程都不会开好友ui), 但是, 这个修改需要改动的位置非常多, 几乎所有涉及到好友数据的ui都需这么改, 几乎无可避免会出现遗漏。</p>
-<h3 id="代理方案">代理方案</h3>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">--[[</span><br><span class="hljs-comment">    这是最早的代码, 本地缓存了好友数据, 所以, 可以直接拉取到好友数据, 用以UI显示</span><br><span class="hljs-comment">]]</span><br>    <span class="hljs-keyword">local</span> friendinfo = friendmodule.getFriendInfo(friendid)<br>    ui.panelXXX:Show(friendinfo)<br></code></pre></td></tr></table></figure>
-<p>简单从上面伪代码看来,我们并没有做任何的更改。 确实, 因为这个方案就是为了减少我第二个方案的复杂度来做的。 实际上<code>friendmodule.getFriendInfo</code>这个函数的实现做了修改, 它所返回的不再是一个 "<code>rawdata</code>"了, 而是一个代理对象<code>wrapper</code>。</p>
-<p>原先的实现: <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs lua">friendmodule.getFreindInfo = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(friend)</span></span><br>    <span class="hljs-keyword">return</span> data[friend]<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure></p>
-<p>修改后的实现</p>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs lua">wrapper = &#123; data = &#123;&#125;&#125;<br>wrapper.new = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(id)</span></span> <br>    <span class="hljs-keyword">local</span> instance = &#123; __data=&#123;&#125;&#125;<br>    <span class="hljs-built_in">setmetatable</span>(instance, &#123;<span class="hljs-built_in">__index</span> = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(table, key)</span></span><br>        <span class="hljs-keyword">local</span> res = instance.__data[key]<br>        <span class="hljs-keyword">if</span> res <span class="hljs-keyword">then</span><br>            <span class="hljs-keyword">return</span> res;<br>        <span class="hljs-keyword">end</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">rawget</span>(<span class="hljs-built_in">table</span>, key)<br>    <span class="hljs-keyword">end</span>&#125;)<br>    friendmodule.queryFriendFromServer(id, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(callbackdata)</span></span> <span class="hljs-comment">-- callback </span><br>            instance.__data = callbackdata<br>            eventsystem.redraw()<br>        <span class="hljs-keyword">end</span>)<br>    <span class="hljs-keyword">return</span> instance<br><span class="hljs-keyword">end</span><br><br>friendmodule.getFreindInfo = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(friend)</span></span><br>    <span class="hljs-keyword">local</span> friendinfo = data[friend]<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> friendinfo <span class="hljs-keyword">then</span><br>        <span class="hljs-keyword">local</span> res = warpper.new(friend)<br>        data[friend] = res<br>        <span class="hljs-keyword">return</span> res<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">return</span> friendinfo<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
-<h2 id="share">Share</h2>
-<h3 id="引言-2">引言</h3>
-<p>本次本来想分享我自己写的关于java语言的锁同步的一些总结, 但是在写另一篇博文的时候, 我尝试向博文里添加几个流程图, 我使用draw.io画好了图, 但是同事告诉我markdown本身可以画流程图, 没想到它这么强大, 临时改成本次分享一篇半官方的帮助指南, 介绍markdown的各种特性和功能。</p>
-<h3 id="正文">正文</h3>
-<p><a href="https://coding.net/help/doc/project/markdown.html" target="_blank" rel="noopener">MarkDown语法介绍</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1142,7 +1196,7 @@ Memory Usage: 9.1 MB, less than 38.74% of C++ online submissions for Count and S
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1155,7 +1209,7 @@ Memory Usage: 9.1 MB, less than 38.74% of C++ online submissions for Count and S
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">82</span>
+        <span class="site-state-item-count">86</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1190,7 +1244,7 @@ Memory Usage: 9.1 MB, less than 38.74% of C++ online submissions for Count and S
 <div class="copyright">
   
   &copy; 2017 – 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
