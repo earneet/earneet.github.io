@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 6.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -255,7 +255,7 @@
 
       
         <blockquote>
-<p>在调优网络参数时查阅参考资料，发现一篇收获颇多的文，特做翻译 本文原文出自<a href="https://blog.imaginea.com/author/neeldhwaj-kumar-pathak-pathak/" target="_blank" rel="noopener" title="Neeldhwaj Pathak的帖子">Neeldhwaj Pathak</a>, 我在翻译过程中稍作修改。</p>
+<p>在调优网络参数时查阅参考资料，发现一篇收获颇多的文，特做翻译 本文原文出自<a target="_blank" rel="noopener" href="https://blog.imaginea.com/author/neeldhwaj-kumar-pathak-pathak/" title="Neeldhwaj Pathak的帖子">Neeldhwaj Pathak</a>, 我在翻译过程中稍作修改。</p>
 </blockquote>
 <h3 id="cdn中的初始拥塞控制">CDN中的初始拥塞控制</h3>
 <h4 id="抽象">抽象</h4>
@@ -276,28 +276,28 @@
 <p>对于以Web为中心的公司或Web服务，性能和可靠性是直接影响用户体验并进而提高公司盈利能力的两个主要问题。商业CDN帮助他们缓存并将Web内容交付给用户。Web内容可以包括静态内容（例如，图像，视频，javascript文件等）到动态内容（例如，实时流或多人在线游戏）。CDN服务器位于主要地理区域，使内容更接近用户。</p>
 <p>CDN在一个区域或世界各地的各种地理位置（使用边缘缓存或POP）缓存静态（以及动态）内容，从而使资源更接近用户，从而减少了往返时间。因此，当坐在印度的用户尝试访问对象时，最近的服务器可以将其发送给用户，从而减少了RTT，从而减少了页面加载时间并提高了效率。</p>
 <p><strong>工作流程：</strong> 考虑下图的示例。域名为 <em>tianxun.com</em> 的 <em>Skyscanner</em>（China）已注册CDN。ChinaCache（Skyscanner中国的CDN提供商）向他们提供CDN URL，例如 <em>res.tianxun.com</em> 。然后，开发人员配置为从CDN URL加载静态内容。因此，当坐在中国的用户A尝试访问 <em>tianxun.com</em> 时，浏览器使用链接的CDN URL请求任何对象。然后，CDN将请求分发到最近的CDN服务器，并且从位于最靠近它的位置A的该服务器提供内容。类似地，当用户B尝试访问Skyscanner时，它是由CDN服务器提供的，该CDN服务器位于位置D，因为它离它最近。这有助于提高网站性能，减少原始服务器上的负载，从而改善整体客户使用体验。</p>
-<p><a href="https://blog.imaginea.com/wp-content/uploads/2017/02/cdn-wf.jpg" target="_blank" rel="noopener"><img src="https://blog.imaginea.com/wp-content/uploads/2017/02/cdn-wf.jpg" alt="cdn-wf" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.imaginea.com/wp-content/uploads/2017/02/cdn-wf.jpg"><img src="https://blog.imaginea.com/wp-content/uploads/2017/02/cdn-wf.jpg" alt="cdn-wf" /></a></p>
 <p>CDN使用包括Anycast路由在内的各种技术来分发请求。</p>
 <h4 id="任播路由"><strong>任播路由</strong></h4>
 <p>Anycast是路由和寻址策略的网络技术，可确定客户端向服务器请求资源之间的最佳路径，这些路径在地理位置上是分布的。Anycast通过从托管在多个位置的服务器发布相同的IP地址来工作。网络层的动态路由有助于将数据包路由到最近的服务器（跳数最少）。我们可以将其称为单播到最近的地址，因为从所有可用的接收器中仅选择了一个接收器（最近的接收器）。</p>
-<p>我们知道，当客户端在其数据包标头中发送带有任播IP地址的请求时，是路由器会从运行同一服务的多台服务器中选择最佳（最近）目的地。Anycast是使用边界网关协议（BGP）实现的。BGP将自治系统编号用于其域间路由。要深入了解任播的实现，我们需要了解域间路由和BGP的工作。要了解有关此内容的更多信息，请参阅BGP rfc <a href="https://tools.ietf.org/html/rfc4271" target="_blank" rel="noopener">4271</a>。</p>
+<p>我们知道，当客户端在其数据包标头中发送带有任播IP地址的请求时，是路由器会从运行同一服务的多台服务器中选择最佳（最近）目的地。Anycast是使用边界网关协议（BGP）实现的。BGP将自治系统编号用于其域间路由。要深入了解任播的实现，我们需要了解域间路由和BGP的工作。要了解有关此内容的更多信息，请参阅BGP rfc <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc4271">4271</a>。</p>
 <p>TCP Anycast之所以在CDN中脱颖而出的主要原因是，它有助于减少延迟，从而加快了页面加载时间，从而提高了网站的性能。这是CDN受欢迎的主要原因。</p>
 <h4 id="tcp初始拥塞窗口的重要性"><strong>TCP初始拥塞窗口的重要性</strong></h4>
 <p>TCP初始拥塞窗口或initcwnd在启动TCP连接期间使用。在HTTP会话开始期间，当客户端请求资源时，服务器initcwnd确定在初始数据突发期间将发送多少个数据包。</p>
 <p>如果initcwnd值较大，则下载同一文件所需的RTT将会更少。但是由于网络环境，我们不能将initcwnd设置为一个巨大的值，并且路由器还具有有限的缓冲区的限制。如果设置的值过大，则可能导致路由器缓冲区溢出，数据包丢失，数据包重传。因此，我们需要为initcwnd设置一个与网络带宽成正比的最佳值。</p>
-<p>自从引入此tcp参数以来，由于大多数现代Web交易的寿命很短，并且全球网络的平均速度已在相当长的时间内发展，因此<a href="https://tools.ietf.org/html/rfc6928" target="_blank" rel="noopener">RFC 6928</a>在Google于2010年<a href="https://research.google.com/pubs/pub36640.html" target="_blank" rel="noopener">发表</a>研究<a href="https://research.google.com/pubs/pub36640.html" target="_blank" rel="noopener">报告</a>后才引入，以将initcwnd的默认值增加到10个细分（最多14600字节）。</p>
+<p>自从引入此tcp参数以来，由于大多数现代Web交易的寿命很短，并且全球网络的平均速度已在相当长的时间内发展，因此<a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc6928">RFC 6928</a>在Google于2010年<a target="_blank" rel="noopener" href="https://research.google.com/pubs/pub36640.html">发表</a>研究<a target="_blank" rel="noopener" href="https://research.google.com/pubs/pub36640.html">报告</a>后才引入，以将initcwnd的默认值增加到10个细分（最多14600字节）。</p>
 <h4 id="现代网络和网络空间"><strong>现代网络和网络空间</strong></h4>
 <p>如今，互联网以运行在短暂TCP连接之上的网络流量为主导。甚至在慢启动算法退出之前，很大一部分Internet流量就已经完成。</p>
 <p>网络空间正在不断增长，并且正以指数级的速度增长。Web对象已明显变大。只有一小部分网络对象（约占所有Google响应的10％）可以容纳4KB的空间。</p>
 <p>同时，网络速度和速度也都在发展。即使有相当数量的并发会话，十个网段也可能适合任何宽带访问链路上可用的队列空间。</p>
-<p>Google发表了<a href="https://research.google.com/pubs/pub36640.html" target="_blank" rel="noopener">一篇论文</a>，他们在其中量化了通过大规模实验使用较大的initcwnd带来的延迟收益和成本。此后，主要的商业CDN在那里增加了其服务器中的initcwnd值。</p>
+<p>Google发表了<a target="_blank" rel="noopener" href="https://research.google.com/pubs/pub36640.html">一篇论文</a>，他们在其中量化了通过大规模实验使用较大的initcwnd带来的延迟收益和成本。此后，主要的商业CDN在那里增加了其服务器中的initcwnd值。</p>
 <h4 id="主要cdn的initcwnd设置"><strong>主要CDN的Initcwnd设置</strong></h4>
-<p>2014年初，CDNPlanet发布了一系列主要CDN的initcwnd值的<a href="http://www.cdnplanet.com/blog/initcwnd-settings-major-cdn-providers/" target="_blank" rel="noopener">结果</a>。我们想看看在过去三年中发生了什么变化。使用CDNPlanet<a href="https://github.com/turbobytes/initcwndcheck/blob/master/checker/initcwndcheck.go" target="_blank" rel="noopener">开源</a>的脚本，我们找出了一些主要CDN的当前initcwnd值。我们还观察到了一些有趣的行为，我们将在观察部分中介绍。</p>
+<p>2014年初，CDNPlanet发布了一系列主要CDN的initcwnd值的<a target="_blank" rel="noopener" href="http://www.cdnplanet.com/blog/initcwnd-settings-major-cdn-providers/">结果</a>。我们想看看在过去三年中发生了什么变化。使用CDNPlanet<a target="_blank" rel="noopener" href="https://github.com/turbobytes/initcwndcheck/blob/master/checker/initcwndcheck.go">开源</a>的脚本，我们找出了一些主要CDN的当前initcwnd值。我们还观察到了一些有趣的行为，我们将在观察部分中介绍。</p>
 <h4 id="实验装置"><strong>实验装置</strong></h4>
-<p>我们在五个不同的地理区域中设置了五个EC2实例。俄勒冈州，弗吉尼亚州，悉尼，伦敦和新加坡覆盖全球大部分地区。我们使用这些实例使用不同的CDN将请求发送到不同的网站。我们配置并运行了Turbobytes提供的initcwnd <a href="https://github.com/turbobytes/initcwndcheck/blob/master/checker/initcwndcheck.go" target="_blank" rel="noopener">checker</a>的go脚本。</p>
+<p>我们在五个不同的地理区域中设置了五个EC2实例。俄勒冈州，弗吉尼亚州，悉尼，伦敦和新加坡覆盖全球大部分地区。我们使用这些实例使用不同的CDN将请求发送到不同的网站。我们配置并运行了Turbobytes提供的initcwnd <a target="_blank" rel="noopener" href="https://github.com/turbobytes/initcwndcheck/blob/master/checker/initcwndcheck.go">checker</a>的go脚本。</p>
 <h4 id="结果"><strong>结果</strong></h4>
-<p>这是我们根据2017年1月通过实验收集的值和CDNPlanet在2014年8月发布的值绘制的比较图。我们可以看到，大多数CDN随时间增加了initcwnd值。这可能是由于我们之前讨论的原因。该聚集<a href="https://blog.imaginea.com/wp-content/uploads/2017/02/CDNs-Initcwnd-values-Jan-2017-Sheet1-1.pdf" target="_blank" rel="noopener">结果</a>也予以公布。</p>
-<p><a href="https://blog.imaginea.com/wp-content/uploads/2017/02/cdn.jpg" target="_blank" rel="noopener"><img src="https://blog.imaginea.com/wp-content/uploads/2017/02/cdn.jpg" alt="主要CDN的Initcwnd值" /></a>主要CDN的Initcwnd值</p>
+<p>这是我们根据2017年1月通过实验收集的值和CDNPlanet在2014年8月发布的值绘制的比较图。我们可以看到，大多数CDN随时间增加了initcwnd值。这可能是由于我们之前讨论的原因。该聚集<a target="_blank" rel="noopener" href="https://blog.imaginea.com/wp-content/uploads/2017/02/CDNs-Initcwnd-values-Jan-2017-Sheet1-1.pdf">结果</a>也予以公布。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.imaginea.com/wp-content/uploads/2017/02/cdn.jpg"><img src="https://blog.imaginea.com/wp-content/uploads/2017/02/cdn.jpg" alt="主要CDN的Initcwnd值" /></a>主要CDN的Initcwnd值</p>
 <h4 id="观察结果"><strong>观察结果</strong></h4>
 <ul>
 <li><p>大多数CDN都增加了其initcwnd的价值。随着全球平均网络带宽的不断增长，增加initcwnd值只会减少往返时间，页面加载时间并总体上提高性能。</p></li>
@@ -358,7 +358,7 @@
 </tbody>
 </table>
 <p>我们进行了另一项测试，以确认它们是否为任播IP地址。我们从不同区域进行了traceroute到相同ip地址的操作，并观察了数据包经过的中间和最后一跳区域。我们注意到，当请求来自不同区域时，过渡和最后一跳地理区域是不同的。因此，我们可以得出结论，它们是任播IP地址。 </p>
-<p><a href="https://blog.imaginea.com/wp-content/uploads/2017/02/table1.png" target="_blank" rel="noopener"><img src="https://blog.imaginea.com/wp-content/uploads/2017/02/table1.png" alt="表格1" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.imaginea.com/wp-content/uploads/2017/02/table1.png"><img src="https://blog.imaginea.com/wp-content/uploads/2017/02/table1.png" alt="表格1" /></a></p>
 <p>对于MaxCDN，从弗吉尼亚州，俄勒冈州，悉尼伦敦，新加坡返回的请求资源的目的地IP为108.161.189.85。上表描述了来自多个位置的临时和最后一跳区域。研究该表得出的结论是 ，MaxCDN从不同区域通告的IP是任播IP。实际上，大多数主要CDN现在都在其体系结构中使用任播ip地址。</p></li>
 <li><p>对于列表中的两个CDN。我们在上面进行实验的Akamai和ChinaCache观察到，对于不同类型的请求，initcwnd值是不同的。例如，Skyscanner china（tianxun.com），苏富比和EnglishCentral China使用ChinaCache作为其CDN。我们获得的initcwnd值分别为10、16和20。Paytm，Flipkart和ESPN使用Akamai作为其主要CDN，我们发现的值分别为10、16和32。因此，我们认为他们可能会根据客户提供initcwnd定制。但是随后我们又做了一个有趣的观察。对于美国《福布斯》而言，initcwnd为16，而《福布斯》印度版initcwnd为32。因此，即使对于相同的客户，但在不同的地区（具有不同的域），initcwnd的值也不同。同样，对于特定请求，所有这些值都是一致的，而与源位置无关。</p></li>
 </ul>
@@ -370,7 +370,7 @@
 <li>根据客户或地理区域，某些CDN（例如Akamai）能够提供自定义的initcwnd值。</li>
 </ul>
 <blockquote>
-<p><a href="https://blog.imaginea.com/author/neeldhwaj-kumar-pathak-pathak/" target="_blank" rel="noopener" title="Neeldhwaj Pathak的帖子">Neeldhwaj Pathak</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.imaginea.com/author/neeldhwaj-kumar-pathak-pathak/" title="Neeldhwaj Pathak的帖子">Neeldhwaj Pathak</a></p>
 </blockquote>
 
     </div>
@@ -460,7 +460,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#cdn中的初始拥塞控制"><span class="nav-number">1.</span> <span class="nav-text">CDN中的初始拥塞控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#抽象"><span class="nav-number">1.1.</span> <span class="nav-text">抽象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是tcp拥塞控制"><span class="nav-number">1.2.</span> <span class="nav-text">什么是TCP拥塞控制？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cdn如何运作"><span class="nav-number">1.3.</span> <span class="nav-text">CDN如何运作？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#任播路由"><span class="nav-number">1.4.</span> <span class="nav-text">任播路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tcp初始拥塞窗口的重要性"><span class="nav-number">1.5.</span> <span class="nav-text">TCP初始拥塞窗口的重要性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#现代网络和网络空间"><span class="nav-number">1.6.</span> <span class="nav-text">现代网络和网络空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#主要cdn的initcwnd设置"><span class="nav-number">1.7.</span> <span class="nav-text">主要CDN的Initcwnd设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实验装置"><span class="nav-number">1.8.</span> <span class="nav-text">实验装置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结果"><span class="nav-number">1.9.</span> <span class="nav-text">结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#观察结果"><span class="nav-number">1.10.</span> <span class="nav-text">观察结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结论"><span class="nav-number">1.11.</span> <span class="nav-text">结论</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#cdn%E4%B8%AD%E7%9A%84%E5%88%9D%E5%A7%8B%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6"><span class="nav-number">1.</span> <span class="nav-text">CDN中的初始拥塞控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1"><span class="nav-number">1.1.</span> <span class="nav-text">抽象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFtcp%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6"><span class="nav-number">1.2.</span> <span class="nav-text">什么是TCP拥塞控制？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cdn%E5%A6%82%E4%BD%95%E8%BF%90%E4%BD%9C"><span class="nav-number">1.3.</span> <span class="nav-text">CDN如何运作？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%BB%E6%92%AD%E8%B7%AF%E7%94%B1"><span class="nav-number">1.4.</span> <span class="nav-text">任播路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tcp%E5%88%9D%E5%A7%8B%E6%8B%A5%E5%A1%9E%E7%AA%97%E5%8F%A3%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7"><span class="nav-number">1.5.</span> <span class="nav-text">TCP初始拥塞窗口的重要性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8E%B0%E4%BB%A3%E7%BD%91%E7%BB%9C%E5%92%8C%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4"><span class="nav-number">1.6.</span> <span class="nav-text">现代网络和网络空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81cdn%E7%9A%84initcwnd%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.7.</span> <span class="nav-text">主要CDN的Initcwnd设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E8%A3%85%E7%BD%AE"><span class="nav-number">1.8.</span> <span class="nav-text">实验装置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C"><span class="nav-number">1.9.</span> <span class="nav-text">结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%82%E5%AF%9F%E7%BB%93%E6%9E%9C"><span class="nav-number">1.10.</span> <span class="nav-text">观察结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">1.11.</span> <span class="nav-text">结论</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

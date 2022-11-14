@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 6.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -197,7 +197,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/04/18/java%E4%B8%AD%E4%B8%80%E8%88%AC%E4%B8%8D%E6%98%93%E7%9F%A5%E7%9A%84%E7%82%B9/" class="post-title-link" itemprop="url">java中一般不易知的点</a>
+            <a href="/2020/04/18/java%E4%B8%AD%E4%B8%80%E8%88%AC%E4%B8%8D%E6%98%93%E7%9F%A5%E7%9A%84%E7%82%B9/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -250,7 +250,7 @@
 <h3 id="类加载和执行过程">类加载和执行过程</h3>
 <p><strong>装载</strong> -&gt; <strong>链接</strong> -&gt; <strong>初始化</strong></p>
 <p>如上过程就是一个类被虚拟机发现并到可用的全部过程, 其中每个步骤执行不同的操作。</p>
-<p><a href="http://note.youdao.com/noteshare?id=6e9fb6aa0d4b85c07c6cf49befb0d52b&amp;sub=A6313E2BC9D0429080142B0848316EB4" target="_blank" rel="noopener">类装载过程</a></p>
+<p><a target="_blank" rel="noopener" href="http://note.youdao.com/noteshare?id=6e9fb6aa0d4b85c07c6cf49befb0d52b&amp;sub=A6313E2BC9D0429080142B0848316EB4">类装载过程</a></p>
 <h4 id="类加载器">类加载器</h4>
 <p>类加载器是负责加载class到JVM中的组件</p>
 <p>在java9之前, 类加载器基本可以分为以下几类:</p>
@@ -341,7 +341,7 @@
 <h3 id="java内存模型">Java内存模型</h3>
 <p>java内存模型大概有7条happens-before规则, 不必一一记住,因为都挺简单直观。</p>
 <p>这里需要知道的是, 这里的happens-before规则所确定的不是<strong>代码执行顺序</strong>而是<strong>可见性</strong>保证。</p>
-<p>举个栗子: <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">int</span> a = <span class="hljs-number">10</span>;<br><span class="hljs-keyword">int</span> b = a;<br></code></pre></td></tr></table></figure> java 内存模型规则不保证 <code>a=10</code> 代码一定在 <code>b=a</code>之前执行, 而是保证, 在执行<code>b=a</code>代码的时候, a=10 这个值已经可见。例子有点极端, 但是没有错误。在更复杂一点的场景下可以阐述这个事实。</p>
+<p>举个栗子: <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> a;<br></code></pre></td></tr></table></figure> java 内存模型规则不保证 <code>a=10</code> 代码一定在 <code>b=a</code>之前执行, 而是保证, 在执行<code>b=a</code>代码的时候, a=10 这个值已经可见。例子有点极端, 但是没有错误。在更复杂一点的场景下可以阐述这个事实。</p>
 <h2 id="更深一层的点">更深一层的点</h2>
 <h3 id="即时编译-jit">即时编译 JIT</h3>
 <h4 id="编译器类型">编译器类型</h4>
@@ -754,7 +754,7 @@ E(X)=\frac{1}{\lambda},\quad Var(X)=\frac{1}{\lambda^2}
 <h3 id="引言">引言</h3>
 <p>做了太多的二叉, 本来想着尽量做一些从数学上的高效求解的题目, 但是我的博客数学公式渲染有问题,我还没能搞定, 所以这次来个DP问题。</p>
 <h3 id="description">Description</h3>
-<p><a href="https://leetcode.com/problems/climbing-stairs/" target="_blank" rel="noopener"><strong>70. Climbing Stairs</strong></a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/climbing-stairs/"><strong>70. Climbing Stairs</strong></a></p>
 <p>You are climbing a stair case. It takes n steps to reach to the top.</p>
 <p>Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?</p>
 <p>Note: Given n will be a positive integer.</p>
@@ -773,7 +773,7 @@ Output: 3</code></pre>
 <p>这里具体不再展开, 本篇解法会在Share当中分享。</p>
 <h3 id="code">Code</h3>
 <p>代码可以更加精简, 基本4~5行就能够完成, 但是我为了尽量通过代码能体现思路, 按照思路的进行续来编码。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">climbStairs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n==<span class="hljs-number">1</span>)<br>          <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (n==<span class="hljs-number">2</span>)<br>          <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;<br>      <br>        <span class="hljs-keyword">int</span> stair_1 = <span class="hljs-number">2</span>;    <span class="hljs-comment">// pre stair ways</span><br>        <span class="hljs-keyword">int</span> stair_2 = <span class="hljs-number">1</span>;    <span class="hljs-comment">// the second pre stair ways</span><br>        <span class="hljs-keyword">int</span> stair = <span class="hljs-number">3</span>;<br>        <span class="hljs-keyword">while</span> (stair++ &lt;= n) &#123;<br>          <span class="hljs-keyword">int</span> old = stair_2;<br>          stair_2 = stair_1;<br>          stair_1 = stair_2 + old;<br>        &#125;<br>        <span class="hljs-keyword">return</span> stair_1;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">climbStairs</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n==<span class="hljs-number">1</span>)<br>          <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (n==<span class="hljs-number">2</span>)<br>          <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;<br>      <br>        <span class="hljs-type">int</span> stair_1 = <span class="hljs-number">2</span>;    <span class="hljs-comment">// pre stair ways</span><br>        <span class="hljs-type">int</span> stair_2 = <span class="hljs-number">1</span>;    <span class="hljs-comment">// the second pre stair ways</span><br>        <span class="hljs-type">int</span> stair = <span class="hljs-number">3</span>;<br>        <span class="hljs-keyword">while</span> (stair++ &lt;= n) &#123;<br>          <span class="hljs-type">int</span> old = stair_2;<br>          stair_2 = stair_1;<br>          stair_1 = stair_2 + old;<br>        &#125;<br>        <span class="hljs-keyword">return</span> stair_1;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 <h3 id="result">Result</h3>
 <p>Success Details</p>
 <p><strong>Runtime</strong>: <strong>4 ms</strong>, faster than <strong>87.64%</strong> of C++ online submissions for Climbing Stairs.</p>
@@ -805,13 +805,13 @@ Output: 3</code></pre>
 <h3 id="rsa-非对称加密算法原理">RSA 非对称加密算法原理</h3>
 <h4 id="欧拉函数">欧拉函数</h4>
 <blockquote>
-<p>在数论中，对正整数n，欧拉函数 <span class="math inline">\(\varphi(n)\)</span> 是小于或等于n的正整数中与n互质的数的数目。此函数以其首名研究者欧拉命名，它又称为φ函数（由高斯所命名）或是欧拉总计函数（totient function，由西尔维斯特所命名）。 <a href="https://zh.wikipedia.org/wiki/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">欧拉函数</a></p>
+<p>在数论中，对正整数n，欧拉函数 <span class="math inline">\(\varphi(n)\)</span> 是小于或等于n的正整数中与n互质的数的数目。此函数以其首名研究者欧拉命名，它又称为φ函数（由高斯所命名）或是欧拉总计函数（totient function，由西尔维斯特所命名）。 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0">欧拉函数</a></p>
 </blockquote>
 <h4 id="rsa-算法的核心-欧拉定理">RSA 算法的核心: 欧拉定理</h4>
 <p>. &gt; 在数论中，欧拉定理（也称费马-欧拉定理或欧拉 <span class="math inline">\(\varphi\)</span> 函数定理）是一个关于同余的性质。欧拉定理表明，若 <strong>n,a</strong>为正整数，且 <strong>n,a</strong> 互素（即 <span class="math inline">\(\gcd(a,n)=1\)</span> ），则</p>
 <p><span class="math display">\[\begin{equation}a^{\phi{\left(n\right)}} \equiv 1 \pmod n \end{equation}\]</span></p>
 <blockquote>
-<p><a href="https://zh.wikipedia.org/wiki/%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86_(%E6%95%B0%E8%AE%BA)" target="_blank" rel="noopener">欧拉定理</a></p>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86_(%E6%95%B0%E8%AE%BA)">欧拉定理</a></p>
 </blockquote>
 <h4 id="费马小定理-欧拉定理的特例">费马小定理: 欧拉定理的特例</h4>
 <p>费马定理的表达式 :</p>
@@ -875,7 +875,7 @@ a^{\phi\left({n}\right)}\equiv a\times a^{\phi\left(n\right)-1}\equiv 1 \pmod n
 <p>按照上述的限制条件, 计算出D, 至此, 私钥部分也计算完成, 私钥为(D, N)。</p>
 <hr />
 <h2 id="share">Share</h2>
-<p><a href="https://blog.csdn.net/u013309870/article/details/75193592" target="_blank" rel="noopener">算法-动态规划 Dynamic Programming--从菜鸟到老鸟</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013309870/article/details/75193592">算法-动态规划 Dynamic Programming--从菜鸟到老鸟</a></p>
 <hr />
 <h2 id="end">End</h2>
 
@@ -954,7 +954,7 @@ a^{\phi\left({n}\right)}\equiv a\times a^{\phi\left(n\right)-1}\equiv 1 \pmod n
           <h1 id="arts-9">ARTS-9</h1>
 <h2 id="algorithm">Algorithm</h2>
 <h3 id="description">Description</h3>
-<p><a href="https://leetcode.com/problems/sqrtx/" target="_blank" rel="noopener"><strong>69. Sqrt(x)</strong></a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/sqrtx/"><strong>69. Sqrt(x)</strong></a></p>
 <p>Implement int sqrt(int x).</p>
 <p>Compute and return the square root of x, where x is guaranteed to be a non-negative integer.</p>
 <p>Since the return type is an integer, the decimal digits are truncated and only the integer part of the result is returned.</p>
@@ -970,7 +970,7 @@ Output: 2</code></pre>
 <h3 id="思路">思路</h3>
 <p>开平方的普遍简单做法一般有两种, 一个是二分法逼近, 一个是牛顿迭代开平方法。因为之前已经做过了太多的二分法了, 所以决定这次使用牛顿开平方法。</p>
 <h3 id="code">Code</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span><span class="hljs-params">(object)</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">mySqrt</span><span class="hljs-params">(self, x)</span>:</span><br>        <span class="hljs-string">"""</span><br><span class="hljs-string">        :type x: int</span><br><span class="hljs-string">        :rtype: int</span><br><span class="hljs-string">        """</span><br>        <span class="hljs-keyword">if</span> x==<span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br>        <span class="hljs-keyword">if</span> x==<span class="hljs-number">1</span>:<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br><br>        y = x/<span class="hljs-number">2.0</span><br>        <span class="hljs-keyword">while</span> abs(x-y**<span class="hljs-number">2</span>) &gt; <span class="hljs-number">0.5</span>:<br>            y=((y*<span class="hljs-number">1.0</span>)+(<span class="hljs-number">1.0</span>*x)/y)/<span class="hljs-number">2.0000</span><br>        <span class="hljs-keyword">return</span> int(y)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">mySqrt</span>(<span class="hljs-params">self, x</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        :type x: int</span><br><span class="hljs-string">        :rtype: int</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        <span class="hljs-keyword">if</span> x==<span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br>        <span class="hljs-keyword">if</span> x==<span class="hljs-number">1</span>:<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br><br>        y = x/<span class="hljs-number">2.0</span><br>        <span class="hljs-keyword">while</span> <span class="hljs-built_in">abs</span>(x-y**<span class="hljs-number">2</span>) &gt; <span class="hljs-number">0.5</span>:<br>            y=((y*<span class="hljs-number">1.0</span>)+(<span class="hljs-number">1.0</span>*x)/y)/<span class="hljs-number">2.0000</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">int</span>(y)<br></code></pre></td></tr></table></figure>
 <h3 id="result">Result</h3>
 <table>
 <thead>
@@ -994,21 +994,21 @@ Output: 2</code></pre>
 </table>
 <hr />
 <h2 id="review">Review</h2>
-<p><a href="https://medium.freecodecamp.org/learning-python-from-zero-to-hero-120ea540b567" target="_blank" rel="noopener"><strong>Learning Python: From Zero to Hero</strong></a></p>
+<p><a target="_blank" rel="noopener" href="https://medium.freecodecamp.org/learning-python-from-zero-to-hero-120ea540b567"><strong>Learning Python: From Zero to Hero</strong></a></p>
 <h3 id="引言">引言</h3>
 <p>之前medium老是给我推送javascript的文, 我越是看, 它越是推, 然而,我几乎从不写js, 这次我自己主动去看python文, 让它学习下, 以后换个口味给我推。</p>
 <h3 id="内容">内容</h3>
-<p><a href="https://medium.freecodecamp.org/learning-python-from-zero-to-hero-120ea540b567" target="_blank" rel="noopener"><strong>Learning Python: From Zero to Hero</strong></a></p>
+<p><a target="_blank" rel="noopener" href="https://medium.freecodecamp.org/learning-python-from-zero-to-hero-120ea540b567"><strong>Learning Python: From Zero to Hero</strong></a></p>
 <pre><code>“high-level programming language, and its core design philosophy is all
 about code readability and a syntax which allows programmers to express
 concepts in a few lines of code.”</code></pre>
 <p>“高级编程语言，其核心设计理念是代码可读性和一个允许程序员用稍几行代码表达概念的语法。”</p>
 <h4 id="变量">变量</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">one = <span class="hljs-number">1</span><br><br>print(one)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">one = <span class="hljs-number">1</span><br><br><span class="hljs-built_in">print</span>(one)<br></code></pre></td></tr></table></figure>
 <h4 id="数组">数组</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">array = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br><br>array[<span class="hljs-number">1</span>] = <span class="hljs-number">5</span><br><br><span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> array:<br>    print(v)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">array = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br><br>array[<span class="hljs-number">1</span>] = <span class="hljs-number">5</span><br><br><span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> array:<br>    <span class="hljs-built_in">print</span>(v)<br></code></pre></td></tr></table></figure>
 <h4 id="字典">字典</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">dictionary = &#123; <span class="hljs-string">"one"</span> : <span class="hljs-number">1</span>, <span class="hljs-string">"two"</span> : <span class="hljs-number">2</span>, <span class="hljs-string">"three"</span> : <span class="hljs-number">3</span>&#125;<br>dictionary[<span class="hljs-string">"four"</span>] = <span class="hljs-number">4</span><br><br><span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">in</span> dictionary.items():<br>    print(k)<br>    pirnt(v)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">dictionary = &#123; <span class="hljs-string">&quot;one&quot;</span> : <span class="hljs-number">1</span>, <span class="hljs-string">&quot;two&quot;</span> : <span class="hljs-number">2</span>, <span class="hljs-string">&quot;three&quot;</span> : <span class="hljs-number">3</span>&#125;<br>dictionary[<span class="hljs-string">&quot;four&quot;</span>] = <span class="hljs-number">4</span><br><br><span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">in</span> dictionary.items():<br>    <span class="hljs-built_in">print</span>(k)<br>    pirnt(v)<br></code></pre></td></tr></table></figure>
 <h4 id="循环">循环</h4>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">while</span> Condition:<br>    doSomething()<br></code></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> dictionary:<br>    doSomething(dictionary[key])<br></code></pre></td></tr></table></figure>
@@ -1016,7 +1016,7 @@ concepts in a few lines of code.”</code></pre>
 <h4 id="类和对象">类和对象</h4>
 <p>类是对象的模板, 对象是程序使用类复刻的产物。</p>
 <p>类中定义构造方法为 <strong>init</strong>, 它第一个参数为代表当前对象的self 类可以有对公属性和非对公属性, 对公属性普通命名, 以下划线开头的名字为非对公属性, 除了本类定义的方法外不可以访问。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Model</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, attr1, attr2)</span>:</span><br>        self.attr1 = attr1<br>        self._attr2 = attr2<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getAttr1</span><span class="hljs-params">()</span>:</span><br>        <span class="hljs-keyword">return</span> self.attr1<br>        <br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getAttr2</span><span class="hljs-params">()</span>:</span><br>        <span class="hljs-keyword">return</span> self._attr2<br><br>object = Model(<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>)<br>print(object.getAttr1())<br>print(object.getAttr2())<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Model</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, attr1, attr2</span>):<br>        self.attr1 = attr1<br>        self._attr2 = attr2<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">getAttr1</span>():<br>        <span class="hljs-keyword">return</span> self.attr1<br>        <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">getAttr2</span>():<br>        <span class="hljs-keyword">return</span> self._attr2<br><br><span class="hljs-built_in">object</span> = Model(<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">object</span>.getAttr1())<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">object</span>.getAttr2())<br><br></code></pre></td></tr></table></figure>
 <h4 id="本篇出错">本篇出错</h4>
 <p>有趣的是, 在本篇评论上有个网友指出了作者在文中的一处错误</p>
 <p>作者原文:</p>
@@ -1052,7 +1052,7 @@ x_{n+1}  = \frac{x_n^2-n} {2x_n} \\
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">const</span> EPS = <span class="hljs-number">0.0001</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">sqrt</span><span class="hljs-params">(x double)</span></span> &#123;<br>    reuslt := x<br>iteration:<br>    last := x<br>    result = (result - (x-result))/<span class="hljs-number">2.0</span><br>    <span class="hljs-keyword">if</span> abs(last-result)&gt;EPS &#123;<br>        <span class="hljs-keyword">goto</span> iteration<br>    &#125;<br>    <span class="hljs-keyword">return</span> result<br>&#125;<br></code></pre></td></tr></table></figure>
 <hr />
 <h2 id="share">Share</h2>
-<p><a href="https://charlesliuyx.github.io/2018/02/16/%E3%80%90%E7%9B%B4%E8%A7%82%E8%AF%A6%E8%A7%A3%E3%80%91%E6%B3%B0%E5%8B%92%E7%BA%A7%E6%95%B0/" target="_blank" rel="noopener">[直观详解]泰勒级数</a></p>
+<p><a target="_blank" rel="noopener" href="https://charlesliuyx.github.io/2018/02/16/%E3%80%90%E7%9B%B4%E8%A7%82%E8%AF%A6%E8%A7%A3%E3%80%91%E6%B3%B0%E5%8B%92%E7%BA%A7%E6%95%B0/">[直观详解]泰勒级数</a></p>
 <hr />
 <h2 id="end">End</h2>
 
