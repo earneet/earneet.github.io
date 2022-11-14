@@ -21,9 +21,9 @@
   </script>
 
   <meta property="og:type" content="website">
-<meta property="og:title" content="Learning &amp; Sharing">
+<meta property="og:title" content="我要分享技术">
 <meta property="og:url" content="http://yoursite.com/page/3/index.html">
-<meta property="og:site_name" content="Learning &amp; Sharing">
+<meta property="og:site_name" content="我要分享技术">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Earneet">
 <meta name="twitter:card" content="summary">
@@ -41,7 +41,7 @@
   };
 </script>
 
-  <title>Learning & Sharing</title>
+  <title>我要分享技术</title>
   
 
 
@@ -92,7 +92,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Learning & Sharing</h1>
+      <h1 class="site-title">我要分享技术</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -183,6 +183,281 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/20/css-selector-priority/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我要分享技术">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/20/css-selector-priority/" class="post-title-link" itemprop="url">CSS选择器与优先级</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-20 10:30:36" itemprop="dateCreated datePublished" datetime="2020-10-20T10:30:36+08:00">2020-10-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-28 10:33:55" itemprop="dateModified" datetime="2020-10-28T10:33:55+08:00">2020-10-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="css选择器与优先级">CSS选择器与优先级</h3>
+<h4 id="选择器种类">选择器种类</h4>
+<ol type="1">
+<li>元素选择器。 元素选择器以元素标签为选择子。对与html中标签类型形同的元素进行匹配。 因为一个html页面中，相同类型的元素出现不少，所以这类选择器匹配范围广泛，按照越少，越精准优先级越高的原则，元素选择器的优先级是很低的。</li>
+<li>伪元素选择器。 伪元素选择器使用::作为前导，其一个明显特点是， 更改其选择对象不为前导的匹配对象，而是按照选择器规则去选取其他的对象。</li>
+<li>类选择器。 类选择器以点号.为前导，后加类名。在html中，一簇类似功能的元素会指定class="classname ..."属性来为类选择器提供选择依据。在页面中，此类元素数量往往远少于元素数量，所以其优先级也更高。</li>
+<li>伪类选择器。伪类选择器以冒号:作为前导，其后紧跟元素的某一状态。其选择特征为，在前导选择器选中的元素的基础上，添加某一个状态作为条件。</li>
+<li>ID选择器。以#作为前导，后紧跟ID名。按照规范，在一个html页面中，ID应当是唯一的，所以ID选择器要么补选中元素，要么选中一个。所以它的优先级是最高的。</li>
+</ol>
+<h4 id="选择器的优先级">选择器的优先级</h4>
+<p>在CSS属性附加到DOM树的过程中，往往会出现这样一种情况。<strong>多个选择器同时匹配到同一个DOM元素，而他们的属性配置值不同</strong>。 这个时候，就需要使用冲突解决方案了。</p>
+<p>属性解决采用两类元素决定：</p>
+<ol type="1">
+<li>优先级。</li>
+<li>先后顺序。</li>
+</ol>
+<p>多个选择器匹配时，选择优先级高的优先级属性使用，当优先级相同时，选择后出现的属性。</p>
+<h4 id="浏览器如何计算优先级的">浏览器如何计算优先级的</h4>
+<p>浏览器将优先级分为四个级别，采用级别记分，其中每个级别上符合条件的匹配将会使优先级得分累加，最终，采用优先级得分最高的样式。</p>
+<ol type="1">
+<li>第一级别：内联。在html元素中配置style属性时，为内联属性，而且它不属于选择器，且只能配置一次，所以优先级最高。 ** 需要注意的是，使用内联属性不是一个好习惯，除非不得已我们尽量使用外部CSS来确定样式 **</li>
+<li>第二级别： ID选择器。 CSS中，使用井号前导一个元素的ID选择器。它能够精准的选定某一个元素，所以优先级很高，在这里它是次高的优先级。</li>
+<li>第三级别：类/伪类选择器。</li>
+<li>第四级别：元素/伪元素选择器。</li>
+</ol>
+<p>其中，CSS样式表选择器每匹配到一个规则，就在规则计分项上记一分，最终，从第一优先级向第四优先级方向对比，当第一个积分不等的优先级出现后即停止，选中计分高的选择器。</p>
+<h3 id="特殊的优先级-important">特殊的优先级 !important</h3>
+<p>!important 拥有至高的优先级， 它用于描述某一条属性，而非一个选择器。它的工作方式打破了选择器优先级的常规，一旦某个属性被声明为 !important，则无视比它所在选择器更高优先级的选择器，对于该项属性进行强制覆盖。</p>
+<p>按照规范，这个特性是应该谨慎使用的，一般的，除非没有其他办法可以打到这个效果，所有情况下都不推荐使用。</p>
+<h3 id="列表选择器">列表选择器</h3>
+<p>有一种特殊的选择器写法， 它使用逗号<code>,</code>分隔选择表达式， 例如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">h</span>, <span class="hljs-selector-tag">div</span> &#123;<br>    <span class="hljs-attribute">background-color</span>: red;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这类选择器与分开写法是等效的，等效于:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">h</span> &#123;<br>    <span class="hljs-attribute">background-color</span>: red;<br>&#125;<br><br><span class="hljs-selector-tag">div</span> &#123;<br>    <span class="hljs-attribute">background-color</span>: red;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>但是，一旦其中一个选择器出错，分开写的那个选择器会被丢弃不处理，而列表选择器则整个失效。</strong></p>
+<h3 id="css位置对效果的影响">CSS位置对效果的影响</h3>
+<p>考虑到一些特殊用户的偏好（例如视力弱者希望字体更大），需要满足以用户指定的样式来覆盖开发者指定的样式。</p>
+<p>CSS的位置基本可以分为：</p>
+<ol type="1">
+<li>代理内置的默认样式，即浏览器默认样式。若开发者和用户均未指定样式时，则采用这个默认样式渲染。</li>
+<li>用户样式，一般在浏览器设置中，允许用户更改某些浏览器内置的样式。 这个样式，就是用户样式。</li>
+<li>开发者常规样式。 即一般开发人员使用CSS声明的样式。</li>
+<li>开发者 <code>!important</code>样式。 开发者使用<code>!important</code>声明的样式。</li>
+<li>用户<code>!important</code>样式。类似开发者<code>!important</code>样式。</li>
+</ol>
+<p>以上积累样式，如果出现冲突，那么序号大者将会覆盖序号小者的设置。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/19/rsa-brief/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我要分享技术">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/19/rsa-brief/" class="post-title-link" itemprop="url">RSA算法的原理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-19 14:09:37 / 修改时间：14:39:58" itemprop="dateCreated datePublished" datetime="2020-10-19T14:09:37+08:00">2020-10-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E7%AE%80%E8%BF%B0/" itemprop="url" rel="index"><span itemprop="name">算法简述</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="rsa-非对称加密算法原理">RSA 非对称加密算法原理</h3>
+<h4 id="欧拉函数">欧拉函数</h4>
+<blockquote>
+<p>在数论中，对正整数n，欧拉函数 <span class="math inline">\(\varphi(n)\)</span> 是小于或等于n的正整数中与n互质的数的数目。此函数以其首名研究者欧拉命名，它又称为φ函数（由高斯所命名）或是欧拉总计函数（totient function，由西尔维斯特所命名）。 <a href="https://zh.wikipedia.org/wiki/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">欧拉函数</a></p>
+</blockquote>
+<h4 id="rsa-算法的核心-欧拉定理">RSA 算法的核心: 欧拉定理</h4>
+<blockquote>
+<p>在数论中，欧拉定理（也称费马-欧拉定理或欧拉 <span class="math inline">\({\varphi}\)</span> 函数定理）是一个关于同余的性质。欧拉定理表明，若 <strong>n,a</strong>为正整数，且 <strong>n,a</strong> 互素（即 <span class="math inline">\(\gcd(a,n)=1\)</span> ），则</p>
+</blockquote>
+<p><span class="math display">\[
+a^{\phi{\left(n\right)}} \equiv 1 \pmod n 
+\]</span></p>
+<blockquote>
+<p><a href="https://zh.wikipedia.org/wiki/%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86_(%E6%95%B0%E8%AE%BA)" target="_blank" rel="noopener">欧拉定理</a></p>
+</blockquote>
+<h4 id="费马小定理-欧拉定理的特例">费马小定理: 欧拉定理的特例</h4>
+<p>费马定理的表达式 :</p>
+<p><span class="math display">\[
+a^{\phi{\left(n\right)}} \equiv 1 \pmod n
+\]</span></p>
+<p>在特殊情况下, 当n为质数时, <span class="math inline">\(\varphi(n)=n-1\)</span> , 此时, 欧拉定理的表述即为:</p>
+<p><span class="math display">\[
+a^{n-1} \equiv 1\pmod n
+\]</span></p>
+<p>这个公式即为就是费马小定理。</p>
+<h4 id="模反元素">模反元素</h4>
+<p>如果两个正整数 a 和 n 互质, 那么一定存在一个整数 b 满足:</p>
+<p><span class="math display">\[
+ab \equiv 1\pmod n
+\]</span></p>
+<p>即, (ab - 1)能被n整除。 b就叫做a的<strong>模反元素</strong>。 显然的, 模反元素并不唯一, 对于模反元素b, 对于所有的正整数 <span class="math inline">\(m=b+kn\)</span> 也为a的模反元素。</p>
+<p><strong>模反元素必然存在</strong></p>
+<p>对费马定理进行变形:</p>
+<p><span class="math display">\[
+a^{\phi\left({n}\right)}\equiv a\times a^{\phi\left(n\right)-1}\equiv 1 \pmod n
+\]</span></p>
+<p>在此变形中, <span class="math inline">\(a^{\phi\left(n\right)-1}\)</span> 即为a的模反元素。</p>
+<h4 id="rsa-基本概念">RSA 基本概念</h4>
+<p>我们约定:</p>
+<ul>
+<li>RSA加密秘钥为<strong>E</strong>, 它是一个大整数。</li>
+<li>RSA解密秘钥为<strong>D</strong>, 它是一个大整数。</li>
+<li>RSA加密和解密需要用的模数<strong>N</strong>, 它是一个大整数。</li>
+</ul>
+<h5 id="rsa-加密过程">RSA 加密过程</h5>
+<p><span class="math display">\[
+    密文 = 明文^E mod N
+\]</span></p>
+<p>RSA 加密过程就是这么简单, 它对明文做一个E次幂运算, 然后对N取模。 在这个过程中, E和N的组合就是<strong>公钥</strong>。</p>
+<h5 id="rsa-解密过程">RSA 解密过程</h5>
+<p>对应的, RSA的解密过程也非常简单:</p>
+<p><span class="math display">\[
+    明文 = 密文^D mod N
+\]</span></p>
+<p>RSA 的加密和解密过程完全一致, 只是它们换了一个秘钥, 进行了完全一样的运算。 在这个过程中, D和N的组合就是<strong>私钥</strong>。</p>
+<h4 id="非对称秘钥对的生成">非对称秘钥对的生成</h4>
+<p>在基本概念中, 约定了几个量, E, D, N 在这里,我么继续沿用, 额外的,在生成密钥对的过程中, 引入一个新的量L, 它只用于生成密钥对, 但是最终结果中我们并不体现它。</p>
+<h5 id="求n">1. 求N</h5>
+<p>准备两个大质数p, q。(p和q要最够大)</p>
+<p><span class="math display">\[ N=p \times q \]</span></p>
+<h5 id="求l">2. 求L</h5>
+<p>L是 p-1 和 q-1 的最小公倍数。</p>
+<p><span class="math display">\[
+L=lcm(p-1, q-1)
+\]</span></p>
+<p><em>实际上, 理论公式上, L应为ϕ(n), 这样后面的一系列推倒便是欧拉定理的应用了, 但是在实际中,它可以化简为更小的最小公倍数L, 这里,我们使用了实际中的化简方案</em></p>
+<h5 id="求e">3. 求E</h5>
+<p>E是一个比1大, 比L小的数字,且E和L要互质, 即 E和L的最大公约数为1, 表达为数学语言为。</p>
+<p><span class="math display">\[
+\begin{eqnarray*}
+1 &lt; E &lt; L \\
+gcd(E, L) = 1
+\end{eqnarray*}
+\]</span></p>
+<p>计算E的过程我们采用随机穷举的模式, 使用伪随机数生成器, 随机生成一个1和L之间的数字, 判断是否满足它与L互质, 如果不满足, 则重复生成并判断下一个随机数。</p>
+<p>至此, RSA的公钥部分E,N我们已经得到了, 公钥: (E, N)。</p>
+<p><em>我们加入E和L互质的这个条件,是为了满足我们需要的解密参数D一定存在</em></p>
+<h5 id="求d">4. 求D</h5>
+<p><span class="math display">\[
+\begin{eqnarray*}
+1 &lt; D &lt; L \\\\
+E \times D\ mod\ L = 1
+\end{eqnarray*}
+\]</span></p>
+<p>按照上述的限制条件, 计算出D, 至此, 私钥部分也计算完成, 私钥为(D, N)。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/28/init-log4j-with-external-config/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -192,7 +467,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Learning & Sharing">
+      <meta itemprop="name" content="我要分享技术">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -324,7 +599,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Learning & Sharing">
+      <meta itemprop="name" content="我要分享技术">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -441,7 +716,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Learning & Sharing">
+      <meta itemprop="name" content="我要分享技术">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -492,222 +767,6 @@
 <blockquote>
 <p>感谢<a href="https://sparkydogx.github.io/2018/10/19/linux-terminal-cursor-disappear/" target="_blank" rel="noopener">sparkydogX的解决方案</a></p>
 </blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/09/cpp-cast-check-on-compile-time/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar_head_icon.png">
-      <meta itemprop="name" content="Earneet">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Learning & Sharing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/09/cpp-cast-check-on-compile-time/" class="post-title-link" itemprop="url">C++在编译期实现源码层级的转换检测</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-07-09 14:20:56 / 修改时间：14:30:07" itemprop="dateCreated datePublished" datetime="2020-07-09T14:20:56+08:00">2020-07-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="背景">背景</h3>
-<p>近期我们在做一个通用AI的项目时使用了UE4引擎，一个同事在阅读源码时发现了这一段代码写的比较“秀”，于是推荐给我，我阅读之后在此记录笔记。</p>
-<h3 id="原代码">原代码</h3>
-<p>这一段代码来自Epic Games Unreal Engine 4，其最新版本为: <a href="https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Source/Runtime/Core/Public/Templates/PointerIsConvertibleFromTo.h" target="_blank" rel="noopener">Github</a> 这是一个私有仓库，访问代码可能需要先加入<a href="https://github.com/orgs/EpicGames/teams/developers" target="_blank" rel="noopener">开发组</a></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> once</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"CoreTypes.h"</span></span><br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Tests if a From* is convertible to a To*</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> From, <span class="hljs-keyword">typename</span> To&gt;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">TPointerIsConvertibleFromTo</span></span><br><span class="hljs-class">&#123;</span><br><span class="hljs-keyword">private</span>:<br>	<span class="hljs-function"><span class="hljs-keyword">static</span> uint8  <span class="hljs-title">Test</span><span class="hljs-params">(...)</span></span>;<br>	<span class="hljs-function"><span class="hljs-keyword">static</span> uint16 <span class="hljs-title">Test</span><span class="hljs-params">(To*)</span></span>;<br><br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-keyword">enum</span> &#123; Value  = <span class="hljs-keyword">sizeof</span>(Test((From*)<span class="hljs-literal">nullptr</span>)) - <span class="hljs-number">1</span> &#125;;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h3 id="分析">分析</h3>
-<p>C++编程语言可以在编译期间确定一个类型是否可以转换为另一个类型，但是它没有提供一个展示这个信息的关键字，如果不加检测的直接使用类型转换操作符(C style转换和 static_cast&lt;&gt;)操作符，则会引起编译器报错。</p>
-<p>上面这个代码实现了一个这样的转换检测的类似“编译期运算符”的操作， 可以在编译期获知两个类型是否可转换的关系。</p>
-<h4 id="利用-sizeof-和-函数调用编译期绑定的特性">利用 sizeof 和 函数调用编译期绑定的特性</h4>
-<p>C++ sizeof运算符可以在编译期实现“常量替换” (这里注意sizeof并不总是在编译期就能确定其值)。</p>
-<p>C++ 在进行函数调用时，基于编译期函数调用解析（有些资料把它命名为静态多态）的特征，我们在编译时即可确定将要调用哪一个具体函数。这里，就是利用了函数返回值类型不同来在源码层级上确定了到底是调用了哪一个函数，从而反映出目标类型与对照类型的转换关系。</p>
-<p>实现的关键代码:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> From, <span class="hljs-keyword">typename</span> To&gt;<br><span class="hljs-keyword">enum</span> &#123; Value  = <span class="hljs-keyword">sizeof</span>(Test((From*)<span class="hljs-literal">nullptr</span>)) - <span class="hljs-number">1</span> &#125;;<br></code></pre></td></tr></table></figure>
-<p>对空指针做一个强制类型转换，解释为From类型指针，然后作为参数调用Test函数， 在代码中，Test有两个实现，其中一个为<code>To*</code>类型参数, 另一个则为任意类型的泛参。</p>
-<p>这个调用在编译期即可确定， 若From类型可以兼容<code>To</code>类型（即，有继承层级上的直接关系，或者满足隐式转换规则），则<code>uint16 Test(To*)</code> 函数将被绑定, 否则，<code>uint8 Test(...)</code> 函数将被绑定。而这两个函数的返回值类型被<code>sizeof</code>运算符在编译期捕捉到，并得到长度，使用长度来反映是否可以转换来给Value赋值，从而实现了一个源码级别上的在编译期确定是否兼容的检测运算符。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/08/derivation-table/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar_head_icon.png">
-      <meta itemprop="name" content="Earneet">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Learning & Sharing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/08/derivation-table/" class="post-title-link" itemprop="url">常见函数导数公式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-05-08 09:45:25 / 修改时间：19:04:45" itemprop="dateCreated datePublished" datetime="2020-05-08T09:45:25+08:00">2020-05-08</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E5%BE%AE%E7%A7%AF%E5%88%86/" itemprop="url" rel="index"><span itemprop="name">微积分</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="常用函数导数公式">常用函数导数公式</h1>
-<blockquote>
-<p>本篇主要总结常见的函数形式的导数公式。以类别为要。其他形式的函数和复合形式的函数均可以通过变形套用本篇公式来结合 <a href="/2020/05/03/derivation-rules/" title="求导规则">求导规则</a> 推导导函数。</p>
-</blockquote>
-<h3 id="常数函数导数">常数函数导数</h3>
-<p>常数函数, 形如</p>
-<p><span class="math display">\[
-f(x) = C 
-\]</span></p>
-<p>其中C为常数, 则导数为0</p>
-<p><span class="math display">\[
-f&#39;(x) = 0
-\]</span></p>
-<h3 id="幂函数导数">幂函数导数</h3>
-<p>幂函数形如:</p>
-<p><span class="math display">\[
-f(x) = x^{n}
-\]</span></p>
-<p>则幂函数的导函数为:</p>
-<p><span class="math display">\[
-f&#39;(x) = nx^{n-1}
-\]</span></p>
-<blockquote>
-<p>有些幂函数不以明显的形式来表现出来, 例如 <span class="math inline">\(f(x) = \sqrt{x}\)</span> 或者 <span class="math inline">\(f(x) = \frac{1}{x}\)</span> 的形式, 实际上, 他们只是 <span class="math inline">\(n\)</span> 取值不同的表达, 开根号表达形式的 <span class="math inline">\(n\)</span> 为一个自然数为底的分数,分式形式时 <span class="math inline">\(n\)</span> 为自然数的负值, 但是他们都遵从幂函数的导函数形式。</p>
-</blockquote>
-<h3 id="指数函数的导数">指数函数的导数</h3>
-<p>指数函数形如:</p>
-<p><span class="math display">\[
-f(x) = n^x
-\]</span></p>
-<p>其导数为:</p>
-<p><span class="math display">\[
-f(x) = n^x\ln{n}
-\]</span></p>
-<h3 id="对数函数导数">对数函数导数</h3>
-<p>形如</p>
-<p><span class="math display">\[
-f(x) = log_n(x)
-\]</span></p>
-<p>的函数。</p>
-<p><span class="math display">\[
-f&#39;(x) = \cfrac{1}{x\ln{n}}
-\]</span></p>
-<h3 id="三角函数导数">三角函数导数</h3>
-<p>常用三角函数导数</p>
-<p><strong>正弦函数</strong>:</p>
-<p><span class="math display">\[
-f(x) = sin(x)
-\]</span></p>
-<p><span class="math display">\[
-f&#39;(x) = cos(x)
-\]</span></p>
-<p><strong>余弦函数</strong></p>
-<p><span class="math display">\[
-f(x) = cos(x)
-\]</span></p>
-<p><span class="math display">\[
-f&#39;(x) = -sin(x)
-\]</span></p>
 
       
     </div>
@@ -794,20 +853,20 @@ f&#39;(x) = -sin(x)
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">86</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

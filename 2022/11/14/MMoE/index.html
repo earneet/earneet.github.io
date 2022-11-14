@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Multi-gate Mixture-of-Experts (MMoE)  本笔记为王树森发表在youtube频道推荐系统的视频课程学习随笔，笔记中图片亦截取自王树森视频课件，原始资料出处为王树森youtube视频。  网络结构 首先上一张图，说明网络的完整结构。  image.png  输入特征 MMoE的输入特征由 用户特征，物品特征，统计特征和场景特征构成。 其中，用户特征和物品特征与召回层">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MMoE">
+<meta property="og:url" content="http://yoursite.com/2022/11/14/MMoE/index.html">
+<meta property="og:site_name" content="我要分享技术">
+<meta property="og:description" content="Multi-gate Mixture-of-Experts (MMoE)  本笔记为王树森发表在youtube频道推荐系统的视频课程学习随笔，笔记中图片亦截取自王树森视频课件，原始资料出处为王树森youtube视频。  网络结构 首先上一张图，说明网络的完整结构。  image.png  输入特征 MMoE的输入特征由 用户特征，物品特征，统计特征和场景特征构成。 其中，用户特征和物品特征与召回层">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.earneet.xyz/recommend_system/mmoe_0.png">
+<meta property="og:image" content="https://img.earneet.xyz/recommend_system/mmoe_1.png">
+<meta property="og:image" content="https://img.earneet.xyz/recommend_system/jihua.png">
+<meta property="article:published_time" content="2022-11-14T08:10:40.000Z">
+<meta property="article:modified_time" content="2022-11-14T08:18:34.470Z">
+<meta property="article:author" content="Earneet">
+<meta property="article:tag" content="DeepLearning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.earneet.xyz/recommend_system/mmoe_0.png">
+
+<link rel="canonical" href="http://yoursite.com/2022/11/14/MMoE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>MMoE | 我要分享技术</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">我要分享技术</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/11/14/MMoE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_head_icon.png">
+      <meta itemprop="name" content="Earneet">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我要分享技术">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MMoE
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-11-14 16:10:40 / 修改时间：16:18:34" itemprop="dateCreated datePublished" datetime="2022-11-14T16:10:40+08:00">2022-11-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DeepLearning/" itemprop="url" rel="index"><span itemprop="name">DeepLearning</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="multi-gate-mixture-of-experts-mmoe">Multi-gate Mixture-of-Experts (MMoE)</h1>
+<blockquote>
+<p>本笔记为王树森发表在youtube频道推荐系统的视频课程学习随笔，笔记中图片亦截取自王树森视频课件，原始资料出处为<a href="https://www.youtube.com/watch?v=JIEwaPARjfk&amp;t=118s" target="_blank" rel="noopener">王树森youtube视频</a>。</p>
+</blockquote>
+<h2 id="网络结构">网络结构</h2>
+<p>首先上一张图，说明网络的完整结构。</p>
+<figure>
+<img src="https://img.earneet.xyz/recommend_system/mmoe_0.png" alt="" /><figcaption>image.png</figcaption>
+</figure>
+<h3 id="输入特征">输入特征</h3>
+<p>MMoE的输入特征由 <strong>用户特征</strong>，<strong>物品特征</strong>，<strong>统计特征</strong>和<strong>场景特征</strong>构成。 其中，用户特征和物品特征与召回层的特征一致。</p>
+<h3 id="专家网络">专家网络</h3>
+<p>专家网络可以有多个，上图中只画出了三个，但是在实践中可能尝试四个五个或者多个。每个专家网络都不共享参数，他们是独立的。各个专家网络输出维度相同的向量。</p>
+<p>专家网络的数量是一个超参数，通常会试一试四个或者八个。</p>
+<h3 id="指标网络">指标网络</h3>
+<p>指标网络有多个，其网络个数与使用的指标的数量一致，例如上图我们假设P输出为点击率，Q输出为点赞率，当然，再添加网络还可以输出转发率等等。每一个指标网络是独立的，不共享参数，且他们的输出层都使用softmax作为激活函数，所以他们的输出的向量含义可以解释为概率或者权重，其维度与专家网络的个数一致。</p>
+<h3 id="上层网络预测网络">上层网络（预测网络）</h3>
+<p>上层网络的输入是下层网络（专家网络，指标网络）的输出组合。先上一个网络结构图。</p>
+<figure>
+<img src="https://img.earneet.xyz/recommend_system/mmoe_1.png" alt="" /><figcaption>image.png</figcaption>
+</figure>
+<p>我不知道上层的每个分支网络应该叫做什么名字，我就在笔记中擅自叫它们 <em>预测网络</em> 。 预测网络的输入为指标网络的输出作为权重，将每个专家网络的输出加权平均， 所以预测网络的输入维度与专家网络的输出维度一致。</p>
+<p>预测网络全连接层可以有一层，也可以有多层，其输出为一个标量数值，代表参考了所有专家网络后对该指标的预测值。</p>
+<h2 id="极化现象">极化现象</h2>
+<h3 id="什么是极化现象">什么是极化现象</h3>
+<p>MMoE网络训练中容易出现极化现象。 所谓极化现象，就是指标网络的softmax输出中，其中一个元素非常接近于1而其他元素接近于0。此种输出下，与专家网络进行加权平均时，会使的部分专家网络的输出被忽略（此指标权重接近0），只选取个别专家网络的输出，而且，不同的指标网络会选择不同的专家网络输出。这种状况下，多专家网络失去了其意义。我们希望指标网络均衡的考虑各专家网络的意见。</p>
+<figure>
+<img src="https://img.earneet.xyz/recommend_system/jihua.png" alt="" /><figcaption>image.png</figcaption>
+</figure>
+<h3 id="如何解决极化现象">如何解决极化现象</h3>
+<ol type="1">
+<li>在训练时，对softmax的输出使用dropout。此方法基本可以避免极化。</li>
+</ol>
+<h2 id="总结">总结</h2>
+<ol type="1">
+<li>MMoE是一个排序层的网络，它对召回的结果进行输出分数以供排序。</li>
+<li>MMoE网络的思想是建立多个专家网络，让这些网络根据输入提出自己的“意见”，判别网络综合所有专家的意见对它所负责的指标进行预测，根据真实的指标值进行监督学习，从而训练出一个可以近乎准确预测指标的网络。</li>
+<li>MMoE会发生极化现象，要避免极化现象的发生，可以在Softmax层使用dropout方案。</li>
+<li>MMoE网络<strong>不一定对指标有提升</strong>，实际的工程上，也有很多MMoE不生效的情况。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/DeepLearning/" rel="tag"># DeepLearning</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/11/14/two-tower-model/" rel="prev" title="two_tower_model">
+      <i class="fa fa-chevron-left"></i> two_tower_model
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#multi-gate-mixture-of-experts-mmoe"><span class="nav-number">1.</span> <span class="nav-text">Multi-gate Mixture-of-Experts (MMoE)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#网络结构"><span class="nav-number">1.1.</span> <span class="nav-text">网络结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入特征"><span class="nav-number">1.1.1.</span> <span class="nav-text">输入特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#专家网络"><span class="nav-number">1.1.2.</span> <span class="nav-text">专家网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指标网络"><span class="nav-number">1.1.3.</span> <span class="nav-text">指标网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上层网络预测网络"><span class="nav-number">1.1.4.</span> <span class="nav-text">上层网络（预测网络）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#极化现象"><span class="nav-number">1.2.</span> <span class="nav-text">极化现象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是极化现象"><span class="nav-number">1.2.1.</span> <span class="nav-text">什么是极化现象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何解决极化现象"><span class="nav-number">1.2.2.</span> <span class="nav-text">如何解决极化现象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.3.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Earneet"
+      src="/images/avatar_head_icon.png">
+  <p class="site-author-name" itemprop="name">Earneet</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">87</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:earneet@gmail.com" title="E-Mail → mailto:earneet@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">鲁ICP备17028859号 </a>
+      <img src="/images/beian.png" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502037496" rel="noopener" target="_blank">京公网安备 11010502037496号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Earneet</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'f683935999f7972c4028',
+      clientSecret: '2759f62055ea0ca2f418d98c64fcb333551797c8',
+      repo        : 'GitResponse',
+      owner       : 'earneet',
+      admin       : ['earneet'],
+      id          : '82450d17d56145bb73c8349d78545d10',
+        language: 'zh-CN',
+      distractionFreeMode: false
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
+</body>
+</html>
