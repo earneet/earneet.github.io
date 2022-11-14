@@ -1318,7 +1318,7 @@ x_{n+1}  = \frac{x_n^2-n} {2x_n} \\
       </tags>
   </entry>
   <entry>
-    <title>MMoE</title>
+    <title>Multi-gate Mixture-of-Experts</title>
     <url>/2022/11/14/MMoE/</url>
     <content><![CDATA[<h1 id="multi-gate-mixture-of-experts-mmoe">Multi-gate Mixture-of-Experts (MMoE)</h1>
 <blockquote>
@@ -2876,7 +2876,7 @@ E \times D\ mod\ L = 1
       </tags>
   </entry>
   <entry>
-    <title>two_tower_model</title>
+    <title>双塔模型</title>
     <url>/2022/11/14/two-tower-model/</url>
     <content><![CDATA[<h1 id="双塔模型">双塔模型</h1>
 <blockquote>
